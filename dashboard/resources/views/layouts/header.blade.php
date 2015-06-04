@@ -1,8 +1,8 @@
 <header class="main-header">
   <!-- Logo -->
   <a class="logo" href="/">
-    <span class="logo-mini">YPJH</span>
-    <span class="logo-lg"><b>一拍即合</b>LTE</span>
+    <span class="logo-mini">BUGO</span>
+    <span class="logo-lg"><b>布谷广告</b>LTE</span>
   </a>
 
   <nav class="navbar navbar-static-top" role="navigation">

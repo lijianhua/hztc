@@ -15,7 +15,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">产品与服务</li>
-      <li><a href="/"><i class="fa fa-dashboard"></i><span>控制台</span></a></li>
+      <li><a href="{{{ url('/') }}}"><i class="fa fa-dashboard"></i><span>首页</span></a></li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-shirtsinbulk"></i>
@@ -46,8 +46,8 @@
         </ul>
       </li>
       <li class="header">站点与资源</li>
-      <li><a href="#"><i class="fa fa-navicon"></i> <span>全局导航</span></a></li>
-      <li><a href="#"><i class="fa fa-file-image-o"></i> <span>图片资源</span></a></li>
+      <li><a href="{{{ url('navigators') }}}"><i class="fa fa-navicon"></i> <span>全局导航</span></a></li>
+      <li><a href="#"><i class="fa fa-file-image-o"></i> <span>轮播图</span></a></li>
       <li class="header">用户中心</li>
       <li>
         <a href="#">

@@ -13,6 +13,9 @@
 
 Route::get('/', 'HomeController@index');
 
+// 全局导航管理
+Route::get('navigators', 'NavigatorController@index');
+
 Route::controllers([
   'auth' => 'Auth\AuthController',
   'password' => 'Auth\PasswordController',

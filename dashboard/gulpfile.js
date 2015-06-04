@@ -26,17 +26,19 @@ elixir.extend('del', function(paths) {
 elixir(function(mix) {
     // 编译 resource/assets/less/app.less
     mix.less('app.less')
-        // 复制
+       .coffee()
+       // 复制
+       .del(['public/css/*.css', 'public/js/*.js'])
+       .copy('vendor/bower_components/admin-lte/plugins/datatables/images/', 'resources/images')
        .copy('resources/images', 'public/images')
        .copy('vendor/bower_components/fontawesome/fonts', 'public/fonts')
        // 复制所有的 css 到 public/css 中
        .copy('resources/assets/css', 'public/css')
+       .copy('vendor/bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css', 'public/css')
        // 复制所有 js 到 public/js 中
        .copy('resources/assets/js', 'public/js')
-       // 删除 public/css/all.css
-       .del(['public/css/all.css'])
-       // 删除 public/js/all.js
-       .del(['public/js/all.js'])
+       // 删除
+       .del(['public/css/all.css', 'public/js/all.js'])
        // 合并 public/css/*.css >> public/css/all.css
        .stylesIn('public/css', 'public/css/all.css')
        // 合并 vendor/bower_components/*.js
@@ -44,7 +46,9 @@ elixir(function(mix) {
            'jquery/dist/jquery.js',
            'bootstrap/dist/js/bootstrap.js',
            'admin-lte/plugins/slimScroll/jquery.slimscroll.js',
-           'admin-lte/plugins/fastclick/fastclick.js'
+           'admin-lte/plugins/fastclick/fastclick.js',
+           'admin-lte/plugins/datatables/jquery.dataTables.js',
+           'admin-lte/plugins/datatables/dataTables.bootstrap.js',
        ], 'public/js/vendor.js', elixir.config['bowerDir'])
        // 合并自定义 js
        .scriptsIn('public/js', 'public/js/all.js')
