@@ -11,11 +11,11 @@ class Navigator extends Model {
 
   public function getClassOfStateLabelAttribute()
   {
-    return $this->state ? "success" : "error";
+    return $this->state ? "success" : "danger";
   }
 
   public function getTextOfStateLabelAttribute()
   {
-    return $this->state ? "已启动" : "已停用";
+    return $this->state ? "已启用" : "已停用";
   }
 }

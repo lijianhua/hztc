@@ -28,13 +28,14 @@ elixir(function(mix) {
     mix.less('app.less')
        .coffee()
        // 复制
-       .del(['public/css/*.css', 'public/js/*.js'])
+       .del(['public/css/*.css', 'public/js/*.js', 'public/swf/'])
        .copy('vendor/bower_components/admin-lte/plugins/datatables/images/', 'resources/images')
        .copy('resources/images', 'public/images')
        .copy('vendor/bower_components/fontawesome/fonts', 'public/fonts')
        // 复制所有的 css 到 public/css 中
        .copy('resources/assets/css', 'public/css')
        .copy('vendor/bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css', 'public/css')
+       .copy('vendor/bower_components/admin-lte/plugins/datatables/extensions/TableTools/swf/', 'public/swf/')
        // 复制所有 js 到 public/js 中
        .copy('resources/assets/js', 'public/js')
        // 删除
@@ -49,6 +50,7 @@ elixir(function(mix) {
            'admin-lte/plugins/fastclick/fastclick.js',
            'admin-lte/plugins/datatables/jquery.dataTables.js',
            'admin-lte/plugins/datatables/dataTables.bootstrap.js',
+           'admin-lte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js',
        ], 'public/js/vendor.js', elixir.config['bowerDir'])
        // 合并自定义 js
        .scriptsIn('public/js', 'public/js/all.js')
