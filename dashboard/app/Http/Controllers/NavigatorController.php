@@ -83,4 +83,23 @@ class NavigatorController extends Controller {
     //
   }
 
+  /**
+   * 切换导航状态
+   *
+   * @param  int $id
+   * @return Response
+   **/
+  public function toggle($id)
+  {
+    $navigator = Navigator::find($id);
+
+    if (is_null($navigator))
+      return response()->json(['state' => 'error', 'message' => '不存在这个导航']);
+
+    $navigator->state = !$navigator->state;
+    $navigator->save();
+
+    return response()->json(['state' => 'OK', 'message' => '导航状态切换成功']);
+  }
+
 }

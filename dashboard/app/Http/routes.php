@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index');
 
 // 全局导航管理
 Route::get('navigators', 'NavigatorController@index');
+Route::put('navigators/{id}/toggle', 'NavigatorController@toggle');
 
 Route::controllers([
   'auth' => 'Auth\AuthController',

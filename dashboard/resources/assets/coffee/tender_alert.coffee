@@ -50,8 +50,10 @@ class @TenderConfirmAlert extends @TenderAlert
     @alertMessage.on 'click', '.btn-action', {alertMessage: @alertMessage}, (event) ->
       self = @
       window.jQuery(self).html '<i class="fa fa-spinner fa-pulse"></i>'
-      callback() if callback
-      event.data.alertMessage.alert 'close'
+      setTimeout ->
+        callback() if callback
+        event.data.alertMessage.alert 'close'
+      , 200
 
   messageBody: (title, message) ->
     messageBody = super title, message
