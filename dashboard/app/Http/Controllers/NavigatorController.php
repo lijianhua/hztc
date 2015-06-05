@@ -80,7 +80,13 @@ class NavigatorController extends Controller {
    */
   public function destroy($id)
   {
-    //
+    $navigator = Navigator::find($id);
+
+    if (is_null($navigator))
+      return response()->json(['state' => 'error', 'message' => '不存在这个导航']);
+
+    $navigator->delete();
+    return response()->json(['state' => 'OK', 'message' => '删除成功']);
   }
 
   /**

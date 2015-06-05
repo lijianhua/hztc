@@ -31,5 +31,16 @@ class NavigatorControllerTest extends TestCase
     $navigator = Navigator::first();
     $this->assertEquals(false, $navigator->state);
   }
+
+  public function testDeleteNavigator()
+  {
+    Session::start();
+    $navigator = Navigator::first();
+
+    $this->call('DELETE', "/navigators/{$navigator->id}", ['_token' => csrf_token()]);
+
+    $this->assertResponseOk();
+    $this->assertNotEquals($navigator, Navigator::first());
+  }
 }
 

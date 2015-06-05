@@ -32,6 +32,19 @@ $ ->
         @stateValue = 0
         @alertLabel = '启用'
 
+    delete: ->
+      $.ajax
+        url      : "navigators/#{@id}"
+        async    : false
+        method   : 'DELETE'
+        dataType : 'json'
+        context  : @
+        success  : (response) ->
+          alertType = 'success'
+          alertType = 'danger' if response.state != 'OK'
+          @deleted  = true     if response.state == 'OK'
+          new TenderAlert(alertType).alert response.message
+
     toggle: ->
       $.ajax
         url      : "navigators/#{@id}/toggle"
@@ -112,8 +125,13 @@ $ ->
           fnInit: initButtonToolTip
           fnSelect: toggleButtonStateOnSelect
           fnClick: ->
+            isSelectedOne()
+            tableTools = TableTools.fnGetInstance 'navigatorsTable'
+            navigator = new Navigator tableTools
+
             dangerConfirmAlert.alert '危险！这个操作将无法逆转。确认删除吗？', ->
-              alert 'hello'
+              navigator.delete()
+              $('#navigatorsTable').dataTable().api(true).row(navigator.row).remove().draw() if navigator.deleted
             , '危险'
         },
         {
@@ -125,9 +143,7 @@ $ ->
           fnSelect: toggleButtonStateOnSelect
           fnClick: (nButton, oConfig, oFlash) ->
             isSelectedOne()
-
             tableTools = TableTools.fnGetInstance 'navigatorsTable'
-
             navigator = new Navigator tableTools
 
             warningConfirmAlert.alert "确定要#{navigator.alertLabel}这个导航吗？",  ->
