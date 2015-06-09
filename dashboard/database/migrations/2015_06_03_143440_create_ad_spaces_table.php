@@ -18,7 +18,9 @@ class CreateAdSpacesTable extends Migration {
       $table->integer('user_id')->unsigned()->index();
       $table->integer('ad_category_id')->unsigned()->index();
       $table->string('title');
+      $table->string('picture', 1024);
       $table->string('description', 1024);
+      $table->string('street_address', 1024);
       $table->text('detail')->nullable();
       /**
        * 表示广告位类型

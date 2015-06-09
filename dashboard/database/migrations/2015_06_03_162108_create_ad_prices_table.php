@@ -18,6 +18,7 @@ class CreateAdPricesTable extends Migration {
       $table->integer('ad_space_id')->unsigned()->index();
       $table->decimal('original_price', 10, 3)->nullable();
       $table->decimal('price', 10, 3);
+      $table->integer('score');
       $table->date('from');
       $table->date('to');
       // 发送次数
