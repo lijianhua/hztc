@@ -32,36 +32,49 @@ $ ->
         @stateValue = 0
         @alertLabel = '启用'
 
-    delete: ->
+    ###
+    # 和后台进行通信
+    ###
+    ajax: (successCallback) ->
       $.ajax
-        url      : "navigators/#{@id}"
+        url      : @url
         async    : false
-        method   : 'DELETE'
+        method   : @method
         dataType : 'json'
         context  : @
-        success  : (response) ->
-          alertType = 'success'
-          alertType = 'danger' if response.state != 'OK'
-          @deleted  = true     if response.state == 'OK'
-          new TenderAlert(alertType).alert response.message
+        success  : successCallback
+
+    edit: ->
+      @url = "navigators/#{@id}"
+      @method = "PUT"
+
+    delete: ->
+      @url    = "navigators/#{@id}"
+      @method = 'DELETE'
+      @ajax (response) ->
+        alertType = 'success'
+        alertType = 'danger' if response.state != 'OK'
+        @updateDeleted()     if response.state == 'OK'
+        new TenderAlert(alertType).alert response.message
 
     toggle: ->
-      $.ajax
-        url      : "navigators/#{@id}/toggle"
-        async    : false
-        method   : 'PUT'
-        dataType : 'json'
-        context  : @
-        success  : (response) ->
-          @updateState()       if response.state == 'OK'
+      @url    = "navigators/#{@id}/toggle"
+      @method = 'PUT'
+      @ajax (response) ->
+        @updateToggle() if response.state == 'OK'
 
-    updateState: ->
+    updateToggle: ->
       @stateValue = 1 - @stateValue
       if @stateValue == 1
         @state = '<span class="label label-success"> 已启用 </span>'
       else
         @state = '<span class="label label-danger"> 已停用 </span>'
       @rowData[3] = @state
+      $('#navigatorsTable').dataTable().api(true).row(@row).data(@rowData).draw()
+
+    updateDeleted: ->
+      @deleted = true
+      $('#navigatorsTable').dataTable().api(true).row(@row).remove().draw()
 
   ##
   # @description TableTools初始化按钮时，让它能够弹出ToolTip
@@ -83,6 +96,11 @@ $ ->
     selectedRows = TableTools.fnGetInstance('navigatorsTable').fnGetSelectedData()
     throw 'Only can toggle a navigator once' if selectedRows.length > 1
     throw 'Need a navigator to be toggle'    if selectedRows.length < 1
+
+  getSelectedNavigator = ->
+    isSelectedOne()
+    tableTools = TableTools.fnGetInstance 'navigatorsTable'
+    new Navigator tableTools
 
   ##
   # @description 初始化DataTable
@@ -115,7 +133,8 @@ $ ->
           fnInit: initButtonToolTip
           fnSelect: toggleButtonStateOnSelect
           fnClick: ->
-            alert 'edit'
+            navigator = getSelectedNavigator()
+            navigator.edit()
         },
         {
           sButtonClass: "btn btn-flat btn-default disabled"
@@ -125,13 +144,9 @@ $ ->
           fnInit: initButtonToolTip
           fnSelect: toggleButtonStateOnSelect
           fnClick: ->
-            isSelectedOne()
-            tableTools = TableTools.fnGetInstance 'navigatorsTable'
-            navigator = new Navigator tableTools
-
+            navigator = getSelectedNavigator()
             dangerConfirmAlert.alert '危险！这个操作将无法逆转。确认删除吗？', ->
               navigator.delete()
-              $('#navigatorsTable').dataTable().api(true).row(navigator.row).remove().draw() if navigator.deleted
             , '危险'
         },
         {
@@ -142,12 +157,8 @@ $ ->
           fnInit: initButtonToolTip
           fnSelect: toggleButtonStateOnSelect
           fnClick: (nButton, oConfig, oFlash) ->
-            isSelectedOne()
-            tableTools = TableTools.fnGetInstance 'navigatorsTable'
-            navigator = new Navigator tableTools
-
+            navigator = getSelectedNavigator()
             warningConfirmAlert.alert "确定要#{navigator.alertLabel}这个导航吗？",  ->
               navigator.toggle()
-              $('#navigatorsTable').dataTable().api(true).row(navigator.row).data(navigator.rowData).draw()
         }
       ]
