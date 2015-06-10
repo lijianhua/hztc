@@ -50,7 +50,7 @@ elixir(function(mix) {
            'admin-lte/plugins/fastclick/fastclick.js',
            'admin-lte/plugins/datatables/jquery.dataTables.js',
            'admin-lte/plugins/datatables/dataTables.bootstrap.js',
-           'admin-lte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js',
+           'admin-lte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js'
        ], 'public/js/vendor.js', elixir.config['bowerDir'])
        // 合并自定义 js
        .scriptsIn('public/js', 'public/js/all.js')

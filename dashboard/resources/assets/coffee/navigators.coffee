@@ -37,7 +37,7 @@ $ ->
     ###
     ajax: (successCallback) ->
       $.ajax
-        url      : @url
+        url      : @actionUrl
         async    : false
         method   : @method
         dataType : 'json'
@@ -45,11 +45,68 @@ $ ->
         success  : successCallback
 
     edit: ->
-      @url = "navigators/#{@id}"
+      @actionUrl    = "navigators/#{@id}"
       @method = "PUT"
+      @modalTitle = "编辑"
+
+      @popUpFormModal()
+
+    popUpFormModal: ->
+      modal = """
+              <div class="modal fade">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title">#{@modalTitle}</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form action="#{@actionUrl}" method="POST">
+                        <input type="hidden" name="_method" value="#{@method}">
+                        <input type="hidden" name="_token"  value="#{$('meta[name="csrf-token"]').attr('content')}">
+                        <input type="hidden" name="id" value="#{@id}">
+                        <div class="form-group">
+                          <label>名称</label>
+                          <input class="form-control" type="text" name="name" value="#{@name}">
+                        </div>
+                        <div class="form-group">
+                          <label>链接</label>
+                          <input class="form-control" type="text" name="url" value="#{@url}">
+                        </div>
+                        <div class="form-group">
+                          <label>状态</label>
+                          <p>
+                            <label class="radio-inline">
+                              <input type="radio" name="state" value="1"> 启用
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="state" value="0"> 停用
+                            </label>
+                          </p>
+                        </div>
+                        <div class="form-group">
+                          <label>排序 <small>按从小到大排序</small></label>
+                          <input class="form-control" type="number" min="0" name="sort" value="#{@sort}">
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+                      <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              """
+
+      modal = $(modal)
+      $(modal).find("input[type=radio][value=#{@stateValue}]").attr("checked", "")
+      $(modal).on 'shown.bs.modal', ->
+        $(modal).find('input[name=name]').focus()
+      $(modal).appendTo($('body')).modal()
 
     delete: ->
-      @url    = "navigators/#{@id}"
+      @actionUrl    = "navigators/#{@id}"
       @method = 'DELETE'
       @ajax (response) ->
         alertType = 'success'
@@ -58,7 +115,7 @@ $ ->
         new TenderAlert(alertType).alert response.message
 
     toggle: ->
-      @url    = "navigators/#{@id}/toggle"
+      @actionUrl    = "navigators/#{@id}/toggle"
       @method = 'PUT'
       @ajax (response) ->
         @updateToggle() if response.state == 'OK'

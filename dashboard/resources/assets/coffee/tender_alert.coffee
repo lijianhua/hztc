@@ -24,7 +24,7 @@ class @TenderAlert
 
   messageBody: (title, message) ->
     """
-    <div class="alert alert-#{@type} alert-dismissable">
+    <div class="alert alert-#{@type} alert-dismissable" style="display: none">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
       <h4><i class="fa fa-#{@alertIconSign()}"></i>#{title}</h4>
       <p>#{message}</p>
@@ -32,7 +32,8 @@ class @TenderAlert
     """
 
   display: (message) ->
-    window.jQuery(@container).prepend message
+    window.jQuery(@container).prepend(message)
+    window.jQuery(message).fadeIn()
 
   autoDismiss: (message) ->
     setTimeout ->
