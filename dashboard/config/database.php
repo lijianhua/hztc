@@ -46,9 +46,10 @@ return [
 
     'connections' => [
 
-        'sqlite' => [
+        'sqlite_testing' => [
             'driver'   => 'sqlite',
-            'database' => storage_path('database.sqlite'),
+            // 'database' => storage_path('database.sqlite'),
+            'database' => ':memory:',
             'prefix'   => '',
         ],
 

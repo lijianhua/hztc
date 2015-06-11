@@ -3,12 +3,10 @@ use App\Models\Navigator;
 
 class NavigatorControllerTest extends TestCase
 {
-  /**
-   * @before
-   */
-  public function setupResetDb()
+  public function setUp()
   {
-    Artisan::call('db:seed');
+    parent::setUp();
+    factory('App\Models\Navigator')->create();
   }
 
   public function testIndex()
@@ -70,43 +68,24 @@ class NavigatorControllerTest extends TestCase
   public function testUpdateNavigatorDumplicateNameShouldError()
   {
     Session::start();
-    $nav1 = Navigator::create([
-      'name'  => 'hello',
-      'url'   => '/hello-world',
-      'sort'  => 1,
-      'state' => 1
-    ]);
-
-    $nav2 = Navigator::create([
-      'name'  => 'world',
-      'url'   => '/hello-world',
-      'sort'  => 2,
-      'state' => 1
-    ]);
+    $nav1 = factory('App\Models\Navigator')->create();
+    $nav2 = factory('App\Models\Navigator')->create();
 
     $response = $this->call('PUT', "/navigators/{$nav2->id}",
-      ['_token' => csrf_token(), 'name' => 'world', 'url' => $nav2->url, 'state' => 1, 'sort' => 3]);
+      ['_token' => csrf_token(), 'name' => $nav1->name, 'url' => $nav2->url, 'state' => 1, 'sort' => 3]);
 
     $this->assertResponseStatus(302);
-    $nav1->delete();
-    $nav2->delete();
   }
 
   public function testUpdateNavigatorErrorStateValue()
   {
     Session::start();
-    $navigator = Navigator::create([
-      'name'  => 'world',
-      'url'   => '/hello-world',
-      'sort'  => 2,
-      'state' => 1
-    ]);
+    $navigator = factory('App\Models\Navigator')->create();
 
     $response = $this->call('PUT', "/navigators/{$navigator->id}",
       ['_token' => csrf_token(), 'name' => 'world', 'url' => $navigator->url, 'state' => 2, 'sort' => 3]);
 
     $this->assertResponseStatus(302);
-    $navigator->delete();
   }
 }
 
