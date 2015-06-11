@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Requests\UpdateNavigatorRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Navigator;
 
@@ -67,9 +68,11 @@ class NavigatorController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(UpdateNavigatorRequest $request, $id)
   {
-    //
+    $attributes = $request->only('name', 'url', 'state', 'sort');
+    Navigator::find($id)->update($attributes);
+    return response()->json(['state' => 'OK', 'message' => '更新成功']);
   }
 
   /**
