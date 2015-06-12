@@ -51,6 +51,7 @@ $ ->
 
       @popUpFormModal()
 
+    # 弹出编辑窗口
     popUpFormModal: ->
       modal = """
               <div class="modal fade">
@@ -101,9 +102,41 @@ $ ->
 
       modal = $(modal)
       $(modal).find("input[type=radio][value=#{@stateValue}]").attr("checked", "")
+      @bindingSubmitEvent(modal, @)
+
       $(modal).on 'shown.bs.modal', ->
         $(modal).find('input[name=name]').focus()
+
       $(modal).appendTo($('body')).modal()
+
+    # 绑定提交事件
+    bindingSubmitEvent: (modal, context) ->
+      form = modal.find 'form'
+
+      # Submit form
+      form.on 'submit', (e) ->
+        e.preventDefault()
+
+        $(@).ajaxSubmit
+          async    : false
+          dataType : 'json'
+          context  : context
+          success  : (result) ->
+            modal.modal('hide')
+            if result.state == 'OK'
+              @stateValue = Number(result.data.state)
+              @updateStateLabel()
+              @rowData = [result.data.id, result.data.name, result.data.url, @state, result.data.sort]
+              @rowRedraw()
+              new TenderAlert('success').alert result.message
+
+      modal.find('button[type=submit]').click ->
+        button = $(@)
+        button.html '<i class="fa fa-spinner fa-pulse"></i>'
+        setTimeout ->
+          form.submit()
+        , 300
+
 
     delete: ->
       @actionUrl    = "navigators/#{@id}"
@@ -122,11 +155,17 @@ $ ->
 
     updateToggle: ->
       @stateValue = 1 - @stateValue
+      @updateStateLabel()
+      @rowData[3] = @state
+      @rowRedraw()
+
+    updateStateLabel: ->
       if @stateValue == 1
         @state = '<span class="label label-success"> 已启用 </span>'
       else
         @state = '<span class="label label-danger"> 已停用 </span>'
-      @rowData[3] = @state
+
+    rowRedraw: ->
       $('#navigatorsTable').dataTable().api(true).row(@row).data(@rowData).draw()
 
     updateDeleted: ->

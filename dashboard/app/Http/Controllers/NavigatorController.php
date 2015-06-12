@@ -71,8 +71,13 @@ class NavigatorController extends Controller {
   public function update(UpdateNavigatorRequest $request, $id)
   {
     $attributes = $request->only('name', 'url', 'state', 'sort');
-    Navigator::find($id)->update($attributes);
-    return response()->json(['state' => 'OK', 'message' => '更新成功']);
+    $navigator  = Navigator::find($id);
+    $navigator->update($attributes);
+    return response()->json([
+      'state'   => 'OK',
+      'message' => '更新成功',
+      'data'    => $navigator->toArray()
+    ]);
   }
 
   /**

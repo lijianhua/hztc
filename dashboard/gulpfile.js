@@ -46,6 +46,7 @@ elixir(function(mix) {
        .scripts([
            'jquery/dist/jquery.js',
            'bootstrap/dist/js/bootstrap.js',
+           'jquery-form/jquery.form.js',
            'admin-lte/plugins/slimScroll/jquery.slimscroll.js',
            'admin-lte/plugins/fastclick/fastclick.js',
            'admin-lte/plugins/datatables/jquery.dataTables.js',

@@ -58,11 +58,21 @@ class NavigatorControllerTest extends TestCase
   {
     Session::start();
     $navigator = Navigator::first();
-
-    $response = $this->call('PUT', "/navigators/{$navigator->id}",
-      ['_token' => csrf_token(), 'name' => 'xxoo', 'url' => $navigator->url, 'state' => 1, 'sort' => 3]);
+    $response = $this->put("/navigators/{$navigator->id}",
+      [
+        'name'   => 'xxoo',
+        'url'    => '/hello',
+        'state'  => 1,
+        'sort'   => 3,
+        '_token' => csrf_token()
+      ]);
 
     $this->assertResponseOk();
+
+    $response->seeJson([
+      'state'   => 'OK',
+      'message' => '更新成功',
+    ]);
   }
 
   public function testUpdateNavigatorDumplicateNameShouldError()
@@ -88,4 +98,3 @@ class NavigatorControllerTest extends TestCase
     $this->assertResponseStatus(302);
   }
 }
-
