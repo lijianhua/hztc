@@ -24,8 +24,9 @@ class UpdateNavigatorRequest extends Request {
     return [
       'id'    => 'exists:navigators',
       'name'  => 'required|max:255',
-      'state' => 'boolean',
-      'sort'  => 'integer|min:0'
+      'url'   => 'required|max:1024',
+      'state' => 'required|boolean',
+      'sort'  => 'required|integer|min:0'
     ];
   }
 

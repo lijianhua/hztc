@@ -163,6 +163,7 @@ $ ->
     invalidFormField: (field, errors, form) ->
       if field && errors
         formGroup = form.find("input[name=#{field}]").parent '.form-group'
+        formGroup.find('div.help-block').remove()
         helpBlock = $('<div class="help-block"></div>')
         helpBlock.append "<p>#{error}</p>" for error in errors
         formGroup.addClass('has-error').append helpBlock
