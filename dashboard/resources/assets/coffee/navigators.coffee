@@ -19,6 +19,8 @@ $ ->
       @row     = @tableTools.fnGetSelected()[0]
       @rowData = @tableTools.fnGetSelectedData()[0]
 
+      @rowData = [undefined, '', '', '启用', 0] unless Boolean(@rowData)
+
       @id    = @rowData[0]
       @name  = @rowData[1]
       @url   = @rowData[2]
@@ -44,9 +46,16 @@ $ ->
         context  : @
         success  : successCallback
 
+    new: ->
+      @actionUrl  = "navigators"
+      @method     = "POST"
+      @modalTitle = "新建"
+
+      @popUpFormModal()
+
     edit: ->
-      @actionUrl    = "navigators/#{@id}"
-      @method = "PUT"
+      @actionUrl  = "navigators/#{@id}"
+      @method     = "PUT"
       @modalTitle = "编辑"
 
       @popUpFormModal()
@@ -127,16 +136,36 @@ $ ->
               @stateValue = Number(result.data.state)
               @updateStateLabel()
               @rowData = [result.data.id, result.data.name, result.data.url, @state, result.data.sort]
-              @rowRedraw()
+              # 如果是更新则刷新这行，否则创建新行
+              if @method == 'PUT'
+                @rowRedraw()
+              else
+                @newRow()
               new TenderAlert('success').alert result.message
+          error    : (jqXHR) ->
+            if jqXHR.status == 422
+              @invalidFormInModal jqXHR.responseJSON, modal
 
       modal.find('button[type=submit]').click ->
         button = $(@)
         button.html '<i class="fa fa-spinner fa-pulse"></i>'
+        button.addClass 'disabled'
         setTimeout ->
           form.submit()
         , 300
 
+    invalidFormInModal: (errors, modal) ->
+      form = $(modal).find 'form'
+      $(modal).find('button[type=submit]').removeClass('disabled').text('保存')
+      for field, messages of errors
+        @invalidFormField field, messages, form
+
+    invalidFormField: (field, errors, form) ->
+      if field && errors
+        formGroup = form.find("input[name=#{field}]").parent '.form-group'
+        helpBlock = $('<div class="help-block"></div>')
+        helpBlock.append "<p>#{error}</p>" for error in errors
+        formGroup.addClass('has-error').append helpBlock
 
     delete: ->
       @actionUrl    = "navigators/#{@id}"
@@ -166,11 +195,21 @@ $ ->
         @state = '<span class="label label-danger"> 已停用 </span>'
 
     rowRedraw: ->
-      $('#navigatorsTable').dataTable().api(true).row(@row).data(@rowData).draw()
+      @row = @api().row(@row).data(@rowData).draw()
+
+    newRow: ->
+      @row = @api().row.add(@rowData).draw().node()
+      $(@row).addClass('success')
+      setTimeout (row) ->
+        $(row).removeClass('success')
+      , 3000, @row
 
     updateDeleted: ->
       @deleted = true
-      $('#navigatorsTable').dataTable().api(true).row(@row).remove().draw()
+      @api().row(@row).remove().draw()
+
+    api: ->
+      $('#navigatorsTable').dataTable().api(true)
 
   ##
   # @description TableTools初始化按钮时，让它能够弹出ToolTip
@@ -219,7 +258,10 @@ $ ->
           sToolTip: "新建"
           fnInit: initButtonToolTip
           fnClick: ->
-            alert 'plus'
+            tableTool = TableTools.fnGetInstance('navigatorsTable')
+            tableTool.fnSelectNone()
+            navigator = new Navigator tableTool
+            navigator.new()
         },
         {
           sButtonClass: "btn btn-flat btn-default disabled"

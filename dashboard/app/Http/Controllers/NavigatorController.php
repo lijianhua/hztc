@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Requests\UpdateNavigatorRequest;
+use App\Http\Requests\PostNavigatorRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Navigator;
 
@@ -35,9 +36,15 @@ class NavigatorController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(PostNavigatorRequest $request)
   {
-    //
+    $attributes = $request->only('name', 'url', 'state', 'sort');
+    $navigator  = Navigator::create($attributes);
+    return response()->json([
+      'state'   => 'OK',
+      'message' => '创建成功',
+      'data'    => $navigator->toArray()
+    ]);
   }
 
   /**

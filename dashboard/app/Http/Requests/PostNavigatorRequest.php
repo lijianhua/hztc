@@ -1,9 +1,11 @@
-<?php namespace App\Http\Requests;
+<?php
+
+namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UpdateNavigatorRequest extends Request {
-
+class PostNavigatorRequest extends Request
+{
   /**
    * Determine if the user is authorized to make this request.
    *
@@ -22,11 +24,10 @@ class UpdateNavigatorRequest extends Request {
   public function rules()
   {
     return [
-      'id'    => 'exists:navigators',
-      'name'  => 'required|max:255',
-      'state' => 'boolean',
-      'sort'  => 'integer|min:0'
+      'name'  => 'required|unique:navigators|max:255',
+      'url'   => 'required|max:1024',
+      'state' => 'required|boolean',
+      'sort'  => 'required|integer|min:0'
     ];
   }
-
 }
