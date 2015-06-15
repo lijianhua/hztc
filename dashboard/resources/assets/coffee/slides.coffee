@@ -25,6 +25,10 @@ $ ->
       @actionUrl = "slides/#{@selectedRowData()[0]}"
       super
 
+    editSelectedRow: (fields) ->
+      @actionUrl = "slides/#{@selectedRowData()[0]}"
+      super fields
+
   $('#slidesTable').dataTable
     dom: "<'row'<'col-sm-6'T><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>"
     language:
@@ -47,7 +51,17 @@ $ ->
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
           slide = new Slide 'slidesTable'
-          slide.editSelectedRow() if slide.isSelectedOne()
+          if slide.isSelectedOne()
+            slide.editSelectedRow([
+              name   : 'id'
+              value  : slide.selectedRowData()[0]
+              type   : 'hidden'
+            ,
+              name   : 'belongs_page'
+              label  : '属于'
+              value  : $(slide.selectedRowData()[1]).text().trim()
+              type   : 'text'
+            ])
       ,
         sButtonClass: "btn btn-flat btn-default disabled"
         sExtends: "text"

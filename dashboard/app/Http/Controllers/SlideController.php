@@ -74,7 +74,16 @@ class SlideController extends Controller
   {
     $slide = Slide::find($id);
     $slide->update($request->only('belongs_page'));
-    return response()->json(['state' => 'OK', 'message' => '更新成功', 'data' => $slide->toArray()]);
+    $slideDetailUrl = url('slides', [$slide->id]);
+    return response()->json([
+      'state' => 'OK',
+      'message' => '更新成功',
+      'data' => [
+        $slide->id,
+        "<a href=\"{$slideDetailUrl}\" title=\"查看详情\" data-toggle=\"tooltip\" data-placement=\"right\">{$slide->belongs_page}</a>",
+        "{$slide->created_at}",
+        "{$slide->updated_at}"
+      ]]);
   }
 
   /**
