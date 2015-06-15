@@ -29,6 +29,10 @@ $ ->
       @actionUrl = "slides/#{@selectedRowData()[0]}"
       super fields
 
+    new: (fields) ->
+      @actionUrl = "slides"
+      super fields
+
   $('#slidesTable').dataTable
     dom: "<'row'<'col-sm-6'T><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>"
     language:
@@ -42,6 +46,14 @@ $ ->
         sButtonText: "<i class='fa fa-plus'></i>"
         sToolTip: "新建"
         fnInit: initButtonToolTip
+        fnClick: ->
+          slide = new Slide 'slidesTable'
+          slide.new([
+            name   : 'belongs_page'
+            label  : '属于'
+            value  : ''
+            type   : 'text'
+          ])
       ,
         sButtonClass: "btn btn-flat btn-default disabled"
         sExtends: "text"

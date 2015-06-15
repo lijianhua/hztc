@@ -24,6 +24,7 @@ Route::delete('navigators/{id}', 'NavigatorController@destroy');
 Route::get('slides', 'SlideController@index');
 Route::delete('slides/{id}', 'SlideController@destroy');
 Route::put('slides/{id}', 'SlideController@update');
+Route::post('slides', 'SlideController@store');
 
 Route::controllers([
   'auth' => 'Auth\AuthController',

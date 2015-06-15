@@ -37,9 +37,19 @@ class SlideController extends Controller
    *
    * @return Response
    */
-  public function store()
+  public function store(UpdateSlideRequest $request)
   {
-    //
+    $slide = Slide::create($request->only('belongs_page'));
+    $slideDetailUrl = url('slides', [$slide->id]);
+    return response()->json([
+      'state' => 'OK',
+      'message' => '保存成功',
+      'data' => [
+        $slide->id,
+        "<a href=\"{$slideDetailUrl}\" title=\"查看详情\" data-toggle=\"tooltip\" data-placement=\"right\">{$slide->belongs_page}</a>",
+        "{$slide->created_at}",
+        "{$slide->updated_at}"
+      ]]);
   }
 
   /**

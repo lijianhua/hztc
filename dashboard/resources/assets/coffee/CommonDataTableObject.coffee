@@ -55,6 +55,19 @@ class @CommonDataTableObject
     window.jQuery("##{@tableId}").dataTable().api(true)
 
   ###
+  # 创建新的 form
+  ###
+  new: (fields) ->
+    @method     = 'POST'
+    @modalTitle = '新建'
+    throw 'Require to set actionUrl in subClass' unless @actionUrl
+
+    # 弹出编辑窗口
+    @popUpForm(fields)
+    # 重置 actionUrl
+    @actionUrl = null
+
+  ###
   # 删除被选中的行
   # 需要子类提供 actionUrl
   ###
@@ -69,6 +82,9 @@ class @CommonDataTableObject
     # 重置 actionUrl
     @actionUrl = null
 
+  ###
+  # 编辑被选中的类
+  ###
   editSelectedRow: (fields) ->
     @method     = 'PUT'
     @modalTitle = '编辑'

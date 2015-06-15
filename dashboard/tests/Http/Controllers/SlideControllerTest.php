@@ -48,4 +48,13 @@ class SlideControllerTest extends TestCase
 
     $this->assertResponseStatus(302);
   }
+
+  public function testCreate()
+  {
+    $this->post("/slides", [
+      '_token' => csrf_token(),
+      'belongs_page' => '星空'
+    ]);
+    $this->assertResponseOk();
+  }
 }
