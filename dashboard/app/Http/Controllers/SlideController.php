@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Slide;
+use App\Http\Requests\UpdateSlideRequest;
 
 class SlideController extends Controller
 {
@@ -69,7 +70,7 @@ class SlideController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update(Request $request, $id)
+  public function update(UpdateSlideRequest $request, $id)
   {
     $slide = Slide::find($id);
     $slide->update($request->only('belongs_page'));

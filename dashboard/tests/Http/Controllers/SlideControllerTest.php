@@ -26,4 +26,26 @@ class SlideControllerTest extends TestCase
     $this->assertResponseOk();
     $this->assertEquals('星空', $slide->belongs_page);
   }
+
+  public function testUpdateShoudBeInterruptWhenPassIncorrectValue()
+  {
+    $slide = factory('App\Models\Slide')->create();
+    $this->put("/slides/{$slide->id}", [
+      '_token' => csrf_token(),
+      'belongs_page' => ''
+    ]);
+    $this->assertResponseStatus(302);
+  }
+
+  public function testUpdateShouldBeInterruptWhenPassDumplicateValue()
+  {
+    $slide1 = factory('App\Models\Slide')->create();
+    $slide2 = factory('App\Models\Slide')->create();
+    $this->put("/slides/{$slide1->id}", [
+      '_token' => csrf_token(),
+      'belongs_page' => $slide2->belongs_page
+    ]);
+
+    $this->assertResponseStatus(302);
+  }
 }
