@@ -244,9 +244,7 @@ $ ->
   navigatorsDataTable = $('#navigatorsTable').dataTable
     dom: "<'row'<'col-sm-6'T><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>"
     order: [4, 'asc']
-    columnDefs: [
-      { orderable: false, targets: [0, 1, 2] }
-    ]
+    columnDefs: [ { orderable: false, targets: [0, 1, 2] } ]
     language:
       url: '/dataTables_zh_CN.json'
     tableTools:
@@ -278,7 +276,7 @@ $ ->
         {
           sButtonClass: "btn btn-flat btn-default disabled"
           sExtends: "text"
-          sButtonText: "<i class='fa fa-remove'></i>"
+          sButtonText: "<i class='fa fa-trash-o'></i>"
           sToolTip: "删除"
           fnInit: initButtonToolTip
           fnSelect: toggleButtonStateOnSelect

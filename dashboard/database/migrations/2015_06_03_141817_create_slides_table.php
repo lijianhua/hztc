@@ -15,7 +15,7 @@ class CreateSlidesTable extends Migration {
     Schema::create('slides', function(Blueprint $table)
     {
       $table->increments('id');
-      $table->string('belongs_to')->unique()->index();
+      $table->string('belongs_page')->unique()->index();
       $table->timestamps();
     });
   }

@@ -29,3 +29,9 @@ $factory->define(App\Models\Navigator::class, function ($faker) {
       'sort'  => $faker->randomDigit()
   ];
 });
+
+$factory->define(App\Models\Slide::class, function ($faker) {
+  return [
+    'belongs_page' => $faker->bs()
+  ];
+});

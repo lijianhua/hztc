@@ -33,6 +33,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
   {
     parent::setUp();
     Artisan::call('migrate');
+    Session::start();
   }
 
   public function tearDown()

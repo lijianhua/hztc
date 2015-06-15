@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder {
     Model::unguard();
 
     $this->call('NavigatorTableSeeder');
+    $this->call('SlideTableSeeder');
   }
 }
