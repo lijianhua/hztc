@@ -230,3 +230,11 @@ class @CommonDataTableObject
     $(modal).find('button[type=submit]').removeClass('disabled').text('保存')
     for field, messages of errors
       @errorField field, messages, form
+
+  ##
+  # @description TableTools初始化按钮时，让它能够弹出ToolTip
+  ##
+  @initButtonToolTip: (button, config) ->
+    $(button).attr
+      'data-toggle'   : 'tooltip'
+      'data-placement': 'bottom'

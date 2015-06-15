@@ -1,16 +1,9 @@
 $ = jQuery
 
 $ ->
-  ##
-  # @description TableTools初始化按钮时，让它能够弹出ToolTip
-  ##
-  initButtonToolTip = (nButton, oConfig) ->
-    $(nButton).attr
-      'data-toggle'   : 'tooltip'
-      'data-placement': 'bottom'
-
   toggleButtonStateOnSelect = (nButton, oConfig, nRow) ->
     tableTool = TableTools.fnGetInstance('slidesTable')
+    console.log(nButton, oConfig, nRow)
 
     if tableTool.fnGetSelected().length == 1
       $(nButton).removeClass 'disabled'
@@ -45,7 +38,7 @@ $ ->
         sExtends: "text"
         sButtonText: "<i class='fa fa-plus'></i>"
         sToolTip: "新建"
-        fnInit: initButtonToolTip
+        fnInit: Slide.initButtonToolTip
         fnClick: ->
           slide = new Slide 'slidesTable'
           slide.new([
@@ -59,7 +52,7 @@ $ ->
         sExtends: "text"
         sButtonText: "<i class='fa fa-edit'></i>"
         sToolTip: "编辑"
-        fnInit: initButtonToolTip
+        fnInit: Slide.initButtonToolTip
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
           slide = new Slide 'slidesTable'
@@ -79,7 +72,7 @@ $ ->
         sExtends: "text"
         sButtonText: "<i class='fa fa-trash-o'></i>"
         sToolTip: "删除"
-        fnInit: initButtonToolTip
+        fnInit: Slide.initButtonToolTip
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
           slide = new Slide 'slidesTable'
