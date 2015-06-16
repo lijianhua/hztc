@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
+use App\Models\Navigator;
+use App\Models\Slide;
+use App\Models\SlideItem;
 class HomeController extends Controller {
 
   /**
@@ -19,7 +23,11 @@ class HomeController extends Controller {
    */
   public function index()
   {
-    return view('home');
+    $nav = '首页';
+    Session::put('current_navigator', $nav);
+    $navigators = Navigator::all()->sortBy('sort');
+    $slides     = Slide::all()->where('belongs_page', $nav);
+    return view('home')->with(compact('navigators', 'slides'));
   }
 
 }

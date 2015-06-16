@@ -1,437 +1,115 @@
 @extends('app')
 
 @section('content')
-<div id="content">
-    <div class="layout">
-        <div class="content">
-            <div class="layout-title">
-                <div class="layout-title-top">
-                    <span class="h2">特色STYLE</span><span class="layout-link"><a href="#">发现最有趣的<i class="fa fa-angle-double-right ml5" style="font-size: 16px"></i></a></span>
+<div id="">
+    <!-- banner-->
+    <div id="banner" class="clearfix">
+        <div class="layout ">
+            <div class="left-nav">
+                <div class="advert">
+                    <img src="images/advert.jpg">
                 </div>
-                <div class="layout-title-up">
-                    <span><a href="#">无论是小清新还是欧美奢华，咱都HOLD住</a> </span>
-                </div>
-            </div>
-            <div class="lay-main">
-                <div class="lay_tab">
-                    <div class="lay-tab-item"><a href="#" class="active">三亚</a> </div>
-                    <div class="lay-tab-item"><a href="#">大理</a> </div>
-                    <div class="lay-tab-item"><a href="#">乌鲁木齐</a> </div>
-                </div>
-                <div class="lay-block">
-                    <ul class="clearfix m5">
-                        <li class="lay-main-item mr30">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
+                <div class="filter-nav">
+                    <ul>
+                        <li class="filter-nav-item">
+                            <span class="filter-nav-title">投放市场</span><br/>
+                            <div class="btn-group">
+                                <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <b>北京</b> <span class="filter-nav-caret caret"></span>
+                                </button>
+                                <ul class="filter-nav-menu dropdown-menu" role="menu">
+                                    <li><a href="#">北京</a> </li>
+                                    <li><a href="#">天津</a> </li>
+                                </ul>
+                            </div>
                         </li>
-                        <li class="lay-main-item mr30">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
+                        <li class="filter-nav-item">
+                            <span class="filter-nav-title">媒体类型</span><br/>
+                            <div class="btn-group">
+                                <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <b>高端国际</b> <span class="filter-nav-caret caret"></span>
+                                </button>
+                                <ul class="filter-nav-menu dropdown-menu" role="menu">
+                                    <li><a href="#">高端国际</a> </li>
+                                    <li><a href="#">奢华皇庭</a> </li>
+                                </ul>
+                            </div>
                         </li>
-                        <li class="lay-main-item mr30">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
+                        <li class="filter-nav-item">
+                            <span class="filter-nav-title">媒体类型</span><br/>
+                            <div class="btn-group">
+                                <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <b>财富圈</b> <span class="filter-nav-caret caret"></span>
+                                </button>
+                                <ul class="filter-nav-menu dropdown-menu" role="menu">
+                                    <li><a href="#">财富圈</a> </li>
+                                    <li><a href="#">行业圈</a> </li>
+                                </ul>
+                            </div>
                         </li>
-                        <li class="lay-main-item">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
+                        <li class="filter-nav-item">
+                            <span class="filter-nav-title">媒体类型</span><br/>
+                            <div class="filter-nav-input">
+                                <span><input type="text"></span> <b>至</b> <span><input type="text"></span>
+                            </div>
                         </li>
-                    </ul>
-                    <ul class="clearfix m5">
-                        <li class="lay-main-item mr30">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
-                        </li>
-                        <li class="lay-main-item mr30">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
-                        </li>
-                        <li class="lay-main-item mr30">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
-                        </li>
-                        <li class="lay-main-item">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="clearfix m5">
-                        <li class="lay-main-item mr30">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
-                        </li>
-                        <li class="lay-main-item mr30">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
-                        </li>
-                        <li class="lay-main-item mr30">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
-                        </li>
-                        <li class="lay-main-item">
-                            <a href="#">
-                                <div class="lay-main-img">
-                                    <img src="images/layout.jpg">
-                                    <div class="lay-main-money"><span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/<span class="lay-main-number"><i>200</i>人已拍</span></div>
-                                </div>
-                                <div class="lay-main-name"><span>唯美的天空</span></div>
-                            </a>
-                        </li>
+                        <li class="filter-nav-item"><button class="filter-nav-retrieval">检索</button></li>
                     </ul>
                 </div>
             </div>
-            <div class="layout-title">
-                <div class="layout-title-top">
-                    <span class="h2">我们推荐</span><span class="layout-link"><a href="#">发现最真实的美<i class="fa fa-angle-double-right ml5" style="font-size: 16px"></i></a></span>
+            <div class="banner-img">
+                <div class="banner">
+                    <div class="carousel slide">
+                        <div class="carousel-inner nav-banner">
+                            <div class="page active item"><a href="#"><img src="images/1.jpg"></a></div>
+                            <div class="page item"><a href="#"><img src="images/2.jpg"></a> </div>
+                            <div class="page item"><a href="#"><img src="images/1.jpg"></a> </div>
+                            <div class="page item"><a href="#"><img src="images/2.jpg"></a> </div>
+                        </div>
+                    </div>
+                    <div class="banner-mark">
+                        <div class="banner-mark-item active"><a href="javascript:switchPage(0)"></a> </div>
+                        <div class="banner-mark-item"><a href="javascript:switchPage(1)"></a> </div>
+                        <div class="banner-mark-item"><a href="javascript:switchPage(2)"></a> </div>
+                        <div class="banner-mark-item"><a href="javascript:switchPage(3)"></a> </div>
+                    </div>
+                    <div class="banner-project clearfix">
+                        <span class="banner-project-item active"><i class="fa fa-bullhorn"></i></span>
+                        <span class="banner-project-item"><i class="fa fa-lightbulb-o"></i></span>
+                        <span class="banner-project-item"><i class="fa fa-heart"></i></span>
+                        <span class="banner-project-item"><i class="fa fa-clipboard"></i></span>
+                    </div>
                 </div>
-                <div class="layout-title-up">
-                    <span><a href="#">无论是小清新还是欧美奢华，咱都HOLD住</a> </span>
-                </div>
-            </div>
-            <div class="recommend clearfix">
-                <a href="#">
-                    <div class="re-big fl">
-                        <img src="images/3.jpg">
-                        <div class="big-money">
-                            <div class="big_name"><span>唯美的天空</span></div>
-                            <span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/
-                            <span class="big-number"><i>200</i>人已拍</span>
-                        </div>
-                    </div>
-                </a>
-                <div class="re-small">
-                    <a href="#">
-                        <div class="small-item fl mr8 m10">
-                            <div class="small-block">
-                                <img src="images/layout.jpg">
-                                <div class="small-money">
-                                    <div class="small_name"><span>唯美的天空</span></div>
-                                    <span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/
-                                    <span class="small-number"><i>200</i>人已拍</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="small-item fl m10">
-                            <div class="small-block">
-                                <img src="images/layout.jpg">
-                                <div class="small-money">
-                                    <div class="small_name"><span>唯美的天空</span></div>
-                                    <span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/
-                                    <span class="small-number"><i>200</i>人已拍</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="small-item fl mr8">
-                            <div class="small-block">
-                                <img src="images/layout.jpg">
-                                <div class="small-money">
-                                    <div class="small_name"><span>唯美的天空</span></div>
-                                    <span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/
-                                    <span class="small-number"><i>200</i>人已拍</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="small-item fl">
-                            <div class="small-block">
-                                <img src="images/layout.jpg">
-                                <div class="small-money">
-                                    <div class="small_name"><span>唯美的天空</span></div>
-                                    <span><i class="fa fa-jpy" style="font-size: 14px;"></i>5000</span>/
-                                    <span class="small-number"><i>200</i>人已拍</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="layout-title">
-                <div class="layout-title-top">
-                    <span class="h2">最新套系</span><span class="layout-link"><a href="#">寻找最适合你的风格<i class="fa fa-angle-double-right ml5" style="font-size: 16px"></i></a></span>
-                </div>
-                <div class="layout-title-up">
-                    <span><a href="#">无论是小清新还是欧美奢华，咱都HOLD住</a> </span>
-                </div>
-            </div>
-            <div class="new-list clearfix">
-                <a href="#">
-                    <div class="new-item mr29">
-                        <div class="new-item-img">
-                            <img src="images/layout.jpg">
-                        </div>
-                        <div class="new-text">
-                            <div class="new-name"><span>小清新嗨嗨</span></div>
-                            <div class="new-description"><span>
-                            来自一拍即合的特别制作套系，罗马广场上的爱情,
-                            来自一拍即合的特别制作套系，罗马广场上的爱情
-                        </span></div>
-                            <div class="heat clearfix">
-                                <div class="heat-people">
-                                    <span class="heat-line-number"><i class="fa fa-heartbeat">&nbsp;200</i>人已拍</span><br/>
-                                </div>
-                                <div>
-                                    <span class="fl heat-item">普通</span>
-                            <span class="fl heat-line">
-                                <span><img src="images/heat.png"></span>
-                            </span>
-                                    <span class="ft heat-item" style="color: #ff3300">热门</span>
-                                </div>
-                            </div>
-                            <div class="new-list-money">RMB/<span>4050</span></div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="new-item mr29">
-                        <div class="new-item-img">
-                            <img src="images/layout.jpg">
-                        </div>
-                        <div class="new-text">
-                            <div class="new-name"><span>小清新嗨嗨</span></div>
-                            <div class="new-description"><span>
-                            来自一拍即合的特别制作套系，罗马广场上的爱情,
-                            来自一拍即合的特别制作套系，罗马广场上的爱情
-                        </span></div>
-                            <div class="heat clearfix">
-                                <div class="heat-people">
-                                    <span class="heat-line-number"><i class="fa fa-heartbeat">&nbsp;200</i>人已拍</span><br/>
-                                </div>
-                                <div>
-                                    <span class="fl heat-item">普通</span>
-                                    <span class="fl heat-line">
-                                        <span><img src="images/heat.png"></span>
-                                    </span>
-                                    <span class="ft heat-item" style="color: #ff3300">热门</span>
-                                </div>
-                            </div>
-                            <div class="new-list-money">RMB/<span>4050</span></div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="new-item mr29">
-                        <div class="new-item-img">
-                            <img src="images/layout.jpg">
-                        </div>
-                        <div class="new-text">
-                            <div class="new-name"><span>小清新嗨嗨</span></div>
-                            <div class="new-description"><span>
-                            来自一拍即合的特别制作套系，罗马广场上的爱情,
-                            来自一拍即合的特别制作套系，罗马广场上的爱情
-                        </span></div>
-                            <div class="heat clearfix">
-                                <div class="heat-people">
-                                    <span class="heat-line-number"><i class="fa fa-heartbeat">&nbsp;200</i>人已拍</span><br/>
-                                </div>
-                                <div>
-                                    <span class="fl heat-item">普通</span>
-                                    <span class="fl heat-line">
-                                        <span><img src="images/heat.png"></span>
-                                    </span>
-                                    <span class="ft heat-item" style="color: #ff3300">热门</span>
-                                </div>
-                            </div>
-                            <div class="new-list-money">RMB/<span>4050</span></div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="new-item">
-                        <div class="new-item-img">
-                            <img src="images/layout.jpg">
-                        </div>
-                        <div class="new-text">
-                            <div class="new-name"><span>小清新嗨嗨</span></div>
-                            <div class="new-description"><span>
-                            来自一拍即合的特别制作套系，罗马广场上的爱情,
-                            来自一拍即合的特别制作套系，罗马广场上的爱情
-                        </span></div>
-                            <div class="heat clearfix">
-                                <div class="heat-people">
-                                    <span class="heat-line-number"><i class="fa fa-heartbeat">&nbsp;200</i>人已拍</span><br/>
-                                </div>
-                                <div>
-                                    <span class="fl heat-item">普通</span>
-                            <span class="fl heat-line">
-                                <span><img src="images/heat.png"></span>
-                            </span>
-                                    <span class="ft heat-item" style="color: #ff3300">热门</span>
-                                </div>
-                            </div>
-                            <div class="new-list-money">RMB/<span>4050</span></div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="new-item mr29">
-                        <div class="new-item-img">
-                            <img src="images/layout.jpg">
-                        </div>
-                        <div class="new-text">
-                            <div class="new-name"><span>小清新嗨嗨</span></div>
-                            <div class="new-description"><span>
-                            来自一拍即合的特别制作套系，罗马广场上的爱情,
-                            来自一拍即合的特别制作套系，罗马广场上的爱情
-                        </span></div>
-                            <div class="heat clearfix">
-                                <div class="heat-people">
-                                    <span class="heat-line-number"><i class="fa fa-heartbeat">&nbsp;200</i>人已拍</span><br/>
-                                </div>
-                                <div>
-                                    <span class="fl heat-item">普通</span>
-                            <span class="fl heat-line">
-                                <span><img src="images/heat.png"></span>
-                            </span>
-                                    <span class="ft heat-item" style="color: #ff3300">热门</span>
-                                </div>
-                            </div>
-                            <div class="new-list-money">RMB/<span>4050</span></div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="new-item mr29">
-                        <div class="new-item-img">
-                            <img src="images/layout.jpg">
-                        </div>
-                        <div class="new-text">
-                            <div class="new-name"><span>小清新嗨嗨</span></div>
-                            <div class="new-description"><span>
-                            来自一拍即合的特别制作套系，罗马广场上的爱情,
-                            来自一拍即合的特别制作套系，罗马广场上的爱情
-                        </span></div>
-                            <div class="heat clearfix">
-                                <div class="heat-people">
-                                    <span class="heat-line-number"><i class="fa fa-heartbeat">&nbsp;200</i>人已拍</span><br/>
-                                </div>
-                                <div>
-                                    <span class="fl heat-item">普通</span>
-                            <span class="fl heat-line">
-                                <span><img src="images/heat.png"></span>
-                            </span>
-                                    <span class="ft heat-item" style="color: #ff3300">热门</span>
-                                </div>
-                            </div>
-                            <div class="new-list-money">RMB/<span>4050</span></div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="new-item mr29">
-                        <div class="new-item-img">
-                            <img src="images/layout.jpg">
-                        </div>
-                        <div class="new-text">
-                            <div class="new-name"><span>小清新嗨嗨</span></div>
-                            <div class="new-description"><span>
-                            来自一拍即合的特别制作套系，罗马广场上的爱情,
-                            来自一拍即合的特别制作套系，罗马广场上的爱情
-                        </span></div>
-                            <div class="heat clearfix">
-                                <div class="heat-people">
-                                    <span class="heat-line-number"><i class="fa fa-heartbeat">&nbsp;200</i>人已拍</span><br/>
-                                </div>
-                                <div>
-                                    <span class="fl heat-item">普通</span>
-                            <span class="fl heat-line">
-                                <span><img src="images/heat.png"></span>
-                            </span>
-                                    <span class="ft heat-item" style="color: #ff3300">热门</span>
-                                </div>
-                            </div>
-                            <div class="new-list-money">RMB/<span>4050</span></div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="new-item">
-                        <div class="new-item-img">
-                            <img src="images/layout.jpg">
-                        </div>
-                        <div class="new-text">
-                            <div class="new-name"><span>小清新嗨嗨</span></div>
-                            <div class="new-description"><span>
-                            来自一拍即合的特别制作套系，罗马广场上的爱情,
-                            来自一拍即合的特别制作套系，罗马广场上的爱情
-                        </span></div>
-                            <div class="heat clearfix">
-                                <div class="heat-people">
-                                    <span class="heat-line-number"><i class="fa fa-heartbeat">&nbsp;200</i>人已拍</span><br/>
-                                </div>
-                                <div>
-                                    <span class="fl heat-item">普通</span>
-                            <span class="fl heat-line">
-                                <span><img src="images/heat.png"></span>
-                            </span>
-                                    <span class="ft heat-item" style="color: #ff3300">热门</span>
-                                </div>
-                            </div>
-                            <div class="new-list-money">RMB/<span>4050</span></div>
-                        </div>
-                    </div>
-                </a>
             </div>
         </div>
     </div>
+    <div class="layout">
+        <div class="plate">
+            <div class="plate-block clearfix">
+                <div class="plate-item plate-color1">
+                    <div class="plate-item-china">免费专区活动</div>
+                    <div class="plate-item-big">MINIMAL OUTLINE ICONS</div>
+                    <div class="plate-item-small">enjoy & share & be happy</div>
+                </div>
+                <div class="plate-item plate-color2 ml3">
+                    <div class="plate-item-china">免费专区活动</div>
+                    <div class="plate-item-big">MINIMAL OUTLINE ICONS</div>
+                    <div class="plate-item-small">enjoy & share & be happy</div>
+                </div>
+                <div class="plate-item plate-color3 ml3">
+                    <div class="plate-item-china">免费专区活动</div>
+                    <div class="plate-item-big">MINIMAL OUTLINE ICONS</div>
+                    <div class="plate-item-small">enjoy & share & be happy</div>
+                </div>
+                <div class="plate-item plate-color4 ml2">
+                    <div class="plate-item-china">免费专区活动</div>
+                    <div class="plate-item-big">MINIMAL OUTLINE ICONS</div>
+                    <div class="plate-item-small"><i>enjoy & share & be happy</i></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- banner-->
 </div>
 @endsection
