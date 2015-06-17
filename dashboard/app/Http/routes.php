@@ -27,6 +27,7 @@ Route::delete('slides/{id}', 'SlideController@destroy');
 Route::put('slides/{id}', 'SlideController@update');
 Route::post('slides', 'SlideController@store');
 // 轮播图中的项
+Route::post('slides/{slide_id}/slide-items', 'SlideItemController@store');
 Route::delete('slides/{slide_id}/slide-items/{id}', 'SlideItemController@destroy');
 Route::put('slides/{slide_id}/slide-items/{id}', 'SlideItemController@update');
 

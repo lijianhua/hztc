@@ -23,8 +23,11 @@ $ ->
       super fields
 
     new: (fields) ->
-      @actionUrl = "slide-items"
+      @actionUrl = "/slides/#{@slideId()}/slide-items/"
       super fields
+
+    slideId: ->
+      @api().rows().data()[0][5]
 
   $('#slideItemsTable').dataTable
     dom: "<'row'<'col-sm-12'T>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>"
@@ -43,10 +46,33 @@ $ ->
         fnClick: ->
           slideItem = new SlideItem 'slideItemsTable'
           slideItem.new([
-            name   : 'belongs_page'
-            label  : '属于'
-            value  : ''
-            type   : 'text'
+              name   : 'slide_id'
+              value  : slideItem.slideId()
+              type   : 'hidden'
+            ,
+              name   : 'picture'
+              label  : '图片'
+              type   : 'image'
+              class  : 'form-control'
+            ,
+              name   : 'url'
+              label  : '链接'
+              value  : ''
+              type   : 'text'
+            ,
+              name   : 'note'
+              label  : '备注'
+              value  : ''
+              type   : 'textarea'
+              class  : 'form-control'
+              rows   : 3
+            ,
+              name   : 'sort'
+              label  : '排序'
+              value  : 0
+              type   : 'number'
+              min    : 0
+              class  : 'form-control'
           ])
       ,
         sButtonClass: "btn btn-flat btn-default disabled"

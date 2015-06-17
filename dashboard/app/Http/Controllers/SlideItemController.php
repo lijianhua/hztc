@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\UpdateSlideItemRequest;
+use App\Http\Requests\PostSlideItemRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Slide;
 use App\Models\SlideItem;
@@ -45,9 +46,25 @@ class SlideItemController extends Controller
    *
    * @return Response
    */
-  public function store()
+  public function store(PostSlideItemRequest $request, $slide_id)
   {
-    //
+    $slide = Slide::find($slide_id);
+    $attributes = $request->only('url', 'note', 'sort');
+    $picture = $this->imageRepons->save($request->file('picture'));
+    $attributes['picture'] = $picture->getFilename();
+
+    $slideItem = $slide->slideItems()->create($attributes);
+    return response()->json([
+      'state' => 'OK',
+      'message' => '添加成功',
+      'data' => [
+        $slideItem->id,
+        $this->imageRepons->tag($slideItem->picture, ['height' => 100]),
+        $slideItem->url,
+        $slideItem->note,
+        $slideItem->sort,
+        $slideItem->slide_id
+      ]]);
   }
 
   /**
