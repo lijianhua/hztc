@@ -27,6 +27,8 @@ elixir(function(mix) {
     // 编译 resource/assets/less/app.less
     mix.less('app.less')
        .coffee()
+       // 删除
+       .del(['public/css/*.css', 'public/js/*.js'])
        // 复制
        .copy('resources/images', 'public/images')
        .copy('vendor/bower_components/fontawesome/fonts', 'public/fonts')
@@ -34,8 +36,6 @@ elixir(function(mix) {
        .copy('resources/assets/css', 'public/css')
        // 复制所有 js 到 public/js 中
        .copy('resources/assets/js', 'public/js')
-       // 删除
-       .del(['public/css/all.css', 'public/js/all.js'])
        // 合并 public/css/*.css >> public/css/all.css
        .stylesIn('public/css', 'public/css/all.css')
        // 合并 vendor/bower_components/*.js

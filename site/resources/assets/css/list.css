@@ -1,0 +1,36 @@
+.content{
+    margin-top: 10px;
+}
+.content .filter{
+    float: left;
+    width: 300px;
+}
+.content .filter .filter-selected{
+    background-color: #f6f6f6;
+    padding:15px 0px 40px 43px;
+    width: 300px;
+    font-size: 18px;
+}
+.content .filter .filter-selected dt,
+.content .filter .filter-selected dd{
+    margin-bottom: 5px;
+}
+.content .filter .filter-selected dt{
+    margin-left: 20px;
+}
+.content .filter .filter-selected .filter-selected-item{
+    padding: 4px 18px 2px 23px;
+    background-color: #7bccff;
+    border-radius: 15px;
+    display: table;
+    color: #ffffff;
+    height: 30px;
+}
+.filter-delete{
+    background: url("../images/list/delete.png") no-repeat 0 0;
+    height: 10px;
+    width: 10px;
+    display: inline-block;
+    margin-left: 34px;
+    cursor: pointer;
+}

@@ -28,6 +28,7 @@
   @include ('layouts.footer')
 
   <!-- Scripts -->
+  <script src="{{ asset('/js/vendor.js') }}"></script>
   <script src="{{ asset('/js/all.js') }}"></script>
 </body>
 </html>
