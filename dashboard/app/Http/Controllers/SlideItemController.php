@@ -5,12 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\UpdateSlideItemRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Slide;
 use App\Models\SlideItem;
+use App\Reponsitories\ImageReponsitory;
 
 class SlideItemController extends Controller
 {
+  protected $imageRepons;
+
+  public function __construct(ImageReponsitory $imageRepons)
+  {
+    $this->imageRepons = $imageRepons;
+  }
+
   /**
    * Display a listing of the resource.
    *
@@ -69,9 +78,31 @@ class SlideItemController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(UpdateSlideItemRequest $request, $silde_id, $id)
   {
-    //
+    $slideItem = SlideItem::find($id);
+
+    if ($request->hasFile('picture'))
+      $picture = $this->imageRepons->save($request->file('picture'));
+
+    $attributes = $request->only('url', 'note', 'sort');
+
+    if (isset($picture))
+      $attributes['picture'] = $picture->getFilename();
+
+    $slideItem->update($attributes);
+
+    return response()->json([
+      'state' => 'OK',
+      'message' => '更新成功',
+      'data' => [
+        $slideItem->id,
+        $this->imageRepons->tag($slideItem->picture, ['height' => 100]),
+        $slideItem->url,
+        $slideItem->note,
+        $slideItem->sort,
+        $slideItem->slide_id
+      ]]);
   }
 
   /**

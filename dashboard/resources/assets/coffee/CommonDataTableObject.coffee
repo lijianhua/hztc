@@ -120,6 +120,7 @@ class @CommonDataTableObject
             </div>
             """
     modal = $(modal)
+    modal.find('form').attr 'enctype', 'multipart/form-data' if @fileUpload
     # 异步提交
     @bindSubmitEventOn(modal, @)
     $(modal).appendTo($('body')).modal()
@@ -140,9 +141,24 @@ class @CommonDataTableObject
   field: (field) ->
     switch field.type
       when 'hidden'
-        @hiddenField(field.name, field.value)
+        @hiddenField field.name, field.value
       when 'text'
-        @textField(field.name, field.value, field.label)
+        @textField field.name, field.value, field.label
+      when 'number'
+        @numberField field
+      when 'textarea'
+        @textareaField field
+      when 'image'
+        @imageField field
+
+  imageField: (field) ->
+    @formGroupImageField field
+
+  textareaField: (field) ->
+    @formGroupTextArea field
+
+  numberField: (field) ->
+    @formGroupInputField field
 
   hiddenField: (name, value) ->
     @inputField
@@ -151,12 +167,47 @@ class @CommonDataTableObject
       type  : 'hidden'
 
   textField: (name, value, label) ->
+    @formGroupInputField
+      name  : name
+      value : value
+      type  : 'text'
+      label : label
+      class : 'form-control'
+
+  formGroupImageField: (field) ->
     """
     <div class="form-group">
-      <label>#{label}</label>
-      #{@inputField(name: name, value: value, type: 'text', class: 'form-control')}
+      <label>#{field.label}</label>
+      #{delete field.label  && @fileField field}
     </div>
     """
+
+  formGroupTextArea: (field) ->
+    """
+    <div class="form-group">
+      <label>#{field.label}</label>
+      #{delete field.label && delete field.type && @textarea field}
+    </div>
+    """
+
+  formGroupInputField: (field) ->
+    """
+    <div class="form-group">
+      <label>#{field.label}</label>
+      #{delete field.label && @inputField field}
+    </div>
+    """
+
+  fileField: (field) ->
+    field.type  = 'file'
+    @inputField field
+
+  textarea: (attributes) ->
+    textarea = "<textarea"
+    for key, value of attributes
+      textarea += " #{key}='#{value}' " if key != 'value'
+    textarea += ">#{attributes.value}</textarea>"
+    textarea
 
   inputField: (attributes) ->
     input = "<input"
@@ -166,7 +217,7 @@ class @CommonDataTableObject
     input
 
   errorField: (field, errors, form) ->
-    formGroup = form.find("input[name=#{field}]").parent '.form-group'
+    formGroup = form.find("[name=#{field}]").parent '.form-group'
     formGroup.find('div.help-block').remove()
     helpBlock = $('<div class="help-block"></div>')
     helpBlock.append "<p>#{error}</p>" for error in errors

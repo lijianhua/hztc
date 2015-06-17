@@ -11,6 +11,7 @@ $ ->
 
   class SlideItem extends CommonDataTableObject
     constructor: (@tableId) ->
+      @fileUpload = true
       super @tableId
 
     deleteSelectedRow: ->
@@ -18,7 +19,7 @@ $ ->
       super
 
     editSelectedRow: (fields) ->
-      @actionUrl = "slide-items/#{@selectedRowData()[0]}"
+      @actionUrl = "/slides/#{@selectedRowData()[5]}/slide-items/#{@selectedRowData()[0]}"
       super fields
 
     new: (fields) ->
@@ -62,10 +63,33 @@ $ ->
               value  : slideItem.selectedRowData()[0]
               type   : 'hidden'
             ,
-              name   : 'belongs_page'
-              label  : '属于'
-              value  : $(slideItem.selectedRowData()[1]).text().trim()
+              name   : 'slide_id'
+              value  : slideItem.selectedRowData()[5]
+              type   : 'hidden'
+            ,
+              name   : 'picture'
+              label  : '图片'
+              type   : 'image'
+              class  : 'form-control'
+            ,
+              name   : 'url'
+              label  : '链接'
+              value  : slideItem.selectedRowData()[2]
               type   : 'text'
+            ,
+              name   : 'note'
+              label  : '备注'
+              value  : slideItem.selectedRowData()[3]
+              type   : 'textarea'
+              class  : 'form-control'
+              rows   : 3
+            ,
+              name   : 'sort'
+              label  : '排序'
+              value  : parseInt(slideItem.selectedRowData()[4])
+              type   : 'number'
+              min    : 0
+              class  : 'form-control'
             ])
       ,
         sButtonClass: "btn btn-flat btn-default disabled"

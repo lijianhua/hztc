@@ -28,6 +28,7 @@ Route::put('slides/{id}', 'SlideController@update');
 Route::post('slides', 'SlideController@store');
 // 轮播图中的项
 Route::delete('slides/{slide_id}/slide-items/{id}', 'SlideItemController@destroy');
+Route::put('slides/{slide_id}/slide-items/{id}', 'SlideItemController@update');
 
 Route::controllers([
   'auth' => 'Auth\AuthController',

@@ -37,4 +37,12 @@ class ImageReponsitoryTest extends TestCase
     $this->assertEquals('http://localhost:8000/upload/images/' . $image,
       $imageReponsitory->url($image));
   }
+
+  public function testTag()
+  {
+    $imageReponsitory = new ImageReponsitory();
+    $image = 'hello.jpg';
+    $this->assertEquals("<img src=\"http://localhost:8000/upload/images/hello.jpg\" height=\"100\">",
+                        $imageReponsitory->tag($image, ['height' => 100]));
+  }
 }

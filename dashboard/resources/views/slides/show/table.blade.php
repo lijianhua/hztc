@@ -13,7 +13,7 @@
   @foreach($slide->slideItems()->get()->sortBy('sort') as $slideItem)
     <td>{{{ $slideItem->id }}}</td>
     <td>
-      <img src="{{{ $repons->url($slideItem->picture) }}}" alt="{{{ $slideItem->note }}}" height="100">
+      {!! $repons->tag($slideItem->picture, ['height' => 100]) !!}
     </td>
     <td>{{{ $slideItem->url }}}</td>
     <td>{{{ $slideItem->note }}}</td>
@@ -22,4 +22,3 @@
   @endforeach
   </tbody>
 </table>
-

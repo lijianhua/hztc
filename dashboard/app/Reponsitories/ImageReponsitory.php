@@ -2,6 +2,8 @@
 
 namespace App\Reponsitories;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 /**
  * 处理图片上传、保存、缩略图等行为
  *
@@ -60,6 +62,34 @@ class ImageReponsitory
   }
 
   /**
+   * 保存上传的图片
+   *
+   * @param mixed $file
+   * @return mixed
+   **/
+  public function save(UploadedFile $file)
+  {
+    $filename = $this->generateRandomString(64);
+    return $file->move($this->getRoot(), $filename);
+  }
+
+  /**
+   * 生成 html 图片标签
+   *
+   * @param strig $image
+   * @param array $attributes
+   * @return string
+   **/
+  public function tag($image, $attributes = [])
+  {
+    $img = "<img src=\"{$this->url($image)}\"";
+    foreach ($attributes as $key => $value)
+      $img .= " {$key}=\"{$value}\"";
+    $img .= ">";
+    return $img;
+  }
+
+  /**
    * 获取 host
    *
    * @return string
@@ -111,5 +141,21 @@ class ImageReponsitory
   protected function trimUrl($root, $path, $tail = '')
   {
     return trim($root.'/'.trim($path.'/'.$tail, '/'), '/');
+  }
+
+  /**
+   * 获取随机字符串作为图片名称
+   *
+   * @param integer $length
+   * @return string
+   **/
+  protected function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+      $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
   }
 } // END class ImageReponsitory
