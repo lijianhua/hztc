@@ -27,7 +27,7 @@ $ ->
       super fields
 
     slideId: ->
-      @api().rows().data()[0][5]
+      $("##{@tableId}").attr('data-slide-id')
 
   $('#slideItemsTable').dataTable
     dom: "<'row'<'col-sm-12'T>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>"

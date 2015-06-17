@@ -1,4 +1,4 @@
-<table id="slideItemsTable" class="table table-striped">
+<table id="slideItemsTable" class="table table-striped" data-slide-id="{{{ $slide->id }}}">
   <thead>
     <tr>
       <th>ID</th>
