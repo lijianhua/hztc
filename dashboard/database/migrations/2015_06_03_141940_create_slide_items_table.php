@@ -18,7 +18,7 @@ class CreateSlideItemsTable extends Migration {
       $table->integer('slide_id')->unsigned()->index();
       $table->string('picture', 1024);
       $table->string('url', 1024)->nullable();
-      $table->string('note');
+      $table->string('note', 1024)->nullable();
       $table->smallInteger('sort')->default(0);
       $table->timestamps();
     });

@@ -2,34 +2,35 @@ $ = jQuery
 
 $ ->
   toggleButtonStateOnSelect = (nButton, oConfig, nRow) ->
-    tableTool = TableTools.fnGetInstance('slidesTable')
+    tableTool = TableTools.fnGetInstance('slideItemsTable')
 
     if tableTool.fnGetSelected().length == 1
       $(nButton).removeClass 'disabled'
     else
       $(nButton).addClass 'disabled'
 
-  class Slide extends CommonDataTableObject
+  class SlideItem extends CommonDataTableObject
     constructor: (@tableId) ->
       super @tableId
 
     deleteSelectedRow: ->
-      @actionUrl = "slides/#{@selectedRowData()[0]}"
+      @actionUrl = "/slides/#{@selectedRowData()[5]}/slide-items/#{@selectedRowData()[0]}"
       super
 
     editSelectedRow: (fields) ->
-      @actionUrl = "slides/#{@selectedRowData()[0]}"
+      @actionUrl = "slide-items/#{@selectedRowData()[0]}"
       super fields
 
     new: (fields) ->
-      @actionUrl = "slides"
+      @actionUrl = "slide-items"
       super fields
 
-  $('#slidesTable').dataTable
-    dom: "<'row'<'col-sm-6'T><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>"
+  $('#slideItemsTable').dataTable
+    dom: "<'row'<'col-sm-12'T>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>"
+    order: [4, 'asc']
     language:
       url: '/dataTables_zh_CN.json'
-    columnDefs: [ { orderable: false, targets: [2, 3] } ]
+    columnDefs: [ { orderable: false, targets: [1, 2, 3] }, { visible: false, targets: [5]} ]
     tableTools:
       sRowSelect: 'os'
       aButtons: [
@@ -37,10 +38,10 @@ $ ->
         sExtends: "text"
         sButtonText: "<i class='fa fa-plus'></i>"
         sToolTip: "新建"
-        fnInit: Slide.initButtonToolTip
+        fnInit: SlideItem.initButtonToolTip
         fnClick: ->
-          slide = new Slide 'slidesTable'
-          slide.new([
+          slideItem = new SlideItem 'slideItemsTable'
+          slideItem.new([
             name   : 'belongs_page'
             label  : '属于'
             value  : ''
@@ -51,19 +52,19 @@ $ ->
         sExtends: "text"
         sButtonText: "<i class='fa fa-edit'></i>"
         sToolTip: "编辑"
-        fnInit: Slide.initButtonToolTip
+        fnInit: SlideItem.initButtonToolTip
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
-          slide = new Slide 'slidesTable'
-          if slide.isSelectedOne()
-            slide.editSelectedRow([
+          slideItem = new SlideItem 'slideItemsTable'
+          if slideItem.isSelectedOne()
+            slideItem.editSelectedRow([
               name   : 'id'
-              value  : slide.selectedRowData()[0]
+              value  : slideItem.selectedRowData()[0]
               type   : 'hidden'
             ,
               name   : 'belongs_page'
               label  : '属于'
-              value  : $(slide.selectedRowData()[1]).text().trim()
+              value  : $(slideItem.selectedRowData()[1]).text().trim()
               type   : 'text'
             ])
       ,
@@ -71,12 +72,12 @@ $ ->
         sExtends: "text"
         sButtonText: "<i class='fa fa-trash-o'></i>"
         sToolTip: "删除"
-        fnInit: Slide.initButtonToolTip
+        fnInit: SlideItem.initButtonToolTip
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
-          slide = new Slide 'slidesTable'
+          slideItem = new SlideItem 'slideItemsTable'
           new TenderConfirmAlert('danger').alert '危险！这个操作将无法逆转。确认删除吗?', ->
-            slide.deleteSelectedRow() if slide.isSelectedOne()
+            slideItem.deleteSelectedRow() if slideItem.isSelectedOne()
           , '危险'
       ]
 

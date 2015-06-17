@@ -1,7 +1,7 @@
 <header class="main-header">
   <!-- Logo -->
   <a class="logo" href="/">
-    <span class="logo-mini">BUGO</span>
+    <span class="logo-mini">AD</span>
     <span class="logo-lg"><b>布谷广告</b>LTE</span>
   </a>
 

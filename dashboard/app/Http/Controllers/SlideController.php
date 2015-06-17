@@ -8,9 +8,17 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Slide;
 use App\Http\Requests\UpdateSlideRequest;
+use App\Reponsitories\ImageReponsitory;
 
 class SlideController extends Controller
 {
+  protected $imageRepons;
+
+  public function __construct(ImageReponsitory $imageRepons)
+  {
+    $this->imageRepons = $imageRepons;
+  }
+
   /**
    * Display a listing of the resource.
    *
@@ -60,7 +68,9 @@ class SlideController extends Controller
    */
   public function show($id)
   {
-    //
+    $slide  = Slide::find($id);
+    $repons = $this->imageRepons;
+    return view('slides.show')->with(compact('slide', 'repons'));
   }
 
   /**

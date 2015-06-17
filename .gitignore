@@ -54,6 +54,7 @@ Session.vim
 /*/public/js/
 /*/storage/debugbar/
 /*/public/swf
+/*/public/upload/
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm

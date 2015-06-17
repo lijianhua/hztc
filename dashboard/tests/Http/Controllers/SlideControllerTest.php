@@ -8,6 +8,11 @@ class SlideControllerTest extends TestCase
     $this->visit('/slides')->see('轮播图');
   }
 
+  public function testHasAttributeImageReponsitory()
+  {
+    $this->assertClassHasAttribute('imageRepons', App\Http\Controllers\SlideController::class);
+  }
+
   public function testDelete()
   {
     $slide = factory('App\Models\Slide')->create();
@@ -56,5 +61,13 @@ class SlideControllerTest extends TestCase
       'belongs_page' => '星空'
     ]);
     $this->assertResponseOk();
+  }
+
+  public function testDetail()
+  {
+    $slide = factory('App\Models\Slide')->create();
+
+    $this->get("/slides/{$slide->id}")
+         ->see("{$slide->belongs_page}轮播图");
   }
 }

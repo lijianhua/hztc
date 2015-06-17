@@ -15,8 +15,11 @@ class SlideTableSeeder extends Seeder
   {
     DB::table('slides')->delete();
 
-    Slide::create([
+    $slide = Slide::create([
       'belongs_page' => '首页'
     ]);
+
+    $slideItem = factory('App\Models\SlideItem')->make();
+    $slide->slideItems()->save($slideItem);
   }
 }

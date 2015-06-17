@@ -22,9 +22,12 @@ Route::delete('navigators/{id}', 'NavigatorController@destroy');
 
 // 轮播图
 Route::get('slides', 'SlideController@index');
+Route::get('slides/{id}', 'SlideController@show');
 Route::delete('slides/{id}', 'SlideController@destroy');
 Route::put('slides/{id}', 'SlideController@update');
 Route::post('slides', 'SlideController@store');
+// 轮播图中的项
+Route::delete('slides/{slide_id}/slide-items/{id}', 'SlideItemController@destroy');
 
 Route::controllers([
   'auth' => 'Auth\AuthController',

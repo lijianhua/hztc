@@ -35,3 +35,11 @@ $factory->define(App\Models\Slide::class, function ($faker) {
     'belongs_page' => $faker->bs()
   ];
 });
+
+$factory->define(App\Models\SlideItem::class, function ($faker) {
+  return [
+    'picture' => 'bujiaban.jpg',
+    'url'     => 'http://yuez.me',
+    'sort'    => 0
+  ];
+});
