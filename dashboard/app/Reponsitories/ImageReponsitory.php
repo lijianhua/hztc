@@ -69,7 +69,12 @@ class ImageReponsitory
    **/
   public function save(UploadedFile $file)
   {
-    $filename = $this->generateRandomString(64);
+    $filename = $this->generateRandomString(32);
+    $originalName = $file->getClientOriginalName();
+    $pos = strrpos($originalName, '.');
+    $extensition = substr($originalName, $pos);
+    $filename .= $extensition;
+
     return $file->move($this->getRoot(), $filename);
   }
 
