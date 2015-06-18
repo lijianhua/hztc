@@ -21,9 +21,9 @@ class CreateUsersTable extends Migration {
       $table->string('password', 60);
       $table->string('picture', 1024)->nullable();
       // 是否邮箱确认
-      $table->boolean('confirmed');
+      $table->boolean('confirmed')->default(false);
       // 是否通过认证
-      $table->boolean('is_verify');
+      $table->boolean('is_verify')->default(false);
       $table->rememberToken();
       $table->timestamps();
     });

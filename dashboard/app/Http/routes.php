@@ -11,25 +11,33 @@
 |
  */
 
-Route::get('/', 'HomeController@index');
+Route::group(['middleware' => 'auth'], function () {
 
-// 全局导航管理
-Route::get('navigators', 'NavigatorController@index');
-Route::post('navigators', 'NavigatorController@store');
-Route::put('navigators/{id}/toggle', 'NavigatorController@toggle');
-Route::put('navigators/{id}', 'NavigatorController@update');
-Route::delete('navigators/{id}', 'NavigatorController@destroy');
+  Route::get('/', 'HomeController@index');
 
-// 轮播图
-Route::get('slides', 'SlideController@index');
-Route::get('slides/{id}', 'SlideController@show');
-Route::delete('slides/{id}', 'SlideController@destroy');
-Route::put('slides/{id}', 'SlideController@update');
-Route::post('slides', 'SlideController@store');
-// 轮播图中的项
-Route::post('slides/{slide_id}/slide-items', 'SlideItemController@store');
-Route::delete('slides/{slide_id}/slide-items/{id}', 'SlideItemController@destroy');
-Route::put('slides/{slide_id}/slide-items/{id}', 'SlideItemController@update');
+  // 全局导航管理
+  Route::get('navigators', 'NavigatorController@index');
+  Route::post('navigators', 'NavigatorController@store');
+  Route::put('navigators/{id}/toggle', 'NavigatorController@toggle');
+  Route::put('navigators/{id}', 'NavigatorController@update');
+  Route::delete('navigators/{id}', 'NavigatorController@destroy');
+
+  // 轮播图
+  Route::get('slides', 'SlideController@index');
+  Route::get('slides/{id}', 'SlideController@show');
+  Route::delete('slides/{id}', 'SlideController@destroy');
+  Route::put('slides/{id}', 'SlideController@update');
+  Route::post('slides', 'SlideController@store');
+  // 轮播图中的项
+  Route::post('slides/{slide_id}/slide-items', 'SlideItemController@store');
+  Route::delete('slides/{slide_id}/slide-items/{id}', 'SlideItemController@destroy');
+  Route::put('slides/{slide_id}/slide-items/{id}', 'SlideItemController@update');
+});
+
+// User authenticates
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 Route::controllers([
   'auth' => 'Auth\AuthController',
