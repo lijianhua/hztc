@@ -3,7 +3,7 @@
         <div class="footer">
             <div class="layout">
                 <div class="plate-A">
-                    <img src="images/A.png">
+                    <img src="images/index/A.png">
                 </div>
                 <div class="ft-link">
                     <span class="ft-link-item"><a href="#">关于我们</a> </span> /

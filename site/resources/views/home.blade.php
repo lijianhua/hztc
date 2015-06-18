@@ -7,7 +7,7 @@
         <div class="layout ">
             <div class="left-nav">
                 <div class="advert">
-                    <img src="images/advert.jpg">
+                    <img src="images/index/advert.jpg">
                 </div>
                 <div class="filter-nav">
                     <ul>
@@ -61,10 +61,10 @@
                 <div class="banner">
                     <div class="carousel slide">
                         <div class="carousel-inner nav-banner">
-                            <div class="page active item"><a href="#"><img src="images/1.jpg"></a></div>
-                            <div class="page item"><a href="#"><img src="images/2.jpg"></a> </div>
-                            <div class="page item"><a href="#"><img src="images/1.jpg"></a> </div>
-                            <div class="page item"><a href="#"><img src="images/2.jpg"></a> </div>
+                            <div class="page active item"><a href="#"><img src="images/index/1.jpg"></a></div>
+                            <div class="page item"><a href="#"><img src="images/index/2.jpg"></a> </div>
+                            <div class="page item"><a href="#"><img src="images/index/1.jpg"></a> </div>
+                            <div class="page item"><a href="#"><img src="images/index/2.jpg"></a> </div>
                         </div>
                     </div>
                     <div class="banner-mark">
