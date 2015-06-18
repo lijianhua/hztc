@@ -20,12 +20,5 @@ class AuthenticationControllerTest extends TestCase
     $this->actingAs($user)
          ->visit('/')->seePageIs('/auth/login');
   }
-
-  public function testVisitLoginPageShouldBeRedirectedToHomeWhenIsLogin()
-  {
-    $user = factory('App\Models\User', 'root')->create();
-    $this->actingAs($user)
-         ->visit('/auth/login')->seePageIs('/');
-  }
 }
 

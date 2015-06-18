@@ -1,10 +1,15 @@
 <?php
 use App\Models\Slide;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class SlideControllerTest extends TestCase
 {
-  use WithoutMiddleware;
+  public function setUp()
+  {
+    parent::setUp();
+
+    $user = factory('App\Models\User', 'root')->create();
+    $this->actingAs($user);
+  }
 
   public function testIndex()
   {

@@ -1,9 +1,14 @@
 <?php
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class SlideItemControllerTest extends TestCase
 {
-  use WithoutMiddleware;
+  public function setUp()
+  {
+    parent::setUp();
+
+    $user = factory('App\Models\User', 'root')->create();
+    $this->actingAs($user);
+  }
 
   public function testDeleteSlideItem()
   {

@@ -33,20 +33,18 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::delete('slides/{slide_id}/slide-items/{id}', 'SlideItemController@destroy');
   Route::put('slides/{slide_id}/slide-items/{id}', 'SlideItemController@update');
 
-  // 用户注销登录
-  Route::get('auth/logout', 'Auth\AuthController@getLogout');
 });
 
-Route::group(['middleware' => 'guest'], function () {
-  // 用户登录
-  Route::get('auth/login', 'Auth\AuthController@getLogin');
-  Route::post('auth/login', 'Auth\AuthController@postLogin');
+// 用户登录
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+// 用户注销登录
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-  // 提出密码重置请求
-  Route::get('password/email', 'Auth\PasswordController@getEmail');
-  Route::post('password/email', 'Auth\PasswordController@postEmail');
+// 提出密码重置请求
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
 
-  // 密码重置
-  Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-  Route::post('password/reset', 'Auth\PasswordController@postReset');
-});
+// 密码重置
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
