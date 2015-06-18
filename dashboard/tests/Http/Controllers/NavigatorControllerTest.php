@@ -1,8 +1,11 @@
 <?php
 use App\Models\Navigator;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class NavigatorControllerTest extends TestCase
 {
+  use WithoutMiddleware;
+
   public function setUp()
   {
     parent::setUp();

@@ -35,6 +35,9 @@ elixir(function(mix) {
        // 复制所有的 css 到 public/css 中
        .copy('resources/assets/css', 'public/css')
        .copy('vendor/bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css', 'public/css')
+       .copy('vendor/bower_components/admin-lte/plugins/iCheck/square/blue.css', 'public/css')
+       .copy('vendor/bower_components/admin-lte/plugins/iCheck/square/blue.png', 'public/css')
+       .copy('vendor/bower_components/admin-lte/plugins/iCheck/square/blue@2x.png', 'public/css')
        .copy('vendor/bower_components/admin-lte/plugins/datatables/extensions/TableTools/swf/', 'public/swf/')
        // 复制所有 js 到 public/js 中
        .copy('resources/assets/js', 'public/js')
@@ -49,6 +52,7 @@ elixir(function(mix) {
            'jquery-form/jquery.form.js',
            'admin-lte/plugins/slimScroll/jquery.slimscroll.js',
            'admin-lte/plugins/fastclick/fastclick.js',
+           'admin-lte/plugins/iCheck/icheck.js',
            'admin-lte/plugins/datatables/jquery.dataTables.js',
            'admin-lte/plugins/datatables/dataTables.bootstrap.js',
            'admin-lte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js'

@@ -1,8 +1,11 @@
 <?php
 use App\Models\Slide;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class SlideControllerTest extends TestCase
 {
+  use WithoutMiddleware;
+
   public function testIndex()
   {
     $this->visit('/slides')->see('轮播图');

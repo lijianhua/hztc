@@ -1,7 +1,10 @@
 <?php
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class SlideItemControllerTest extends TestCase
 {
+  use WithoutMiddleware;
+
   public function testDeleteSlideItem()
   {
     $slide = factory('App\Models\Slide')->create();
