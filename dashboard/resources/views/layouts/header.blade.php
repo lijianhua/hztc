@@ -39,37 +39,25 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="/images/user2-160x160.jpg" class="user-image" alt="User Image"/>
-            <span class="hidden-xs">Alexander Pierce</span>
+            <img src="{{ $userRepons->userImageUrl(Auth::user()) }}" class="user-image" alt="{{ Auth::user()->name }}"/>
+            <span class="hidden-xs">{{ Auth::user()->name }}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="/images/user2-160x160.jpg" class="img-circle" alt="User Image" />
+              <img src="{{ $userRepons->userImageUrl(Auth::user()) }}" class="img-circle" alt="{{ Auth::user()->name }}"/>
               <p>
-                Alexander Pierce - Web Developer
-                <small>Member since Nov. 2012</small>
+                {{ Auth::user()->name }}
+                <small>自{{ date('Y年, m月', strtotime(Auth::user()->created_at)) }}加入</small>
               </p>
-            </li>
-            <!-- Menu Body -->
-            <li class="user-body">
-              <div class="col-xs-4 text-center">
-                <a href="#">Followers</a>
-              </div>
-              <div class="col-xs-4 text-center">
-                <a href="#">Sales</a>
-              </div>
-              <div class="col-xs-4 text-center">
-                <a href="#">Friends</a>
-              </div>
             </li>
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <a href="#" class="btn btn-default btn-flat">我的</a>
               </div>
               <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <a href="/auth/logout" class="btn btn-default btn-flat">注销</a>
               </div>
             </li>
           </ul>

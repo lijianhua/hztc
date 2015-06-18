@@ -1,12 +1,20 @@
 <?php
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class HomeControllerTest extends TestCase
 {
-  use WithoutMiddleware;
-
   public function testVisitRootPathShouldReturnHomeView()
   {
-    $this->visit('/')->see('布谷广告');
+    $user = factory('App\Models\User', 'root')->create();
+
+    $this->actingAs($user)
+         ->visit('/')->see('布谷广告');
+  }
+
+  public function testShouldSeeName()
+  {
+    $user = factory('App\Models\User', 'root')->create();
+
+    $this->actingAs($user)
+         ->visit('/')->see($user->name);
   }
 }
