@@ -7,6 +7,21 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller
 {
+
+  /**
+   * Mail subject
+   *
+   * @var string
+   **/
+  protected $subject = '找回您的密码';
+
+  /**
+   * 返回地址
+   *
+   * @var string
+   **/
+  protected $redirectTo = '/';
+
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
