@@ -66,7 +66,6 @@ elixir(function(mix) {
 gulp.task('prepare', function () {
   gulp.src('').pipe(shell('composer update'))
               .pipe(shell('bower install'))
-              .pipe(shell('php artisan migrate'))
-              .pipe(shell('php artisan db:seed'))
+              .pipe(shell('php artisan migrate:refresh --seed'))
               .pipe(shell('gulp'));
 });
