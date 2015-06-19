@@ -16,7 +16,6 @@ class CreateAdSpacesTable extends Migration {
     {
       $table->increments('id');
       $table->integer('user_id')->unsigned()->index();
-      $table->integer('ad_category_id')->unsigned()->index();
       $table->string('title');
       $table->string('picture', 1024);
       $table->string('description', 1024);
