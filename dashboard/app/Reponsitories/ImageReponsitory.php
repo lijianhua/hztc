@@ -35,7 +35,7 @@ class ImageReponsitory
   public function __construct()
   {
     $this->host    = env('IMAGE_HOST', 'http://localhost:8000');
-    $this->webRoot = env('IMAGE_WEB_PATH', 'upload/images/');
+    $this->webRoot = env('IMAGE_WEB_PATH', 'upload/images');
     $this->root    = env('IMAGE_ROOT_PATH', public_path() . '/' . $this->webRoot);
   }
 
