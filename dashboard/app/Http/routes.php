@@ -33,6 +33,9 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::delete('slides/{slide_id}/slide-items/{id}', 'SlideItemController@destroy');
   Route::put('slides/{slide_id}/slide-items/{id}', 'SlideItemController@update');
 
+  // 广告分类管理
+  Route::get('ad-categories', 'AdCategoryController@index');
+  Route::get('ad-categories/server-proccessing', 'AdCategoryController@server');
 });
 
 // 用户登录

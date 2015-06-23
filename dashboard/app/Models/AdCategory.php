@@ -2,8 +2,5 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class AdCategory extends Model {
-
-	//
-
+class AdCategory extends \Baum\Node {
 }

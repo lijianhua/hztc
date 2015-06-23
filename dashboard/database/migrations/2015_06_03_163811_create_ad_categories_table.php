@@ -15,7 +15,10 @@ class CreateAdCategoriesTable extends Migration {
     Schema::create('ad_categories', function(Blueprint $table)
     {
       $table->increments('id');
-      $table->integer('ad_category_id')->unsigned()->index();
+      $table->integer('parent_id')->unsigned()->index()->nullable();
+      $table->integer('lft')->nullable();
+      $table->integer('rgt')->nullable();
+      $table->integer('depth')->nullable();
       $table->string('name');
       $table->timestamps();
     });

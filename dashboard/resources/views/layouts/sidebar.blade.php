@@ -16,6 +16,12 @@
     <ul class="sidebar-menu">
       <li class="header">产品与服务</li>
       <li><a href="{{{ url('/') }}}"><i class="fa fa-dashboard"></i><span>首页</span></a></li>
+      <li>
+        <a href="{{ url('ad-categories') }}">
+          <i class="fa fa-cubes"></i>
+          <span>广告分类</span>
+        </a>
+      </li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-shirtsinbulk"></i>
