@@ -266,6 +266,9 @@ a.gray:hover {
 .ml10 {
     margin-left: 10px;
 }
+.ml12 {
+    margin-left: 12px;
+}
 
 .mr3 {
     margin-right: 3px;
@@ -283,6 +286,9 @@ a.gray:hover {
 }
 .mr15 {
     margin-right: 15px;
+}
+.mr19 {
+    margin-right: 19px;
 }
 .mr20 {
     margin-right: 20px;
@@ -563,7 +569,7 @@ header{
      background: url("../images/havehover.png") no-repeat 0 0;
 }
  .header-top-user{
-    margin-left: 60px;
+     margin-left: 130px;
     margin-top: 5px;
     color: #cccccc;
     font-size: 10px;
@@ -580,7 +586,7 @@ header{
 }
 .header-top-callme{
     margin-top: 6px;
-    margin-left: 130px;
+    margin-left: 60px;
 }
 
 /*nav 导航*/
@@ -615,8 +621,6 @@ header{
     position: relative;
 }
 .nav-info .nav-info-item{
-
-    /*line-height: 3.7;*/
     position: relative;
     text-align: center;
 }
@@ -629,7 +633,7 @@ header{
 .nav-info .nav-info-item a{
     font-size: 14px;
     color: #999999;
-    padding: 19px 15px;
+    padding: 20px 15px;
     display: inline-block;
 
 }
@@ -655,10 +659,12 @@ header{
     height: 34px;
     overflow: hidden;
     background-color: #000000;
-    margin-right: 8px;
-    top: 14px;
     border-radius: 25px;
     -webkit-border-radius:25px;
+    margin-right: 8px;
+    top: 14px;
+
+
 }
 .nav-search-hide{
     /*position: absolute;*/
@@ -670,6 +676,8 @@ header{
 }
 .nav-search-bt{
     background-color: #000000;
+    border-radius: 25px;
+    -webkit-border-radius:25px;
     position: absolute;
     right: 0;
     display: inline-block;
@@ -697,13 +705,13 @@ header{
     width: 60px;
 }
 .search-input{
-    position: relative;
-    width: 140px;
+    position: absolute;
+    width: 138px;
     font-size: 14px;
     border: 0;
     /*height: 34px;*/
     padding: 4px 5px 5px 5px;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: #000000;
     color: #ffffff;
     margin-top: 4px;
     float: left;
@@ -713,7 +721,7 @@ header{
     font-size: 20px;
     cursor: pointer;
     color: #888888;
-    margin-left: 15px;
+    margin-left: 16px;
 }
 .nav-search-menu{
     padding: 4px 15px;
@@ -742,6 +750,11 @@ header{
     height: 181px;
     width: 100%;
     text-align: center;
+}
+.plate-A{
+    position: absolute;
+    top: -53px;
+    margin-left: 105px;
 }
 .ft-link-item a,
 .ft-link{
@@ -787,7 +800,7 @@ header{
 
 .right-float{
     position: fixed;
-    right: 30px;
+    right: 0px;
     bottom: 181px;
     z-index: 1000;
     width: 36px;
@@ -802,16 +815,6 @@ header{
 .right-float .float-top:hover{
     background: url("../images/index/top2.png") no-repeat 0 0;
 }
-.right-float .float-code{
-    width: 36px;
-    height: 36px;
-    background: url("../images/code.png") no-repeat 0 0;
-    margin: 2px 0;
-}
-.right-float .float-code:hover{
-    background: url("../images/codehover.png") no-repeat 0 0;
-}
-
 /*footer*/
 
 

@@ -34,5 +34,4 @@
 </footer>
 <div class="right-float">
     <div class="float-top" style="color: #fff"></div>
-    <div class="float-code"></div>
 </div>

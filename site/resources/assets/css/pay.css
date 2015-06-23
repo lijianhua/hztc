@@ -1,0 +1,65 @@
+.pay{
+    margin-top: 10px;
+}
+.pay-code{
+    background-color: #fffdeb;
+    border: 1px solid #ffe5cc;
+    height: 82px;
+    width: 100%;
+    padding: 30px 45px;
+    font-size: 18px;
+}
+.bank-code-title{
+    margin-left: 45px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.bank-code-block{
+    margin-left: 90px;
+}
+.pay-code b{
+    color: #ff3f7e;
+}
+.pay-code-right{
+    float: right;
+}
+.bank-code-item{
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 160px;
+}
+.bank-code-item input{
+    /*float: left;*/
+}
+.bank-code-item img{
+    width: 133px;
+    height: 55px;
+    vertical-align: middle;
+    margin-left: 7px;
+}
+.bank-code{
+    font-size: 16px;
+}
+.pay-submit{
+    text-align: right;
+    margin-top: 60px;
+    border-bottom: 3px solid #ff3f7e;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+}
+.pay-submit-total{
+    font-size: 18px;
+    margin-right: 50px;
+}
+.pay-submit-total span{
+    font-size: 20px;
+    color: #ff3f7e;
+}
+.pay-submit-button button{
+    width: 170px;
+    height: 41px;
+    background: url("../images/list/settlement.png") no-repeat 0 0;
+    border: 0;
+    font-size: 18px;
+    color: #ffffff;
+}

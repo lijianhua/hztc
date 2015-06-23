@@ -63,6 +63,7 @@
 }
 .left-nav .filter-nav-input b{
     margin: 0 8px;
+    color: #ffffff;
 }
 .left-nav .filter-nav-input input{
     background: url("../images/index/input.png") no-repeat 0 0;
@@ -203,21 +204,17 @@
     margin-top: 3px;
 }
 .plate .plate-color1{
-    background-color: #F68EA5
+    background: url("../images/bg1.png") no-repeat 0 0;
 }
 .plate .plate-color2{
-    background-color: #7E7BC0;
+    background: url("../images/bg2.png") no-repeat 0 0;
 }
 .plate .plate-color3{
-    background-color: #2DD7FB;
+    background: url("../images/bg3.png") no-repeat 0 0;
 }
 .plate .plate-color4{
-    background-color: #41D445
+    background: url("../images/bg4.png") no-repeat 0 0;
 }
-.plate-A{
-    position: absolute;
-    top: -53px;
-    margin-left: 105px;
-}
+
 
 /*article contentÖ÷Ìå*/

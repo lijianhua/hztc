@@ -19,9 +19,7 @@
                                 </button>
                                 <ul class="filter-nav-menu dropdown-menu" role="menu">
                                     <li><a href="#">北京</a> </li>
-                                    <li><a href="#">上海</a> </li>
-                                    <li><a href="#">广州</a> </li>
-                                    <li><a href="#">深圳</a> </li>
+                                    <li><a href="#">天津</a> </li>
                                 </ul>
                             </div>
                         </li>
@@ -29,34 +27,28 @@
                             <span class="filter-nav-title">媒体类型</span><br/>
                             <div class="btn-group">
                                 <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <b>新媒体</b> <span class="filter-nav-caret caret"></span>
+                                    <b>高端国际</b> <span class="filter-nav-caret caret"></span>
                                 </button>
                                 <ul class="filter-nav-menu dropdown-menu" role="menu">
-                                    <li><a href="#">新媒体</a> </li>
-                                    <li><a href="#">APP</a> </li>
-                                    <li><a href="#">网路</a> </li>
-                                    <li><a href="#">电视</a> </li>
-                                    <li><a href="#">广播</a> </li>
+                                    <li><a href="#">高端国际</a> </li>
+                                    <li><a href="#">奢华皇庭</a> </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="filter-nav-item">
-                            <span class="filter-nav-title">社会圈</span><br/>
+                            <span class="filter-nav-title">财富圈</span><br/>
                             <div class="btn-group">
                                 <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                     <b>财富圈</b> <span class="filter-nav-caret caret"></span>
                                 </button>
                                 <ul class="filter-nav-menu dropdown-menu" role="menu">
                                     <li><a href="#">财富圈</a> </li>
-                                    <li><a href="#">地产圈</a> </li>
-                                    <li><a href="#">IT圈</a> </li>
-                                    <li><a href="#">金融圈</a> </li>
-                                    <li><a href="#">科技圈</a> </li>
+                                    <li><a href="#">行业圈</a> </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="filter-nav-item">
-                            <span class="filter-nav-title">价位</span><br/>
+                            <span class="filter-nav-title">价格</span><br/>
                             <div class="filter-nav-input">
                                 <span><input type="text"></span> <b>至</b> <span><input type="text"></span>
                             </div>

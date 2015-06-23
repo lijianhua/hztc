@@ -44,7 +44,7 @@ $(document).ready(function(){
             });
         }else{
             $(".nav-search").animate({"width":255},500, function () {
-                $(this).css({'overflow':'inherit'});
+                //$(this).css({'overflow':'inherit'});
             });
         }
     });

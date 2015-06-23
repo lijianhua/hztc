@@ -1,0 +1,86 @@
+.settlement{
+    margin-top: 10px;
+}
+.contract{
+    width: 1200px;
+    height: 600px;
+    background-color: #f6f6f6;
+    /*padding-right: 100px;*/
+    padding: 50px 0;
+}
+.contract .contract-info{
+    width: 1100px;
+    height: 500px;
+    overflow-y: scroll;
+    padding-left: 170px;
+    padding: 0px 80px 0px 170px;
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #7f7f7f;
+
+}
+.contract .contract-info-title{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.contract .contract-info-title span{
+    font-size: 18px;
+    color: #7bccff;
+    padding: 3px 6px;
+    border-bottom: 2px solid #7bccff;
+    text-align: center;
+}
+.contract .contract-info dt{
+    margin-top: 20px;
+}
+.contract .contract-info dd{
+    line-height: 1.6;
+}
+.contract-agree label{
+    font-weight: 400;
+    color: #7bccff;
+    font-size: 16px;
+    margin-left: 15px;
+}
+.settlement-list-title{
+    text-align: center;
+    margin: 5px 0;
+}
+.settlement-list table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid #363636;
+}
+.settlement-list table th{
+    background-color: #cccccc;
+}
+.settlement-list table th,
+.settlement-list table td{
+    font-size: 20px;
+    text-align: center;
+    padding: 5px 0;
+}
+.settlement-list-submit{
+    text-align: right;
+    margin-top: 60px;
+    border-bottom: 3px solid #ff3f7e;
+    padding-bottom: 10px;
+    margin-bottom: 170px;
+}
+.settlement-list-submit-total{
+    font-size: 18px;
+    margin-right: 50px;
+}
+.settlement-list-submit-total span{
+    font-size: 20px;
+    color: #ff3f7e;
+}
+.settlement-list-submit-button button{
+    width: 170px;
+    height: 41px;
+    background: url("../images/list/settlement.png") no-repeat 0 0;
+    border: 0;
+    font-size: 18px;
+    color: #ffffff;
+}

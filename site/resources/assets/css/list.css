@@ -1,5 +1,6 @@
 .content{
     margin-top: 10px;
+    margin-bottom: 30px;
 }
 .content .filter{
     float: left;
@@ -7,9 +8,11 @@
 }
 .content .filter .filter-selected{
     background-color: #f6f6f6;
-    padding:15px 0px 40px 43px;
-    width: 300px;
+    padding:15px 20px 40px 43px;
     font-size: 18px;
+}
+.content .filter .filter-selected dd i{
+    font-style: normal;
 }
 .content .filter .filter-selected dt,
 .content .filter .filter-selected dd{
@@ -22,9 +25,13 @@
     padding: 4px 18px 2px 23px;
     background-color: #7bccff;
     border-radius: 15px;
-    display: table;
     color: #ffffff;
     height: 30px;
+    display: inline-block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .filter-delete{
     background: url("../images/list/delete.png") no-repeat 0 0;
@@ -32,5 +39,230 @@
     width: 10px;
     display: inline-block;
     margin-left: 34px;
+    padding-right: 10px;
+    position: relative;
+    right: 0;
+    top: -2px;
+    margin-left: 35px;
     cursor: pointer;
+    vertical-align: middle;
+}
+.filter-operate{
+    margin-top: 20px;
+    width: 300px;
+    background-color: #f6f6f6;
+    padding:12px 0px 36px 0px;
+}
+.filter-operate dt,
+.filter-operate dd{
+    padding: 5px 0 5px 68px;
+    margin-left: 68px;
+    margin: 2px 0;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.filter-operate dt{
+    font-size: 18px;
+}
+.filter-operate dd{
+    /*height: 30px;*/
+    cursor: pointer;
+    position: relative;
+    display: none;
+    font-size: 14px;
+    color: #8c8c8c;
+}
+.filter-add{
+    display: none;
+    position: absolute;
+    right: 48px;
+    height: 13px;
+    width: 13px;
+    margin-top: 3px;
+    background: url("../images/index/add.png") no-repeat 0 0;
+}
+.filter-operate dd:hover{
+    background-color: #f184a8;
+    color: #ffffff;
+}
+.filter-operate dd:hover .filter-add{
+    display: inline-block;
+}
+.filter-mark{
+    height: 9px;
+    width: 4px;
+    display: inline-block;
+    margin-top: 3px;
+    background: url("../images/index/right.png") no-repeat 0 0;
+    margin-left: 25px;
+}
+.filter-mark-active{
+    height: 4px;
+    width: 9px;
+    display: inline-block;
+    margin-top: 3px;
+    background: url("../images/index/down.png") no-repeat 0 0;
+    margin-left: 25px;
+}
+.list-main{
+    padding-left: 22px;
+    width: 900px;
+}
+.list-main .list-sort{
+    margin-top: 14px;
+}
+.list-main .list-sort .list-sort-item{
+    padding: 5px 7px;
+    display: inline-block;
+}
+.list-main .list-sort .list-sort-item.active{
+    border-bottom: 2px solid #7bccff;
+}
+.list-main .list-sort .list-sort-item.active a{
+    color: #7bccff;
+}
+.list-info{
+    margin-top: 10px;
+}
+.list-info-item{
+    width: 280px;
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.list-info-block{
+    width: 280px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ffffff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.list-info-item:hover .list-info-block{
+    border-color: #ff3f7e;
+}
+.list-info-item:hover .list-info-nutton a{
+    background-color: #ff3f7e;
+}
+.list-info-item img{
+    width: 276px;
+    height: 160px;
+    border: 0;
+}
+.list-info-details{
+    padding: 13px 9px 8px 9px;
+}
+.list-info-details-title{
+    font-size: 18px;
+    color: #7bccff;
+}
+.list-info-details-text{
+    text-indent: 2em;
+    margin-top: 5px;
+}
+.list-info-details-go{
+    margin-top:7px;
+    height: 16px;
+}
+.list-info-details-star i{
+    color: #ffbc46;
+    font-size: 16px;
+}
+.list-info-details-star .active{
+    color:#cecdcd
+}
+.list-info-details-look{
+    text-align: right;
+    float: right;
+}
+.list-info-details-look .list-info-details-look-img{
+    background: url("../images/list/guanzhu.png") no-repeat 0 0;
+    width: 24px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.list-info-details-look-text2{
+    color: #ff3f7e;
+}
+.list-info-details-money{
+    margin-top: 7px;
+}
+.list-info-details-price-number{
+    color: #ff3f7e;
+    margin-left: 15px;
+}
+.list-info-details-price-img i{
+    color: #ff3f7e;
+    font-size: 16px;
+    vertical-align: middle;
+}
+.list-info-details-people{
+    text-align: right;
+    float: right;.
+}
+.list-info-details-people-number{
+    color: #7bccff;
+}
+.list-info-nutton{
+    margin-top: 3px;
+}
+.list-info-nutton a{
+    display: inline-block;
+    width: 280px;
+    font-size: 18px;
+    padding: 10px 0;
+    background-color: #7bccff;
+    text-align: center;
+    color: #ffffff;
+}
+.page{
+    height: 30px;
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.page .page-item{
+    border:1px solid #e5e5e5;
+    padding: 6px 0;
+    font-size: 12px;
+    text-align: center;
+    width: 26px;
+    display: inline-block;
+    float: left;
+}
+.page span{
+    margin: 0 4px;
+    float: left;
+}
+.page .page-item.active{
+    background-color: #ff3f7e;
+    color: #ffffff;
+}
+.page .page-item-previous,
+.page .page-item-next{
+    border:1px solid #e5e5e5;
+    width: 56px;
+    padding: 6px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+}
+.page-return{
+    position: relative;
+}
+.page-return input{
+    width: 53px;
+    font-size: 12px;
+    padding: 6px;
+    border: 1px solid #ff3f7e;
+    height: 30px;
+}
+.page-return button{
+    width: 56px;
+    font-size: 12px;
+    padding: 6px 0;
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
 }

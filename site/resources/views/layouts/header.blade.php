@@ -5,7 +5,7 @@
           <ul class="header-top-info fr">
               <li class="header-top-have fl"><a href="#"><span>我要发广告</span></a> </li>
               <li class="header-top-have fl"><a href="#"><span>我有广告位</span></a> </li>
-              <li class="header-top-user fl">
+              <li class="header-top-user fr">
                   <a href="#"><img src="images/user.jpg"></a>
                   <span><a href="#">登录</a></span>|<span><a href="#">注册</a> </span>
               </li>

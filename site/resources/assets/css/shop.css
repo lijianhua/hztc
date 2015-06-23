@@ -1,0 +1,88 @@
+.shop{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.shop .shop-title{
+    color: #7bccff;
+}
+.shop .shop-title-img{
+    background: url("../images/list/shop.png") no-repeat 0 0;
+    display: inline-block;
+    width: 24px;
+    height: 23px;
+    vertical-align:middle;
+    margin-right: 5px;
+}
+.shop .shop-list{
+    margin-top: 5px;
+}
+.shop .shop-list table{
+    border-collapse: collapse;
+    border: 1px solid #363636;
+    width: 100%;
+    font-size: 16px;
+}
+.shop .shop-list table th{
+    height: 50px;
+    background-color: #cccccc;
+    text-align: center;
+}
+.shop .shop-list table td{
+    text-align: center;
+    height: 50px;
+}
+.shop-delete a{
+    color: #7bccff;
+}
+.shop-number{
+    text-align: center;
+    width: 107px;
+    height: 32px;
+    background: url("../images/list/shop_number.png") no-repeat 0 0;
+    position: relative;
+    margin: 0 auto;
+}
+.shop-number .shop-enter input{
+    position: relative;
+    width: 41px;
+    height: 30px;
+    border: 0;
+    top: 1px;
+    left: 2px;
+    color: #7bccff;
+    text-align: center;
+    font-size: 18px;
+}
+.shop-add,
+.shop-minus{
+    position: relative;
+    width: 31px;
+    height: 30px;
+    cursor: pointer;
+    background: none;
+    display: inline-block;
+    top: 1px;
+    left: 1px;
+}
+.shop-submit{
+    text-align: right;
+    margin-top: 60px;
+    border-bottom: 3px solid #ff3f7e;
+    padding-bottom: 10px;
+}
+.shop-submit-total{
+    font-size: 18px;
+    margin-right: 50px;
+}
+.shop-submit-total span{
+    font-size: 20px;
+    color: #ff3f7e;
+}
+.shop-submit-button button{
+    width: 170px;
+    height: 41px;
+    background: url("../images/list/settlement.png") no-repeat 0 0;
+    border: 0;
+    font-size: 18px;
+    color: #ffffff;
+}
