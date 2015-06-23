@@ -15,12 +15,5 @@ class AdCategoryControllerTest extends TestCase
     $this->visit('ad-categories');
     $this->assertResponseOk();
   }
-
-  public function testServerProcessing()
-  {
-    $this->get('/ad-categories/server-proccessing');
-
-    $this->assertResponseOk();
-  }
 }
 

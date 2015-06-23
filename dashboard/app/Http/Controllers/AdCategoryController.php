@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Datatables;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -25,10 +26,10 @@ class AdCategoryController extends Controller
    *
    * @return Response
    **/
-  public function server()
+  public function server(Request $request)
   {
-    $categories = AdCategory::select(['id', 'name', 'created_at']);
-    return \Datatables::of($categories)->setRowId('id')->make(true);
+    $categories = AdCategory::with('parent');
+    return Datatables::of($categories)->setRowId('id')->make(true);
   }
 
   /**

@@ -1,8 +1,9 @@
-<table id="adCategoriesTable" class="table table-striped">
+<table id="adCategoriesTable" class="table">
   <thead>
     <tr>
       <th>ID</th>
       <th>名称</th>
+      <th>上级分类</th>
       <th>创建时间</th>
     </tr>
   </thead>

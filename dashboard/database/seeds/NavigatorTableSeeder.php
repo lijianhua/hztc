@@ -15,10 +15,9 @@ class NavigatorTableSeeder extends Seeder
     $navigators = [
       '首页' => '/',
       '全部广告位' => 'ads',
-      '活动类专区' => 'activities',
       '免费广告位' => 'free-ads',
       '特价广告位' => 'special-offers',
-      '特色广告'   => 'young-ads'
+      '创意类广告' => 'creative-ads'
     ];
 
     $sort = 0;

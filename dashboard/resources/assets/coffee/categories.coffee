@@ -1,10 +1,17 @@
 $ = jQuery
 
 class AdCategory extends CommonDataTableObject
+  constructor: (@tableId) ->
+    super @tableId
 
 $ ->
   toggleButtonStateOnSelect = (nButton, oConfig, nRow) ->
     tableTool = TableTools.fnGetInstance('adCategoriesTable')
+
+    if tableTool.fnGetSelected().length == 1
+      $(nButton).removeClass 'disabled'
+    else
+      $(nButton).addClass 'disabled'
 
   $('#adCategoriesTable').dataTable
     dom: "<'row'<'col-sm-6'T><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>"
@@ -15,8 +22,10 @@ $ ->
     columns: [
      { data: 'id', name: 'id' },
      { data: 'name', name: 'name'},
+     { data: 'parent.name', defaultContent: '', name: 'parent_id'},
      { data: 'created_at', name: 'created_at'}
     ]
+    order: [[0, 'asc']]
     ajax: '/ad-categories/server-proccessing'
     tableTools:
       sRowSelect: 'os'

@@ -196,7 +196,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Form'      => Illuminate\Html\FormFacade::class,
-        'Datatables' => yajra\Datatables\Facades\Datatables::class,
+        'Datatables' => yajra\Datatables\Datatables::class,
 
     ],
 
