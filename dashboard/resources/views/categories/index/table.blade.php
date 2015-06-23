@@ -1,4 +1,4 @@
-<table id="adCategoriesTable" class="table">
+<table id="adCategoriesTable" class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>

@@ -20,10 +20,10 @@ $ ->
     processing: true
     serverSide: true
     columns: [
-     { data: 'id', name: 'id' },
+     { data: 'id', name: 'id', searchable: false },
      { data: 'name', name: 'name'},
-     { data: 'parent.name', defaultContent: '', name: 'parent_id'},
-     { data: 'created_at', name: 'created_at'}
+     { data: 'parent.name', defaultContent: '', name: 'parent_id', searchable: false},
+     { data: 'created_at', name: 'created_at', searchable: false}
     ]
     order: [[0, 'asc']]
     ajax: '/ad-categories/server-proccessing'
