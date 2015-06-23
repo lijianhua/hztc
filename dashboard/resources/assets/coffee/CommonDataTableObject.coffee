@@ -76,7 +76,12 @@ class @CommonDataTableObject
     throw 'Require to set actionUrl in subclass' unless @actionUrl
     @ajax (response) ->
       @api().row(@selectedRow()).remove().draw()
-      new TenderAlert('success').alert response.message
+      if response.state == 'OK'
+        type = 'success'
+      else
+        type = 'danger'
+
+      new TenderAlert(type).alert response.message
     , ->
       new TenderAlert('danger').alert '删除失败，请重试。'
     # 重置 actionUrl

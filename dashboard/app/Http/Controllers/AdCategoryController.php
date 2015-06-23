@@ -93,6 +93,13 @@ class AdCategoryController extends Controller
    */
   public function destroy($id)
   {
-    //
+    $category = AdCategory::find($id);
+
+    if ($category->isLeaf()) {
+      $category->delete();
+      return response()->json(['state' => 'OK', 'message' => '删除成功。']);
+    }
+
+    return response()->json(['state' => 'Fail', 'message' => '该分类下面还有其他子分类，无法删除！']);
   }
 }

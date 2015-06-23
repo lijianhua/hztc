@@ -15,5 +15,12 @@ class AdCategoryControllerTest extends TestCase
     $this->visit('ad-categories');
     $this->assertResponseOk();
   }
+
+  public function testDelete()
+  {
+    $category = factory('App\Models\AdCategory')->create();
+
+    $this->delete('/ad-categories/' . $category->id)->assertResponseOk();
+  }
 }
 

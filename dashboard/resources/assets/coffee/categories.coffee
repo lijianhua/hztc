@@ -4,6 +4,10 @@ class AdCategory extends CommonDataTableObject
   constructor: (@tableId) ->
     super @tableId
 
+  deleteSelectedRow: ->
+    @actionUrl = "/ad-categories/#{@selectedRowData().id}"
+    super
+
 $ ->
   toggleButtonStateOnSelect = (nButton, oConfig, nRow) ->
     tableTool = TableTools.fnGetInstance('adCategoriesTable')
@@ -54,5 +58,8 @@ $ ->
         fnInit: CommonDataTableObject.initButtonToolTip
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
-          alert 'hello'
+          adCategory = new AdCategory 'adCategoriesTable'
+          new TenderConfirmAlert('danger').alert '危险！这个操作将无法逆转。确认删除吗?', ->
+            adCategory.deleteSelectedRow() if adCategory.isSelectedOne()
+          , '危险'
       ]

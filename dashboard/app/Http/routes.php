@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   // 广告分类管理
   Route::get('ad-categories', 'AdCategoryController@index');
   Route::get('ad-categories/server-proccessing', 'AdCategoryController@server');
+  Route::delete('ad-categories/{id}', 'AdCategoryController@destroy');
 });
 
 // 用户登录

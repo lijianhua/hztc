@@ -68,3 +68,9 @@ $factory->defineAs(App\Models\User::class, 'root', function ($faker) use ($facto
     'admin' => true
   ];
 });
+
+$factory->define(App\Models\AdCategory::class, function ($faker) {
+  return [
+    'name' => $faker->bs()
+  ];
+});
