@@ -15,7 +15,7 @@
                             <span class="filter-nav-title">投放市场</span><br/>
                             <div class="btn-group">
                                 <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <b>全部</b> <span class="filter-nav-caret caret"></span>
+                                    <b id='city'>全部</b> <span class="filter-nav-caret caret"></span>
                                 </button>
                                 <ul class="filter-nav-menu dropdown-menu" role="menu">
                                     <li><a href="#">全部</a> </li>
@@ -30,7 +30,7 @@
                             <span class="filter-nav-title">媒体类型</span><br/>
                             <div class="btn-group">
                                 <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <b>全部</b> <span class="filter-nav-caret caret"></span>
+                                    <b id='type'>全部</b> <span class="filter-nav-caret caret"></span>
                                 </button>
                                 <ul class="filter-nav-menu dropdown-menu" role="menu">
                                     <li><a href="#">全部</a> </li>
@@ -45,7 +45,7 @@
                             <span class="filter-nav-title">社会圈</span><br/>
                             <div class="btn-group">
                                 <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <b>全部</b> <span class="filter-nav-caret caret"></span>
+                                    <b id='society'>全部</b> <span class="filter-nav-caret caret"></span>
                                 </button>
                                 <ul class="filter-nav-menu dropdown-menu" role="menu">
                                     <li><a href="#">全部</a> </li>
@@ -59,7 +59,8 @@
                         <li class="filter-nav-item">
                             <span class="filter-nav-title">价位</span><br/>
                             <div class="filter-nav-input">
-                                <span><input type="text"></span> <b>至</b> <span><input type="text"></span>
+                                <span><input type="text" id='start_price'></span> 
+                                <b>至</b> <span><input type="text" id='end_price'></span>
                             </div>
                         </li>
                         <li class="filter-nav-item"><button class="filter-nav-retrieval">检索</button></li>
