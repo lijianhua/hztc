@@ -20,7 +20,8 @@ class AdCategoryControllerTest extends TestCase
   {
     $category = factory('App\Models\AdCategory')->create();
 
-    $this->delete('/ad-categories/' . $category->id)->assertResponseOk();
+    $this->delete('/ad-categories/' . $category->id, ['_token' => csrf_token()])
+         ->assertResponseOk();
   }
 }
 

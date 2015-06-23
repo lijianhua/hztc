@@ -155,6 +155,11 @@ class @CommonDataTableObject
         @textareaField field
       when 'image'
         @imageField field
+      when 'select'
+        @selectField field
+
+  selectField: (field) ->
+    @formGroupSelectField field
 
   imageField: (field) ->
     @formGroupImageField field
@@ -178,6 +183,39 @@ class @CommonDataTableObject
       type  : 'text'
       label : label
       class : 'form-control'
+
+  select: (attributes) ->
+    # 选项
+    options = attributes.options
+    delete attributes.options
+
+    select = "<select "
+    # Properties
+    for key, value of attributes
+      select += " #{key}='#{value}' "
+    select += ">"
+    # Options
+    for option in options
+      select += @option option
+    select += "</select>"
+
+    select
+
+  option: (attributes) ->
+    option = "<option "
+    for key, value of attributes
+      option += " #{key}='#{value}' "
+    option += "/>"
+
+    option
+
+  formGroupSelectField: (field) ->
+    """
+    <div class="form-group">
+      <label>#{field.label}</label>
+      #{delete field.label && delete field.type  && @select field}
+    </div>
+    """
 
   formGroupImageField: (field) ->
     """

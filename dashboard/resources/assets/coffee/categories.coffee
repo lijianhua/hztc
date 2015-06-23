@@ -8,6 +8,26 @@ class AdCategory extends CommonDataTableObject
     @actionUrl = "/ad-categories/#{@selectedRowData().id}"
     super
 
+  editSelectedRow: (fields) ->
+    @actionUrl = "/ad-categories/#{@selectedRowData().id}"
+    super fields
+
+  ###
+  # 获取选中分类的父id
+  ###
+  selectedRowParentId: ->
+    parent = @selectedRowData().parent
+    if parent
+      return parent.id
+    else
+      return undefined
+
+  ###
+  # 获取所有顶级分类
+  ###
+  roots: ->
+    return []
+
 $ ->
   toggleButtonStateOnSelect = (nButton, oConfig, nRow) ->
     tableTool = TableTools.fnGetInstance('adCategoriesTable')
@@ -49,7 +69,20 @@ $ ->
         fnInit: CommonDataTableObject.initButtonToolTip
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
-          alert 'hello'
+          adCategory = new AdCategory 'adCategoriesTable'
+          if adCategory.isSelectedOne()
+            adCategory.editSelectedRow([
+              name : 'parent_id'
+              label: '上级分类'
+              value: adCategory.selectedRowParentId()
+              type : 'select'
+              options: adCategory.roots()
+            ,
+              name : 'name'
+              label: '名称'
+              value: adCategory.selectedRowData().name
+              type : 'text'
+            ])
       ,
         sButtonClass: "btn btn-flat btn-default disabled"
         sExtends: "text"
