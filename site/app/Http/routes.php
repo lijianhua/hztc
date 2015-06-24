@@ -14,6 +14,10 @@
 Route::get('/', 'HomeController@index');
 Route::get('/list', 'ListController@index');
 Route::get('/search', 'SearchController@index');
+Route::get('/cart', 'CartController@index');
+Route::get('/pay', 'CartController@pay');
+Route::get('/settlement', 'CartController@settlement');
+
 
 Route::controllers([
   'auth' => 'Auth\AuthController',
