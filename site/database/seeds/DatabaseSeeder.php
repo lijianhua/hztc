@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder {
   {
     Model::unguard();
 
-    $this->call('NavigationsTableSeeder');
+    $this->call('NavigatorTableSeeder');
     $this->command->info('初始化导航表数据完成');
   }
 
