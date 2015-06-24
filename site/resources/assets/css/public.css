@@ -818,6 +818,39 @@ header{
 /*footer*/
 
 
+/*个人中心*/
+
+.personal{
+    margin-top: 10px;
+}
+.personal-left{
+    float: left;
+    width: 295px;
+}
+.personal .personal-left .personal-left-title{
+    background: url("../images/personal/personal.png");
+    width: 295px;
+    height: 43px;
+    margin-bottom: 10px;
+}
+.personal .personal-left .personal-left-item a{
+    display: inline-block;
+    padding: 5px 0px 5px 67px;
+    font-size: 18px;
+    font-weight: 400;
+    width: 295px;
+}
+.personal .personal-left .personal-left-item a:hover{
+    background-color: #fafafa;
+}
+.personal .personal-left .personal-left-item a.active{
+    color: #7bccff;
+    background-color: #fafafa;
+}
+
+/*个人中心*/
+
+
 
 
 

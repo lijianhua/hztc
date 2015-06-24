@@ -66,22 +66,3 @@ function Itempage(tag){
     $(".banner-mark .banner-mark-item").eq(tag).addClass('active');
     $(".banner-mark .banner-mark-item").eq(tag).siblings().removeClass('active');
 }
-
-//¼ìË÷ajax
-function SearchIndex(){
-  var city = $('#city').text();
-  var type = $('#type').text();
-  var society = $('#society').text();
-  var sprice  = $('#start_price').val();
-  var eprice  = $('#end_price').val();
-  $.ajax({
-    type: 'POST',
-    url: Search/,
-    data: [
-      'city': city, 
-      'type': type, 
-      'society': society, 
-      'start_price': sprice, 
-      'end_price': eprice ],
-  });
-}
