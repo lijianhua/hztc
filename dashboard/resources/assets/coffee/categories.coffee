@@ -1,6 +1,4 @@
-$ = jQuery
-
-class AdCategory extends CommonDataTableObject
+class @AdCategory extends CommonDataTableObject
   constructor: (@tableId) ->
     super @tableId
 
@@ -26,7 +24,23 @@ class AdCategory extends CommonDataTableObject
   # 获取所有顶级分类
   ###
   roots: ->
-    return []
+    @__roots ||= []
+    return @__roots if @__roots.length > 0
+
+    @actionUrl = '/ad-categories/roots'
+    @method    = 'GET'
+
+    @ajax (result) ->
+      for category in result
+        @__roots.push
+          label : category.name
+          value : category.id
+
+    @actionUrl = @method = undefined
+
+    return @__roots
+
+$ = jQuery
 
 $ ->
   toggleButtonStateOnSelect = (nButton, oConfig, nRow) ->
@@ -72,16 +86,25 @@ $ ->
           adCategory = new AdCategory 'adCategoriesTable'
           if adCategory.isSelectedOne()
             adCategory.editSelectedRow([
-              name : 'parent_id'
-              label: '上级分类'
-              value: adCategory.selectedRowParentId()
-              type : 'select'
-              options: adCategory.roots()
+              name    : 'parent_id'
+              label   : '上级分类'
+              value   : adCategory.selectedRowParentId()
+              type    : 'select'
+              options : (->
+                options = adCategory.roots()
+                options.unshift
+                  label : '未指定'
+                  value : null
+
+                return options
+              )()
+              class   : 'form-control'
             ,
-              name : 'name'
-              label: '名称'
-              value: adCategory.selectedRowData().name
-              type : 'text'
+              name    : 'name'
+              label   : '名称'
+              value   : adCategory.selectedRowData().name
+              type    : 'text'
+              class   : 'form-control'
             ])
       ,
         sButtonClass: "btn btn-flat btn-default disabled"

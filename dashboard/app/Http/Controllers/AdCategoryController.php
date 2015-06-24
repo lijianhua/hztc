@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\AdCategory;
+use App\Reponsitories\AdCategoryReponsitory;
 
 class AdCategoryController extends Controller
 {
@@ -80,9 +81,27 @@ class AdCategoryController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request, $id)
   {
-    //
+    $category = AdCategory::with('parent')->find($id);
+    $category->update($request->only(['name']));
+
+    // 更改父类
+    $parentId = $request->get('parent_id');
+
+    if ($parentId != $category->parent_id) {
+      if (is_null($parentId)) {
+        $category->makeRoot();
+      } else {
+        $parent = AdCategory::find($parentId);
+        $category->makeChildOf($parent);
+      }
+    }
+
+    $repons = new AdCategoryReponsitory($category);
+    $data   = $repons->convertToDatatableArrayWithRowId('id');
+
+    return $this->okResponse("更新成功", $data);
   }
 
   /**
@@ -97,9 +116,20 @@ class AdCategoryController extends Controller
 
     if ($category->isLeaf()) {
       $category->delete();
-      return response()->json(['state' => 'OK', 'message' => '删除成功。']);
+      return $this->okResponse("删除成功");
     }
 
-    return response()->json(['state' => 'Fail', 'message' => '该分类下面还有其他子分类，无法删除！']);
+    return $this->failResponse("该分类下还有其他子分类，无法删除！");
+  }
+
+  /**
+   * 获取所有的顶级分类
+   *
+   * @return response
+   **/
+  public function roots()
+  {
+    $categories = AdCategory::roots()->get();
+    return response()->json($categories->toArray());
   }
 }

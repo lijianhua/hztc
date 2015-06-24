@@ -187,7 +187,18 @@ class @CommonDataTableObject
   select: (attributes) ->
     # 选项
     options = attributes.options
+    value   = attributes.value
     delete attributes.options
+    delete attributes.value
+
+    # 将值的选项设置到第一个，解决设置值的问题
+    oldFirst = options[0]
+    for option in options
+      if option.value == value
+        index = options.indexOf option
+        options[0] = option
+        options[index] = oldFirst
+        break
 
     select = "<select "
     # Properties
@@ -202,12 +213,7 @@ class @CommonDataTableObject
     select
 
   option: (attributes) ->
-    option = "<option "
-    for key, value of attributes
-      option += " #{key}='#{value}' "
-    option += "/>"
-
-    option
+    "<option value='#{attributes.value}'>#{attributes.label}</option>"
 
   formGroupSelectField: (field) ->
     """
