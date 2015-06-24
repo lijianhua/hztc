@@ -2,9 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 
-class ListController extends Controller {
+class UserController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -13,6 +14,7 @@ class ListController extends Controller {
 	 */
 	public function index()
 	{
+		//
 	}
 
 	/**
