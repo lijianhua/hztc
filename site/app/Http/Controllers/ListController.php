@@ -27,7 +27,7 @@ class ListController extends Controller {
     Session::put('current_navigator', $nav);
     $navigators = Navigator::all()->sortBy('sort');
     $slides     = Slide::all()->where('belongs_page', $nav);
-    return view('home')->with(compact('navigators', 'slides'));
+    return view('list')->with(compact('navigators', 'slides'));
   }
 
 }
