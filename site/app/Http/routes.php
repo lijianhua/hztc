@@ -12,6 +12,7 @@
  */
 
 Route::get('/', 'HomeController@index');
+Route::get('/list', 'ListController@index');
 Route::get('/search', 'SearchController@index');
 
 Route::controllers([
