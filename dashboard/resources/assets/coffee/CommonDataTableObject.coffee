@@ -39,10 +39,10 @@ class @CommonDataTableObject
     @tableTool.fnGetSelected()[0]
 
   redrawSelectedRow: (rowData) ->
-    @api().row(@selectedRow()).data(rowData).draw()
+    @api().row(@selectedRow()).data(rowData)
 
   newRow: (rowData) ->
-    row = @api().row.add(rowData).draw().node()
+    row = @api().row.add(rowData).node()
     $(row).addClass('success')
     setTimeout (row) ->
       $(row).removeClass('success')

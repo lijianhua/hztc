@@ -6,11 +6,14 @@ class AdCategoryReponsitoryTest extends TestCase
   public function testConvertWithRowId()
   {
     $category = factory('App\Models\AdCategory')->create();
-    $repons   = new AdCategoryReponsitory($category);
-    $expected = $category->toArray();
-    $expected['DT_RowId'] = $category->id;
+    $root     = factory('App\Models\AdCategory')->create();
+    $category->makeChildOf($root);
 
-    $this->assertEquals($repons->convertToDatatableArrayWithRowId('id'), $expected);
+    $repons   = new AdCategoryReponsitory($category);
+    $data     = $repons->convertToDatatableArrayWithRowId('id');
+
+    $this->assertEquals($category->id, $data['DT_RowId']);
+    $this->assertEquals($category->parent_id, $data['parent']['id']);
   }
 }
 
