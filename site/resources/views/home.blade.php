@@ -71,17 +71,19 @@
                 <div class="banner">
                     <div class="carousel slide">
                         <div class="carousel-inner nav-banner">
-                            <div class="page active item"><a href="#"><img src="images/index/1.jpg"></a></div>
-                            <div class="page item"><a href="#"><img src="images/index/2.jpg"></a> </div>
-                            <div class="page item"><a href="#"><img src="images/index/1.jpg"></a> </div>
-                            <div class="page item"><a href="#"><img src="images/index/2.jpg"></a> </div>
+                          @foreach ($slides->slideItems as $index => $slide)
+                            <div class="page item {{ $index==0?'active':''}}">
+                              <a href="#"><img src="{{ $slide->picture}}"></a>
+                            </div>
+                          @endforeach
                         </div>
                     </div>
                     <div class="banner-mark">
-                        <div class="banner-mark-item active"><a href="javascript:switchPage(0)"></a> </div>
-                        <div class="banner-mark-item"><a href="javascript:switchPage(1)"></a> </div>
-                        <div class="banner-mark-item"><a href="javascript:switchPage(2)"></a> </div>
-                        <div class="banner-mark-item"><a href="javascript:switchPage(3)"></a> </div>
+                      @foreach ($slides->slideItems as $index => $slide)
+                        <div class="banner-mark-item {{ $index==0?'active':''}}">
+                          <a href="javascript:switchPage({{ $index }})"></a>
+                        </div>
+                      @endforeach
                     </div>
                     <div class="banner-project clearfix">
                         <span class="banner-project-item active"><i class="fa fa-bullhorn"></i></span>

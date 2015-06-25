@@ -26,7 +26,7 @@ class HomeController extends Controller {
     $nav = '首页';
     Session::put('current_navigator', $nav);
     $navigators = Navigator::all()->sortBy('sort');
-    $slides     = Slide::all()->where('belongs_page', $nav);
+    $slides     = Slide::where('belongs_page', '=', $nav)->firstOrFail();
     return view('home')->with(compact('navigators', 'slides'));
   }
 
