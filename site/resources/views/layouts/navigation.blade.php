@@ -7,8 +7,10 @@
             </div>
             <div class="fl nav-info">
                 <ul>
-                    @foreach ( $navigators as $navigator)
-                        <li class="nav-info-item fl active"><a href="#">{{{$navigator->name}}}</a></span></li>
+                    @foreach ( $navigators as $nav)
+                        <li class="nav-info-item fl {{ $nav->name == Session::get('current_navigator')?'active':''}}">
+                          <a href="{{ $nav->url }}">{{{$nav->name}}}</a></span>
+                        </li>
                     @endforeach
                 </ul>
             </div>

@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/list', 'ListController@index');
+Route::get('/adspaces/{name}', 'ListController@getAds');
 Route::get('/search', 'SearchController@index');
 Route::get('/cart', 'CartController@index');
 Route::get('/pay', 'CartController@pay');
