@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AdCategory;
 use App\Reponsitories\AdCategoryReponsitory;
 use App\Http\Requests\PostAdCategoryRequest;
+use App\Http\Requests\UpdateAdCategoryRequest;
 
 class AdCategoryController extends Controller
 {
@@ -93,7 +94,7 @@ class AdCategoryController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update(Request $request, $id)
+  public function update(UpdateAdCategoryRequest $request, $id)
   {
     $category = AdCategory::with('parent')->find($id);
     $category->update($request->only(['name']));
