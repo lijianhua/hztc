@@ -1,6 +1,6 @@
 <?php namespace App\Services;
-
-use App\User;
+use Mail;
+use App\Models\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
@@ -29,11 +29,22 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-		return User::create([
-			'name' => $data['name'],
-			'email' => $data['email'],
-			'password' => bcrypt($data['password']),
+    $active_token = bcrypt($data['email']);
+    $name = $data['name'];
+    $email = $data['email'];
+    $pwd = bcrypt($data['password']);
+	  $user =  User::create([
+			'name' => $name,
+			'email' => $email,
+			'password' => $pwd 
 		]);
+    return $user;
+//    $uid = $user->id;
+//    $data = ['name'=>$name, 'email'=>$email, 'pwd'=>$pwd, 'active_token'=>$active_token, 'uid'=>$uid];
+//    Mail::send('emails.active',  $data, function($message) use($data)
+//    {
+//        $message->to($data['email'], $data['name'])->subject('欢迎注册我们的网站，请激活您的账号！');
+//   });
 	}
 
 }

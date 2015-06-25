@@ -20,7 +20,13 @@ Route::get('/pay', 'CartController@pay');
 Route::get('/settlement', 'CartController@settlement');
 
 
-Route::controllers([
-  'auth' => 'Auth\AuthController',
-  'password' => 'Auth\PasswordController',
-]);
+//登录
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+//注册
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::get('auth/email/{id}','MailController@show');
+//激活
+Route::get('activing','MailController@index');
