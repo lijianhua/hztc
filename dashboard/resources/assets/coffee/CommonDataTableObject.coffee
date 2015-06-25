@@ -39,10 +39,10 @@ class @CommonDataTableObject
     @tableTool.fnGetSelected()[0]
 
   redrawSelectedRow: (rowData) ->
-    @api().row(@selectedRow()).data(rowData)
+    @api().row(@selectedRow()).data(rowData).draw false
 
   newRow: (rowData) ->
-    row = @api().row.add(rowData).node()
+    row = @api().row.add(rowData).node().draw false
     $(row).addClass('success')
     setTimeout (row) ->
       $(row).removeClass('success')
@@ -75,7 +75,7 @@ class @CommonDataTableObject
     @method   = 'DELETE'
     throw 'Require to set actionUrl in subclass' unless @actionUrl
     @ajax (response) ->
-      @api().row(@selectedRow()).remove().draw()
+      @api().row(@selectedRow()).remove().draw false
       if response.state == 'OK'
         type = 'success'
       else
