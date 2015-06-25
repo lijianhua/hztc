@@ -7,7 +7,8 @@ class AdCategoryReponsitoryTest extends TestCase
   {
     $category = factory('App\Models\AdCategory')->create();
     $root     = factory('App\Models\AdCategory')->create();
-    $category->makeChildOf($root);
+    $category->parent_id = $root->id;
+    $category->save();
 
     $repons   = new AdCategoryReponsitory($category);
     $data     = $repons->convertToDatatableArrayWithRowId('id');

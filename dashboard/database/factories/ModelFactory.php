@@ -43,6 +43,20 @@ $factory->define(App\Models\SlideItem::class, function ($faker) {
   ];
 });
 
+$factory->define(App\Models\Enterprise::class, function ($faker) {
+  return [
+    'name'       => $faker->company,
+    'trade'      => $faker->catchPhrase,
+    'is_verify'  => true,
+    'is_audited' => true
+  ];
+});
+
+$factory->defineAs(App\Models\Enterprise::class, 'root', function ($faker) use ($factory) {
+  $enterprise = $factory->raw('App\Models\Enterprise');
+  return array_merge($enterprise, ['name' => '安家传媒', 'trade' => '广告传媒']);
+});
+
 $factory->define(App\Models\User::class, function ($faker) {
   return [
     'name' => $faker->userName,
@@ -71,6 +85,6 @@ $factory->defineAs(App\Models\User::class, 'root', function ($faker) use ($facto
 
 $factory->define(App\Models\AdCategory::class, function ($faker) {
   return [
-    'name' => $faker->bs()
+    'name' => $faker->bs
   ];
 });

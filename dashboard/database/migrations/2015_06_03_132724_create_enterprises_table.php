@@ -24,9 +24,9 @@ class CreateEnterprisesTable extends Migration {
       $table->string('phone', 40)->nullable();
       $table->string('logo_image')->nullable();
       // 是否通过审核
-      $table->boolean('is_audited');
+      $table->boolean('is_audited')->default(false);
       // 是否通过认证
-      $table->boolean('is_verify');
+      $table->boolean('is_verify')->default(false);
       $table->timestamps();
     });
   }

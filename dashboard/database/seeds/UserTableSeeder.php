@@ -12,6 +12,7 @@ class UserTableSeeder extends Seeder
    */
   public function run()
   {
-    factory('App\Models\User', 'root')->create();
+    $e = factory('App\Models\Enterprise', 'root')->create();
+    $e->users()->save(factory('App\Models\User', 'root')->make());
   }
 }

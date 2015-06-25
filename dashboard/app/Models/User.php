@@ -37,4 +37,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     'is_verify' => 'boolean'
   ];
 
+  public function enterprise()
+  {
+    return $this->belongsTo('App\Models\Enterprise');
+  }
+
 }
