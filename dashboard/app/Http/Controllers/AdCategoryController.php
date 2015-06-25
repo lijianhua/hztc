@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\AdCategory;
 use App\Reponsitories\AdCategoryReponsitory;
+use App\Http\Requests\PostAdCategoryRequest;
 
 class AdCategoryController extends Controller
 {
@@ -48,9 +49,20 @@ class AdCategoryController extends Controller
    *
    * @return Response
    */
-  public function store()
+  public function store(PostAdCategoryRequest $request)
   {
-    //
+    $category = AdCategory::create($request->only(['name']));
+
+    $parentId = $request->get('parent_id');
+    if (!is_null($parentId) && strtolower($parentId) != 'null') {
+      $parent = AdCategory::find($parentId);
+      $category->makeChildOf($parent);
+    }
+
+    $repons = new AdCategoryReponsitory($category);
+    $data   = $repons->convertToDatatableArrayWithRowId('id');
+
+    return $this->okResponse("创建成功", $data);
   }
 
   /**
@@ -90,7 +102,7 @@ class AdCategoryController extends Controller
     $parentId = $request->get('parent_id');
 
     if ($parentId != $category->parent_id) {
-      if (is_null($parentId)) {
+      if (is_null($parentId) || strtolower($parentId) == 'null') {
         $category->makeRoot();
       } else {
         $parent = AdCategory::find($parentId);

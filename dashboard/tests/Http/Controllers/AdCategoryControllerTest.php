@@ -1,4 +1,5 @@
 <?php
+use App\Models\AdCategory;
 
 class AdCategoryControllerTest extends TestCase
 {
@@ -42,6 +43,31 @@ class AdCategoryControllerTest extends TestCase
     ]);
 
     $this->assertResponseOk();
+  }
+
+  public function testCreate()
+  {
+    $oldCount = AdCategory::count();
+
+    $this->post('ad-categories', [
+      '_token' => csrf_token(),
+      'name'      => '星空'
+    ]);
+
+    $this->assertResponseOk();
+    $this->assertEquals(AdCategory::count() - $oldCount, 1);
+  }
+
+  public function testDumplicateCreate()
+  {
+    $category = factory('App\Models\AdCategory')->create();
+
+    $this->post('ad-categories', [
+      '_token' => csrf_token(),
+      'name'      => $category->name
+    ]);
+
+    $this->assertResponseStatus(302);
   }
 }
 

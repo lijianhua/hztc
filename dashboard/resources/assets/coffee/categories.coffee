@@ -10,6 +10,11 @@ class @AdCategory extends CommonDataTableObject
     @actionUrl = "/ad-categories/#{@selectedRowData().id}"
     super fields
 
+  new: (fields) ->
+    @actionUrl = "/ad-categories"
+    super fields
+
+
   ###
   # 获取选中分类的父id
   ###
@@ -39,6 +44,14 @@ class @AdCategory extends CommonDataTableObject
     @actionUrl = @method = undefined
 
     return @__roots
+
+  options: ->
+    options = @roots()
+    options.unshift
+      label : '未指定'
+      value : null
+
+    return options
 
 $ = jQuery
 
@@ -74,7 +87,21 @@ $ ->
         sToolTip: "新建"
         fnInit: CommonDataTableObject.initButtonToolTip
         fnClick: ->
-          alert 'hello'
+          adCategory = new AdCategory 'adCategoriesTable'
+          adCategory.new([
+            name    : 'parent_id'
+            label   : '上级分类'
+            value   : null
+            type    : 'select'
+            options : adCategory.options()
+            class   : 'form-control'
+          ,
+            name    : 'name'
+            label   : '名称'
+            value   : ''
+            type    : 'text'
+            class   : 'form-control'
+          ])
       ,
         sButtonClass: "btn btn-flat btn-default disabled"
         sExtends: "text"
@@ -90,14 +117,7 @@ $ ->
               label   : '上级分类'
               value   : adCategory.selectedRowParentId()
               type    : 'select'
-              options : (->
-                options = adCategory.roots()
-                options.unshift
-                  label : '未指定'
-                  value : null
-
-                return options
-              )()
+              options : adCategory.options()
               class   : 'form-control'
             ,
               name    : 'name'

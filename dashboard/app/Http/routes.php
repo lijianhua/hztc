@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::delete('ad-categories/{id}', 'AdCategoryController@destroy');
   Route::get('ad-categories/roots', 'AdCategoryController@roots');
   Route::put('ad-categories/{id}', 'AdCategoryController@update');
+  Route::post('ad-categories', 'AdCategoryController@store');
 });
 
 // 用户登录
