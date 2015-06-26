@@ -13,7 +13,7 @@
         "baum/baum": "~1.1",
         "yajra/laravel-datatables-oracle": "~5.0",
         "league/fractal": "0.12.*",
-        "codesleeve/laravel-stapler": "1.0.*"
+        "codesleeve/laravel-stapler": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

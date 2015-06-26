@@ -139,6 +139,7 @@ return [
         Illuminate\Html\HtmlServiceProvider::class,
         Baum\Providers\BaumServiceProvider::class,
         yajra\Datatables\DatatablesServiceProvider::class,
+        Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
 
         /*
          * Application Service Providers...

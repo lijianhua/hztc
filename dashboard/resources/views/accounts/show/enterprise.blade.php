@@ -3,7 +3,13 @@
     <dt>名称</dt>
     <dd>{{ $enterprise->name }}</dd>
     <dt>LOGO</dt>
-    <dd>TODO</dd>
+    <dd>
+    @if ($enterprise->avatar_file_name)
+      <img src="{{ $enterprise->avatar->url('medium') }}" alt="">
+    @else
+      未上传
+    @endif
+    </dd>
     <dt>行业</dt>
     <dd>{{ $enterprise->trade }}</dd>
     <dt>移动电话</dt>

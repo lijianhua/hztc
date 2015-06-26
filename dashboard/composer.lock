@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3a0d208dae3c95e5ac640ba90d8ea238",
+    "hash": "cc6a4d27052ba3ddb9dcbe821194d357",
     "packages": [
         {
             "name": "baum/baum",
@@ -123,16 +123,16 @@
         },
         {
             "name": "codesleeve/laravel-stapler",
-            "version": "v1.0.03",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CodeSleeve/laravel-stapler.git",
-                "reference": "85f8a95e283564cd8392431cce4d43762cd24df0"
+                "reference": "181fbc5321f389b828407833099db614ed711a09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CodeSleeve/laravel-stapler/zipball/85f8a95e283564cd8392431cce4d43762cd24df0",
-                "reference": "85f8a95e283564cd8392431cce4d43762cd24df0",
+                "url": "https://api.github.com/repos/CodeSleeve/laravel-stapler/zipball/181fbc5321f389b828407833099db614ed711a09",
+                "reference": "181fbc5321f389b828407833099db614ed711a09",
                 "shasum": ""
             },
             "require": {
@@ -169,7 +169,7 @@
                 "stapler",
                 "upload"
             ],
-            "time": "2015-02-04 07:33:44"
+            "time": "2015-04-21 16:56:00"
         },
         {
             "name": "codesleeve/stapler",
@@ -4183,7 +4183,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "codesleeve/laravel-stapler": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

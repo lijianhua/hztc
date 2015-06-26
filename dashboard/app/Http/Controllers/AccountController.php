@@ -10,6 +10,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\AccountResetPasswordRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UpdateEnterpriseRequest;
 
 class AccountController extends Controller
 {
@@ -77,9 +79,32 @@ class AccountController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(UpdateUserRequest $request, $id)
   {
-    //
+    $user = User::find($id);
+    $user->name = $request->get('name');
+    if ($request->hasFile('avatar')) {
+      $user->avatar = $request->file('avatar');
+    }
+    $user->save();
+
+    return redirect()->back()->with('status', '更新成功');
+  }
+
+  public function updateEnterprise(UpdateEnterpriseRequest $request, $id)
+  {
+    $enterprise = User::find($id)->enterprise;
+
+    $enterprise->telphone = $request->get('telphone');
+    $enterprise->phone    = $request->get('phone');
+    $enterprise->weixin   = $request->get('weixin');
+    $enterprise->qq       = $request->get('qq');
+    if ($request->hasFile('avatar')) {
+      $enterprise->avatar = $request->file('avatar');
+    }
+    $enterprise->save();
+
+    return redirect()->back()->with('status', '更新成功');
   }
 
   /**

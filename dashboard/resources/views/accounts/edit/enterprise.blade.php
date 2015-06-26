@@ -3,8 +3,7 @@
     @include ('shared.status')
     @include ('shared.errors')
 
-    <form action="#" role="form">
-    {!! Form::open(['url' => '#', 'method' => 'PUT', 'files' => true]) !!}
+    {!! Form::open(['url' => url("accounts/{$user->id}/enterprise"), 'method' => 'PUT', 'files' => true]) !!}
       <input type="hidden" name="id" value="{{ $enterprise->id }}">
 
       <div class="form-group">
@@ -19,7 +18,7 @@
 
       <div class="form-group">
         <label>LOGO</label>
-        {!! Form::file('picture', ['class' => 'form-control']) !!}
+        {!! Form::file('avatar', ['class' => 'form-control']) !!}
       </div>
 
       <div class="form-group">

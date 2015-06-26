@@ -46,8 +46,12 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
     Route::get('accounts/{id}', 'AccountController@show');
     Route::get('accounts/{id}/edit', 'AccountController@edit');
     Route::put('accounts/{id}/reset-password', 'AccountController@postResetPassword');
+    Route::put('accounts/{id}/edit', 'AccountController@update');
+    Route::put('accounts/{id}/enterprise', 'AccountController@updateEnterprise');
 
   });
+
+  Route::get('admins', 'AdminController@index');
 });
 
 // 用户登录

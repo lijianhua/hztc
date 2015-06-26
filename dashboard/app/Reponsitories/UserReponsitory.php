@@ -27,10 +27,10 @@ class UserReponsitory
    **/
   public function userImageUrl(User $user)
   {
-    if (empty($user->picture)) {
+    if (empty($user->avatar_file_name)) {
       return '/images/' . $this->defaultImage;
     } else {
-      return $this->imageRepons->url($user->picture);
+      return $user->avatar->url('thumb');
     }
   }
 }
