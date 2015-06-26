@@ -7,7 +7,7 @@ class AdCategoryControllerTest extends TestCase
   {
     parent::setUp();
 
-    $user = factory('App\Models\User', 'root')->create();
+    $user = $this->createRoot();
     $this->actingAs($user);
   }
 

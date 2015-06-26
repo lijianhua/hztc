@@ -47,7 +47,7 @@
             <li class="user-header">
               <img src="{{ $userRepons->userImageUrl(Auth::user()) }}" class="img-circle" alt="{{ Auth::user()->name }}"/>
               <p>
-                {{ Auth::user()->name }} 
+                {{ Auth::user()->name }}
                 <small>{{ Auth::user()->enterprise->name }}</small>
                 <small>自{{ date('Y年, m月', strtotime(Auth::user()->created_at)) }}加入</small>
               </p>
@@ -55,7 +55,7 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">账户</a>
+                <a href="{{ url('accounts/' . Auth::user()->id) }}" class="btn btn-default btn-flat">账户</a>
               </div>
               <div class="pull-right">
                 <a href="/auth/logout" class="btn btn-default btn-flat">注销</a>

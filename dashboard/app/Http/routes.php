@@ -40,6 +40,9 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::get('ad-categories/roots', 'AdCategoryController@roots');
   Route::put('ad-categories/{id}', 'AdCategoryController@update');
   Route::post('ad-categories', 'AdCategoryController@store');
+
+  // 用户账户管理
+  Route::get('accounts/{id}', 'AccountController@show');
 });
 
 // 用户登录

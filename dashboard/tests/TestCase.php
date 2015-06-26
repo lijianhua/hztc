@@ -41,4 +41,13 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     Artisan::call('migrate:reset');
     parent::tearDown();
   }
+
+  public function createRoot()
+  {
+    $e = factory('App\Models\Enterprise', 'root')->create();
+    $u = factory('App\Models\User', 'root')->create();
+    $u->enterprise_id = $e->id;
+    $u->save();
+    return $u;
+  }
 }
