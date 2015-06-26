@@ -41,8 +41,13 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::put('ad-categories/{id}', 'AdCategoryController@update');
   Route::post('ad-categories', 'AdCategoryController@store');
 
-  // 用户账户管理
-  Route::get('accounts/{id}', 'AccountController@show');
+  Route::group(['middleware' => 'verifyCurrentUser'], function () {
+    // 用户账户管理
+    Route::get('accounts/{id}', 'AccountController@show');
+    Route::get('accounts/{id}/edit', 'AccountController@edit');
+    Route::put('accounts/{id}/reset-password', 'AccountController@postResetPassword');
+
+  });
 });
 
 // 用户登录

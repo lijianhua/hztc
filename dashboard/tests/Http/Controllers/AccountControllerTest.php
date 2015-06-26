@@ -15,7 +15,14 @@ class AccountControllerTest extends TestCase
   {
     $user = Auth::user();
 
-    $this->visit('accounts' . $user->id)->see('我的账户');
+    $this->visit('accounts/' . $user->id)->see('我的账户');
+  }
+
+  public function testCurrentUser()
+  {
+    $user = factory('App\Models\User', 'admin')->create();
+
+    $this->get('accounts/' . $user->id)->see('Unauthorized');
   }
 }
 

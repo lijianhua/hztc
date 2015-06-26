@@ -1,13 +1,14 @@
 @extends ('app')
 
 @section ('title')
-我的账户
+编辑资料
 @stop
 
 @section ('breadcrumb')
   <ol class="breadcrumb">
     <li><a href="{{{ url('/') }}}"><i class="fa fa-dashboard"></i>首页</a></li>
     <li><a href="{{{ url('accounts/' . $user->id) }}}"><i class="fa fa-cog"></i>我的账户</a></li>
+    <li><a href="{{{ url('accounts/' . $user->id . '/edit') }}}"><i class="fa fa-edit"></i>编辑资料</a></li>
   </ol>
 @stop
 
@@ -27,21 +28,16 @@
               <li>
                 <a href="#security" data-toggle="tab" aria-expanded="true">账户安全</a>
               </li>
-              <li class="pull-right">
-              <a href="/accounts/{{ $user->id }}/edit" title="编辑" data-toggle="tooltip" data-placement="bottom">
-                <i class="fa fa-edit fa-lg"></i>
-              </a>
-              </li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="user">
-                @include ('accounts.show.user')
+                @include ('accounts.edit.user')
               </div>
               <div class="tab-pane" id="enterprise">
-                @include ('accounts.show.enterprise')
+                @include ('accounts.edit.enterprise')
               </div>
               <div class="tab-pane" id="security">
-                @include ('accounts.show.security')
+                @include ('accounts.edit.security')
               </div>
             </div>
           </div>

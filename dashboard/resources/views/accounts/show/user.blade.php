@@ -1,5 +1,5 @@
 <dl class="dl-horizontal">
-  <dt>名称</dt>
+  <dt>姓名</dt>
   <dd>{{ $user->name }}</dd>
   <dt>邮箱</dt>
   <dd>{{ $user->email }}</dd>

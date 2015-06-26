@@ -1,5 +1,7 @@
-<form action="#" role="form">
+<form action="{{ url('/accounts/' . $user->id . '/reset-password') }}" role="form" method="POST">
   <input type="hidden" name="id" value="{{ $user->id }}">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
   <div class="form-group">
     <label>原密码</label>
     <input class="form-control" type="password" name="oldPassword">

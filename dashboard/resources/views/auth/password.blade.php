@@ -9,11 +9,7 @@
   <div class="login-logo"><a href="/"><b>布谷广告</b>LTE</a></div>
 
   <div class="login-box-body">
-    @if (session('status'))
-      <div class="alert alert-success">
-        {{ session('status') }}
-      </div>
-    @endif
+    @include ('shared.status')
     @include ('shared.errors')
 
     <p class="login-box-msg">找回您的密码</p>
