@@ -26,7 +26,6 @@ $(document).ready(function(){
                 var this_text = parseInt($(this).find(".shop-price span").text())*parseInt($(this).find('.shop-number .shop-enter input').val());
                 $(".shop-submit .shop-submit-total span").text(this_number += this_text)
             }
-
         })
     });
 })

@@ -16,16 +16,8 @@
   <![endif]-->
 </head>
 <body>
-<div id="doc1">
-    <div id="hd">
-      <article>
-        @yield ('content')
-      </article>
-    </div>
-</div>
- 
-  @include ('layouts.footer')
-
+@include ('layouts.loginheader')
+@yield ('content')
   <!-- Scripts -->
   <script src="{{ asset('/js/vendor.js') }}"></script>
   <script src="{{ asset('/js/all.js') }}"></script>
