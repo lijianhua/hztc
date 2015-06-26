@@ -1,0 +1,167 @@
+.advertisers{
+    float: left;
+    margin-left: 25px;
+    width: 880px;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+.advertisers .advertisers-tab{
+    border-bottom: 2px solid #7bccff;
+    padding: 7px 0px 7px 5px;
+}
+.advertisers .advertisers-tab a{
+    font-size: 18px;
+    margin-right: 25px;
+}
+.advertisers .advertisers-tab a.active{
+    color: #7bccff;
+}
+.advertisers-personal{
+    margin-top: 10px;
+}
+.advertisers .personal-title{
+    background-color: #ebebeb;
+    height: 42px;
+    width: 880px;
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 40px;
+}
+.advertisers .personal-title .personal-prompt-color{
+    color: #ed145b;
+    margin: 0 3px;
+}
+.advertisers .personal-title .personal-prompt-text{
+    color: #ed145b;
+    font-size: 12px;
+    margin-left: 15px;
+}
+.advertisers .advertisers-personal-info{
+    padding: 38px 0px 0px 90px;
+}
+.advertisers .advertisers-personal-info .advertisers-personal-enter{
+    line-height: 2;
+    margin-bottom: 13px;
+}
+.advertisers .advertisers-personal-info .advertisers-personal-enter input{
+    width: 270px;
+    height: 38px;
+    border: 1px solid #d7d7d7;
+    font-size: 14px;
+    padding-left: 10px;
+}
+.advertisers .advertisers-personal-info .advertisers-personal-enter input:focus{
+    border: 2px solid #ed145b;
+}
+.advertisers .advertisers-personal-info .advertisers-add{
+    background: url("../images/personal/add.png") no-repeat 0 0;
+    height: 19px;
+    width: 19px;
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.advertisers .advertisers-personal-info .advertisers-delete{
+    background: url("../images/personal/delete.png") no-repeat 0 0;
+    height: 19px;
+    width: 19px;
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.advertisers .advertisers-personal-info button{
+    background: url("../images/personal/bt.png") no-repeat 0 0;
+    width: 170px;
+    height: 41px;
+    border: 0;
+    font-size: 18px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.advertisers .advertisers-personal-info button:hover{
+    background: url("../images/personal/bthover.png") no-repeat 0 0;
+}
+
+.advertisers .advertisers-company{
+    position: relative;
+    margin: 10px 0px;
+}
+.advertisers .advertisers-company-block{
+    height: 270px;
+}
+.advertisers .advertisers-company-item{
+    width: 270px;
+    height: 200px;
+    padding: 4px;
+    border: 1px dashed #d7d7d7;
+    float: left;
+    position: relative;
+}
+.advertisers-company-bg{
+    width: 260px;
+    height: 190px;
+    background-color: #f4f4f4;
+    position: relative;
+}
+.advertisers-company-bg img{
+    width: 260px;
+    height: 190px;
+}
+.advertisers-company-upload{
+    width: 154px;
+    height: 40px;
+    background: url("../images/personal/upload.png") no-repeat 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    line-height: 2.8;
+    color: #ffffff;
+    z-index: 10;
+}
+.advertisers-company-upload .advertisers-company-upload-name{
+    margin-left: 45px;
+    position: absolute;
+    z-index: 0;
+}
+.advertisers-company-upload input{
+    width: 154px;
+    height: 40px;
+    opacity: 0;
+    -moz-opacity: 0;
+    -webkit-opacity: 0;
+    -o-opacity: 0;
+    -ms-opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+.advertisers-company-submit button{
+    background: url("../images/personal/bt2.png") no-repeat 0 0;
+    width: 170px;
+    height: 41px;
+    border: 0;
+    font-size: 18px;
+    color: #ffffff;
+}
+.advertisers-company-submit button:hover{
+    background: url("../images/personal/bt2hover.png") no-repeat 0 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
