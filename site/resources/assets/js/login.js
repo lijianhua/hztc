@@ -1,25 +1,20 @@
 $(document).ready(function () {
-    $(".login-submit button").click(function () {
-        var username = $("#username").val();
-        var password = $("#password").val();
-        var usercode = $("#usercode").val();
-        if(username == "" || username.length < 4){
-            $(".login-yes:eq(0)").show();
-            return false;
-        }else{
-            $(".login-yes:eq(0)").hide();
-        }
-        if(password == "" || password.length < 6){
-            $(".login-yes:eq(1)").show();
-            return false;
-        }else{
-            $(".login-yes:eq(1)").hide();
-        }
-        if(usercode == "" || usercode.length == 0){
-            $(".login-yes:eq(2)").show();
-            return false;
-        }else{
-            $(".login-yes:eq(3)").hide();
-        }
-    })
-})
+
+  function randomStr(length) {
+      var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", result = "";
+
+      for (var i = 0; i < 10; i ++){
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+
+      return result;
+    };
+  };
+
+  $('#captchda').click(function () {
+    this.src = '/captcha/default?' + randomStr(10);
+  });
+  $('#captcha_validate').click(function () {
+    captcha = document.getElementById('captchda');
+    captcha.src = '/captcha/default?' + randomStr(10);
+  });
+});

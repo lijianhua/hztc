@@ -40,7 +40,7 @@ class AuthController extends Controller {
 	public function postLogin(Request $request)
 	{
 		$this->validate($request, [
-			'email' => 'required|email', 'password' => 'required', 'captcha' => 'required|captcha']);
+			'email' => 'required|email', 'password' => 'required', 'captcha' => 'required|captcha'],[ 'email.required'=> '邮箱不能为空' ,'password.required' => '密码不能为空', 'captcha.captcha' => '验证码错误']);
 
 		$credentials = $request->only('email', 'password');
 

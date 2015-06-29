@@ -30,3 +30,8 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('auth/email/{id}','MailController@show');
 //激活
 Route::get('activing','MailController@index');
+
+Route::controllers([                                                                 
+    'auth' => 'Auth\AuthController',                                                   
+      'password' => 'Auth\PasswordController',                                           
+      ]); 

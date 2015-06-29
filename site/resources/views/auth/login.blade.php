@@ -33,11 +33,10 @@
                         </li>
                         <li>
                             <strong>验证码：</strong> <br/>
-                            <input type="text" id="usercode" class="login-code"
-name='captcha' >
+                            <input type="text" id="usercode" class="login-code" name='captcha' >
                             <span class="login-yes"></span>
-                            {!! Html::image(captcha_src()) !!}
-                            <span class="no-look"><a href="#">看不清</a> </span>
+                            {!! Html::image(captcha_src(), '验证码',['id' => 'captchda']) !!}
+                            <span class="no-look"><a id='captcha_validate'>看不清</a> </span>
                         </li>
                         <li class="login-submit">
 								            <button type="submit" class="btn btn-primary">登录</button>
@@ -55,4 +54,9 @@ name='captcha' >
         </div>
     </div>
 </div>
+<style>
+  #captchda,#captcha_validate{
+  cursor:pointer; 
+}
+</style>
 @endsection
