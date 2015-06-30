@@ -9,4 +9,8 @@ class Order extends Model {
 
   protected $dates = ['deleted_at'];
 
+  public function adSpaces()
+  {
+    return $this->belongsTo('App\Models\AdSpace', 'ad_space_id', 'id');
+  }
 }
