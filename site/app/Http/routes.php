@@ -35,3 +35,5 @@ Route::controllers([
     'auth' => 'Auth\AuthController',                                                   
       'password' => 'Auth\PasswordController',                                           
       ]); 
+//用户
+Route::get('user/{email}','UserController@showemail');

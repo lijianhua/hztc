@@ -11,14 +11,16 @@
                 <div class="login-title">
                     <img src="../images/login/logo.jpg">
                 </div>
-                  @if (count($errors) > 0)
-                      <ul>
-                        @foreach ($errors->all() as $error)
-                          {{ $error }}
-                        @endforeach
-                      </ul>
-                  @endif
-					        <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+                  
+                      <div class='login-error' style='position:absolute;font-size:12px;margin-top:22px;margin-left:90px;color:red'>
+                        @if (count($errors) > 0)
+                            @foreach ($errors->all() as $error)
+                              {{ $error }}
+                            @endforeach
+                        @endif
+                      </div>
+                  
+					        <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}" id='login-form'>
 						        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <ul class="login-right-info">
                         <li> <strong>账户名：</strong><br/>
@@ -39,7 +41,7 @@
                             <span class="no-look"><a id='captcha_validate'>看不清</a> </span>
                         </li>
                         <li class="login-submit">
-								            <button type="submit" class="btn btn-primary">登录</button>
+								            <button type="button" class="btn btn-primary">登录</button>
                         </li>
                     </ul>
                   </form>

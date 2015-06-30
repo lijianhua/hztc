@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
@@ -16,7 +16,18 @@ class UserController extends Controller {
 	{
 		//
 	}
-
+  public function showemail($email)
+  {
+      $user = User::where('email','=',$email)->first();
+      if($user)
+      {
+        return 1;
+      }
+      else
+      {
+        return 0;
+      }
+  }
 	/**
 	 * Show the form for creating a new resource.
 	 *

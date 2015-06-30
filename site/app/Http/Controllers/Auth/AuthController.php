@@ -47,8 +47,10 @@ class AuthController extends Controller {
       'captcha' => 'required|captcha'],
       [
       'email.required'=> '邮箱不能为空', 
+      'email.email' => '邮箱格式错误',
       'password.required' => '密码不能为空', 
-      'captcha.captcha' => '验证码错误'
+      'captcha.captcha' => '验证码错误',
+      'captcha.required' => '验证码不能为空'
       ]);
 
 		$credentials = $request->only('email', 'password');
@@ -61,7 +63,8 @@ class AuthController extends Controller {
 		return redirect($this->loginPath())
 					->withInput($request->only('email', 'remember'))
 					->withErrors([
-						'email' => $this->getFailedLoginMessage(),
+					//	'email' => $this->getFailedLoginMessage(),
+          '密码错误',
 					]);
 	}
 	public function postRegister(Request $request)
