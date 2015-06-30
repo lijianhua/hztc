@@ -16,11 +16,22 @@ class MailController extends Controller {
 	public function index()
 	{
 		//
-    $email = $_GET['active_token'];
-    $affectedrows = User::where('email','=', $email)->update(['confirmed' => 1]);
-    $user = User::where('email','=', $email)->first();
-    Auth::login($user);
-    return Redirect::to('/');
+    $active_token = $_GET['active_token'];
+    $user = User::where('active_token','=', $active_token)->first();
+    $user_time = strtotime($user->updated_at);
+    $now = time();
+    if(3600 < ($now-$user_time) )
+    {
+       $re_active_token = hash_hmac('sha256', str_random(40),'re_activing');
+       $affectedrows = User::where('active_token','=', $active_token)->update(['active_token' => $re_active_token]);
+       return Redirect::to('auth/email/'.$user->id);
+    }
+    else
+    {
+      $affectedrows = User::where('active_token','=', $active_token)->update(['confirmed' => 1]);
+      Auth::login($user);
+      return Redirect::to('/');
+    }
 	}
 
 	/**
@@ -52,13 +63,20 @@ class MailController extends Controller {
 	public function show($id)
 	{
     $user = User::find($id);
-    $data = ['email' => $user->email, 'name' => $user->name];
-
-    Mail::send('emails.active',  $data, function($message) use($data)
+    $data = ['email' => $user->email, 'name' => $user->name, 'active_token' => $user->active_token];
+    if($user->confirmed == 1)
     {
-        $message->to($data['email'], $data['name'])->subject('欢迎注册我们的网站，请激活您的账号！');
-   });
-   return view('emails/email', compact('data'));
+      Auth::login($user);
+      return Redirect::to('/');
+    }
+    else
+    {
+      Mail::queue('emails.active',  $data, function($message) use($data)
+      {
+          $message->to($data['email'], $data['name'])->subject('欢迎注册我们的网站，请激活您的账号！');
+      });
+      return view('emails/email', compact('data'));
+    }
 	}
 
 	/**

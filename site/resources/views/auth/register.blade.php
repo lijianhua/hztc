@@ -26,7 +26,7 @@
               <tr>
                   <td class="sign-block-left"><strong>电子邮箱：</strong></td>
                   <td>
-                      <input type="email" class="sign-enter" name="email" value="{{ old('email') }}">
+                      <input type="email" id='email' class="sign-enter" name="email" value="{{ old('email') }}">
                       <span class="sign-warning">请填写正确的邮箱</span><br/>
                       <span class="sign-prompt">请使用常用邮箱作为注册帐号，用于登录、找回密码等重要操作。</span>
                   </td>
@@ -46,7 +46,7 @@
               <tr>
                   <td class="sign-block-left"><strong>确认登录密码：</strong></td>
                   <td>
-                      <input type="password" class="sign-enter" name="password_confirmation">
+                      <input type="password" class="sign-enter" name="password_confirmation" id='re_password'>
                       <span class="sign-warning">密码不一致</span><br/>
                   </td>
               </tr>

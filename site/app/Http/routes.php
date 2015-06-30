@@ -33,7 +33,7 @@ Route::get('activing','MailController@index');
 
 Route::controllers([                                                                 
     'auth' => 'Auth\AuthController',                                                   
-      'password' => 'Auth\PasswordController',                                           
+    'password' => 'Auth\PasswordController',                                           
       ]); 
 //用户
 Route::get('user/{email}','UserController@showemail');

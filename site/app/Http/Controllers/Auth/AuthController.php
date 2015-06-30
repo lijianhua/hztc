@@ -85,10 +85,12 @@ class AuthController extends Controller {
     $name = $request->get('name');
     $email = $request->get('email');
     $pwd = bcrypt($request->get('password'));
+    $active_token = hash_hmac('sha256', str_random(40),'activing');
 	  $user =  User::create([
 			'name' => $name,
 			'email' => $email,
-			'password' => $pwd 
+      'password' => $pwd,
+      'active_token' => $active_token
 		]);
     return Redirect::to('auth/email/'.$user->id);
 	}

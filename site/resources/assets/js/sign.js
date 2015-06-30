@@ -31,26 +31,44 @@ $(document).ready(function () {
             $(this).parents('td').find(".sign-warning").hide();
         }
     });
-    $('#username').blur(function(){
-      var text = $(this).val();
-      if(text.length != 0)
-      {
-        var re = /^[\u4e00-\u9fa5a-zA-Z1-9_]+$/gi; 
-        if(re.test(text))
-          {
-             if(text.length < 6) 
-                {
-                    $(this).parents('td').find(".sign-warning").html('用户名不能少于六位').show();
-                }
-          }
-        else
-        {
-         $(this).parents('td').find(".sign-warning").html('用户名不能含有特殊字符').show();
-        }
-      }
-      else
-      {
-         $(this).parents('td').find(".sign-warning").html('用户名不能为空').show();
-      }
-    });
+        $(".sign-submit").click(function () {
+                var username = $.trim($('#username').val());
+                var email = $.trim($('#email').val());
+                var password = $.trim($('#password').val());
+                var re_password = $.trim($('#re_password').val());
+                var reg = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
+        
+                var usertext = /^[\u4e00-\u9fa5a-zA-Z1-9_]+$/gi;
+        
+                if (username.length >= 6 && usertext.test(username)) {
+                            $('#username').parents('td').find('.sign-warning').css('display','none');
+                        } else {
+                                    $('#username').parents('td').find('.sign-warning').css('display','inline-block');
+                                    return false
+                                }
+        
+                if (username.length != 0 && reg.test(email)){
+                            $('#email').parents('td').find('.sign-warning').css('display','none');
+                        } else {
+                                    $('#email').parents('td').find('.sign-warning').css('display','inline-block');
+                                    return false
+                                }
+        
+                if (password.length >= 6){
+                            $('#password').parents('td').find('.sign-warning').css('display','none');
+                        } else {
+                                    $('#password').parents('td').find('.sign-warning').css('display','inline-block');
+                                    return false
+                                }
+        
+                if (re_password == password){
+                            $('#re_password').parents('td').find('.sign-warning').css('display','none');
+                        } else {
+                                    $('#re_password').parents('td').find('.sign-warning').css('display','inline-block');
+                                    return false
+                                }
+        
+        
+        
+            });
 })
