@@ -39,6 +39,11 @@ elixir(function(mix) {
        .copy('vendor/bower_components/admin-lte/plugins/iCheck/square/blue.png', 'public/css')
        .copy('vendor/bower_components/admin-lte/plugins/iCheck/square/blue@2x.png', 'public/css')
        .copy('vendor/bower_components/admin-lte/plugins/datatables/extensions/TableTools/swf/', 'public/swf/')
+       // CKEditor
+       .copy('vendor/bower_components/admin-lte/plugins/ckeditor/', 'public/ad-spaces/')
+       // Bootstrap fileinput
+       .copy('vendor/bower_components/bootstrap-fileinput/js/fileinput_locale_zh.js', 'public')
+       .copy('vendor/bower_components/bootstrap-fileinput/css/fileinput.min.css', 'public/css/')
        // 复制所有 js 到 public/js 中
        .copy('resources/assets/js', 'public/js')
        // 删除
@@ -55,7 +60,10 @@ elixir(function(mix) {
            'admin-lte/plugins/iCheck/icheck.js',
            'admin-lte/plugins/datatables/jquery.dataTables.js',
            'admin-lte/plugins/datatables/dataTables.bootstrap.js',
-           'admin-lte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js'
+           'admin-lte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js',
+           'admin-lte/plugins/ckeditor/ckeditor.js',
+           'bootstrap-fileinput/js/fileinput.min.js',
+           'bootstrap-fileinput/js/fileinput_locale_zh.js'
        ], 'public/js/vendor.js', elixir.config['bowerDir'])
        // 合并自定义 js
        .scriptsIn('public/js', 'public/js/all.js')

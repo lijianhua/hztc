@@ -60,4 +60,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     return $this->hasMany('App\Models\UserInformation');
   }
 
+  public function adSpaces()
+  {
+    return $this->hasMany('App\Models\AdSpace');
+  }
 }

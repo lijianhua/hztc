@@ -5,6 +5,7 @@
     "bootstrap": "~3.3.4",
     "fontawesome": "~4.3.0",
     "admin-lte": "~2.1.1",
-    "jquery-form": "~3.46.0"
+    "jquery-form": "~3.46.0",
+    "bootstrap-fileinput": "~4.2.3"
   }
 }

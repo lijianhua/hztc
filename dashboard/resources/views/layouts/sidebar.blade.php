@@ -2,16 +2,6 @@
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
-    <!-- search form -->
-    <form action="#" method="get" class="sidebar-form">
-      <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="搜索..."/>
-        <span class="input-group-btn">
-          <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-        </span>
-      </div>
-    </form>
-    <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">产品与服务</li>
@@ -25,14 +15,29 @@
       <li class="treeview">
         <a href="#">
           <i class="fa fa-shirtsinbulk"></i>
-          <span>产品套系</span>
+          <span>广告产品</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-          <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-          <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-          <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          <li>
+            <a href="{{ url('ad-spaces/create') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>添加广告位</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-circle-o"></i>
+              <span>审核广告位</span>
+              <small class="label pull-right bg-red">{{ $__counts['waitingForAuditedAd'] }}</small>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url('ad-spaces') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>所有广告位</span>
+            </a>
+          </li>
         </ul>
       </li>
       <li class="treeview">

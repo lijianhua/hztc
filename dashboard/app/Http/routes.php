@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::put('ad-categories/{id}', 'AdCategoryController@update');
   Route::post('ad-categories', 'AdCategoryController@store');
 
+  // 需要验证是当前用户
   Route::group(['middleware' => 'verifyCurrentUser'], function () {
     // 用户账户管理
     Route::get('accounts/{id}', 'AccountController@show');
@@ -51,7 +52,20 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
 
   });
 
+  // 管理员管理
   Route::get('admins', 'AdminController@index');
+
+  // 广告管理
+  Route::get('ad-spaces', 'AdSpaceController@index');
+  Route::get('ad-spaces/create', 'AdSpaceController@create');
+  Route::post('ad-spaces/create', 'AdSpaceController@store');
+
+  // 图片上传
+  Route::any('avatars/upload', 'ImageController@store');
+  Route::any('avatars/delete/{id}', 'ImageController@destroy');
+
+  // 三级地址获取
+  Route::get('addresses', 'AddressController@index');
 });
 
 // 用户登录

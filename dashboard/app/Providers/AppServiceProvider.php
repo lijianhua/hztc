@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Auth;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +16,13 @@ class AppServiceProvider extends ServiceProvider
   {
     $imageRepons = new \App\Reponsitories\ImageReponsitory();
     view()->share('userRepons', new \App\Reponsitories\UserReponsitory($imageRepons));
+
+    $__counts = [];
+
+    // 待审核产品
+    $__counts['waitingForAuditedAd'] = \App\Models\AdSpace::waitingForAudited()->count();
+
+    view()->share('__counts', $__counts);
   }
 
   /**
