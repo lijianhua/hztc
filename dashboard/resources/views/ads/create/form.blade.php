@@ -13,7 +13,6 @@
 <div class="form-group">
   <label>展示图片</label>
   <input type="file" name="images[]" multiple="true">
-  <p><small>按住ctrl多选</small></p>
 </div>
 
 <div class="form-group">
@@ -43,13 +42,13 @@
 </div>
 
 <div class="form-group">
-  <input type="text" name="street_address" class="form-control" value="{{ old('street_address') }}">
+  <input type="text" name="street_address" class="form-control" value="{{ old('street_address') }}" placeholder="详细地址">
 </div>
 
 @foreach($categories as $category)
   <div class="form-group">
     <label>{{ $category->name }}</label>
-    <select class="form-control" name="category_id[]">
+    <select class="form-control" name="category_ids[]">
       <option>全部</option>
       @foreach($category->children()->get() as $option)
         <option value="{{ $option->id }}">{{ $option->name }}</option>
@@ -60,7 +59,15 @@
 
 <div class="form-group">
   <label>价格</label>
-  <p>TODO</p>
+  <div class="form-group">
+    <button class="btn btn-app btn-flat" type="button" id="newPrice">
+      <i class="fa fa-plus"></i>
+      添加
+    </button>
+  </div>
+  <div class="row prices clearfix">
+    @include ('ads.create.form_partial_of_price')
+  </div>
 </div>
 
 <div class="form-group">

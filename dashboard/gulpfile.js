@@ -38,6 +38,7 @@ elixir(function(mix) {
        .copy('vendor/bower_components/admin-lte/plugins/iCheck/square/blue.css', 'public/css')
        .copy('vendor/bower_components/admin-lte/plugins/iCheck/square/blue.png', 'public/css')
        .copy('vendor/bower_components/admin-lte/plugins/iCheck/square/blue@2x.png', 'public/css')
+       .copy('vendor/bower_components/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css', 'public/css')
        .copy('vendor/bower_components/admin-lte/plugins/datatables/extensions/TableTools/swf/', 'public/swf/')
        // CKEditor
        .copy('vendor/bower_components/admin-lte/plugins/ckeditor/', 'public/ad-spaces/')
@@ -63,7 +64,9 @@ elixir(function(mix) {
            'admin-lte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js',
            'admin-lte/plugins/ckeditor/ckeditor.js',
            'bootstrap-fileinput/js/fileinput.min.js',
-           'bootstrap-fileinput/js/fileinput_locale_zh.js'
+           'bootstrap-fileinput/js/fileinput_locale_zh.js',
+           'admin-lte/plugins/daterangepicker/moment.min.js',
+           'admin-lte/plugins/daterangepicker/daterangepicker.js'
        ], 'public/js/vendor.js', elixir.config['bowerDir'])
        // 合并自定义 js
        .scriptsIn('public/js', 'public/js/all.js')

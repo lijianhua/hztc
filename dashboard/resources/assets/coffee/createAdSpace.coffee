@@ -13,11 +13,20 @@ $ ->
       @citySelect      = @$('#addr_city')
       @areaSelect      = @$('#addr_area')
       @addressIdInput  = @$('input[name=address_id]')
+      @addPriceButton  = @$('#newPrice')
+      @pricesContainer = @$('.prices')
       # ajax设置
       @$.ajaxSetup
         context: @
+
+      # 初始化图片上传
       @initAvatars()
+      # 初始化地址选择
       @initAddressSelects()
+      # 初始化时间选择
+      @initDateRange()
+      # 初始化处理价格
+      @initPriceProcessing()
 
     ###
     # 初始化文件上传
@@ -46,6 +55,85 @@ $ ->
       @bindChangeEventOnProvinceSelect()
       @bindChangeEventOnCitySelect()
       @bindChangeEventOnAreaSelect()
+
+    initDateRange: ->
+      @$('input[data-type=daterange]').daterangepicker
+        format: 'YYYY/MM/DD'
+        locale:
+          applyLabel       : '确定'
+          cancelLabel      : '取消'
+          fromLabel        : '起始'
+          toLabel          : '截止'
+          customRangeLabel : '自定义'
+          daysOfWeek       : ['日', '一', '二', '三', '四', '五', '六']
+          monthNames       : [
+            '一月', '二月', '三月', '四月',
+            '五月', '六月', '七月', '八月',
+            '九月', '十月', '十一月', '十二月'
+          ]
+          firstDay         : 1
+
+    initPriceProcessing: ->
+      @addClickEventOnAddPriceButton()
+      @addRemovePriceEvent()
+
+    addClickEventOnAddPriceButton: ->
+      @addPriceButton.click context: @, (e) ->
+        context = e.data.context
+
+        context.pricesContainer.append context.priceForm()
+        context.initDateRange()
+
+    addRemovePriceEvent: ->
+      @pricesContainer.delegate 'button[data-widget=remove]', 'click', context: @, (e) ->
+        e.preventDefault()
+        context = e.data.context
+        $ = context.$
+        $(@).closest('.price').slideUp 'normal', ->
+          $(@).remove()
+
+    priceForm: ->
+      seed = Math.floor(Math.random() * 100000 + 1)
+      """
+        <div class="col-md-3 price">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">广告价格</h3>
+              <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" type="button" data-widget="remove">
+                  <i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="form-group">
+                <label>原价</label>
+                <input class="form-control" type="text" name="ad_prices[#{seed}][original_price]">
+              </div>
+              <div class="form-group">
+                <label>单价</label>
+                <input class="form-control" type="text" name="ad_prices[#{seed}][price]">
+              </div>
+              <div class="form-group">
+                <label>积分</label>
+                <input class="form-control" type="text" name="ad_prices[#{seed}][score]">
+              </div>
+              <div class="form-group">
+                <label>投放时间段</label>
+                <input class="form-control" type="text" data-type="daterange" name="ad_prices[#{seed}][daterange]">
+              </div>
+              <div class="form-group">
+                <label>投放次数</label>
+                <input class="form-control" type="text" name="ad_prices[#{seed}][send_count]">
+              </div>
+              <div class="form-group">
+                <label>可销售次数</label>
+                <input class="form-control" type="text" name="ad_prices[#{seed}][sale_count]">
+              </div>
+            </div>
+          </div>
+        </div>
+      """
 
     clearProvinceOptions: ->
       @provinceSelect.empty()
