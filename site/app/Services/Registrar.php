@@ -39,12 +39,6 @@ class Registrar implements RegistrarContract {
 			'password' => $pwd 
 		]);
     return $user;
-//    $uid = $user->id;
-//    $data = ['name'=>$name, 'email'=>$email, 'pwd'=>$pwd, 'active_token'=>$active_token, 'uid'=>$uid];
-//    Mail::send('emails.active',  $data, function($message) use($data)
-//    {
-//        $message->to($data['email'], $data['name'])->subject('欢迎注册我们的网站，请激活您的账号！');
-//   });
 	}
 
 }

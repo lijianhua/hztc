@@ -8,7 +8,7 @@ $(document).ready(function () {
     });
 
 
-    //����ǿ���ж�
+    //密码强度判断
     $("#password").blur(function () {
         var this_password = $(this).val();
         if(this_password.length < 6){
@@ -30,5 +30,27 @@ $(document).ready(function () {
             $(".sign-strength .sign-strength-item:eq(2)").nextAll().removeClass('color');
             $(this).parents('td').find(".sign-warning").hide();
         }
+    });
+    $('#username').blur(function(){
+      var text = $(this).val();
+      if(text.length != 0)
+      {
+        var re = /^[\u4e00-\u9fa5a-zA-Z1-9_]+$/gi; 
+        if(re.test(text))
+          {
+             if(text.length < 6) 
+                {
+                    $(this).parents('td').find(".sign-warning").html('用户名不能少于六位').show();
+                }
+          }
+        else
+        {
+         $(this).parents('td').find(".sign-warning").html('用户名不能含有特殊字符').show();
+        }
+      }
+      else
+      {
+         $(this).parents('td').find(".sign-warning").html('用户名不能为空').show();
+      }
     });
 })

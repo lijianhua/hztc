@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers\Auth;
 
+use Redirect;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
@@ -40,7 +42,14 @@ class AuthController extends Controller {
 	public function postLogin(Request $request)
 	{
 		$this->validate($request, [
-			'email' => 'required|email', 'password' => 'required', 'captcha' => 'required|captcha'],[ 'email.required'=> '邮箱不能为空' ,'password.required' => '密码不能为空', 'captcha.captcha' => '验证码错误']);
+      'email' => 'required|email', 
+      'password' => 'required', 
+      'captcha' => 'required|captcha'],
+      [
+      'email.required'=> '邮箱不能为空', 
+      'password.required' => '密码不能为空', 
+      'captcha.captcha' => '验证码错误'
+      ]);
 
 		$credentials = $request->only('email', 'password');
 
@@ -54,5 +63,30 @@ class AuthController extends Controller {
 					->withErrors([
 						'email' => $this->getFailedLoginMessage(),
 					]);
+	}
+	public function postRegister(Request $request)
+	{
+		$this->validate($request, [
+			'name' => 'required|max:255|min:6|alpha_dash',
+			'email' => 'required|email|max:255|unique:users',
+			'password' => 'required|confirmed|min:6'],
+      [ 'email.required'=> '邮箱不能为空', 
+        'email.unique'=> '邮箱已经存在', 
+        'name.required'=> '用户名不能为空', 
+        'name.min'=> '用户名不能少于六位', 
+        'name.max'=> '用户名超出范围', 
+        'name.alpha_dash'=> '用户名含有特殊字符', 
+        'password.required' => '密码不能为空', 
+        'password.confirmed' => '两次密码不匹配', 
+      ]);
+    $name = $request->get('name');
+    $email = $request->get('email');
+    $pwd = bcrypt($request->get('password'));
+	  $user =  User::create([
+			'name' => $name,
+			'email' => $email,
+			'password' => $pwd 
+		]);
+    return Redirect::to('auth/email/'.$user->id);
 	}
 }
