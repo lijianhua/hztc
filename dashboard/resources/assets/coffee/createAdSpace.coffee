@@ -15,6 +15,7 @@ $ ->
       @addressIdInput  = @$('input[name=address_id]')
       @addPriceButton  = @$('#newPrice')
       @pricesContainer = @$('.prices')
+      @imagesContainer = @$('.images')
       # ajax设置
       @$.ajaxSetup
         context: @
@@ -45,6 +46,24 @@ $ ->
         allowedFileTypes : [ 'image' ]
         uploadUrl        : '/avatars/upload'
         uploadAsync      : true
+
+      @listenFileUploadedEventOnImages()
+      @listenFileDeletedEventOnImages()
+
+    listenFileUploadedEventOnImages: ->
+      @$("input[name='images[]']").on 'fileuploaded', context: @, (e, data) ->
+        context = e.data.context
+        imgId   = data.response.initialPreviewConfig[0].key
+        context.imagesContainer.append(
+          """
+          <input type="hidden" name="__images[]" value="#{imgId}">
+          """
+        )
+
+    listenFileDeletedEventOnImages: ->
+      @$("input[name='images[]']").on 'filedeleted', context: @, (e, imgId) ->
+        context = e.data.context
+        context.imagesContainer.find("input[value=#{imgId}]").remove()
 
     ###
     # 初始化地址选择

@@ -1,4 +1,4 @@
-{!! Form::open(['url' => url('ad-space/create'), 'method' => 'post', 'files' => true, 'id' => 'createAdSpaceForm']) !!}
+{!! Form::open(['url' => url('ad-spaces/create'), 'method' => 'post', 'files' => true, 'id' => 'createAdSpaceForm']) !!}
 
 <div class="form-group">
   <label>标题</label>
@@ -10,9 +10,27 @@
   <input type="file" name="avatar" value="{{ old('avatar') }}">
 </div>
 
-<div class="form-group">
+<div class="form-group images">
   <label>展示图片</label>
   <input type="file" name="images[]" multiple="true">
+</div>
+
+<div class="form-group">
+  <label>广告类型</label>
+  <p>
+    <label class="radio-inline">
+      <input type="radio" name="type" value="0" checked> 正常广告
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="type" value="1"> 特价广告
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="type" value="2"> 免费广告
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="type" value="3"> 创意广告
+    </label>
+  </p>
 </div>
 
 <div class="form-group">
@@ -49,7 +67,7 @@
   <div class="form-group">
     <label>{{ $category->name }}</label>
     <select class="form-control" name="category_ids[]">
-      <option>全部</option>
+      <option value>全部</option>
       @foreach($category->children()->get() as $option)
         <option value="{{ $option->id }}">{{ $option->name }}</option>
       @endforeach

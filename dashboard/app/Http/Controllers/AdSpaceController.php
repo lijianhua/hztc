@@ -37,9 +37,12 @@ class AdSpaceController extends Controller
    *
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
-    //
+    $store = new \App\Reponsitories\AdSpaceReponsitory();
+    $store->store($request->all());
+
+    return redirect()->action('AdSpaceController@index')->with('status', '广告位添加成功！');
   }
 
   /**
