@@ -8,6 +8,7 @@ use App\Models\Navigator;
 use App\Models\Order;
 use App\Models\UserScoreAccount;
 use App\Models\UserScoreDetail;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -110,7 +111,7 @@ class UserController extends Controller {
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
-    $orders     = Order::where('user_id', '=', 2)->paginate(10);
+    $orders     = Order::where('user_id', '=', Auth::user()->id)->paginate(10);
     return view('order')->with(compact('navigators', 'orders'));
   }
 
@@ -143,7 +144,7 @@ class UserController extends Controller {
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
-    $scores     = UserScoreAccount::where('user_id', '=', 2)->paginate(5);
+    $scores     = UserScoreAccount::where('user_id', '=', Auth::user()->id)->paginate(5);
     return view('score')->with(compact('navigators', 'scores'));
   }
 }
