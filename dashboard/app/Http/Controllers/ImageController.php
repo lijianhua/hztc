@@ -55,6 +55,19 @@ class ImageController extends Controller
     }
   }
 
+  public function ckeditor(Request $request)
+  {
+    $image = new Image();
+    $image->avatar = $request->file('upload');
+    $image->save();
+
+    $funcNum = $request->get("CKEditorFuncNum");
+    $url     = $image->avatar->url();
+    $message = "";
+
+    return "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '$message');</script>";
+  }
+
   /**
    * Display the specified resource.
    *

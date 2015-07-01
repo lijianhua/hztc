@@ -28,6 +28,8 @@ $ ->
       @initDateRange()
       # 初始化处理价格
       @initPriceProcessing()
+      # 初始化 ckeditor
+      @initCKEditor()
 
     ###
     # 初始化文件上传
@@ -95,6 +97,11 @@ $ ->
     initPriceProcessing: ->
       @addClickEventOnAddPriceButton()
       @addRemovePriceEvent()
+
+    initCKEditor: ->
+      CKEDITOR.replace 'ckeditor', {
+        filebrowserImageUploadUrl: '/ckeditor/upload'
+      }
 
     addClickEventOnAddPriceButton: ->
       @addPriceButton.click context: @, (e) ->

@@ -63,6 +63,7 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   // 图片上传
   Route::any('avatars/upload', 'ImageController@store');
   Route::any('avatars/delete/{id}', 'ImageController@destroy');
+  Route::any('ckeditor/upload', 'ImageController@ckeditor');
 
   // 三级地址获取
   Route::get('addresses', 'AddressController@index');

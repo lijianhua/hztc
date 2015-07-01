@@ -39,4 +39,13 @@ class ImageUploadReponsitory
 
     return $result;
   }
+
+  public static function ckeditor($image, $uploaded = 1)
+  {
+    return [
+      'uploaded' => $uploaded,
+      'fileName' => $image->avatar_file_name,
+      'url'      => $image->avatar->url()
+    ];
+  }
 } // END class ImageUploadReponsitory

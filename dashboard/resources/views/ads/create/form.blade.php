@@ -97,7 +97,7 @@
 
 <div class="form-group">
   <label>详情</label>
-  <textarea id="ckeditor" class="ckeditor" name="detail" cols="30" rows="10">
+  <textarea id="ckeditor" name="detail" cols="30" rows="20">
     {{ old('detail') }}
   </textarea>
 </div>
