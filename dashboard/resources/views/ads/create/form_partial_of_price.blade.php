@@ -11,27 +11,40 @@
     <div class="box-body">
       <div class="form-group">
         <label>原价</label>
-        <input class="form-control" type="text" name="ad_prices[0][original_price]">
+        <input class="form-control" type="text"
+               name="ad_prices[{{ isset($index) ? $index : 0 }}][original_price]"
+               value="{{ isset($price) ?  $price['original_price'] : 0 }}">
       </div>
       <div class="form-group">
         <label>单价</label>
-        <input class="form-control" type="text" name="ad_prices[0][price]">
+        <input class="form-control" type="text"
+               name="ad_prices[{{ isset($index) ? $index : 0 }}][price]"
+               value="{{ isset($price) ? $price['price'] : 0 }}">
       </div>
       <div class="form-group">
         <label>积分</label>
-        <input class="form-control" type="text" name="ad_prices[0][score]">
+        <input class="form-control" type="text" 
+               name="ad_prices[{{ isset($index) ? $index : 0 }}][score]"
+               value="{{ isset($price) ? $price['score'] : 0 }}">
       </div>
       <div class="form-group">
         <label>投放时间段</label>
-        <input class="form-control" type="text" data-type="daterange" name="ad_prices[0][daterange]">
+        <input class="form-control" type="text" 
+               data-type="daterange" 
+               name="ad_prices[{{ isset($index) ? $index : 0 }}][daterange]"
+               value="{{ isset($price) ? $price['daterange'] : '' }}">
       </div>
       <div class="form-group">
         <label>投放次数</label>
-        <input class="form-control" type="text" name="ad_prices[0][send_count]">
+        <input class="form-control" type="text" 
+               name="ad_prices[{{ isset($index) ? $index : 0 }}][send_count]"
+               value="{{ isset($price) ? $price['send_count'] : 1 }}">
       </div>
       <div class="form-group">
         <label>可销售次数</label>
-        <input class="form-control" type="text" name="ad_prices[0][sale_count]">
+        <input class="form-control" type="text"
+               name="ad_prices[{{ isset($index) ? $index : 0 }}][sale_count]"
+               value="{{ isset($price) ? $price['sale_count'] : 1 }}">
       </div>
     </div>
   </div>

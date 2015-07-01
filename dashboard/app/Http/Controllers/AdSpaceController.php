@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\AdCategory;
+use App\Http\Requests\PostAdSpaceRequest;
 
 class AdSpaceController extends Controller
 {
@@ -37,7 +38,7 @@ class AdSpaceController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request)
+  public function store(PostAdSpaceRequest $request)
   {
     $store = new \App\Reponsitories\AdSpaceReponsitory();
     $store->store($request->all());

@@ -84,7 +84,14 @@
     </button>
   </div>
   <div class="row prices clearfix">
-    @include ('ads.create.form_partial_of_price')
+    @if (old('ad_prices'))
+      @foreach(old('ad_prices') as $index => $price)
+        @include ('ads.create.form_partial_of_price',
+                  [ 'price' => $price , 'index' => $index])
+      @endforeach
+    @else
+      @include ('ads.create.form_partial_of_price')
+    @endif
   </div>
 </div>
 
