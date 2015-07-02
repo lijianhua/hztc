@@ -138,6 +138,11 @@ class AdSpaceController extends Controller
   {
     $ad = AdSpace::findOrFail($id);
     $ad->delete();
-    return $this->okResponse('删除成功');
+
+    if ($this->request->ajax()) {
+      return $this->okResponse('删除成功');
+    } else {
+      return redirect('ads')->with('status', '删除成功');
+    }
   }
 }

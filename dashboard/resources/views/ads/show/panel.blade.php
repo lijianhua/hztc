@@ -1,7 +1,7 @@
 <section class="ad">
   <div class="clearfix ad-tools">
     <small class="text-muted">{{ $ad->created_at }}</small>
-    <a href="{{ url("ads/{$ad->id}/edit") }}" class="pull-right text-muted" title="删除" data-toggle="tooltip">
+    <a href="{{ url("ads/{$ad->id}") }}" class="pull-right text-muted" title="删除" data-toggle="tooltip" data-method="DELETE" data-confirm="这个操作无法逆转，确定删除吗？">
       <span class="fa-stack fa-lg">
         <i class="fa fa-square-o fa-stack-2x"></i>
         <i class="fa fa-trash-o fa-stack-1x"></i>
