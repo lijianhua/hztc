@@ -33,7 +33,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('ad-spaces') }}">
+            <a href="{{ url('ads') }}">
               <i class="fa fa-circle-o"></i>
               <span>所有广告位</span>
             </a>

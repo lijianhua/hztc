@@ -66,12 +66,13 @@
 @foreach($categories as $category)
   <div class="form-group">
     <label>{{ $category->name }}</label>
-    <select class="form-control" name="category_ids[]">
+    <select class="form-control" name="category_ids[]" multiple>
       <option value>全部</option>
       @foreach($category->children()->get() as $option)
         <option value="{{ $option->id }}">{{ $option->name }}</option>
       @endforeach
     </select>
+    <p><small class="text-muted">按住ctrl多选</small></p>
   </div>
 @endforeach
 

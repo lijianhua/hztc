@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use HTML;
+use Datatables;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\AdCategory;
+use App\Models\AdSpace;
 use App\Http\Requests\PostAdSpaceRequest;
 
 class AdSpaceController extends Controller
@@ -19,6 +22,50 @@ class AdSpaceController extends Controller
   public function index()
   {
     return view('ads.index');
+  }
+
+  public function server()
+  {
+    $ads = AdSpace::with(['user', 'user.enterprise', 'address']);
+    return Datatables::of($ads)
+      ->editColumn('title', function ($ad) {
+        return HTML::link(url('ads/' . $ad->id), $ad->title, [
+          'title'          => '查看详情',
+          'data-toggle'    => 'tooltip',
+          'data-placement' => 'right'
+        ]);
+      })
+      ->editColumn('type', function ($ad) {
+        switch ($ad->type) {
+          case 0:
+            return '正常广告';
+            break;
+          case 1:
+            return '免费广告';
+            break;
+          case 2:
+            return '特价广告';
+            break;
+          case 3:
+            return '创意广告';
+            break;
+        }
+      })
+      ->editColumn('street_address', function ($ad) {
+        return $ad->address->province . '  ' .
+               $ad->address->city . '  ' .
+               $ad->address->area . '  ' .
+               $ad->street_address;
+      })
+      ->editColumn('audited', function ($ad) {
+        if ($ad->audited) {
+          return '<span class="label label-success">已审核</span>';
+        } else {
+          return '<span class="label label-danger">未通过审核</span>';
+        }
+      })
+      ->setRowId('id')
+      ->make(true);
   }
 
   /**
@@ -54,7 +101,9 @@ class AdSpaceController extends Controller
    */
   public function show($id)
   {
-    //
+    $ad = AdSpace::findOrFail($id);
+
+    return view('ads.show', compact('ad'));
   }
 
   /**
@@ -87,6 +136,8 @@ class AdSpaceController extends Controller
    */
   public function destroy($id)
   {
-    //
+    $ad = AdSpace::findOrFail($id);
+    $ad->delete();
+    return $this->okResponse('删除成功');
   }
 }

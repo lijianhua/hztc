@@ -59,7 +59,7 @@ class AdSpace extends Model implements StaplerableInterface {
 
   public function images()
   {
-    return $this->belongsToMany('App\Models\Image', 'ad_space_image');
+    return $this->belongsToMany('App\Models\Image', 'ad_space_image', 'ad_space_id', 'image_id');
   }
 
   public function adPrices()

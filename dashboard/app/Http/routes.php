@@ -56,7 +56,11 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::get('admins', 'AdminController@index');
 
   // 广告管理
-  Route::get('ad-spaces', 'AdSpaceController@index');
+  Route::get('ads', 'AdSpaceController@index');
+  Route::get('ads/server-proccessing', 'AdSpaceController@server');
+  Route::get('ads/{id}', 'AdSpaceController@show');
+  Route::delete('ads/{id}', 'AdSpaceController@destroy');
+  Route::get('ads/{id}/edit', 'AdSpaceController@edit');
   Route::get('ad-spaces/create', 'AdSpaceController@create');
   Route::post('ad-spaces/create', 'AdSpaceController@store');
 
