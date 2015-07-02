@@ -469,7 +469,7 @@ body > #doc3 {
 }
 
 #ft {
-    height: 181px;
+    /*height: 181px;*/
     clear: both;
     position: relative;
     z-index: 10;
@@ -587,6 +587,16 @@ header{
     font-size: 12px;
     vertical-align: middle;
     margin: 0 5px;
+}
+.header-top-user-name{
+    color: #333333;
+}
+.header-top-user-name a{
+    color: #333333;
+    text-decoration: underline;
+}
+.header-top-user-out a{
+    color: #7bccff;
 }
 .header-top-callme{
     margin-top: 6px;
@@ -754,6 +764,7 @@ header{
     height: 181px;
     width: 100%;
     text-align: center;
+    margin-top: 70px;
 }
 .plate-A{
     position: absolute;

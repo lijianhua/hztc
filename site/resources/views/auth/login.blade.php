@@ -11,7 +11,6 @@
                 <div class="login-title">
                     <img src="../images/login/logo.jpg">
                 </div>
-                  
                       <div class='login-error' style='position:absolute;font-size:12px;margin-top:22px;margin-left:90px;color:red'>
                         @if (count($errors) > 0)
                             @foreach ($errors->all() as $error)
@@ -46,11 +45,7 @@
                     </ul>
                   </form>
                 <div class="login-share">
-                    <span>免费注册：</span>
-                    <span><img src="../images/login/share1.jpg"></span>
-                    <span><img src="../images/login/share2.jpg"></span>
-                    <span><img src="../images/login/share3.jpg"></span>
-                    <span class="registered-link">|<a href="#">注册</a> </span>
+                    <span class="registered-link"><a href="/auth/register">注册</a> </span>
                 </div>
             </div>
         </div>

@@ -5,5 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class ReviewMaterial extends Model {
 
   //
+  protected $fillable = ['enterprise_id', 'name', 'note'];
+
 
 }

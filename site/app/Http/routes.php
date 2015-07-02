@@ -45,3 +45,4 @@ Route::get('user/{email}','UserController@showemail');
 Route::get('users/order','UserController@order');
 Route::get('users/info','UserController@info');
 Route::get('users/score','UserController@score');
+Route::post('users/info','UserController@store_user_auth');

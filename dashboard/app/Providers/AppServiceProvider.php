@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
     $__counts = [];
 
     // 待审核产品
-    $__counts['waitingForAuditedAd'] = \App\Models\AdSpace::waitingForAudited()->count();
+    // $__counts['waitingForAuditedAd'] = \App\Models\AdSpace::waitingForAudited()->count();
 
     view()->share('__counts', $__counts);
   }

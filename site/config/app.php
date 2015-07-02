@@ -137,6 +137,7 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
     'Collective\Html\HtmlServiceProvider',
+    'Codesleeve\LaravelStapler\Providers\L5ServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
