@@ -41,7 +41,7 @@ elixir(function(mix) {
        .copy('vendor/bower_components/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css', 'public/css')
        .copy('vendor/bower_components/admin-lte/plugins/datatables/extensions/TableTools/swf/', 'public/swf/')
        // CKEditor
-       .copy('vendor/bower_components/admin-lte/plugins/ckeditor/', 'public/ad-spaces/')
+       .copy('vendor/bower_components/admin-lte/plugins/ckeditor/', 'public/editor/')
        // Bootstrap fileinput
        .copy('vendor/bower_components/bootstrap-fileinput/js/fileinput_locale_zh.js', 'public')
        .copy('vendor/bower_components/bootstrap-fileinput/css/fileinput.min.css', 'public/css/')

@@ -99,8 +99,11 @@ $ ->
       @addRemovePriceEvent()
 
     initCKEditor: ->
+      CKEDITOR.basePath = '/editor/'
       CKEDITOR.replace 'ckeditor', {
-        filebrowserImageUploadUrl: '/ckeditor/upload'
+        filebrowserImageUploadUrl: '/ckeditor/upload',
+        contentsCss: '/editor/contents.css',
+        height: 500
       }
 
     addClickEventOnAddPriceButton: ->

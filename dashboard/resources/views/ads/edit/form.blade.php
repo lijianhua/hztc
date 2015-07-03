@@ -1,41 +1,40 @@
-{!! Form::open(['url' => url('ad-spaces/create'), 'method' => 'post', 'files' => true, 'id' => 'createAdSpaceForm']) !!}
-
+{!! Form::model($ad, ['url' => url('ads/' . $ad->id), 'method' => 'put', 'files' => true, 'id' => 'updateAdSpaceForm', 'data-id' => $ad->id]) !!}
 <div class="form-group">
   <label>标题</label>
-  <input type="text" name="title" class="form-control" value="{{ old('title') }}">
+  {!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
   <label>封面图片</label>
-  <input type="file" name="avatar" value="{{ old('avatar') }}">
+  {!! Form::file('avatar', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group images">
   <label>展示图片</label>
-  <input type="file" name="images[]" multiple="true">
+  {!! Form::file('images[]', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
   <label>广告类型</label>
   <p>
     <label class="radio-inline">
-      <input type="radio" name="type" value="0" checked> 正常广告
+      {!! Form::radio('type', 0) !!} 正常广告
     </label>
     <label class="radio-inline">
-      <input type="radio" name="type" value="1"> 特价广告
+      {!! Form::radio('type', 1) !!} 特价广告
     </label>
     <label class="radio-inline">
-      <input type="radio" name="type" value="2"> 免费广告
+      {!! Form::radio('type', 2) !!} 免费广告
     </label>
     <label class="radio-inline">
-      <input type="radio" name="type" value="3"> 创意广告
+      {!! Form::radio('type', 3) !!} 创意广告
     </label>
   </p>
 </div>
 
 <div class="form-group">
   <label>简介</label>
-  <input type="text" name="description" class="form-control" value="{{ old('description') }}">
+  {!! Form::text('description', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -60,7 +59,7 @@
 </div>
 
 <div class="form-group">
-  <input type="text" name="street_address" class="form-control" value="{{ old('street_address') }}" placeholder="详细地址">
+  {!! Form::text('street_address', null, ['class' => 'form-control']) !!}
 </div>
 
 @foreach($categories as $category)
@@ -85,10 +84,9 @@
     </button>
   </div>
   <div class="row prices clearfix">
-    @if (old('ad_prices'))
-      @foreach(old('ad_prices') as $index => $price)
-        @include ('ads.create.form_partial_of_price',
-                  [ 'price' => $price , 'index' => $index])
+    @if ($ad->adPrices()->count() > 0)
+      @foreach($ad->adPrices as $price)
+        @include ('ads.create.form_partial_of_price', [ 'price' => $price ->toArrayWithDateRange(), 'index' => $price->id])
       @endforeach
     @else
       @include ('ads.create.form_partial_of_price')
@@ -98,13 +96,7 @@
 
 <div class="form-group">
   <label>详情</label>
-  <textarea id="ckeditor" name="detail" cols="30" rows="20">
-    {{ old('detail') }}
-  </textarea>
+  {!! Form::textarea('detail', null, ['id' => 'ckeditor', 'cols' => 30, 'rows' => 20]) !!}
 </div>
-
-<div class="form-group">
-  {!! Form::submit('保存', ['class' => 'btn btn-flat btn-default btn-primary btn-lg']) !!}
-</div>
-
 {!! Form::close() !!}
+

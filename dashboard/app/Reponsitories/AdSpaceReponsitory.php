@@ -8,9 +8,13 @@ use HTML;
 use Carbon\Carbon;
 use Datatables;
 use Illuminate\Support\Arr;
+use League\Fractal\Manager;
+use League\Fractal\Resource\Item;
+use League\Fractal\Serializer\ArraySerializer;
 
 use App\Models\AdSpace;
 use App\Models\AdPrice;
+use App\Transformers\AdSpaceTransformer;
 
 /**
  * 保存编辑广告位
@@ -84,6 +88,24 @@ class AdSpaceReponsitory
       })
       ->setRowId('id')
       ->make(true);
+  }
+
+  /**
+   * 返回编辑广告位所需要的信息
+   *
+   * @var \App\Models\AdSpace $ad
+   * @return array
+   **/
+  public function fractal(AdSpace $ad)
+  {
+    $fractal = new Manager();
+    $fractal->setSerializer(new ArraySerializer());
+    if (!empty($ad->categories)) {
+      $fractal->parseIncludes('categories');
+    }
+
+    $resource = new Item($ad, new AdSpaceTransformer());
+    return $fractal->createData($resource)->toArray();
   }
 
   public function parseAndCreateAdSpace($input)

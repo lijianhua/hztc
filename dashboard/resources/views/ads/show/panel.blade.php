@@ -7,7 +7,7 @@
         <i class="fa fa-trash-o fa-stack-1x"></i>
       </span>
     </a>
-    <a href="{{ url("ads/{$ad->id}/edit") }}" class="pull-right text-muted" title="编辑" data-toggle="tooltip">
+    <a href="{{ url("ad-spaces/{$ad->id}/edit") }}" class="pull-right text-muted" title="编辑" data-toggle="tooltip">
       <span class="fa-stack fa-lg">
         <i class="fa fa-square-o fa-stack-2x"></i>
         <i class="fa fa-pencil fa-stack-1x"></i>

@@ -13,4 +13,15 @@ class AdPrice extends Model {
   {
     return $this->belongsTo('App\Models\AdSpace');
   }
+
+  public function toArrayWithDateRange()
+  {
+    $array = $this->toArray();
+
+    $from = date('Y/m/d', strtotime($this->from));
+    $to   = date('Y/m/d', strtotime($this->to));
+    $array['daterange'] = $from . ' - ' . $to;
+
+    return $array;
+  }
 }

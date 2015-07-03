@@ -53,7 +53,7 @@ $ ->
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
           ad = new Ad 'adsTable'
-          window.location = "/ads/#{ad.selectedRowData().id}/edit"
+          window.location = "/ad-spaces/#{ad.selectedRowData().id}/edit"
       ,
         sButtonClass: "btn btn-flat btn-default disabled"
         sExtends: "text"

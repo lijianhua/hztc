@@ -28,11 +28,6 @@ class AdSpaceController extends Controller
     parent::__construct();
   }
 
-  public function FunctionName()
-  {
-    // code...
-  }
-
   /**
    * Display a listing of the resource.
    *
@@ -110,7 +105,23 @@ class AdSpaceController extends Controller
    */
   public function edit($id)
   {
-    //
+    $ad = AdSpace::findOrFail($id);
+    $categories = AdCategory::roots()->get();
+
+    return view('ads.edit', compact('ad', 'categories'));
+  }
+
+  /**
+   * 获取编辑广告位所需要的信息
+   *
+   * @var int id
+   * @return response
+   **/
+  public function getEditInformation($id)
+  {
+    $ad = AdSpace::with(['address', 'images', 'categories'])->findOrFail($id);
+
+    return response()->json($this->store->fractal($ad));
   }
 
   /**
