@@ -10,6 +10,7 @@ use App\Models\UserScoreAccount;
 use App\Models\Enterprise;
 use App\Models\ReviewMaterial;
 use App\Models\UserScoreDetail;
+use App\Models\AdSpaceUser;
 use Auth;
 use  App\Http\Requests\PostEnterpriseRequest;
 use Illuminate\Http\Request;
@@ -153,8 +154,26 @@ class UserController extends Controller {
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
-    $scores     = UserScoreAccount::where('user_id', '=', Auth::user()->id)->paginate(5);
-    return view('score')->with(compact('navigators', 'scores'));
+    $scores     = UserScoreAccount::where('user_id', '=', Auth::user()->id)->firstOrFail();
+    $redscore = $scores->ScoreDetails()->paginate(10);
+    return view('score')->with(compact('navigators', 'scores', 'redscore'));
+  }
+
+
+  /**
+   * 收藏
+   *
+   *
+   */
+  public function collect()
+  {
+    $nav  = '首页';
+    $unav = '我的收藏';
+    Session::put('current_navigator', $nav);
+    Session::put('user_navigator', $unav);
+    $navigators = Navigator::all()->sortBy('sort');
+    $collects = AdSpaceUser::where('user_id', '=', Auth::user()->id)->paginate(5);
+    return view('collect')->with(compact('navigators', 'collects'));
   }
   /**
    * store_auth function

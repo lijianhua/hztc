@@ -79,7 +79,7 @@ $factory->defineAs(App\Models\User::class, 'root', function ($faker) use ($facto
     'password' => bcrypt('public'),
     'confirmed' => true,
     'is_verify' => true,
-    'admin' => true
+    'admin' => true,
   ];
 });
 

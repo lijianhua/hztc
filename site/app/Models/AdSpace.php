@@ -8,4 +8,9 @@ class AdSpace extends Model {
   Use SoftDeletes;
 
   protected $dates = ['deleted_at'];
+
+  public function AdPrice()
+  {
+    return $this->hasOne('App\Models\AdPrice');
+  }
 }

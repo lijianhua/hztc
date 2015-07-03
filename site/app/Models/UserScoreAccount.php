@@ -9,6 +9,6 @@ class UserScoreAccount extends Model {
 
   public function ScoreDetails()
   {
-    return $this->hasOne('App\Models\UserScoreDetail');
+    return $this->hasMany('App\Models\UserScoreDetail');
   }
 }
