@@ -43,5 +43,7 @@ Route::controllers([
 //用户中心
 Route::get('user/{email}','UserController@showemail');
 Route::get('users/order','UserController@order');
-Route::get('users/info','UserController@info');
+Route::get('users/score','UserController@score');
+Route::post('users/info','UserController@store_user_auth');
+Route::get('users/collect','UserController@collect');
 Route::get('users/score','UserController@score');

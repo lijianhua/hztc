@@ -1,0 +1,45 @@
+.points{
+    float: left;
+    margin-left: 25px;
+    width: 780px;
+    font-size: 16px;
+}
+.personal .points .order-title{
+    font-size: 18px;
+    border-bottom: 2px solid #7bccff;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.personal .points .points-number-info{
+    margin: 30px 0;
+    text-align: center;
+    color: #e7125b;
+
+}
+.personal .points .points-number-info .points-number-info-big{
+    font-size: 72px;
+}
+.personal .points .points-number-info .points-number-info-small{
+    font-size: 24px;
+}
+.points-detail-info table{
+    width: 100%;
+}
+.points-detail-info table th{
+    height: 51px;
+    border-right: 1px solid #ffffff;
+    background-color: #cccccc;
+    text-align: center;
+    color: #ffffff;
+}
+.points-detail-info table td{
+    border: 1px solid #363636;
+    height: 50px;
+    text-align: center;
+}
+.points-detail-color{
+    color: #ed145b;
+}

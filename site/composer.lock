@@ -1,10 +1,10 @@
-{
+	{
     "_readme": [
         "This file locks the dependencies of your project to a known state",
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c9b3eaff4fb8e39de0cd56bc972a9fc3",
+    "hash": "03aaa7abbfffd7e18d7d2e404dba4917",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -119,6 +119,109 @@
                 "preload"
             ],
             "time": "2015-05-26 10:57:51"
+        },
+        {
+            "name": "codesleeve/laravel-stapler",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CodeSleeve/laravel-stapler.git",
+                "reference": "181fbc5321f389b828407833099db614ed711a09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CodeSleeve/laravel-stapler/zipball/181fbc5321f389b828407833099db614ed711a09",
+                "reference": "181fbc5321f389b828407833099db614ed711a09",
+                "shasum": ""
+            },
+            "require": {
+                "codesleeve/stapler": "1.0.*",
+                "laravel/framework": "4.*|5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-4": {
+                    "Codesleeve\\LaravelStapler\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Travis Bennett",
+                    "email": "tandrewbennett@hotmail.com"
+                }
+            ],
+            "description": "Easy file upload management for the Laravel Framework.",
+            "keywords": [
+                "aws",
+                "file",
+                "laravel",
+                "paperclip",
+                "s3",
+                "stapler",
+                "upload"
+            ],
+            "time": "2015-04-21 16:56:00"
+        },
+        {
+            "name": "codesleeve/stapler",
+            "version": "v1.0.04",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CodeSleeve/stapler.git",
+                "reference": "46f398993dd85a1a509f9ee379bb3891f45df4e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CodeSleeve/stapler/zipball/46f398993dd85a1a509f9ee379bb3891f45df4e7",
+                "reference": "46f398993dd85a1a509f9ee379bb3891f45df4e7",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/inflector": "~1",
+                "imagine/imagine": "~0.5.0",
+                "php": ">=5.4",
+                "symfony/http-foundation": "~2.3"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "2.4.*@dev",
+                "illuminate/config": "~4",
+                "illuminate/database": "~4",
+                "mockery/mockery": "0.8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codesleeve\\Stapler\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Travis Bennett",
+                    "email": "tandrewbennett@hotmail.com"
+                }
+            ],
+            "description": "Elegant and simple ORM-based file upload package for php.",
+            "keywords": [
+                "aws",
+                "file",
+                "orm",
+                "paperclip",
+                "s3",
+                "upload"
+            ],
+            "time": "2015-02-02 15:16:16"
         },
         {
             "name": "danielstjules/stringy",
@@ -333,6 +436,63 @@
                 "uri"
             ],
             "time": "2015-06-24 19:55:15"
+        },
+        {
+            "name": "imagine/imagine",
+            "version": "0.5.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avalanche123/Imagine.git",
+                "reference": "343580fceed1f89220481ac98480e92f47d91e6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/343580fceed1f89220481ac98480e92f47d91e6c",
+                "reference": "343580fceed1f89220481ac98480e92f47d91e6c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "sami/sami": "dev-master"
+            },
+            "suggest": {
+                "ext-gd": "to use the GD implementation",
+                "ext-gmagick": "to use the Gmagick implementation",
+                "ext-imagick": "to use the Imagick implementation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Imagine": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bulat Shakirzyanov",
+                    "email": "mallluhuct@gmail.com",
+                    "homepage": "http://avalanche123.com"
+                }
+            ],
+            "description": "Image processing for PHP 5.3",
+            "homepage": "http://imagine.readthedocs.org/",
+            "keywords": [
+                "drawing",
+                "graphics",
+                "image manipulation",
+                "image processing"
+            ],
+            "time": "2014-06-13 10:54:04"
         },
         {
             "name": "intervention/image",
@@ -1160,6 +1320,55 @@
                 "php"
             ],
             "time": "2015-07-02 16:09:12"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2015-05-04 20:22:00"
         },
         {
             "name": "psr/http-message",
@@ -3298,7 +3507,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "codesleeve/laravel-stapler": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

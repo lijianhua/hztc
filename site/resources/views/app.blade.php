@@ -30,5 +30,7 @@
   <!-- Scripts -->
   <script src="{{ asset('/js/vendor.js') }}"></script>
   <script src="{{ asset('/js/all.js') }}"></script>
+  <script src="{{ asset('/js/advertisers.js') }}"></script>
+  <script src="{{ asset('/js/uploadPreview.js') }}"></script>
 </body>
 </html>

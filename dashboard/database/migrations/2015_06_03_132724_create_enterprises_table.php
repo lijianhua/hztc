@@ -17,7 +17,7 @@ class CreateEnterprisesTable extends Migration {
       $table->increments('id');
       $table->string('name');
       // 企业行业
-      $table->string('trade')->unique();
+      $table->string('trade');
       $table->string('qq', 40)->nullable();
       $table->string('weixin')->nullable();
       $table->string('telphone', 40)->nullable();

@@ -6,5 +6,6 @@
         <span class="login-top-right">
             <img src="/images/login/logintext.png">
         </span>
+        <span class="login-go"><a href="/">返回首页》</a> </span>
     </div>
 </div>
