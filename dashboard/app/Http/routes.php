@@ -81,6 +81,10 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
 
   // 三级地址获取
   Route::get('addresses', 'AddressController@index');
+
+  // 订单管理
+  Route::get('orders/server-proccessing', 'OrderController@server');
+  Route::get('orders', 'OrderController@index');
 });
 
 // 用户登录

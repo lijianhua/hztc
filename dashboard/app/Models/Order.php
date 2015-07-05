@@ -9,4 +9,20 @@ class Order extends Model {
 
   protected $dates = ['deleted_at'];
 
+  protected $fillable = ['order_seq', 'user_id', 'state', 'paid_at'];
+
+  public function user()
+  {
+    return $this->belongsTo('App\Models\User');
+  }
+
+  public function orderItems()
+  {
+    return $this->hasMany('App\Models\OrderItem');
+  }
+
+  public function scopeRecent($query)
+  {
+    return $query->orderBy('created_at', 'desc');
+  }
 }

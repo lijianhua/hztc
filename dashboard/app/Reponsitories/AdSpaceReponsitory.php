@@ -133,7 +133,7 @@ class AdSpaceReponsitory
   {
     $adSpace          = new AdSpace();
     $adSpace->user_id = Auth::user()->id;
-    $this->fillAd($ad, $input);
+    $this->fillAd($adSpace, $input);
     $adSpace->save();
 
     return $adSpace;

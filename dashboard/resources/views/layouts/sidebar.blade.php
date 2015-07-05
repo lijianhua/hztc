@@ -54,13 +54,24 @@
               <small class="label pull-right bg-red">3</small>
             </a>
           </li>
+          <li>
+            <a href="{{ url('orders') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>所有订单</span>
+            </a>
+          </li>
         </ul>
       </li>
       <li class="header">站点与资源</li>
       <li><a href="{{{ url('navigators') }}}"><i class="fa fa-navicon"></i> <span>全局导航</span></a></li>
       <li><a href="{{{ url('slides') }}}"><i class="fa fa-file-image-o"></i> <span>轮播图</span></a></li>
       <li class="header">用户中心</li>
-      <li> <a href="{{ url('admins') }}"> <i class="fa fa-user-secret"></i> 管理员 </a> </li>
+      <li>
+        <a href="{{ url('admins') }}">
+          <i class="fa fa-user-secret"></i>
+          <span>管理员</span>
+        </a> 
+      </li>
       <li>
         <a href="#">
           <i class="fa fa-users"></i>

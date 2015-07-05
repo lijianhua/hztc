@@ -1,4 +1,5 @@
 <?php
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,16 +14,16 @@
 
 $factory->define(App\Models\User::class, function ($faker) {
   return [
-    'name' => $faker->name,
-    'email' => $faker->email,
-    'password' => str_random(10),
+    'name'           => $faker->name,
+    'email'          => $faker->email,
+    'password'       => str_random(10),
     'remember_token' => str_random(10),
   ];
 });
 
 $factory->define(App\Models\Navigator::class, function ($faker) {
   return [
-    'name'  => $faker->bs(),
+    'name'    => $faker->bs(),
       'url'   => $faker->url(),
       'state' => 1,
       'sort'  => $faker->randomDigit()
@@ -59,9 +60,9 @@ $factory->defineAs(App\Models\Enterprise::class, 'root', function ($faker) use (
 
 $factory->define(App\Models\User::class, function ($faker) {
   return [
-    'name' => $faker->userName,
-    'email' => $faker->email,
-    'password' => $faker->password,
+    'name'      => $faker->userName,
+    'email'     => $faker->email,
+    'password'  => $faker->password,
     'confirmed' => true,
     'is_verify' => true
   ];
@@ -74,17 +75,37 @@ $factory->defineAs(App\Models\User::class, 'admin', function ($faker) use ($fact
 
 $factory->defineAs(App\Models\User::class, 'root', function ($faker) use ($factory) {
   return [
-    'name' => 'root',
-    'email' => 'zgs@ypjh.wang',
-    'password' => bcrypt('public'),
+    'name'      => 'root',
+    'email'     => 'zgs@ypjh.wang',
+    'password'  => bcrypt('public'),
     'confirmed' => true,
     'is_verify' => true,
-    'admin' => true,
+    'admin'     => true,
   ];
 });
 
 $factory->define(App\Models\AdCategory::class, function ($faker) {
   return [
     'name' => $faker->bs
+  ];
+});
+
+$factory->define(App\Models\OrderItem::class, function ($faker) {
+  return [
+    'from'           => Carbon::parse($faker->date($format = 'Y-m-d', $max = 'now')),
+    'to'             => Carbon::parse($faker->date($format = 'Y-m-d', $max = 'now')),
+    'original_price' => $faker->randomFloat(3, 0, 10000000),
+    'price'          => $faker->randomFloat(3, 0, 10000000),
+    'subtotal'       => $faker->randomFloat(3, 0, 10000000),
+    'score'          => $faker->randomDigit,
+    'quantity'       => 1
+  ];
+});
+
+$factory->define(App\Models\Order::class, function ($faker) use ($factory) {
+  return [
+    'order_seq' => $faker->randomNumber(),
+    'state'     => array_rand([0, 1, 2, 3, 4]),
+    'amount'    => $faker->randomFloat(3, 0, 10000000)
   ];
 });

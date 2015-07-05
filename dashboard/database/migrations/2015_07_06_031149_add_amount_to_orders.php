@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColToUsersTable extends Migration
+class AddAmountToOrders extends Migration
 {
   /**
    * Run the migrations.
@@ -12,8 +12,8 @@ class AddColToUsersTable extends Migration
    */
   public function up()
   {
-    Schema::table('users', function (Blueprint $table) {
-      $table->string('active_token')->nullable();
+    Schema::table('orders', function (Blueprint $table) {
+      $table->decimal('amount', 10, 3);
     });
   }
 
@@ -24,8 +24,8 @@ class AddColToUsersTable extends Migration
    */
   public function down()
   {
-    Schema::table('users', function (Blueprint $table) {
-      $table ->dropColumn('active_token');
+    Schema::table('orders', function (Blueprint $table) {
+      $table->dropColumn('amount');
     });
   }
 }
