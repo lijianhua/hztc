@@ -18,7 +18,7 @@
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="请填写您的注册邮箱">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
 

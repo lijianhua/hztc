@@ -26,7 +26,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="{{ url('ads/waiting-audited') }}">
               <i class="fa fa-circle-o"></i>
               <span>审核广告位</span>
               <small class="label pull-right bg-red">{{ $__counts['waitingForAuditedAd'] }}</small>

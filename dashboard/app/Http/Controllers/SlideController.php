@@ -17,6 +17,8 @@ class SlideController extends Controller
   public function __construct(ImageReponsitory $imageRepons)
   {
     $this->imageRepons = $imageRepons;
+
+    parent::__construct();
   }
 
   /**

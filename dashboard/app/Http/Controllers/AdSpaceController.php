@@ -15,6 +15,25 @@ use App\Http\Requests\PostAdSpaceRequest;
 class AdSpaceController extends Controller
 {
   /**
+   * 广告位商业逻辑封装
+   *
+   * @var mixed $store
+   **/
+  protected $store;
+
+  public function __construct()
+  {
+    $this->store = new \App\Reponsitories\AdSpaceReponsitory();
+
+    parent::__construct();
+  }
+
+  public function FunctionName()
+  {
+    // code...
+  }
+
+  /**
    * Display a listing of the resource.
    *
    * @return Response
@@ -24,48 +43,26 @@ class AdSpaceController extends Controller
     return view('ads.index');
   }
 
+  /**
+   * 等待审核页面
+   *
+   * @return response
+   **/
+  public function getWaitingAudited()
+  {
+    return view('ads.waitingAudited');
+  }
+
   public function server()
   {
     $ads = AdSpace::with(['user', 'user.enterprise', 'address']);
-    return Datatables::of($ads)
-      ->editColumn('title', function ($ad) {
-        return HTML::link(url('ads/' . $ad->id), $ad->title, [
-          'title'          => '查看详情',
-          'data-toggle'    => 'tooltip',
-          'data-placement' => 'right'
-        ]);
-      })
-      ->editColumn('type', function ($ad) {
-        switch ($ad->type) {
-          case 0:
-            return '正常广告';
-            break;
-          case 1:
-            return '免费广告';
-            break;
-          case 2:
-            return '特价广告';
-            break;
-          case 3:
-            return '创意广告';
-            break;
-        }
-      })
-      ->editColumn('street_address', function ($ad) {
-        return $ad->address->province . '  ' .
-               $ad->address->city . '  ' .
-               $ad->address->area . '  ' .
-               $ad->street_address;
-      })
-      ->editColumn('audited', function ($ad) {
-        if ($ad->audited) {
-          return '<span class="label label-success">已审核</span>';
-        } else {
-          return '<span class="label label-danger">未通过审核</span>';
-        }
-      })
-      ->setRowId('id')
-      ->make(true);
+    return $this->store->datatables($ads);
+  }
+
+  public function waitingAuditedServer()
+  {
+    $ads = AdSpace::waitingForAudited()->with(['user', 'user.enterprise', 'address']);
+    return $this->store->datatables($ads);
   }
 
   /**
@@ -87,8 +84,7 @@ class AdSpaceController extends Controller
    */
   public function store(PostAdSpaceRequest $request)
   {
-    $store = new \App\Reponsitories\AdSpaceReponsitory();
-    $store->store($request->all());
+    $this->store->store($request->all());
 
     return redirect()->action('AdSpaceController@index')->with('status', '广告位添加成功！');
   }
@@ -134,15 +130,31 @@ class AdSpaceController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id)
+  public function destroy(Request $request, $id)
   {
     $ad = AdSpace::findOrFail($id);
     $ad->delete();
 
-    if ($this->request->ajax()) {
+    if ($request->ajax()) {
       return $this->okResponse('删除成功');
     } else {
       return redirect('ads')->with('status', '删除成功');
+    }
+  }
+
+  /**
+   * 审核广告位
+   *
+   * @return response
+   **/
+  public function audit(Request $request, $id)
+  {
+    AdSpace::whereId($id)->update(['audited' => true]);
+
+    if ($request->ajax()) {
+      // code...
+    } else {
+      return redirect()->back()->with('status', '审核通过');
     }
   }
 }

@@ -11,6 +11,16 @@ abstract class Controller extends BaseController
 {
   use DispatchesJobs, ValidatesRequests;
 
+  public function __construct()
+  {
+    $__counts = [];
+
+    // 待审核产品
+    $__counts['waitingForAuditedAd'] = \App\Models\AdSpace::waitingForAudited()->count();
+
+    view()->share('__counts', $__counts);
+  }
+
   public function okResponse($message, $data = null)
   {
     return $this->jsonResponseWithStatus('OK', $message, $data);

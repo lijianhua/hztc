@@ -4,7 +4,9 @@ namespace App\Reponsitories;
 
 use DB;
 use Auth;
+use HTML;
 use Carbon\Carbon;
+use Datatables;
 use Illuminate\Support\Arr;
 
 use App\Models\AdSpace;
@@ -33,6 +35,55 @@ class AdSpaceReponsitory
       // 保存价格信息
       $this->parseAndStorePricesFor($adSpace, $input);
     });
+  }
+
+  /**
+   * 返回DataTable需要的数据
+   *
+   * @var mixed $query
+   * @return response for data tables
+   **/
+  public function datatables($query)
+  {
+    return Datatables::of($query)
+      ->editColumn('title', function ($ad) {
+        return HTML::decode(HTML::link(url('ads/' . $ad->id), $ad->title . '<br>' . HTML::image($ad->avatar->url('thumb')), [
+          'title'          => '查看详情',
+          'data-toggle'    => 'tooltip',
+          'data-placement' => 'right'
+        ]));
+      })
+      ->editColumn('type', function ($ad) {
+        switch ($ad->type) {
+          case 0:
+            return '正常广告';
+            break;
+          case 1:
+            return '免费广告';
+            break;
+          case 2:
+            return '特价广告';
+            break;
+          case 3:
+            return '创意广告';
+            break;
+        }
+      })
+      ->editColumn('street_address', function ($ad) {
+        return $ad->address->province . '  ' .
+               $ad->address->city . '  ' .
+               $ad->address->area . '  ' .
+               $ad->street_address;
+      })
+      ->editColumn('audited', function ($ad) {
+        if ($ad->audited) {
+          return '<span class="label label-success">通过审核</span>';
+        } else {
+          return '<span class="label label-danger">未通过审核</span>';
+        }
+      })
+      ->setRowId('id')
+      ->make(true);
   }
 
   public function parseAndCreateAdSpace($input)

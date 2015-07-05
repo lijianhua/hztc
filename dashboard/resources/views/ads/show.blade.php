@@ -13,6 +13,7 @@
 @stop
 
 @section ('content')
+  @include ('shared.status')
   <div class="row">
     <div class="col-xs-12">
       <div class="box">

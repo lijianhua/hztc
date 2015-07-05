@@ -58,6 +58,7 @@ Session.vim
 /*/public/system/
 /*/public/ad-spaces/
 /dashboard/public/img/
+/*/public/editor/
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm

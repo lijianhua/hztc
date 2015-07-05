@@ -14,10 +14,10 @@
       </span>
     </a>
     @if (!$ad->audited)
-      <a href="{{ url("ads/{$ad->id}/edit") }}" class="pull-right text-muted" title="审核通过" data-toggle="tooltip">
+      <a href="{{ url("ads/{$ad->id}/audit") }}" class="pull-right text-muted" title="审核通过" data-toggle="tooltip" data-method="PUT">
         <span class="fa-stack fa-lg">
           <i class="fa fa-square-o fa-stack-2x"></i>
-          <i class="fa fa-unlock fa-stack-1x"></i>
+          <i class="fa fa-gavel fa-stack-1x"></i>
         </span>
       </a>
     @endif
