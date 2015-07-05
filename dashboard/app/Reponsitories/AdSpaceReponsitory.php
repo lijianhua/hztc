@@ -24,8 +24,8 @@ class AdSpaceReponsitory
   /**
    * 保存用户上传的广告位信息
    *
-   * @var mixed $input
-   * @return int
+   * @var array $input
+   * @return void
    **/
   public function store($input)
   {
@@ -38,6 +38,27 @@ class AdSpaceReponsitory
       $this->parseAndStoreImagesFor($adSpace, $input);
       // 保存价格信息
       $this->parseAndStorePricesFor($adSpace, $input);
+    });
+  }
+
+  /**
+   * 更新广告位信息
+   *
+   * @var AdSpace $ad
+   * @var array $input
+   * @return void
+   **/
+  public function update($ad, $input)
+  {
+    DB::transaction(function () use ($ad, $input) {
+      // 更新广告位信息
+      $this->parseAndUpdateAdSpace($ad, $input);
+      // 更新分类信息
+      $this->parseAndUpdateCategoriesFor($ad, $input);
+      // 更新产品图信息
+      $this->parseAndUpdateImagesFor($ad, $input);
+      // 保存价格信息
+      $this->parseAndUpdatePricesFor($ad, $input);
     });
   }
 
@@ -110,7 +131,22 @@ class AdSpaceReponsitory
 
   public function parseAndCreateAdSpace($input)
   {
-    $adSpace                 = new AdSpace();
+    $adSpace          = new AdSpace();
+    $adSpace->user_id = Auth::user()->id;
+    $this->fillAd($ad, $input);
+    $adSpace->save();
+
+    return $adSpace;
+  }
+
+  public function parseAndUpdateAdSpace($ad, $input)
+  {
+    $this->fillAd($ad, $input);
+    $ad->save();
+  }
+
+  public function fillAd($adSpace, $input)
+  {
     $adSpace->title          = Arr::get($input, 'title');
     $adSpace->description    = Arr::get($input, 'description', '暂无描述');
     $adSpace->address_id     = Arr::get($input, 'address_id');
@@ -118,10 +154,6 @@ class AdSpaceReponsitory
     $adSpace->detail         = Arr::get($input, 'detail');
     $adSpace->type           = Arr::get($input, 'type');
     $adSpace->avatar         = Arr::get($input, 'avatar');
-    $adSpace->user_id        = Auth::user()->id;
-    $adSpace->save();
-
-    return $adSpace;
   }
 
   public function parseAndStoreCategoriesFor($ad, $input)
@@ -132,12 +164,24 @@ class AdSpaceReponsitory
       $ad->categories()->attach($categoryId);
   }
 
+  public function parseAndUpdateCategoriesFor($ad, $input)
+  {
+    $ad->categories()->detach();
+    $this->parseAndStoreCategoriesFor($ad, $input);
+  }
+
   public function parseAndStoreImagesFor($ad, $input)
   {
     $imageIds = Arr::get($input, '__images');
 
     foreach ($imageIds as $imageId)
       $ad->images()->attach($imageId);
+  }
+
+  public function parseAndUpdateImagesFor($ad, $input)
+  {
+    $ad->images()->detach();
+    $this->parseAndStoreImagesFor($ad, $input);
   }
 
   public function parseAndStorePricesFor($ad, $input)
@@ -151,6 +195,12 @@ class AdSpaceReponsitory
     }, $prices);
 
     $ad->adPrices()->saveMany($prices);
+  }
+
+  public function parseAndUpdatePricesFor($ad, $input)
+  {
+    AdPrice::where('ad_space_id', $ad->id)->delete();
+    $this->parseAndStorePricesFor($ad, $input);
   }
 
   public function parseDateRange($price)

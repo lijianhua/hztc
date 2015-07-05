@@ -15,6 +15,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <meta name="csrf-token" content="{{ csrf_token() }}" />
+  <script>
+  var CKEDITOR_BASEPATH = '/editor/';
+  </script>
 </head>
 <body class="skin-blue fixed sidebar-mini">
 

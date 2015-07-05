@@ -58,4 +58,21 @@ class AdCategoryReponsitory
     return $fractal->createData($resource)->toArray();
   }
 
+  /**
+   * 获取广告的分类信息
+   *
+   * @var AdSpace $ad
+   * @var AdCategory $category
+   * @return string
+   **/
+  public static function categoriesStrForAd($ad, $category)
+  {
+    $categories = $ad->categories()->whereParentId($category->id)->get();
+
+    if ($categories->count() == 0) {
+      return '全部';
+    } else {
+      return implode(", ", $categories->lists('name')->toArray());
+    }
+  }
 }

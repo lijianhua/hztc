@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AdCategory;
 use App\Models\AdSpace;
 use App\Http\Requests\PostAdSpaceRequest;
+use App\Http\Requests\UpdateAdSpaceRequest;
 
 class AdSpaceController extends Controller
 {
@@ -93,8 +94,9 @@ class AdSpaceController extends Controller
   public function show($id)
   {
     $ad = AdSpace::findOrFail($id);
+    $categories = AdCategory::roots()->get();
 
-    return view('ads.show', compact('ad'));
+    return view('ads.show', compact('ad', 'categories'));
   }
 
   /**
@@ -130,9 +132,12 @@ class AdSpaceController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(UpdateAdSpaceRequest $request, $id)
   {
-    //
+    $ad = AdSpace::findOrFail($id);
+    $this->store->update($ad, $request->all());
+
+    return redirect()->action('AdSpaceController@show', ['id' => $ad->id])->with('status', '广告位更新成功。');
   }
 
   /**

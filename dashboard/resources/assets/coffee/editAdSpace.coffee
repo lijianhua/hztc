@@ -7,18 +7,17 @@ $ ->
 
   class EditAdSpaceForm
     constructor: (@id, @$) ->
-      @$ = window.jQuery
-      @get_address_url = '/addresses'
-      @provinceSelect  = @$('#addr_province')
-      @citySelect      = @$('#addr_city')
-      @areaSelect      = @$('#addr_area')
-      @addressIdInput  = @$('input[name=address_id]')
-      @addPriceButton  = @$('#newPrice')
-      @pricesContainer = @$('.prices')
-      @imagesContainer = @$('.images')
-
-      @form            = @$("##{@id}")
-      @adId            = @form.attr 'data-id'
+      @form             = @$("##{@id}")
+      @adId             = @form.attr 'data-id'
+      @get_address_url  = '/addresses'
+      @provinceSelect   = @$('#addr_province')
+      @citySelect       = @$('#addr_city')
+      @areaSelect       = @$('#addr_area')
+      @addressIdInput   = @$('input[name=address_id]')
+      @addPriceButton   = @$('#newPrice')
+      @pricesContainer  = @$('.prices')
+      @imagesContainer  = @$('.images')
+      @categoriesSelect = @$("select[name='category_ids[]']")
 
       # ajax设置
       @$.ajaxSetup
@@ -44,6 +43,10 @@ $ ->
       @initPriceProcessing()
       # 初始化 ckeditor
       @initCKEditor()
+      # 初始化分类
+      @initCategories()
+      # 开始编辑
+      @prepared()
 
     initAvatar: ->
       @$('input[name=avatar]').fileinput
@@ -56,12 +59,13 @@ $ ->
 
     initImages: ->
       @$("input[name='images[]']").fileinput
-        language         : 'zh'
-        previewFileType  : 'image'
-        allowedFileTypes : [ 'image' ]
-        uploadUrl        : '/avatars/upload'
-        uploadAsync      : true
-        initialPreview   : @adData.images.initialPreview
+        language             : 'zh'
+        uploadUrl            : '/avatars/upload'
+        uploadAsync          : true
+        initialPreview       : @adData.images.initialPreview
+        previewFileType      : 'image'
+        allowedFileTypes     : [ 'image' ]
+        overwriteInitial     : false
         initialPreviewConfig : @adData.images.initialPreviewConfig
 
       @listenFileUploadedEventOnImages()
@@ -188,7 +192,6 @@ $ ->
       @addRemovePriceEvent()
 
     initCKEditor: ->
-      CKEDITOR.basePath = '/editor/'
       CKEDITOR.replace 'ckeditor', {
         filebrowserImageUploadUrl: '/ckeditor/upload',
         contentsCss: '/editor/contents.css',
@@ -269,5 +272,21 @@ $ ->
             '九月', '十月', '十一月', '十二月'
           ]
           firstDay         : 1
+
+    initCategories: ->
+      categories = @adData.categories.data
+      for select in @categoriesSelect
+        parentId = parseInt(@$(select).attr 'data-id')
+        values   = []
+
+        for category in categories
+          values.push category.id if parseInt(category.parent_id) == parentId
+        if values.length == 0
+          @$(select).val(@$('option:first', @$(select)).val())
+        else
+          @$(select).val values
+
+    prepared: ->
+      @$('.overlay, .init-callout').remove()
 
   form = new EditAdSpaceForm 'updateAdSpaceForm', $

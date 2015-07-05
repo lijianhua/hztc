@@ -12,6 +12,9 @@
 <div class="form-group images">
   <label>展示图片</label>
   {!! Form::file('images[]', null, ['class' => 'form-control']) !!}
+  @foreach($ad->images as $image)
+    {!! Form::hidden('__images[]', $image->id) !!}
+  @endforeach
 </div>
 
 <div class="form-group">
@@ -65,7 +68,7 @@
 @foreach($categories as $category)
   <div class="form-group">
     <label>{{ $category->name }}</label>
-    <select class="form-control" name="category_ids[]" multiple size="8">
+    <select class="form-control" name="category_ids[]" multiple size="8" data-id="{{ $category->id }}">
       <option value>全部</option>
       @foreach($category->children()->get() as $option)
         <option value="{{ $option->id }}">{{ $option->name }}</option>
@@ -97,6 +100,10 @@
 <div class="form-group">
   <label>详情</label>
   {!! Form::textarea('detail', null, ['id' => 'ckeditor', 'cols' => 30, 'rows' => 20]) !!}
+</div>
+
+<div class="form-group">
+  {!! Form::submit('保存', ['class' => 'btn btn-flat btn-default btn-primary btn-lg']) !!}
 </div>
 {!! Form::close() !!}
 

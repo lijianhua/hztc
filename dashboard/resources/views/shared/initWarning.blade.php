@@ -1,4 +1,4 @@
-<div class="callout callout-warning">
+<div class="callout callout-warning init-callout">
   <h4>
     <i class="fa fa-cog fa-spin"></i>
     初始化中...
