@@ -75,8 +75,8 @@ class @CommonDataTableObject
     @method   = 'DELETE'
     throw 'Require to set actionUrl in subclass' unless @actionUrl
     @ajax (response) ->
-      @api().row(@selectedRow()).remove().draw false
       if response.state == 'OK'
+        @api().row(@selectedRow()).remove().draw false
         type = 'success'
       else
         type = 'danger'

@@ -36,9 +36,21 @@ class OrderController extends Controller
     return view('orders.index');
   }
 
+  public function pending()
+  {
+    return view('orders.pending');
+  }
+
   public function server()
   {
     $orders = Order::with('user', 'orderItems', 'orderItems.adSpace')->recent();
+
+    return $this->service->datatables($orders);
+  }
+
+  public function pendingServer()
+  {
+    $orders = Order::with('user', 'orderItems', 'orderItems.adSpace')->recent()->pendingProccess();
 
     return $this->service->datatables($orders);
   }
@@ -71,7 +83,9 @@ class OrderController extends Controller
    */
   public function show($id)
   {
-    //
+    $order = Order::findOrFail($id);
+
+    return view('orders.show', compact('order'));
   }
 
   /**
@@ -105,5 +119,28 @@ class OrderController extends Controller
   public function destroy($id)
   {
     //
+  }
+
+  public function proccess(Request $request, $id)
+  {
+    $order = Order::findOrFail($id);
+
+    if ($order->isPending()) {
+      $order->state = 2;
+      $order->save();
+
+      if ($request->ajax()) {
+        return $this->okResponse('标记完成。');
+      } else {
+        return redirect()
+          ->action('OrderController@show', ['id' => $order->id])
+          ->with('status', '标记完成');
+      }
+    }
+    if ($request->ajax()) {
+      return $this->failResponse('标记错误。这个订单不能标记为已投放。');
+    } else {
+      return redirect()->action('OrderController@show', ['id' => $order->id]);
+    }
   }
 }

@@ -84,7 +84,11 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
 
   // 订单管理
   Route::get('orders/server-proccessing', 'OrderController@server');
+  Route::get('orders/pending-proccess', 'OrderController@pending');
+  Route::get('orders/server-pending', 'OrderController@pendingServer');
+  Route::put('orders/proccessing/{id}', 'OrderController@proccess');
   Route::get('orders', 'OrderController@index');
+  Route::get('orders/{id}', 'OrderController@show');
 });
 
 // 用户登录

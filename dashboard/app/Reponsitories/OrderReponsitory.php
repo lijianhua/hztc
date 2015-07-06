@@ -13,23 +13,7 @@ class OrderReponsitory
   {
     return Datatables::of($query)
       ->editColumn('state', function ($order) {
-        switch ($order->state) {
-          case 0:
-            return '<span class="label bg-navy">未付款</span>';
-            break;
-          case 1:
-            return '<span class="label label-danger">待投放</span>';
-            break;
-          case 2:
-            return '<span class="label label-warning">已投放</span>';
-            break;
-          case 3:
-            return '<span class="label label-success">已完成</span>';
-            break;
-          case 4:
-            return '<span class="label label-default">已取消</span>';
-            break;
-        }
+        return $this->orderStateLabel($order->state);
       })
       ->editColumn('amount', function ($order) {
         return money_format('%i', $order->amount);
@@ -44,7 +28,7 @@ class OrderReponsitory
   {
     return HTML::decode(
       '<p>'
-      . HTML::link('orders/' . $order->id, $order->order_seq, ['class' => 'text-primary'])
+      . HTML::link('orders/' . $order->id, '<strong>'.$order->order_seq.'</strong>', ['class' => 'text-primary'])
       . '</p>'
       . $this->adsDetailOfOrder($order)
     );
@@ -62,6 +46,27 @@ class OrderReponsitory
         </p>
 EOF;
     return $result;
+    }
+  }
+
+  public function orderStateLabel($state, $class = [])
+  {
+    switch ($state) {
+      case 0:
+        return '<span class="label bg-navy">未付款</span>';
+        break;
+      case 1:
+        return '<span class="label label-danger">待投放</span>';
+        break;
+      case 2:
+        return '<span class="label label-warning">待确认</span>';
+        break;
+      case 3:
+        return '<span class="label label-success">已完成</span>';
+        break;
+      case 4:
+        return '<span class="label label-default">已取消</span>';
+        break;
     }
   }
 }

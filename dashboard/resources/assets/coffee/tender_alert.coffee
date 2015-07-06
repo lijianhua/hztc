@@ -73,7 +73,7 @@ class @TenderConfirmAlert extends @TenderAlert
       'z-index'   : '2'
       'box-shadow': '0 0 10px 5px rgba(0, 0, 0, 0.3)'
       left        : (window.jQuery(@container).innerWidth() - window.jQuery(messageBody).innerWidth()) / 2
-      top         : (window.jQuery(@container).innerHeight() - window.jQuery(messageBody).innerHeight()) / 2
+      top         : (window.innerHeight - window.jQuery(messageBody).innerHeight()) / 2
 
     @alertMessage = messageBody
     @alertMessage

@@ -48,10 +48,10 @@
         </a>
         <ul class="treeview-menu">
           <li>
-            <a href="#">
+            <a href="{{ url('orders/pending-proccess') }}">
               <i class="fa fa-circle-o"></i>
-              <span>未完成订单</span>
-              <small class="label pull-right bg-red">3</small>
+              <span>待投放订单</span>
+              <small class="label pull-right bg-red">{{ $__counts['pendingProccessOrders'] }}</small>
             </a>
           </li>
           <li>

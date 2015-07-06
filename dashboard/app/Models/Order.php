@@ -25,4 +25,14 @@ class Order extends Model {
   {
     return $query->orderBy('created_at', 'desc');
   }
+
+  public function scopePendingProccess($query)
+  {
+    return $query->whereState(1);
+  }
+
+  public function isPending()
+  {
+    return $this->state == 1;
+  }
 }
