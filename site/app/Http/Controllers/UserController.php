@@ -134,15 +134,14 @@ class UserController extends Controller {
     $user = Auth::user();
     $navigators = Navigator::all()->sortBy('sort');
     $enterprise = Enterprise::find($user->enterprise_id);
-    $audited = $enterprise->is_audited;
-    $verify = $enterprise->is_verify;
+    $enterprise = $enterprise?$enterprise:'';
     $truthname     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','truthname')->first();
     $idcard     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','idcard')->first();
     $telphone     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','telphone')->first();
     $license = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','license')->first();
     $tax = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','tax')->first();
     $organizing = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','organizing')->first();
-    return view('advertisers')->with(compact('navigators','user','enterprise','truthname','idcard','telphone','audited','verify','license','tax','organizing'));
+    return view('advertisers')->with(compact('navigators','user','enterprise','truthname','idcard','telphone','license','tax','organizing'));
   }
 
 

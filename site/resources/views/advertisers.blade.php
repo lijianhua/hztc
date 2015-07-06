@@ -19,9 +19,9 @@ style='position:absolute;font-size:12px;margin-top:200px;margin-left:500px;color
             <div class="advertisers-personal">
                 <div class="personal-title">
                     <span class="personal-prompt">广告主信息<span
-class="personal-prompt-color">{{$audited == 1 ? '(已认证)':'(未认证)'}}</span></span>
-                    <span
-class="personal-prompt-text"><sub>*</sub>{{$audited == 1?
+class="personal-prompt-color">{{$enterprise && $enterprise->audited == 1 ? '(已认证)':'(未认证)'}}</span></span>
+                    <span class="personal-prompt-text"><sub>*</sub>{{$enterprise
+&& $enterprise->audited == 1?
 '':'请补充信息完成认证'}}</span>
                 </div>
                 <?= Form::open(['url' => action('UserController@store_user_auth'), 'method' => 'POST', 'files' => true ]) ?>
@@ -56,7 +56,7 @@ value='{{isset($telphone)? $telphone->note: ''}}'></span>
                             <div class="advertisers-personal-enter">
                                 <strong>从属公司</strong><br/>
                                 <span><input type="text" name='enterprise'
-value='{{isset($enterprise)? $enterprise->name:''}}'></span>
+value='{{$enterprise? $enterprise->name:''}}'></span>
                             </div>
                         </div>
                         <div class="advertisers-personal-enter">
@@ -67,10 +67,12 @@ value='{{isset($enterprise)? $enterprise->name:''}}'></span>
             </div>
             <div class="advertisers-company display" id='#ppp'>
                 <div class="personal-title">
-                    <span class="personal-prompt">公司信息认证<span
-class="personal-prompt-color">{{$verify==1? '(已认证)':'(未认证)'}}</span></span>
-                    <span class="personal-prompt-text"><sub>*</sub>{{$verify==1?
-'':'请补充信息完成认证'}}</span>
+                    <span class="personal-prompt">公司信息认证
+                      <span class="personal-prompt-color">{{$enterprise && $enterprise->verify==1? '(已认证)':'(未认证)'}}</span>
+                    </span>
+                    <span class="personal-prompt-text"><sub>*</sub>
+                      {{$enterprise && $enterprise->$verify==1?'':'请补充信息完成认证'}}
+                    </span>
                 </div>
                 <?= Form::open(['url' =>
 action('UserController@store_company_auth'), 'method' => 'POST', 'files' =>
