@@ -24,8 +24,7 @@ class="personal-prompt-color">{{$audited == 1 ? '(已认证)':'(未认证)'}}</s
 class="personal-prompt-text"><sub>*</sub>{{$audited == 1?
 '':'请补充信息完成认证'}}</span>
                 </div>
-					      <form class="form-horizontal" role="form" method="POST"
-action="{{ url('/users/info') }}" id='users_info'>
+                <?= Form::open(['url' => action('UserController@store_user_auth'), 'method' => 'POST', 'files' => true ]) ?>
 						        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <ul class="login-right-info">
                     <div class="advertisers-personal-info">
@@ -64,50 +63,62 @@ value='{{isset($enterprise)? $enterprise->name:''}}'></span>
                             <button type="submit">提交</button>
                         </div>
                     </div>
-                </form>
+               <?= Form::close() ?>
             </div>
-            <div class="advertisers-company display">
+            <div class="advertisers-company display" id='#ppp'>
                 <div class="personal-title">
                     <span class="personal-prompt">公司信息认证<span
 class="personal-prompt-color">{{$verify==1? '(已认证)':'(未认证)'}}</span></span>
                     <span class="personal-prompt-text"><sub>*</sub>{{$verify==1?
 '':'请补充信息完成认证'}}</span>
                 </div>
-                <div class="advertisers-company">
-                    <div class="advertisers-company-block clearfix">
-                        <div class="advertisers-company-item">
-                            <div class="advertisers-company-bg">
-                                <div class="advertisers-company-info" id="imgdiv"><img id="imgShow"></div>
-                                <div class="advertisers-company-upload">
-                                    <span class="advertisers-company-upload-name">营业执照</span>
-                                    <input type="file" id="up_img">
+                <?= Form::open(['url' =>
+action('UserController@store_company_auth'), 'method' => 'POST', 'files' =>
+true, 'id' => 'upload' ]) ?>
+                    <div class="advertisers-company">
+                        <div class="advertisers-company-block clearfix">
+                            <div class="advertisers-company-item">
+                                <div class="advertisers-company-bg">
+                                    <div class="advertisers-company-info"
+id="imgdiv"><img id="imgShow" src={{ isset($license)? $license->avatar->url(): ''}}></div>
+                                    <div class="advertisers-company-upload">
+                                        <span class="advertisers-company-upload-name">营业执照</span>
+                                        <input type="file" id="up_img"
+name='license'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="advertisers-company-item ml13">
+                                <div class="advertisers-company-bg">
+                                    <div class="advertisers-company-info"
+id="imgdiv2"><img id="imgShow2" src={{isset($tax)? $tax->avatar->url():''}}></div>
+                                    <div class="advertisers-company-upload">
+                                        <span
+class="advertisers-company-upload-name">税务登记</span>
+                                        <input type="file" id="up_img2"
+name='tax'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="advertisers-company-item ml13">
+                                <div class="advertisers-company-bg">
+                                    <div class="advertisers-company-info"
+id="imgdiv3"><img id="imgShow3" src={{isset($organizing)? $organizing->avatar->url():''}}></div>
+                                    <div class="advertisers-company-upload">
+                                        <span
+class="advertisers-company-upload-name">组织机构代码</span>
+                                        <input type="file" id="up_img3"
+name='organizing'>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="advertisers-company-item ml13">
-                            <div class="advertisers-company-bg">
-                                <div class="advertisers-company-info" id="imgdiv2"><img id="imgShow2"></div>
-                                <div class="advertisers-company-upload">
-                                    <span class="advertisers-company-upload-name">营业执照</span>
-                                    <input type="file" id="up_img2">
-                                </div>
-                            </div>
+                        <div class="advertisers-company-submit">
+                            <button type="submit">提交</button>
                         </div>
-                        <div class="advertisers-company-item ml13">
-                            <div class="advertisers-company-bg">
-                                <div class="advertisers-company-info" id="imgdiv3"><img id="imgShow3"></div>
-                                <div class="advertisers-company-upload">
-                                    <span class="advertisers-company-upload-name">营业执照</span>
-                                    <input type="file" id="up_img3">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="advertisers-company-submit">
-                        <button type="submit">提交</button>
                     </div>
                 </div>
-            </div>
+               <?= Form::close() ?>
         </div>
     </div>
 </div>

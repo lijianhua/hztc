@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 use DB;
+use Redirect;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -138,7 +139,10 @@ class UserController extends Controller {
     $truthname     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','truthname')->first();
     $idcard     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','idcard')->first();
     $telphone     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','telphone')->first();
-    return view('advertisers')->with(compact('navigators','user','enterprise','truthname','idcard','telphone','audited','verify'));
+    $license = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','license')->first();
+    $tax = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','tax')->first();
+    $organizing = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','organizing')->first();
+    return view('advertisers')->with(compact('navigators','user','enterprise','truthname','idcard','telphone','audited','verify','license','tax','organizing'));
   }
 
 
@@ -184,15 +188,10 @@ class UserController extends Controller {
   public function store_user_auth(PostEnterpriseRequest $request)
   {
     $attributes = $request->only('id', 'idcard', 'truthname', 'enterprise','telphone');
-    $nav  = '首页';
-    $unav = '广告主信息';
-    Session::put('current_navigator', $nav);
-    Session::put('user_navigator', $unav);
     $user = Auth::user();
-    $navigators = Navigator::all()->sortBy('sort');
     if($user->enterprise_id)
     {
-      DB::transaction(function() use ($attributes,$user,$navigators)
+      DB::transaction(function() use ($attributes,$user)
       {
         Enterprise::where('id', '=', $user->enterprise_id)->update(['name' => $attributes['enterprise']]); 
         ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name', '=', 'idcard')->update(['note' => $attributes['idcard']]);
@@ -211,13 +210,74 @@ class UserController extends Controller {
         ReviewMaterial::create(['enterprise_id' => $enterprise->id, 'name' => 'telphone', 'note' => $attributes['telphone']]);
       });   
     }
-    $enterprise = Enterprise::find($user->enterprise_id)->first();
-    $audited = $enterprise->is_audited;
-    $verify = $enterprise->is_verify;
-    $truthname     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','truthname')->first();
-    $idcard     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','idcard')->first();
-    $telphone     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','telphone')->first();
-    return view('advertisers')->with(compact('navigators','user','enterprise','truthname','idcard','telphone','audited','verify'));
+    return Redirect::to('users/info');
   }
+  public function store_company_auth(Request $request)
+  {
+		$this->validate($request, [
+			'license' => 'image',
+			'tax' => 'image',
+			'organizing' => 'image'],
+      [ 'license.mimes' => '营业执照只能上传图片', 
+        'tax.mimes' => '税务登记只能上传图片', 
+        'organizing.mimes' => '组织结构代码只能上传图片', 
+      ]);
+    $requests = $request->all();
+    $user = Auth::user();
+    if($user->enterprise_id)
+    {
+      $requests = $request->all();
+      DB::transaction(function() use ($requests,$user)
+      {
+        $key_a = ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','license')->first();   
+        $key_b = ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','tax')->first();   
+        $key_c = ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','organizing')->first();   
+        if(array_key_exists('license',$requests))
+        {
+          if(!$key_a)
+          {
+            ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'license', 'note' => 'license','avatar' => $requests['license']]);
+          }
+          else
+          {
+              ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','license')->delete();
+              ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'license', 'note' => 'license','avatar' => $requests['license']]);
+          }
+        }
+        if(array_key_exists('tax',$requests))
+        {
+          if(!$key_b)
+          {
+            ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'tax', 'note' => 'tax','avatar' => $requests['tax']]);
+          }
+          else
+          {
+              ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','tax')->delete();
+              ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'tax', 'note' => 'tax','avatar' => $requests['tax']]);
+          }
+        }
+        if(array_key_exists('organizing',$requests))
+        {
+          if(!$key_c)
+          {
+            ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'organizing', 'note' => 'organizing','avatar' => $requests['organizing']]);
+          }
+          else
+          {
+              ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','organizing')->delete();
+              ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'organizing', 'note' => 'organizing','avatar' => $requests['organizing']]);
+          }
+        }
+      });   
+      if ($request->ajax()) {
+        return response()->json(['status' => 'OK', 'message' => 'Success.']);
+      } else
+        return Redirect::to('users/info');
+    }
+    else
+    {
+        return Redirect::to('users/info');
+    }
+  } 
 }
 

@@ -3,6 +3,7 @@
   "dependencies": {
     "jquery": "1.11.3",
     "bootstrap": "~3.3.4",
-    "fontawesome": "~4.3.0"
+    "fontawesome": "~4.3.0",
+    "jquery-form": "~3.46.0"
   }
 }

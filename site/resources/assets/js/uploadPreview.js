@@ -98,6 +98,18 @@ var uploadPreview = function(setting) {
             }
         }
     }
+    $('#upload').submit(function(e){
+      e.preventDefault(); 
+      $(this).ajaxSubmit({
+        url      : 'info',
+        async    : false,
+        dataType : 'json',
+        success  : function (result) {
+        },
+        error    : function (jqXHR) {
+        }
+      });
+    })
     /*
      *author:周祥
      *date:2014年12月11日

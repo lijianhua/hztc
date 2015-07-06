@@ -42,6 +42,7 @@ elixir(function(mix) {
        .scripts([
            'jquery/dist/jquery.js',
            'bootstrap/dist/js/bootstrap.js',
+           'jquery-form/jquery.form.js'
        ], 'public/js/vendor.js', elixir.config['bowerDir'])
        // 合并自定义 js
        .scriptsIn('public/js', 'public/js/all.js')
