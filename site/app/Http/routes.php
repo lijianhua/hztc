@@ -12,8 +12,8 @@
  */
 
 Route::get('/', 'HomeController@index');
-Route::get('/list', 'ListController@index');
-Route::get('/adspaces/{name}', 'ListController@getAds');
+Route::get('/ads', 'AdSpaceController@index');
+Route::get('/ads/{id}', 'AdSpaceController@show');
 Route::get('/search', 'SearchController@index');
 Route::get('/cart', 'CartController@index');
 Route::get('/pay', 'CartController@pay');

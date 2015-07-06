@@ -1,12 +1,9 @@
 <?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AdSpaceUser extends Model {
 
 
-  public function AdSpaceCollect()
-  {
-    return $this->hasOne('App\Models\AdSpace', 'id', 'ad_space_id');
-  }
 }

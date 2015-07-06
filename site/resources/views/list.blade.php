@@ -98,16 +98,16 @@
                 <span class="list-sort-item active"><a href="#">默认排序</a> </span>
                 <span class="list-sort-item"><a href="#">销量</a> </span>
                 <span class="list-sort-item"><a href="#">价格</a> </span>
-                <span class="list-sort-item"><a href="#">关注人数</a> </span>
             </div>
             <div class="list-info clearfix">
+            @foreach ($adspaces as $index=>$space)
                 <div class="list-info-item fl  mr19">
                     <div class="list-info-block">
-                        <div><img src="images/list/list.png"></div>
+                        <div><img src="{{ $space->avatar->url() }}"></div>
                         <div class="list-info-details">
-                            <div class="list-info-details-title"><span>【安得利广告牌】</span></div>
+                            <div class="list-info-details-title"><span>{{$space->title}}</span></div>
                             <div class="list-info-details-text">
-                                <span>LED门市招牌市场前景极好，夜总会，商场等。我们提供部分LED门市招牌材料和LED门市招牌的制作工艺技术。</span>
+                                <span>{{ $space->description }}</span>
                             </div>
                             <div class="list-info-details-go">
                                 <span class="list-info-details-star">
@@ -117,315 +117,33 @@
                                     <i class="fa fa-star active"></i>
                                 </span>
                                 <span class="list-info-details-look">
-                                    <span class="list-info-details-look-img"></span>
-                                    <span class="list-info-details-look-text1">关注人数</span>
-                                    <span class="list-info-details-look-text2">100</span>
+                                    <i class="fa fa-star"></i>
+                                    <span class="list-info-details-look-text1">收藏人数</span>
+                                    <span class="list-info-details-look-text2">{{ $space->adSpaceUsers->sum('id')}}</span>
                                 </span>
                             </div>
                             <div class="list-info-details-money">
                                 <span class="list-info-details-price">
                                     <span class="list-info-details-price-img"><i class="fa fa-jpy"></i></span>
-                                    <span class="list-info-details-price-number">500</span>
+                                    <span class="list-info-details-price-number">
+                                      {{ $space->AdPrices->min('price') }}
+                                    </span>
                                 </span>
                                 <span class="list-info-details-people">
-                                    <span class="list-info-details-people-number">20</span>人购买
+                                    <span class="list-info-details-people-number">
+                                      {{ $space->orderItems->sum('quantity')}}
+                                    </span>人购买
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div class="list-info-nutton">
-                        <a href="#">加入购物车</a>
+                        <a href="ads/{{ $space->id }}">加入购物车</a>
                     </div>
                 </div>
-                <div class="list-info-item fl  mr19">
-                    <div class="list-info-block">
-                        <div><img src="images/list/list.png"></div>
-                        <div class="list-info-details">
-                            <div class="list-info-details-title"><span>【安得利广告牌】</span></div>
-                            <div class="list-info-details-text">
-                                <span>LED门市招牌市场前景极好，夜总会，商场等。我们提供部分LED门市招牌材料和LED门市招牌的制作工艺技术。</span>
-                            </div>
-                            <div class="list-info-details-go">
-                                <span class="list-info-details-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-                                <span class="list-info-details-look">
-                                    <span class="list-info-details-look-img"></span>
-                                    <span class="list-info-details-look-text1">关注人数</span>
-                                    <span class="list-info-details-look-text2">100</span>
-                                </span>
-                            </div>
-                            <div class="list-info-details-money">
-                                <span class="list-info-details-price">
-                                    <span class="list-info-details-price-img"><i class="fa fa-jpy"></i></span>
-                                    <span class="list-info-details-price-number">500</span>
-                                </span>
-                                <span class="list-info-details-people">
-                                    <span class="list-info-details-people-number">20</span>人购买
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-info-nutton">
-                        <a href="#">加入购物车</a>
-                    </div>
-                </div>
-                <div class="list-info-item fl">
-                    <div class="list-info-block">
-                        <div><img src="images/list/list.png"></div>
-                        <div class="list-info-details">
-                            <div class="list-info-details-title"><span>【安得利广告牌】</span></div>
-                            <div class="list-info-details-text">
-                                <span>LED门市招牌市场前景极好，夜总会，商场等。我们提供部分LED门市招牌材料和LED门市招牌的制作工艺技术。</span>
-                            </div>
-                            <div class="list-info-details-go">
-                                <span class="list-info-details-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-                                <span class="list-info-details-look">
-                                    <span class="list-info-details-look-img"></span>
-                                    <span class="list-info-details-look-text1">关注人数</span>
-                                    <span class="list-info-details-look-text2">100</span>
-                                </span>
-                            </div>
-                            <div class="list-info-details-money">
-                                <span class="list-info-details-price">
-                                    <span class="list-info-details-price-img"><i class="fa fa-jpy"></i></span>
-                                    <span class="list-info-details-price-number">500</span>
-                                </span>
-                                <span class="list-info-details-people">
-                                    <span class="list-info-details-people-number">20</span>人购买
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-info-nutton">
-                        <a href="#">加入购物车</a>
-                    </div>
-                </div>
-                <div class="list-info-item fl mr19">
-                    <div class="list-info-block">
-                        <div><img src="images/list/list.png"></div>
-                        <div class="list-info-details">
-                            <div class="list-info-details-title"><span>【安得利广告牌】</span></div>
-                            <div class="list-info-details-text">
-                                <span>LED门市招牌市场前景极好，夜总会，商场等。我们提供部分LED门市招牌材料和LED门市招牌的制作工艺技术。</span>
-                            </div>
-                            <div class="list-info-details-go">
-                                <span class="list-info-details-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-                                <span class="list-info-details-look">
-                                    <span class="list-info-details-look-img"></span>
-                                    <span class="list-info-details-look-text1">关注人数</span>
-                                    <span class="list-info-details-look-text2">100</span>
-                                </span>
-                            </div>
-                            <div class="list-info-details-money">
-                                <span class="list-info-details-price">
-                                    <span class="list-info-details-price-img"><i class="fa fa-jpy"></i></span>
-                                    <span class="list-info-details-price-number">500</span>
-                                </span>
-                                <span class="list-info-details-people">
-                                    <span class="list-info-details-people-number">20</span>人购买
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-info-nutton">
-                        <a href="#">加入购物车</a>
-                    </div>
-                </div>
-                <div class="list-info-item fl mr19">
-                    <div class="list-info-block">
-                        <div><img src="images/list/list.png"></div>
-                        <div class="list-info-details">
-                            <div class="list-info-details-title"><span>【安得利广告牌】</span></div>
-                            <div class="list-info-details-text">
-                                <span>LED门市招牌市场前景极好，夜总会，商场等。我们提供部分LED门市招牌材料和LED门市招牌的制作工艺技术。</span>
-                            </div>
-                            <div class="list-info-details-go">
-                                <span class="list-info-details-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-                                <span class="list-info-details-look">
-                                    <span class="list-info-details-look-img"></span>
-                                    <span class="list-info-details-look-text1">关注人数</span>
-                                    <span class="list-info-details-look-text2">100</span>
-                                </span>
-                            </div>
-                            <div class="list-info-details-money">
-                                <span class="list-info-details-price">
-                                    <span class="list-info-details-price-img"><i class="fa fa-jpy"></i></span>
-                                    <span class="list-info-details-price-number">500</span>
-                                </span>
-                                <span class="list-info-details-people">
-                                    <span class="list-info-details-people-number">20</span>人购买
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-info-nutton">
-                        <a href="#">加入购物车</a>
-                    </div>
-                </div>
-                <div class="list-info-item fl">
-                    <div class="list-info-block">
-                        <div><img src="images/list/list.png"></div>
-                        <div class="list-info-details">
-                            <div class="list-info-details-title"><span>【安得利广告牌】</span></div>
-                            <div class="list-info-details-text">
-                                <span>LED门市招牌市场前景极好，夜总会，商场等。我们提供部分LED门市招牌材料和LED门市招牌的制作工艺技术。</span>
-                            </div>
-                            <div class="list-info-details-go">
-                                <span class="list-info-details-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-                                <span class="list-info-details-look">
-                                    <span class="list-info-details-look-img"></span>
-                                    <span class="list-info-details-look-text1">关注人数</span>
-                                    <span class="list-info-details-look-text2">100</span>
-                                </span>
-                            </div>
-                            <div class="list-info-details-money">
-                                <span class="list-info-details-price">
-                                    <span class="list-info-details-price-img"><i class="fa fa-jpy"></i></span>
-                                    <span class="list-info-details-price-number">500</span>
-                                </span>
-                                <span class="list-info-details-people">
-                                    <span class="list-info-details-people-number">20</span>人购买
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-info-nutton">
-                        <a href="#">加入购物车</a>
-                    </div>
-                </div>
-                <div class="list-info-item fl mr19">
-                    <div class="list-info-block">
-                        <div><img src="images/list/list.png"></div>
-                        <div class="list-info-details">
-                            <div class="list-info-details-title"><span>【安得利广告牌】</span></div>
-                            <div class="list-info-details-text">
-                                <span>LED门市招牌市场前景极好，夜总会，商场等。我们提供部分LED门市招牌材料和LED门市招牌的制作工艺技术。</span>
-                            </div>
-                            <div class="list-info-details-go">
-                                <span class="list-info-details-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-                                <span class="list-info-details-look">
-                                    <span class="list-info-details-look-img"></span>
-                                    <span class="list-info-details-look-text1">关注人数</span>
-                                    <span class="list-info-details-look-text2">100</span>
-                                </span>
-                            </div>
-                            <div class="list-info-details-money">
-                                <span class="list-info-details-price">
-                                    <span class="list-info-details-price-img"><i class="fa fa-jpy"></i></span>
-                                    <span class="list-info-details-price-number">500</span>
-                                </span>
-                                <span class="list-info-details-people">
-                                    <span class="list-info-details-people-number">20</span>人购买
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-info-nutton">
-                        <a href="#">加入购物车</a>
-                    </div>
-                </div>
-                <div class="list-info-item fl mr19">
-                    <div class="list-info-block">
-                        <div><img src="images/list/list.png"></div>
-                        <div class="list-info-details">
-                            <div class="list-info-details-title"><span>【安得利广告牌】</span></div>
-                            <div class="list-info-details-text">
-                                <span>LED门市招牌市场前景极好，夜总会，商场等。我们提供部分LED门市招牌材料和LED门市招牌的制作工艺技术。</span>
-                            </div>
-                            <div class="list-info-details-go">
-                                <span class="list-info-details-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-                                <span class="list-info-details-look">
-                                    <span class="list-info-details-look-img"></span>
-                                    <span class="list-info-details-look-text1">关注人数</span>
-                                    <span class="list-info-details-look-text2">100</span>
-                                </span>
-                            </div>
-                            <div class="list-info-details-money">
-                                <span class="list-info-details-price">
-                                    <span class="list-info-details-price-img"><i class="fa fa-jpy"></i></span>
-                                    <span class="list-info-details-price-number">500</span>
-                                </span>
-                                <span class="list-info-details-people">
-                                    <span class="list-info-details-people-number">20</span>人购买
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-info-nutton">
-                        <a href="#">加入购物车</a>
-                    </div>
-                </div>
-                <div class="list-info-item fl">
-                    <div class="list-info-block">
-                        <div><img src="images/list/list.png"></div>
-                        <div class="list-info-details">
-                            <div class="list-info-details-title"><span>【安得利广告牌】</span></div>
-                            <div class="list-info-details-text">
-                                <span>LED门市招牌市场前景极好，夜总会，商场等。我们提供部分LED门市招牌材料和LED门市招牌的制作工艺技术。</span>
-                            </div>
-                            <div class="list-info-details-go">
-                                <span class="list-info-details-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-                                <span class="list-info-details-look">
-                                    <span class="list-info-details-look-img"></span>
-                                    <span class="list-info-details-look-text1">关注人数</span>
-                                    <span class="list-info-details-look-text2">100</span>
-                                </span>
-                            </div>
-                            <div class="list-info-details-money">
-                                <span class="list-info-details-price">
-                                    <span class="list-info-details-price-img"><i class="fa fa-jpy"></i></span>
-                                    <span class="list-info-details-price-number">500</span>
-                                </span>
-                                <span class="list-info-details-people">
-                                    <span class="list-info-details-people-number">20</span>人购买
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-info-nutton">
-                        <a href="#">加入购物车</a>
-                    </div>
-                </div>
+            @endforeach
             </div>
+             <?php echo $adspaces->render(); ?>
             <div class="page">
                 <span><a href="#" class="page-item-previous">上一页</a> </span>
                 <span><a href="#" class="page-item active">1</a> </span>
