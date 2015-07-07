@@ -1,5 +1,5 @@
 <?php namespace App\Http\Controllers\Auth;
-
+use Auth;
 use Redirect;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -92,6 +92,8 @@ class AuthController extends Controller {
       'password' => $pwd,
       'active_token' => $active_token
 		]);
-    return Redirect::to('auth/email/'.$user->id);
+//    return Redirect::to('auth/email/'.$user->id);
+    Auth::login($user);
+    return Redirect::to('/');
 	}
 }

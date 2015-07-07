@@ -14,24 +14,26 @@ class BeforeLoginMiddleware {
   public function handle($request, Closure $next)
   {
     $user = Auth::user();
-    if ($user)
-    {
-        if ($user->confirmed == 0)
-        {
-          $email = $user->email; 
-          $id = $user->id;
-          Auth::logout();
-          return Redirect::to('auth/email/'.$id);
-        }
-        else
-        {
-          return $next($request);
-        }
-    }
-    else
-    {
-        return $next($request);
-    }
+    return $next($request);
+    
+    // if ($user)
+    // {
+    //     if ($user->confirmed == 0)
+    //     {
+    //       $email = $user->email; 
+    //       $id = $user->id;
+    //       Auth::logout();
+    //       return Redirect::to('auth/email/'.$id);
+    //     }
+    //     else
+    //     {
+    //       return $next($request);
+    //     }
+    // }
+    // else
+    // {
+    //     return $next($request);
+    // }
   }
 
 }
