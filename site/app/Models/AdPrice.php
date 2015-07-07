@@ -7,7 +7,10 @@ use Iverberk\Larasearch\Traits\CallableTrait;
 class AdPrice extends Model {
   use TransformableTrait, CallableTrait;
 
-	//
+  protected $fillable = [
+    'original_price', 'price', 'score',
+    'from', 'to', 'send_count', 'sale_count'
+  ];
 
   /**
     * @return \Illuminate\Database\Eloquent\Relations

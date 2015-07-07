@@ -1,6 +1,8 @@
 <?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Iverberk\Larasearch\Traits\TransformableTrait;
+use Iverberk\Larasearch\Traits\CallableTrait;
 
 class AdCategory extends Model {
   use TransformableTrait, CallableTrait;
