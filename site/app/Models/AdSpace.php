@@ -31,6 +31,9 @@ class AdSpace extends Model {
     return $this->belongsTo('App\Models\User');
   }
 
+  /**
+    * @return \Illuminate\Database\Eloquent\Relations
+    **/
   public function categories()
   {
     return $this->belongsToMany('App\Models\AdCategory', 'ad_category_ad_space');

@@ -42,6 +42,7 @@ class BuildAdSpaceSearchIndex extends Command {
       '--relations' => [
         '\App\Models\Address',
         '\App\Models\AdPrice',
+        '\App\Models\AdCategory',
       ]
     ]);
   }

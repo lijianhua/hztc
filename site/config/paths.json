@@ -1,6 +1,7 @@
 {
     "paths": {
         "App\\Models\\AdSpace": [
+            "categories",
             "adPrices",
             "address"
         ]
@@ -8,6 +9,9 @@
     "reversedPaths": {
         "App\\Models\\AdSpace": [
             ""
+        ],
+        "App\\Models\\AdCategory": [
+            "adSpaces"
         ],
         "App\\Models\\AdPrice": [
             "adSpace"
