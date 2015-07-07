@@ -9,8 +9,7 @@
     "barryvdh/laravel-debugbar": "^2.0",
     "mews/captcha": "~2.0",
     "laravelcollective/html": "~5.0",
-    "codesleeve/laravel-stapler": "dev-master",
-    "iverberk/larasearch": "dev-L5"
+    "codesleeve/laravel-stapler": "dev-master"
   },
   "minimum-stability": "dev",
   "require-dev": {
