@@ -4,10 +4,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
+use Iverberk\Larasearch\Traits\SearchableTrait;
 
 class AdSpace extends Model implements StaplerableInterface {
 
-  Use SoftDeletes, EloquentTrait;
+  Use SoftDeletes, EloquentTrait, SearchableTrait;
+
+  public static $__es_config = [
+    'autocomplete' => ['title'],
+    'suggest'      => ['title'],
+  ];
 
   /**
    * The attributes that are mass assignable.
@@ -57,6 +63,9 @@ class AdSpace extends Model implements StaplerableInterface {
     return $this->belongsToMany('App\Models\AdCategory', 'ad_category_ad_space');
   }
 
+  /**
+   * @follow NEVER
+   **/
   public function images()
   {
     return $this->belongsToMany('App\Models\Image', 'ad_space_image', 'ad_space_id', 'image_id');
@@ -72,23 +81,11 @@ class AdSpace extends Model implements StaplerableInterface {
     return $this->belongsTo('App\Models\Address');
   }
 
+  /**
+   * @follow NEVER
+   **/
   public function orders()
   {
     return $this->hasMany('App\Models\Order');
-  }
-
-  public function orderItems()
-  {
-    return $this->hasMany('App\Models\OrderItem');
-  }
-
-  public function customerReviews()
-  {
-    return $this->hasMany('App\Models\CustomerReview');
-  }
-
-  public function adSpaceUsers()
-  {
-    return $this->hasMany('App\Models\AdSpaceUser');
   }
 }

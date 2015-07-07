@@ -52,3 +52,6 @@ Route::get('users/score','UserController@score');
 Route::post('users/infos','UserController@store_user_auth');
 Route::post('users/info','UserController@store_company_auth');
 Route::get('users/info','UserController@info');
+
+// 搜索
+Route::any('search', 'SearchController@search');
