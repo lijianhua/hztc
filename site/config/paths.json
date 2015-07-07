@@ -1,0 +1,19 @@
+{
+    "paths": {
+        "App\\Models\\AdSpace": [
+            "adPrices",
+            "address"
+        ]
+    },
+    "reversedPaths": {
+        "App\\Models\\AdSpace": [
+            ""
+        ],
+        "App\\Models\\AdPrice": [
+            "adSpace"
+        ],
+        "App\\Models\\Address": [
+            "adSpaces"
+        ]
+    }
+}
