@@ -69,7 +69,7 @@ class AdCategoryReponsitory
   {
     $categories = $ad->categories()->whereParentId($category->id)->get();
 
-    if ($categories->count() == 0) {
+    if ($categories->count() == $category->children()->count()) {
       return '全部';
     } else {
       return implode(", ", $categories->lists('name')->toArray());

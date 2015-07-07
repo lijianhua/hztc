@@ -283,8 +283,8 @@ $ ->
 
         for category in categories
           values.push category.id if parseInt(category.parent_id) == parentId
-        if values.length == 0
-          @$(select).val(@$('option:first', @$(select)).val())
+        if values.length == @$(select).find('option').length - 1
+          @selectAllCategories(select)
         else
           @$(select).val values
 
