@@ -16,6 +16,7 @@ $ ->
       @addPriceButton  = @$('#newPrice')
       @pricesContainer = @$('.prices')
       @imagesContainer = @$('.images')
+      @categories      = @$("select[name='category_ids[]']")
       # ajax设置
       @$.ajaxSetup
         context: @
@@ -30,6 +31,8 @@ $ ->
       @initPriceProcessing()
       # 初始化 ckeditor
       @initCKEditor()
+      # 监听分类选择全部的时候的事件
+      @bindChangeEventOnCategories()
 
     ###
     # 初始化文件上传
@@ -241,5 +244,24 @@ $ ->
 
     option: (label) ->
       "<option>#{label}</option>"
+
+    bindChangeEventOnCategories: ->
+      @categories.on 'change', context: @,  (e) ->
+        context = e.data.context
+        context.clearHiddenCategories(@)
+        context.selectAllCategories(@) if '' in context.$(@).val()
+
+    clearHiddenCategories: (select) ->
+      @$(select).find("input[type=hidden][name='category_ids[]']").remove()
+
+    selectAllCategories: (select) ->
+      @$(select).val([''])
+      options = @$(select).find('option').not(':eq(0)')
+      values  = $.map options, (option) ->
+        return option.value
+      @addHiddenCategoryValueToSelect(select, value) for value in values
+
+    addHiddenCategoryValueToSelect: (select, value) ->
+      @$(select).append " <input type=\"hidden\" name=\"category_ids[]\" value=\"#{value}\"> "
 
   form = new CreateAdSpaceForm 'createAdSpaceForm'

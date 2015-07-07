@@ -45,6 +45,8 @@ $ ->
       @initCKEditor()
       # 初始化分类
       @initCategories()
+      # 监听分类选择全部的时候的事件
+      @bindChangeEventOnCategories()
       # 开始编辑
       @prepared()
 
@@ -288,5 +290,24 @@ $ ->
 
     prepared: ->
       @$('.overlay, .init-callout').remove()
+
+    bindChangeEventOnCategories: ->
+      @categoriesSelect.on 'change', context: @,  (e) ->
+        context = e.data.context
+        context.clearHiddenCategories(@)
+        context.selectAllCategories(@) if '' in context.$(@).val()
+
+    clearHiddenCategories: (select) ->
+      @$(select).find("input[type=hidden][name='category_ids[]']").remove()
+
+    selectAllCategories: (select) ->
+      @$(select).val([''])
+      options = @$(select).find('option').not(':eq(0)')
+      values  = $.map options, (option) ->
+        return option.value
+      @addHiddenCategoryValueToSelect(select, value) for value in values
+
+    addHiddenCategoryValueToSelect: (select, value) ->
+      @$(select).append " <input type=\"hidden\" name=\"category_ids[]\" value=\"#{value}\"> "
 
   form = new EditAdSpaceForm 'updateAdSpaceForm', $
