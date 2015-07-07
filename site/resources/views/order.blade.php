@@ -20,28 +20,35 @@
                     <div class="order-list-code">
                         <span class="order-list-code-number">订单编号：<b>{{ $order->order_seq }}</b></span>
                         <span class="order-list-code-time">下单日期：{{ $order->created_at }}</span>
-                        <span class="order-list-code-state fr">状态:<span>{{ $order->state }}</span></span>
+                        <span class="order-list-code-statefr">状态:<span>{{$states[$order->state] }}</span></span>
                     </div>
+                    @foreach ($order->orderItems as $orderitem)
                     <div class="order-list-table">
                         <span class="order-list-content table-border order-list-name">
-                            <span class="order-list-img">
-                                <img src="images/personal/img.png">
-                            </span>
-                            <span class="order-list-name-text">
-                                <span>{{ $order->adSpaces->title }}</span><br/>
-                            </span>
+                            <a href='/ads/{{ $orderitem->ad_space_id }}' target='__blank'>
+                              <span class="order-list-img">
+                                  <img src="{{ $orderitem->adSpace->avatar->url() }}">
+                              </span>
+                              <span class="order-list-name-text">
+                                  <span>{{ $orderitem->adSpace->title }}</span><br/>
+                              </span>
+                            </a>
                         </span>
+                            
                         <span class="order-list-people table-border">{{ Auth::user()->name }}</span>
                         <span class="order-list-money table-border order-list-money-color">
-                          <i class="fa fa-jpy"></i>{{ $order->subtotal }}
+                          <i class="fa fa-jpy"></i>{{ $order->amount }}
                         </span>
                         <span class="order-list-operate order-list-operate-info">
                             <div class="order-list-operate-text">
-                                <a href="#">查看订单</a>/<a href="#">删除订单</a>
-                                <a href="#">评价订单</a>/<a href="#">申请退款</a>
+                                <a href="/users/orderDetail/{{$orderitem->order_id}}">查看订单</a>/
+                                <a href="/users/orderDel/{{$orderitem->order_id}}" data-method='DELETE'
+                                        data-confirm="确定要删除么?">删除订单</a>
+                                <a href="/users/comment/{{ $orderitem->order_id}}">评价订单</a>/<a href="#">申请退款</a>
                             </div>
                         </span>
                     </div>
+                    @endforeach
                 </div>
             @endforeach
             </div>

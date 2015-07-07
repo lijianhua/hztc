@@ -1,0 +1,100 @@
+.personal .single{
+    float: left;
+    margin-left: 25px;
+    width: 780px;
+    font-size: 16px;
+}
+.personal .single .single-title{
+    font-size: 18px;
+    border-bottom: 2px solid #7bccff;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.personal .single .single-table table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.personal .single .single-table table th{
+    border: 1px solid #ffffff;
+    height: 51px;
+    color: #ffffff;
+    background-color: #cccccc;
+    text-align: center;
+}
+.personal .single .single-table table td{
+    border: 1px solid #333333;
+    height: 50px;
+    text-align: center;
+}
+.personal .single .single-table .single-table-td{
+    margin-top: 5px;
+}
+.personal .single .single-info{
+    margin-top: 15px;
+}
+.personal .single .single-info strong{
+    font-weight: normal;
+}
+.personal .single .single-info ul{
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.personal .single .single-info ul li{
+    margin-bottom: 15px;
+}
+.personal .single .single-info ul li strong{
+    margin-right: 10px;
+}
+.personal .single .single-info .single-info-text textarea{
+    width: 500px;
+    height: 140px;
+    border: 1px solid #d7d7d7;
+}
+.personal .single .single-info .single-personal-enter input{
+    width: 270px;
+    height: 38px;
+    border: 1px solid #d7d7d7;
+    font-size: 14px;
+    padding-left: 10px;
+}
+.personal .single .single-info .single-personal-enter input:focus{
+    border: 2px solid #ed145b;
+}
+.personal .single .single-info .single-personal-enter button{
+    background: url("../images/personal/bt2.png") no-repeat 0 0;
+    width: 170px;
+    height: 41px;
+    border: 0;
+    font-size: 18px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.personal .single .single-info .single-personal-enter button:hover{
+    background: url("../images/personal/bt2hover.png") no-repeat 0 0;
+}
+.single-star i{
+    color: #dcdcdc;
+    cursor: pointer;
+}
+.single-star i.active{
+    color: #e5004f;
+}
+.single-tag{
+    width: 500px;
+}
+.single-tag .single-tag-item{
+    padding: 9px;
+    background-color: #ffe1ee;
+    color: #e7125b;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    margin: 6px;
+}
+.single-tag .single-tag-item.active{
+    background-color: #ed145b;
+    color: #ffffff;
+}

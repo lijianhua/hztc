@@ -43,6 +43,9 @@ Route::controllers([
 //用户中心
 Route::get('user/{email}','UserController@showemail');
 Route::get('users/order','UserController@order');
+Route::get('users/orderDetail/{id}','UserController@orderDetail');
+Route::delete('users/orderDel/{id}','UserController@orderDel');
+Route::get('users/comment/{id}','UserController@getComment');
 Route::get('users/score','UserController@score');
 Route::get('users/collect','UserController@collect');
 Route::get('users/score','UserController@score');

@@ -1,0 +1,238 @@
+.personal .order-details{
+    float: left;
+    margin-left: 25px;
+    width: 780px;
+    font-size: 16px;
+}
+.personal .order-details .order-details-title{
+    font-size: 18px;
+    border-bottom: 2px solid #7bccff;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.personal .order-details .order-details-list-code{
+    background-color: #ebebeb;
+    padding-left: 20px;
+    height: 42px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 780px;
+}
+.personal .order-details .order-details-list-code b{
+    color: #ed145b;
+}
+.personal .order-details .order-details-list-code-number{
+    margin-right: 130px;
+}
+.personal .order-details .order-details-list-code-state{
+    margin-right: 60px;
+}
+.personal .order-details .order-details-list-code-state span{
+    color: #7bccff;
+}
+.personal .order-details .order-details-list-code-go a{
+    color: #7bccff;
+    margin-right: 50px;
+    text-decoration:underline;
+}
+.personal .order-details .order-details-flow-info{
+    position: relative;
+    width: 710px;
+    margin: 70px auto 20px auto;
+    color: #ffffff;
+    /*margin-left: 90px;*/
+}
+.personal .order-details .order-details-flow-item{
+    display: inline-block;
+    margin: 0 6px;
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+}
+.personal .order-details .order-details-flow-item.success{
+    background: url("../images/personal/success.png") no-repeat 0 0;
+    height: 111px;
+    width: 122px;
+    padding-right: 10px;
+}
+.personal .order-details .order-details-flow-item.active{
+    background: url("../images/personal/doing.png") no-repeat 0 0;
+    height: 150px;
+    width: 137px;
+    padding-top: 10px;
+}
+.personal .order-details .order-details-flow-item.active .order-details-flow-mark{
+    /*margin-top: 50px;*/
+}
+.personal .order-details .order-details-flow-item.will{
+    background: url("../images/personal/will.png") no-repeat 0 0;
+    height: 111px;
+    width: 122px;
+    padding-left: 15px;
+}
+.personal .order-details .order-details-flow-mark{
+    width: 100%;
+    text-align: center;
+    margin-top: 23%;
+}
+.personal .order-details .order-details-mark-line{
+    border-top: 5px solid #7ae17c;
+    position: absolute;
+    width: 288px;
+    margin-left: 6px;
+    top: 71px;
+}
+.personal .order-details .order-details-this{
+    color: #7ae17c;
+    margin-top: 63px;
+    font-size: 20px;
+}
+.personal .order-details .order-details-info{
+    margin: 20px 80px;
+}
+.personal .order-details .order-details-info td{
+    padding: 3px 17px;
+}
+.personal .order-details .order-details-info-left{
+    text-align: right;
+    border-right: 1px solid #d7d7d7;
+    font-size: 18px;
+}
+.personal .order-details .order-details-info-right{
+    font-size: 14px;
+}
+
+
+.personal .order-details .order-details-list{
+    border-bottom: 2px solid #7bccff;
+    margin-bottom: 250px;
+    padding-bottom: 20px;
+}
+.personal .order-details .order-details-title{
+    font-size: 18px;
+    border-bottom: 2px solid #7bccff;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.personal .order-details .order-details-list-title{
+    padding: 7px 0;
+}
+.personal .order-details .order-details-list-content{
+    width: 324px;
+    text-align: center;
+    display: table-cell;
+}
+.personal .order-details .order-details-list-people{
+    width: 189px;
+    text-align: center;
+    display: table-cell;
+}
+.personal .order-details .order-details-list-money{
+    width: 170px;
+    text-align: center;
+    display: table-cell;
+}
+.personal .order-details .order-details-list-operate{
+    width: 197px;
+    text-align: center;
+    display: table-cell;
+}
+.personal .order-details .order-details-list-code{
+    background-color: #ebebeb;
+    padding-left: 20px;
+    height: 42px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 780px;
+}
+.personal .order-details .order-details-list-code b{
+    color: #ed145b;
+}
+.personal .order-details .order-details-list-code-number{
+    margin-right: 86px;
+}
+.personal .order-details .order-details-list-code-state{
+    margin-right: 60px;
+}
+.personal .order-details .order-details-list-code-state span{
+    color: #7bccff;
+}
+.personal .order-details .order-details-list-table{
+    padding: 14px 0;
+}
+.personal .order-details .order-details-list-img{
+    width: 128px;
+    height: 96px;
+    border: 1px solid #ebebeb;
+    padding: 5px;
+    display: inline-block;
+}
+.personal .order-details .order-details-list-img img{
+    width: 117px;
+    height: 83px;
+}
+.personal .order-details .table-order-details{
+    border-right: 1px solid #ebebeb;
+}
+.personal .order-details .order-details-list-name{
+    padding: 6px 0;
+    font-size: 20px;
+    line-height: 1;
+}
+.personal .order-details .order-details-list-name-text{
+    vertical-align: middle;
+    display: inline-block;
+    text-align: left;
+    margin-left: 10px;
+}
+.personal .order-details .order-details-color{
+    font-size: 14px;
+}
+.personal .order-details .order-details-color span{
+    color: #7bccff;
+}
+.personal .order-details .order-details-list-money-color{
+    color: #ed145b;
+}
+.personal .order-details .order-details-list-operate-info div,
+.personal .order-details .order-details-list-operate-info a{
+    color: #7bccff;
+}
+.personal .order-details .order-details-list-operate-info a{
+    margin: 0px 5px;
+}
+.personal .order-details .order-details-list-operate-text{
+    position: relative;
+    top: -10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

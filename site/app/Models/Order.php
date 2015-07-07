@@ -9,8 +9,30 @@ class Order extends Model {
 
   protected $dates = ['deleted_at'];
 
-  public function adSpaces()
+  protected $fillable = ['order_seq', 'user_id', 'state', 'paid_at'];
+
+  public function user()
   {
-    return $this->belongsTo('App\Models\AdSpace', 'ad_space_id', 'id');
+    return $this->belongsTo('App\Models\User');
+  }
+
+  public function orderItems()
+  {
+    return $this->hasMany('App\Models\OrderItem');
+  }
+
+  public function scopeRecent($query)
+  {
+    return $query->orderBy('created_at', 'desc');
+  }
+
+  public function scopePendingProccess($query)
+  {
+    return $query->whereState(1);
+  }
+
+  public function isPending()
+  {
+    return $this->state == 1;
   }
 }

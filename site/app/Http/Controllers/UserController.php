@@ -110,13 +110,63 @@ class UserController extends Controller {
    */
   public function order()
   {
-    $nav  = '首页';
-    $unav = '我的订单';
+    $nav    = '首页';
+    $unav   = '我的订单';
+    $states = array('未支付', '已支付', '服务完成', '取消');
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
     $orders     = Order::where('user_id', '=', Auth::user()->id)->paginate(10);
-    return view('order')->with(compact('navigators', 'orders'));
+    return view('order')->with(compact('navigators', 'orders', 'states'));
+  }
+
+  /**
+   * 订单详情
+   *
+   */
+  public function orderDetail($id)
+  {
+    $nav    = '首页';
+    $unav   = '我的订单';
+    $states = array('未支付', '已支付', '服务完成', '取消');
+    Session::put('current_navigator', $nav);
+    Session::put('user_navigator', $unav);
+    $navigators = Navigator::all()->sortBy('sort');
+    $orders     = Order::where('user_id', '=', Auth::user()->id)
+                    ->where('id', '=', $id)->first();
+    return view('orderDetail')->with(compact('navigators', 'orders', 'states'));
+  }
+
+
+  /**
+   * 删除订单
+   *
+   *
+   */
+  public function orderDel($id)
+  {
+    $order = Order::find($id);
+    $order->delete();
+    return redirect('/users/order')->with('status', '删除成功'); 
+  }
+
+
+  /**
+   * 评价
+   *
+   */
+  public function getComment($id)
+  {
+    $nav    = '首页';
+    $unav   = '我的订单';
+    Session::put('current_navigator', $nav);
+    Session::put('user_navigator', $unav);
+    $navigators = Navigator::all()->sortBy('sort');
+    $order   = Order::where('user_id', '=', Auth::user()->id)
+                    ->where('id', '=', $id)->first();
+
+    return view('comment')->with(compact('navigators', 'order'));
+  
   }
 
 
