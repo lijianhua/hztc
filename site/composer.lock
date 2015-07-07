@@ -920,12 +920,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d2423fa03f8669cc6750c04f2261a99612ab03ac"
+                "reference": "f7f546646a9b8398c517d110d9d6bf3c56278894"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d2423fa03f8669cc6750c04f2261a99612ab03ac",
-                "reference": "d2423fa03f8669cc6750c04f2261a99612ab03ac",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f7f546646a9b8398c517d110d9d6bf3c56278894",
+                "reference": "f7f546646a9b8398c517d110d9d6bf3c56278894",
                 "shasum": ""
             },
             "require": {
@@ -993,7 +993,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-07-05 18:03:03"
+            "time": "2015-07-06 08:15:13"
         },
         {
             "name": "maximebf/debugbar",
@@ -2913,12 +2913,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "aa18d3d6a12f089b661e7c0c8aa34403674ecb2c"
+                "reference": "dbf851f497ed0055290f70c5a9d4877967405884"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/aa18d3d6a12f089b661e7c0c8aa34403674ecb2c",
-                "reference": "aa18d3d6a12f089b661e7c0c8aa34403674ecb2c",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dbf851f497ed0055290f70c5a9d4877967405884",
+                "reference": "dbf851f497ed0055290f70c5a9d4877967405884",
                 "shasum": ""
             },
             "require": {
@@ -2977,7 +2977,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-07-05 10:14:19"
+            "time": "2015-07-06 05:45:08"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

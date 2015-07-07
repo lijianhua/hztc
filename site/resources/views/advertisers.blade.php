@@ -71,46 +71,36 @@ value='{{$enterprise? $enterprise->name:''}}'></span>
                       <span class="personal-prompt-color">{{$enterprise && $enterprise->verify==1? '(已认证)':'(未认证)'}}</span>
                     </span>
                     <span class="personal-prompt-text"><sub>*</sub>
-                      {{$enterprise && $enterprise->$verify==1?'':'请补充信息完成认证'}}
+                      {{$enterprise && $enterprise->verify==1?'':'请补充信息完成认证'}}
                     </span>
                 </div>
-                <?= Form::open(['url' =>
-action('UserController@store_company_auth'), 'method' => 'POST', 'files' =>
-true, 'id' => 'upload' ]) ?>
+                <?= Form::open(['url' => action('UserController@store_company_auth'), 'method' => 'POST', 'files' => true, 'id' => 'upload' ]) ?>
                     <div class="advertisers-company">
                         <div class="advertisers-company-block clearfix">
                             <div class="advertisers-company-item">
                                 <div class="advertisers-company-bg">
-                                    <div class="advertisers-company-info"
-id="imgdiv"><img id="imgShow" src={{ isset($license)? $license->avatar->url(): ''}}></div>
+                                    <div class="advertisers-company-info" id="imgdiv"><img id="imgShow" src={{ isset($license)? $license->avatar->url(): ''}}></div>
                                     <div class="advertisers-company-upload">
                                         <span class="advertisers-company-upload-name">营业执照</span>
-                                        <input type="file" id="up_img"
-name='license'>
+                                        <input type="file" id="up_img" name='license'>
                                     </div>
                                 </div>
                             </div>
                             <div class="advertisers-company-item ml13">
                                 <div class="advertisers-company-bg">
-                                    <div class="advertisers-company-info"
-id="imgdiv2"><img id="imgShow2" src={{isset($tax)? $tax->avatar->url():''}}></div>
+                                    <div class="advertisers-company-info" id="imgdiv2"><img id="imgShow2" src={{isset($tax)? $tax->avatar->url():''}}></div>
                                     <div class="advertisers-company-upload">
-                                        <span
-class="advertisers-company-upload-name">税务登记</span>
-                                        <input type="file" id="up_img2"
-name='tax'>
+                                        <span class="advertisers-company-upload-name">税务登记</span>
+                                        <input type="file" id="up_img2" name='tax'>
                                     </div>
                                 </div>
                             </div>
                             <div class="advertisers-company-item ml13">
                                 <div class="advertisers-company-bg">
-                                    <div class="advertisers-company-info"
-id="imgdiv3"><img id="imgShow3" src={{isset($organizing)? $organizing->avatar->url():''}}></div>
+                                    <div class="advertisers-company-info" id="imgdiv3"><img id="imgShow3" src={{isset($organizing)? $organizing->avatar->url():''}}></div>
                                     <div class="advertisers-company-upload">
-                                        <span
-class="advertisers-company-upload-name">组织机构代码</span>
-                                        <input type="file" id="up_img3"
-name='organizing'>
+                                        <span class="advertisers-company-upload-name">组织机构代码</span>
+                                        <input type="file" id="up_img3" name='organizing'>
                                     </div>
                                 </div>
                             </div>

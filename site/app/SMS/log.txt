@@ -1,0 +1,40 @@
+request body = <TemplateSMS>
+                    <to>13120315753</to> 
+                    <appId>aaf98f894e3e5b81014e4db1e2e20f73</appId>
+                    <templateId>1</templateId>
+                    <datas><data>hello</data><data>world</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8a48b5514e3e5862014e4daffd900e71/SMS/TemplateSMS?sig=47866FB3FFCE1DEA3387F50E3D7808FC
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Response><statusCode>000000</statusCode><TemplateSMS><dateCreated>20150706152544</dateCreated><smsMessageSid>201507061525441634604</smsMessageSid></TemplateSMS></Response>
+request body = <TemplateSMS>
+                    <to>13120315753</to> 
+                    <appId>aaf98f894e3e5b81014e4db1e2e20f73</appId>
+                    <templateId>1</templateId>
+                    <datas><data>hello</data><data>10</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8a48b5514e3e5862014e4daffd900e71/SMS/TemplateSMS?sig=90600B0273CC584CE9FBF44B8E2B7493
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Response><statusCode>000000</statusCode><TemplateSMS><dateCreated>20150706152701</dateCreated><smsMessageSid>201507061527011635345</smsMessageSid></TemplateSMS></Response>
+request body = <TemplateSMS>
+                    <to>13120315753</to> 
+                    <appId>aaf98f894e3e5b81014e4db1e2e20f73</appId>
+                    <templateId>1</templateId>
+                    <datas><data>hello</data><data>10</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8a48b5514e3e5862014e4daffd900e71/SMS/TemplateSMS?sig=94F7AA246DA4AFE667D28F6072806B97
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Response><statusCode>160021</statusCode><statusMsg>同一手机相同内容限定时间内只能发一次:13120315753:【云通讯】您使用的是云通讯短信模板，您的验证码是hello，请于10分钟内正确输入</statusMsg></Response>
+request body = <TemplateSMS>
+                    <to>13120315753</to> 
+                    <appId>aaf98f894e3e5b81014e4db1e2e20f73</appId>
+                    <templateId>1</templateId>
+                    <datas><data>hello</data><data>10</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8a48b5514e3e5862014e4daffd900e71/SMS/TemplateSMS?sig=00DCED5E2B335E1B71C1D1E43E4F88C3
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Response><statusCode>160021</statusCode><statusMsg>同一手机相同内容限定时间内只能发一次:13120315753:【云通讯】您使用的是云通讯短信模板，您的验证码是hello，请于10分钟内正确输入</statusMsg></Response>
+request body = <TemplateSMS>
+                    <to>13120315753</to> 
+                    <appId>aaf98f894e3e5b81014e4db1e2e20f73</appId>
+                    <templateId>1</templateId>
+                    <datas><data>hello world</data><data>10</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8a48b5514e3e5862014e4daffd900e71/SMS/TemplateSMS?sig=994211527CEE78A72DB82FBCA15F25C2
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Response><statusCode>000000</statusCode><TemplateSMS><dateCreated>20150706155420</dateCreated><smsMessageSid>201507061554201650731</smsMessageSid></TemplateSMS></Response>
