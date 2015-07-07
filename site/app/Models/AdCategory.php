@@ -7,6 +7,8 @@ use Iverberk\Larasearch\Traits\CallableTrait;
 class AdCategory extends Model {
   use TransformableTrait, CallableTrait;
 
+  protected $fillable = ['name'];
+
   /**
     * @return \Illuminate\Database\Eloquent\Relations
     **/
