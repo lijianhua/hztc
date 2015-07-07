@@ -157,8 +157,12 @@ class UserController extends Controller {
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
-    $scores     = UserScoreAccount::where('user_id', '=', Auth::user()->id)->firstOrFail();
-    $redscore = $scores->ScoreDetails()->paginate(10);
+    $scores     = UserScoreAccount::where('user_id', '=', Auth::user()->id)->first();
+    $redscore = '';
+    if ($scores)
+    {
+      $redscore = $scores->ScoreDetails()->paginate(10);
+    }
     return view('score')->with(compact('navigators', 'scores', 'redscore'));
   }
 
@@ -200,7 +204,7 @@ class UserController extends Controller {
     }
     else
     {
-      DB::transaction(function() use ($attributes,$user, $navigators)
+      DB::transaction(function() use ($attributes, $user)
       {
         $enterprise = Enterprise::create(['name' => $attributes['enterprise']]); 
         User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise->id]);

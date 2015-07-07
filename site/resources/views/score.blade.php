@@ -7,7 +7,7 @@
           <div class="points-number">
               <div class="order-title"><span>我的积分</span></div>
               <div class="points-number-info">
-                  <span class="points-number-info-big">{{ $scores->total_score }}</span>
+                  <span class="points-number-info-big">{{ $scores?$scores->total_score:0 }}</span>
                   <span class="points-number-info-small">积分</span>
               </div>
           </div>
@@ -20,6 +20,7 @@
                           <th>收入支出</th>
                           <th>日期</th>
                       </tr>
+                      @if ($redscore)
                       @foreach ($redscore as $score)
                       <tr>
                           <td>{{ $score->reason }}</td>
@@ -28,6 +29,7 @@
                       </tr>
                       @endforeach
                       <?php echo $redscore->render()?>
+                      @endif
                   </table>
               </div>
           </div>
