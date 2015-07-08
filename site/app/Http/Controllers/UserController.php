@@ -13,6 +13,7 @@ use App\Models\ReviewMaterial;
 use App\Models\UserScoreDetail;
 use App\Models\AdSpaceUser;
 use App\Models\Refund;
+use App\Models\CustomerReview;
 use Auth;
 use  App\Http\Requests\PostEnterpriseRequest;
 use Illuminate\Http\Request;
@@ -170,6 +171,24 @@ class UserController extends Controller {
   
   }
 
+
+  /**
+   * 添加评价
+   *
+   * 
+   */
+  public function addComment()
+  {
+    $CustomerReview = new CustomerReview;
+    $CustomerReview->user_id = Auth::user()->id;
+    $CustomerReview->order_id = 3;
+    $CustomerReview->ad_space_id = 1;
+    $CustomerReview->score = 100;
+    $CustomerReview->body = 'fdasfdsaf';
+    $CustomerReview->save();
+
+    return redirect('/users/order')->with('status', '添加成功'); 
+  }
 
   /**
    * 用户信息页

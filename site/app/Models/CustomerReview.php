@@ -11,4 +11,5 @@ class CustomerReview extends Model
   {
     return $this->belongsTo('App\Models\AdSpace');
   }
+
 }

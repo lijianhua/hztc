@@ -21,6 +21,11 @@ class Order extends Model {
     return $this->hasMany('App\Models\OrderItem');
   }
 
+  public function customer()
+  {
+    return $this->hasMany('App\Models\CustomerReview');
+  }
+
   public function scopeRecent($query)
   {
     return $query->orderBy('created_at', 'desc');

@@ -46,6 +46,7 @@ Route::get('users/order','UserController@order');
 Route::get('users/orderDetail/{id}','UserController@orderDetail');
 Route::delete('users/orderDel/{id}','UserController@orderDel');
 Route::get('users/comment/{id}','UserController@getComment');
+Route::post('users/comment','UserController@addComment');
 Route::get('users/score','UserController@score');
 Route::get('users/collect','UserController@collect');
 Route::get('users/score','UserController@score');

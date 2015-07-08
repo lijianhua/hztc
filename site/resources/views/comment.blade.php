@@ -16,15 +16,17 @@
                 </table>
                 <table class="single-table-td">
                     <tr>
-                        <td>安德里广告牌</td>
-                        <td>1023-10-10</td>
-                        <td>未评价</td>
+                        <td>{{$order->orderItems->first()->adSpace->title}}</td>
+                        <td>{{$order->orderItems->first()->adSpace->created_at}}</td>
+                        <td>{{$order->customer->first()->id?'已评价':'未评价'}}</td>
                     </tr>
                 </table>
             </div>
 
             <div class="single-info">
                 <div class="single-title"><span>我的评价</span></div>
+              <form method='post' action='/users/comment'>
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <ul>
                     <li class="single-star">
                         <strong>评分</strong>
@@ -37,25 +39,6 @@
                         </span>
                     </li>
                     <li>
-                        <table border="0">
-                            <tr>
-                                <td style="width: 45px"><strong>标签</strong></td>
-                                <td>
-                                    <span class="single-tag ">
-                                        <span class="single-tag-item">这个套系很便宜(25)</span>
-                                        <span class="single-tag-item">不错的一次回忆</span>
-                                        <span class="single-tag-item">世间少有</span>
-                                        <span class="single-tag-item">在这里可以找到真爱</span>
-                                        <span class="single-tag-item">这个套系很便宜(25)</span>
-                                        <span class="single-tag-item">不错的一次回忆</span>
-                                        <span class="single-tag-item">世间少有</span>
-                                        <span class="single-tag-item">在这里可以找到真爱</span>
-                                    </span>
-                                </td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
                         <strong>评论</strong>
                         <div class="single-info-text">
                             <textarea></textarea>
@@ -65,6 +48,7 @@
                         <button type="submit">提交</button>
                     </li>
                 </ul>
+            </form>
             </div>
         </div>
     </div>
