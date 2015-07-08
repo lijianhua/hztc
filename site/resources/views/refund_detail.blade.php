@@ -10,7 +10,7 @@
             <div class="details-title"><span>退款流程进度</span></div>
             <div class="details-list-code">
                 <span class="details-list-code-number">退单编号：<b>{{$refund->order_seq}}</b></span>
-                <span class="details-list-code-state">商品:<span>{{$refund->Order()->first()->orderItems()->first()->adSpace()->first()->title}}</span></span>
+                <span class="details-list-code-state">商品:<span>{{$refund->orderItems()->first()->adSpace()->first()->title}}</span></span>
             </div>
             <div class="details-flow">
                 <div class="details-flow-info">
@@ -33,7 +33,10 @@
                 <table>
                     <tr>
                         <td class="details-info-left">退款方式</td>
-                        <td class="details-info-right">线下返还&nbsp;&nbsp;&nbsp;金额：<span class="return-process-color">{{$refund->Order()->first()->count_price}}</span>元&nbsp;&nbsp;&nbsp;积分：<span class="return-process-color">-{{$refund->Order()->first()->amount}}</span></td>
+                        <td
+class="details-info-right">线下返还&nbsp;&nbsp;&nbsp;金额：<span
+class="return-process-color">{{$refund->orderItems->sum('Original_price')}}</span>元&nbsp;&nbsp;&nbsp;积分：<span
+class="return-process-color">-{{$refund->orderItems->sum('score')}}</span></td>
                     </tr>
                     <tr>
                         <td class="details-info-left">处理方式</td>
@@ -45,11 +48,11 @@
                     <!-- </tr> -->
                     <tr>
                         <td class="details-info-left">所属公司</td>
-                        <td class="details-info-right">{{$refund->Order()->first()->orderItems()->first()->adSpace()->first()->user()->first()->enterprise()->first()->name}}</td>
+                        <td class="details-info-right">{{$refund->orderItems()->first()->adSpace()->first()->user()->first()->enterprise()->first()->name}}</td>
                     </tr>
                     <tr>
                         <td class="details-info-left">联系方式</td>
-                        <td class="details-info-right"><span>联系人：{{$refund->Order()->first()->orderItems()->first()->adSpace()->first()->user()->first()->name}}</span>&nbsp;&nbsp;&nbsp;<span>联系电话：{{$refund->Order()->first()->orderItems()->first()->adSpace()->first()->user()->first()->enterprise()->first()->telphone}}</span></td>
+                        <td class="details-info-right"><span>联系人：{{$refund->orderItems()->first()->adSpace()->first()->user()->first()->name}}</span>&nbsp;&nbsp;&nbsp;<span>联系电话：{{$refund->orderItems()->first()->adSpace()->first()->user()->first()->enterprise()->first()->telphone}}</span></td>
                     </tr>
                 </table>
             </div>
