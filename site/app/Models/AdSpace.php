@@ -93,8 +93,24 @@ class AdSpace extends Model implements StaplerableInterface {
   /**
    * @follow NEVER
    **/
-  public function orders()
+  public function orderItems()
   {
-    return $this->hasMany('App\Models\Order');
+    return $this->hasMany('App\Models\OrderItem');
+  }
+
+  /**
+   *
+   */
+  public function adSpaceUsers()
+  {
+    return $this->hasMany('App\Models\AdSpaceUser');
+  }
+
+  /**
+   *
+   */
+  public function customerReviews()
+  {
+    return $this->hasMany('App\Models\CustomerReview');
   }
 }
