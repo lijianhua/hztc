@@ -29,14 +29,16 @@
                                     <img src="../images/personal/img.png">
                                 </span>
                                 <span class="order-list-name-text">
-                                    <span>{{$refund->Order()->first()->orderItems()->first()->adSpace()->first()->title}}</span><br/>
-                                    <span class="order-color">积分：<span>{{$refund->Order()->first()->amount}}</span></span>
+                                    <span>{{$refund->orderItems->adSpace()->first()->title}}</span><br/>
+                                    <span
+class="order-color">积分：<span>{{$refund->orderItems->sum('score')}}</span></span>
                                 </span>
                             </span>
                             <span class="refund-list-people table-border">
                                 <div style="position:relative;top: -10px">
-                                    <div>退款金额：{{$refund->Order()->first()->count_price}}</div>
-                                    <div class="order-color">积分：<span>-{{$refund->Order()->first()->amount}}</span></div>
+                                    <div>退款金额：{{$refund->orderItems->sum('Original_price')}}</div>
+                                    <div
+class="order-color">积分：<span>-{{$refund->orderItems->sum('score')}}</span></div>
                                 </div>
                             </span>
                             <span class="refund-list-operate order-list-operate-info">

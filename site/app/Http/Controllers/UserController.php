@@ -279,7 +279,7 @@ class UserController extends Controller {
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
-    $refunds = Refund::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+    $refunds = Refund::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
     return view('refund')->with(compact('navigators', 'refunds'));
   }
   /**
