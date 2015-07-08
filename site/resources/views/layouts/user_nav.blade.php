@@ -12,6 +12,8 @@
     </dd>
     <dd class="personal-left-item"><a href="/users/score"
       class="{{'我的积分'==Session::get('user_navigator')?'active':''}}">我的积分</a> </dd>
-    <dd class="personal-left-item"><a href="#">退货清单</a> </dd>
+    <dd class="personal-left-item">
+      <a href="/users/refund" class="{{'退货清单'==Session::get('user_navigator')?'active':''}}">退货清单</a> 
+    </dd>
 </dl>
 </div>

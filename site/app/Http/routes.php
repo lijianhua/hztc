@@ -52,6 +52,8 @@ Route::get('users/score','UserController@score');
 Route::post('users/infos','UserController@store_user_auth');
 Route::post('users/info','UserController@store_company_auth');
 Route::get('users/info','UserController@info');
+Route::get('users/refund','UserController@refund');
+Route::get('users/refund/datail/{id}','UserController@detail');
 
 // 搜索
 Route::any('search', 'SearchController@search');

@@ -666,12 +666,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "e5eaf8c7ded0877195b5d2848491e17b1c0a6c4d"
+                "reference": "b0b2feffb47906a03b570777c07044c529d1d124"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/e5eaf8c7ded0877195b5d2848491e17b1c0a6c4d",
-                "reference": "e5eaf8c7ded0877195b5d2848491e17b1c0a6c4d",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/b0b2feffb47906a03b570777c07044c529d1d124",
+                "reference": "b0b2feffb47906a03b570777c07044c529d1d124",
                 "shasum": ""
             },
             "require": {
@@ -725,7 +725,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2015-01-01 18:34:57"
+            "time": "2015-07-07 15:32:45"
         },
         {
             "name": "doctrine/lexer",
@@ -1528,12 +1528,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "f7f546646a9b8398c517d110d9d6bf3c56278894"
+                "reference": "258dfa65f0b0a471618ae7af1e6cb775df34ad1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f7f546646a9b8398c517d110d9d6bf3c56278894",
-                "reference": "f7f546646a9b8398c517d110d9d6bf3c56278894",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/258dfa65f0b0a471618ae7af1e6cb775df34ad1c",
+                "reference": "258dfa65f0b0a471618ae7af1e6cb775df34ad1c",
                 "shasum": ""
             },
             "require": {
@@ -1601,7 +1601,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-07-06 08:15:13"
+            "time": "2015-07-07 19:11:31"
         },
         {
             "name": "maximebf/debugbar",

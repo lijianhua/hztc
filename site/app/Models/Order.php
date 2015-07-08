@@ -35,4 +35,8 @@ class Order extends Model {
   {
     return $this->state == 1;
   }
+  public function refund()
+  {
+    return $this->belongsTo('App\Models\Refund');
+  }
 }

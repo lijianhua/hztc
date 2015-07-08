@@ -12,6 +12,7 @@ use App\Models\Enterprise;
 use App\Models\ReviewMaterial;
 use App\Models\UserScoreDetail;
 use App\Models\AdSpaceUser;
+use App\Models\Refund;
 use Auth;
 use  App\Http\Requests\PostEnterpriseRequest;
 use Illuminate\Http\Request;
@@ -231,6 +232,36 @@ class UserController extends Controller {
     $navigators = Navigator::all()->sortBy('sort');
     $collects = AdSpaceUser::where('user_id', '=', Auth::user()->id)->paginate(5);
     return view('collect')->with(compact('navigators', 'collects'));
+  }
+  /**
+   *退货清单 
+   *
+   *
+   */
+  public function refund()
+  {
+    $nav  = '首页';
+    $unav = '退货清单';
+    Session::put('current_navigator', $nav);
+    Session::put('user_navigator', $unav);
+    $navigators = Navigator::all()->sortBy('sort');
+    $refunds = Refund::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+    return view('refund')->with(compact('navigators', 'refunds'));
+  }
+  /**
+   * 
+   *
+   *
+   */
+  public function datail($id)
+  {
+    $nav  = '首页';
+    $unav = '退货清单';
+    Session::put('current_navigator', $nav);
+    Session::put('user_navigator', $unav);
+    $navigators = Navigator::all()->sortBy('sort');
+    $refunds = Refund::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+    return view('refund')->with(compact('navigators', 'refunds'));
   }
   /**
    * store_auth function
