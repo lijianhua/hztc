@@ -287,15 +287,15 @@ class UserController extends Controller {
    *
    *
    */
-  public function datail($id)
+  public function detail($id)
   {
     $nav  = '首页';
-    $unav = '退货清单';
+    $unav = '退货流程';
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
-    $refunds = Refund::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'desc')->get();
-    return view('refund')->with(compact('navigators', 'refunds'));
+    $refund = Refund::find($id);
+    return view('refund_detail')->with(compact('navigators', 'refund'));
   }
   /**
    * store_auth function
