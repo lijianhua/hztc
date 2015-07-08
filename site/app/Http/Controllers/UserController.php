@@ -145,10 +145,25 @@ class UserController extends Controller {
    *
    *
    */
-  public function orderDel($id)
+  public function orderDel($id, $state=0)
   {
+    if ($state == 1)
+    {
+      $order     = Order::where('user_id', '=', Auth::user()->id)
+                    ->where('id', '=', $id)->first();
+      $refund = new Refund;
+      $refund->user_id = Auth::user()->id;
+      $refund->order_seq = $order->order_seq;
+      $refund->state = 0;
+      $refund->order_id = $id;
+      $refund->apply_at = date('Y-m-d H:i:s',time());
+      $refund->confirmed = 0;
+      $refund->save();
+    }
+
     $order = Order::find($id);
     $order->delete();
+
     return redirect('/users/order')->with('status', '删除成功'); 
   }
 

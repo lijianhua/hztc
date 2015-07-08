@@ -42,9 +42,11 @@
                         <span class="order-list-operate order-list-operate-info">
                             <div class="order-list-operate-text">
                                 <a href="/users/orderDetail/{{$orderitem->order_id}}">查看订单</a>/
-                                <a href="/users/orderDel/{{$orderitem->order_id}}" data-method='DELETE'
-                                        data-confirm="确定要删除么?">删除订单</a>
-                                <a href="/users/comment/{{ $orderitem->order_id}}">评价订单</a>/<a href="#">申请退款</a>
+                                <a href="/users/orderDel/{{$orderitem->order_id}}/0" data-method='DELETE'
+                                        data-confirm="确定要删除订单吗?">删除订单</a>
+                                <a href="/users/comment/{{ $orderitem->order_id}}">评价订单</a>/
+                                <a href="/users/orderDel/{{$orderitem->order_id}}/1" data-method='DELETE' 
+                                        data-confirm="确定要申请退货?" >申请退款</a>
                             </div>
                         </span>
                     </div>
