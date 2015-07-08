@@ -267,6 +267,20 @@ class UserController extends Controller {
     $collects = AdSpaceUser::where('user_id', '=', Auth::user()->id)->paginate(5);
     return view('collect')->with(compact('navigators', 'collects'));
   }
+
+  /**
+   *
+   *
+   */
+  public function collectDel($id)
+  {
+    $collect = AdSpaceUser::where('ad_space_id', '=', $id)->delete();
+
+    return redirect('/users/collect')->with('status', '删除成功');
+  }
+
+
+
   /**
    *退货清单 
    *
