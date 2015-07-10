@@ -32,6 +32,9 @@
                             <span>价格：</span>
                             <span class="details-info-price-info details-info-price-color">
                               <i class="fa fa-jpy"></i>&nbsp;{{$adspace->adPrices->min('price')}}/天</span>
+                              @foreach($adspace->adPrices as $price) 
+                                {{ $price->from}}
+                              @endforeach
                         </div>
                         <div class="details-info-price-service">
                             服  务：<span style="color: #878787">由本平台统一发货并提供一切售后服务</span>
@@ -39,7 +42,8 @@
                     </div>
                     <div class="details-info-evaluation fr">
                         <span class="details-info-evaluation-top">累计评价</span><br/>
-                        <span class="details-info-evaluation-down">{{$adspace->customerReviews->sum('id') }}</span>
+                        <span
+class="details-info-evaluation-down">{{$adspace->customerReviews->count('id') }}</span>
                     </div>
                 </div>
                 <div class="details-info-amount">
