@@ -9,7 +9,7 @@
 .content .filter .filter-selected{
     background-color: #f6f6f6;
     padding:15px 20px 40px 43px;
-    font-size: 18px;
+    font-size: 16px;
 }
 .content .filter .filter-selected dd i{
     font-style: normal;
@@ -27,7 +27,7 @@
     border-radius: 15px;
     color: #ffffff;
     height: 30px;
-    display: inline-block;
+    display: table;
     position: relative;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -47,24 +47,28 @@
     cursor: pointer;
     vertical-align: middle;
 }
-.filter-operate{
+.filter-operate b{
+    font-weight: normal;
+    padding-left: 6px;
+}
+.filter-operate-block{
     margin-top: 20px;
     width: 300px;
-    background-color: #f6f6f6;
+    border: 1px solid #eeeeee;
     padding:12px 0px 36px 0px;
 }
-.filter-operate dt,
-.filter-operate dd{
+.filter-operate-block dt,
+.filter-operate-block dd{
     padding: 5px 0 5px 68px;
     margin-left: 68px;
     margin: 2px 0;
     vertical-align: middle;
     cursor: pointer;
 }
-.filter-operate dt{
+.filter-operate-block dt{
     font-size: 18px;
 }
-.filter-operate dd{
+.filter-operate-block dd{
     /*height: 30px;*/
     cursor: pointer;
     position: relative;
@@ -76,16 +80,23 @@
     display: none;
     position: absolute;
     right: 48px;
-    height: 13px;
-    width: 13px;
+    height: 19px;
+    width: 19px;
     margin-top: 3px;
-    background: url("../images/index/add.png") no-repeat 0 0;
+    background: url("../images/index/add.png") no-repeat 3px 3px;
+    padding: 5px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
 }
-.filter-operate dd:hover{
-    background-color: #f184a8;
+.filter-operate-block dd:hover .filter-add{
+    background-color: #7bccff;
     color: #ffffff;
 }
-.filter-operate dd:hover .filter-add{
+.filter-operate-block dd:hover b{
+    border-left: 2px solid #7bccff;
+}
+.filter-operate-block dd:hover .filter-add{
     display: inline-block;
 }
 .filter-mark{
@@ -104,8 +115,50 @@
     background: url("../images/index/down.png") no-repeat 0 0;
     margin-left: 25px;
 }
+.filter-recommend{
+    margin-top: 20px;
+    width: 300px;
+}
+.filter-recommend-title{
+    height: 30px;
+    background-color: #f9f9f9;
+    border-left: 10px solid #ededed;
+    width: 100%;
+    line-height: 2.2;
+    padding-left: 28px;
+}
+.filter-recommend-item{
+    width: 300px;
+    height: 136px;
+    position: relative;
+    margin-top: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dotted #959595;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    overflow: hidden;
+}
+.filter-recommend-item img{
+    width: 300px;
+    height: 136px;
+    display: block;
+}
+.filter-recommend-item-bg{
+    display: none;
+    position: absolute;
+    width: 300px;
+    height: 136px;
+    color: #ffffff;
+    font-size: 20px;
+    left: 0;
+    top: 0;
+    text-align: center;
+    background: url("../images/list/filter-bg.png") repeat 0 0;
+    line-height: 7;
+}
 .list-main{
-    padding-left: 22px;
+    padding-left: 10px;
     width: 900px;
 }
 .list-main .list-sort{
@@ -122,100 +175,99 @@
     color: #7bccff;
 }
 .list-info{
-    margin-top: 10px;
+    margin-top: 16px;
 }
-.list-info-item{
-    width: 280px;
-    border-bottom: 1px solid #e1e1e1;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+.list-info .list-info-item{
+    float: left;
+    width: 440px;
+    position: relative;
+    border: 2px dotted #ffffff;
+    font-size: 12px;
+    margin-bottom: 20px;
 }
-.list-info-block{
-    width: 280px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #ffffff;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+.list-info .list-info-item:hover{
+    border: 2px solid #0569a9;
 }
-.list-info-item:hover .list-info-block{
-    border-color: #ff3f7e;
+.list-info .list-info-item:hover .list-info-item-description{
+    border-bottom: 1px dashed #ffffff;
 }
-.list-info-item:hover .list-info-nutton a{
-    background-color: #ff3f7e;
+.list-info .list-info-item-img{
+    width: 436px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
 }
-.list-info-item img{
-    width: 276px;
-    height: 160px;
-    border: 0;
+.list-info .list-info-item-img img{
+    width: 436px;
+    height: 200px;
+    display: block;
 }
-.list-info-details{
-    padding: 13px 9px 8px 9px;
+
+.list-info  .list-info-item-follow{
+    display: none;
+    position: absolute;
+    width: 107px;
+    height: 32px;
+    background-color: #0569a9;
+    color: #ffffff;
+    font-size: 14px;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    padding: 5px 0;
+    cursor: pointer;
 }
-.list-info-details-title{
-    font-size: 18px;
-    color: #7bccff;
-}
-.list-info-details-text{
-    text-indent: 2em;
-    margin-top: 5px;
-}
-.list-info-details-go{
-    margin-top:7px;
-    height: 16px;
-}
-.list-info-details-star i{
-    color: #ffbc46;
-    font-size: 16px;
-}
-.list-info-details-star .active{
-    color:#cecdcd
-}
-.list-info-details-look{
-    text-align: right;
-    float: right;
-}
-.list-info-details-look .list-info-details-look-img{
+.list-info  .list-info-item-follow i{
     background: url("../images/list/guanzhu.png") no-repeat 0 0;
-    width: 24px;
-    height: 16px;
     display: inline-block;
+    width: 25px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.list-info  .list-info-item-name{
+    font-size: 18px;
+    color: #64a7e5;
+    margin: 5px 5px;
+}
+.list-info  .list-info-item-block{
+    width: 440px;
+}
+.list-info-item-combination{
+    margin: 0 10px;
+    position: relative;
+    display: block;
+    height: 23px;
+}
+.list-info  .list-info-item-description {
+    padding: 10px 10px 17px 10px;
+    margin: 0 4px;
+    border-bottom: 1px dashed #959595;
+}
+.list-info  .list-info-item-description a.link{
+    color: #7bccff;
+    font-size: 12px;
+    display: block;
+    text-align: right;
+}
+.list-info  .list-info-item-collection i{
+    font-size: 16px;
+    color: #fada00;
+    margin-left: 10px;
     vertical-align: middle;
 }
-.list-info-details-look-text2{
-    color: #ff3f7e;
-}
-.list-info-details-money{
-    margin-top: 7px;
-}
-.list-info-details-price-number{
-    color: #ff3f7e;
+.list-info  .list-info-item-buy{
     margin-left: 15px;
 }
-.list-info-details-price-img i{
-    color: #ff3f7e;
-    font-size: 16px;
-    vertical-align: middle;
-}
-.list-info-details-people{
-    text-align: right;
-    float: right;.
-}
-.list-info-details-people-number{
+.list-info  .list-info-item-buy code{
     color: #7bccff;
 }
-.list-info-nutton{
-    margin-top: 3px;
-}
-.list-info-nutton a{
-    display: inline-block;
-    width: 280px;
+.list-info  .list-info-item-money{
+    color: #ff0000;
     font-size: 18px;
-    padding: 10px 0;
-    background-color: #7bccff;
-    text-align: center;
-    color: #ffffff;
+    text-align: right;
+    position: absolute;
+    right: 0;
 }
 .page{
     height: 30px;

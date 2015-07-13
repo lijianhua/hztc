@@ -274,6 +274,10 @@ a.gray:hover {
     margin-left: 13px;
 }
 
+.mr2 {
+    margin-right: 2px;
+}
+
 .mr3 {
     margin-right: 3px;
 }
@@ -283,6 +287,9 @@ a.gray:hover {
 }
 .mr8 {
     margin-right: 8px;
+}
+.mr9 {
+    margin-right: 9px;
 }
 
 .mr10 {

@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var flash = true;
 
-    //nav ×ó²àÀ¸ÏÂÀ­Ñ¡Ôñ
+    //nav å·¦ä¾§æ ä¸‹æ‹‰é€‰æ‹©
     $(".filter-nav-menu li").click(function(){
         var text = $(this).text();
         $(this).parents(".btn-group").find("button b").text(text)
@@ -13,7 +13,7 @@ $(document).ready(function(){
         $(this).parents(".button-classify").find(".nav-classify b").text(text)
     })
 
-    // ÂÖ²¥Í¼
+    // è½®æ’­å›¾
     $(".nav-banner .item").each(function (i) {
         $(this).attr('tag',i)
     })
@@ -35,7 +35,7 @@ $(document).ready(function(){
         });
     })
 
-    //search ËÑË÷¿òÒş²ØÏÔÊ¾
+    //search æœç´¢æ¡†éšè—æ˜¾ç¤º
     $(document).bind("click",function(e){
         var target = $(e.target);
         if(target.closest(".nav-search").length == 0){
@@ -49,19 +49,19 @@ $(document).ready(function(){
         }
     });
 
-    //·µ»Ø¶¥²¿
+    //è¿”å›é¡¶éƒ¨
     $(".float-top").click(function () {
         $("body,html").animate({"scrollTop":0},500);
     });
 })
 
-//bootstrap ÂÖ²¥Í¼
+//bootstrap è½®æ’­å›¾
 function switchPage(pageIndex){
     $('.carousel').carousel(pageIndex);
 
 }
 
-//ÂÖ²¥Í¼tabt
+//è½®æ’­å›¾tabt
 function Itempage(tag){
     $(".banner-mark .banner-mark-item").eq(tag).addClass('active');
     $(".banner-mark .banner-mark-item").eq(tag).siblings().removeClass('active');

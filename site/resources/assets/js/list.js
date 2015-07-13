@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function () {
-    $(".filter-operate dt").click(function () {
+    $(".filter-operate-block dt").click(function () {
         $(this).find('span').removeClass('filter-mark');
         $(this).find('span').addClass('filter-mark-active');
         $(this).parent().siblings().find('dt span').removeClass('filter-mark-active');
@@ -12,9 +12,9 @@ $(document).ready(function () {
         $(this).parent().siblings().children('dd').hide()
     });
 
-    //µã»÷Ìí¼ÓÉ¸Ñ¡
+    //ç‚¹å‡»æ·»åŠ ç­›é€‰
 
-    $(".filter-operate dd").click(function () {
+    $(".filter-operate-block dd").click(function () {
         var text = $(this).text();
         var add_text = true;;
         $(".filter-selected dd").each(function (key,value) {
@@ -27,10 +27,22 @@ $(document).ready(function () {
         }
     });
 
-    //É¾³ýÉ¸Ñ¡
+    //åˆ é™¤ç­›é€‰
 
     $(".filter-selected dl").on ('click','.filter-delete',function () {
         $(this).parents('dd').remove()
+    });
+
+    $(".filter-recommend-item").hover(function () {
+        $(this).find('.filter-recommend-item-bg').fadeIn();
+    }, function () {
+        $(this).find('.filter-recommend-item-bg').fadeOut();
+    });
+
+    $('.list-info-item').hover(function(){
+        $(this).find('.list-info-item-follow').fadeIn();
+    }, function () {
+        $(this).find('.list-info-item-follow').fadeOut();
     })
 
 

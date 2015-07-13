@@ -10,150 +10,140 @@
                     <dd class="filter-selected-item"><i>北京</i><span class="filter-delete"></span></dd>
                 </dl>
             </div>
-            <div class="filter-operate">
+            <div class="filter-operate-block">
                 <dl>
                     <dt>区县<span class="filter-mark"></span></dt>
-                    <dd class="filter-operate">海淀<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">昌平<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">丰台<span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>海淀</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>昌平</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>丰台</b><span class="filter-add"></span></dd>
                 </dl>
                 <dl>
                     <dt>媒体风格<span class="filter-mark"></span></dt>
-                    <dd class="filter-operate">全部<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">社会<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">娱乐<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">科技<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">体育<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">时尚<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">财经<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">学术<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">生活<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">法制<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">健康<span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>全部</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>社会</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>娱乐</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>科技</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>体育</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>时尚</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>财经</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>学术</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>生活</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>法制</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>健康</b><span class="filter-add"></span></dd>
                 </dl>
                 <dl>
                     <dt>媒体类型<span class="filter-mark"></span></dt>
-                    <dd class="filter-operate">全部<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">热门活动<span class="filter-add"></span></dd>
-                    <dd>新媒体(微信、微博、其他)<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">app<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">网站(网络，软件)<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">电视<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">广播<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">户外<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">室内<span class="filter-add"></span></dd>
-                    <dd class="filter-operate">其他<span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>全部</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>热门活动</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>新媒体(微信、微博、其他)</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>app</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>网站(网络，软件)</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>电视</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>广播</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>户外</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>室内</b><span class="filter-add"></span></dd>
+                    <dd class="filter-operate"><b>其他</b><span class="filter-add"></span></dd>
                 </dl>
                 <dl>
                     <dt>财富圈<span class="filter-mark"></span></dt>
-                    <dd class="filter-operate">全部</dd>
-                    <dd class="filter-operate">普通</dd>
-                    <dd class="filter-operate">精英</dd>
-                    <dd class="filter-operate">财富</dd>
+                    <dd class="filter-operate"><b>全部</b></dd>
+                    <dd class="filter-operate"><b>普通</b></dd>
+                    <dd class="filter-operate"><b>精英</b></dd>
+                    <dd class="filter-operate"><b>财富</b></dd>
                 </dl>
                 <dl>
                     <dt>针对性别<span class="filter-mark"></span></dt>
-                    <dd class="filter-operate">男</dd>
-                    <dd class="filter-operate">女</dd>
+                    <dd class="filter-operate"><b>男</b></dd>
+                    <dd class="filter-operate"><b>女</b></dd>
                 </dl>
                 <dl>
                     <dt>社会圈<span class="filter-mark"></span></dt>
-                    <dd class="filter-operate">全部</dd>
-                    <dd class="filter-operate">地产圈</dd>
-                    <dd class="filter-operate">IT圈</dd>
-                    <dd class="filter-operate">金融圈</dd>
-                    <dd class="filter-operate">汽车圈</dd>
-                    <dd class="filter-operate">科技圈</dd>
-                    <dd class="filter-operate">养生圈</dd>
+                    <dd class="filter-operate"><b>全部</b></dd>
+                    <dd class="filter-operate"><b>地产圈</b></dd>
+                    <dd class="filter-operate"><b>IT圈</b></dd>
+                    <dd class="filter-operate"><b>金融圈</b></dd>
+                    <dd class="filter-operate"><b>汽车圈</b></dd>
+                    <dd class="filter-operate"><b>科技圈</b></dd>
+                    <dd class="filter-operate"><b>养生圈</b></dd>
                 </dl>
                 <dl>
                     <dt>年龄圈<span class="filter-mark"></span></dt>
-                    <dd class="filter-operate">全部</dd>
-                    <dd class="filter-operate"> 儿童</dd>
-                    <dd class="filter-operate">青少年</dd>
-                    <dd class="filter-operate">中年</dd>
-                    <dd class="filter-operate"> 老年</dd>
+                    <dd class="filter-operate"><b>全部</b></dd>
+                    <dd class="filter-operate"><b>儿童</b></dd>
+                    <dd class="filter-operate"><b>青少年</b></dd>
+                    <dd class="filter-operate"><b>中年</b></dd>
+                    <dd class="filter-operate"> <b>老年</b></dd>
                 </dl>
                 <dl>
                     <dt>社会圈<span class="filter-mark"></span></dt>
-                    <dd class="filter-operate">全部</dd>
-                    <dd class="filter-operate">地产圈</dd>
-                    <dd class="filter-operate">IT圈</dd>
-                    <dd class="filter-operate">金融圈</dd>
-                    <dd class="filter-operate">汽车圈</dd>
-                    <dd class="filter-operate">科技圈</dd>
-                    <dd class="filter-operate">养生圈</dd>
-                    <dd class="filter-operate">购物圈</dd>
-                    <dd class="filter-operate">吃货圈</dd>
-                    <dd class="filter-operate">八卦圈</dd>
-                    <dd class="filter-operate">养生圈</dd>
-                    <dd class="filter-operate">养生圈</dd>
-                    <dd class="filter-operate">养生圈</dd>
-                    <dd class="filter-operate">养生圈</dd>
+                    <dd class="filter-operate"><b>全部</b></dd>
+                    <dd class="filter-operate"><b>地产圈</b></dd>
+                    <dd class="filter-operate"><b>IT圈</b></dd>
+                    <dd class="filter-operate"><b>金融圈</b></dd>
+                    <dd class="filter-operate"><b>汽车圈</b></dd>
+                    <dd class="filter-operate"><b>科技圈</b></dd>
+                    <dd class="filter-operate"><b>养生圈</b></dd>
+                    <dd class="filter-operate"><b>购物圈</b></dd>
+                    <dd class="filter-operate"><b>吃货圈</b></dd>
+                    <dd class="filter-operate"><b>八卦圈</b></dd>
+                    <dd class="filter-operate"><b>养生圈</b></dd>
+                    <dd class="filter-operate"><b>养生圈</b></dd>
+                    <dd class="filter-operate"><b>养生圈</b></dd>
+                    <dd class="filter-operate"><b>养生圈</b></dd>
                 </dl>
+            </div>
+            <div class="filter-recommend">
+                <div class="filter-recommend-title"><span>人气创意广告</span></div>
+                @foreach($ideas as $idea)
+                  <div class="filter-recommend-item">
+                      <a href="ads/{{$idea->id}}">
+                          <img src="{{$idea->avatar->url}}">
+                          <div class="filter-recommend-item-bg">
+                            {{$idea->description}}
+                          </div>
+                      </a>
+                  </div>
+                @endforeach
             </div>
         </div>
         <div class="list-main fl">
             <div class="list-sort">
-                <span class="list-sort-item active"><a href="#">默认排序</a> </span>
+                <span class="list-sort-item active"><a href="/ads">默认排序</a> </span>
                 <span class="list-sort-item"><a href="#">销量</a> </span>
                 <span class="list-sort-item"><a href="#">价格</a> </span>
+                <span class="list-sort-item"><a href="#">时间</a> </span>
             </div>
             <div class="list-info clearfix">
-            @foreach ($adspaces as $index=>$space)
-                <div class="list-info-item fl  mr19">
-                    <div class="list-info-block">
-                        <div><img src="{{ $space->avatar->url() }}"></div>
-                        <div class="list-info-details">
-                            <div class="list-info-details-title"><span>{{$space->title}}</span></div>
-                            <div class="list-info-details-text">
-                                <span>{{ $space->description }}</span>
-                            </div>
-                            <div class="list-info-details-go">
-                                <span class="list-info-details-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-                                <span class="list-info-details-look">
-                                    <i class="fa fa-star"></i>
-                                    <span class="list-info-details-look-text1">收藏人数</span>
-                                    <span class="list-info-details-look-text2">{{ $space->adSpaceUsers->sum('id')}}</span>
-                                </span>
-                            </div>
-                            <div class="list-info-details-money">
-                                <span class="list-info-details-price">
-                                    <span class="list-info-details-price-img"><i class="fa fa-jpy"></i></span>
-                                    <span class="list-info-details-price-number">
-                                      {{ $space->AdPrices->min('price') }}
-                                    </span>
-                                </span>
-                                <span class="list-info-details-people">
-                                    <span class="list-info-details-people-number">
-                                      {{ $space->orderItems->sum('quantity')}}
-                                    </span>人购买
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-info-nutton">
-                        <a href="ads/{{ $space->id }}">加入购物车</a>
-                    </div>
-                </div>
-            @endforeach
+                @for($i = 0; $i < count($adspaces); $i++)
+                  <div class="list-info-item {{$i/2 == 0 ? '':'mr9'}}">
+                      <div class="list-info-item-img">
+                          <a href="#"><img src="{{$adspaces[$i]->avatar->url}}"></a>
+                      </div>
+                      <div class="list-info-item-block">
+                          <div class="list-info-item-name">{{$adspaces[$i]->title}}</div>
+                          <div class="list-info-item-combination">
+                              <span class="list-info-item-collection">收藏<i class="fa fa-star"></i></span>
+                              <span class="list-info-item-buy"><code>{{$adspaces[$i]->orderItems->sum('quantity')}}</code>人购买</span>
+                              <span class="list-info-item-money"><i class="fa fa-jpy"></i>{{$adspaces[$i]->AdPrices->min('price')}}/天</span>
+                          </div>
+                          <div class="list-info-item-description">
+                              {{$adspaces[$i]->description}} <a href="ads/{{$adspaces[$i]->id}}" class="link">查看详情》</a>
+                          </div>
+                      </div>
+                  </div>
+                @endfor
             </div>
-             <?php echo $adspaces->render(); ?>
             <div class="page">
-                <span><a href="#" class="page-item-previous">上一页</a> </span>
-                <span><a href="#" class="page-item active">1</a> </span>
-                <span><a href="#" class="page-item">2</a> </span>
-                <span><a href="#" class="page-item">3</a> </span>
-                <span><a href="#" class="page-item-next">下一页</a> </span>
-                <span class="page-return">
-                    <input type="text">
-                    <button>跳转</button>
-                </span>
+             <?php echo $adspaces->render(); ?>
+                <!-- <span><a href="#" class="page&#45;item&#45;previous">上一页</a> </span> -->
+                <!-- <span><a href="#" class="page&#45;item active">1</a> </span> -->
+                <!-- <span><a href="#" class="page&#45;item">2</a> </span> -->
+                <!-- <span><a href="#" class="page&#45;item">3</a> </span> -->
+                <!-- <span><a href="#" class="page&#45;item&#45;next">下一页</a> </span> -->
+                <!-- <span class="page&#45;return"> -->
+                <!--     <input type="text"> -->
+                <!--     <button>跳转</button> -->
+                <!-- </span> -->
             </div>
         </div>
     </div>
