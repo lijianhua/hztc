@@ -16,6 +16,7 @@ Route::get('/ads', 'AdSpaceController@index');
 Route::get('/ads/{id}', 'AdSpaceController@show');
 Route::get('/search', 'SearchController@index');
 Route::get('/cart', 'CartController@index');
+Route::delete('cart/cartdel/{id}', 'CartController@CartDel');
 Route::get('/pay', 'CartController@pay');
 Route::get('/settlement', 'CartController@settlement');
 
@@ -56,6 +57,7 @@ Route::post('users/info','UserController@store_company_auth');
 Route::get('users/info','UserController@info');
 Route::get('users/refund','UserController@refund');
 Route::get('users/refund/detail/{id}','UserController@detail');
+Route::post('collect/','AdSpaceController@addCollect');
 
 // 搜索
 Route::any('search', 'SearchController@search');

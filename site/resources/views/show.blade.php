@@ -59,7 +59,9 @@ class="details-info-evaluation-down">{{$adspace->customerReviews->count('id') }}
                     </span>
                 </div>
                 <div class="details-concerned-collection">
+                  <a href="#" onclick='return addCollect({{ $adspace->id }})'>
                     <span class="details-info-collection">收藏<i class="fa fa-star-o"></i></span>
+                  </a>
                 </div>
                 <div class="details-reminder"><span>温馨提示： 1.北京地区支持礼品包装  2.支持7天无理由退货</span></div>
                 <div class="details-business">
@@ -211,4 +213,19 @@ class="details-info-evaluation-down">{{$adspace->customerReviews->count('id') }}
         </div>
     </div>
 </div>
+<script>
+  function addCollect(id)
+  {
+    $.ajax({
+      type:'POST',
+        url:'/collect',
+        async : true,
+        data:{'id':id},
+        headers  :{'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
+        success:function(data){
+        alert(data)
+}
+    });  
+  }
+</script>
 @endsection

@@ -2,8 +2,17 @@
     margin-top: 10px;
     margin-bottom: 50px;
 }
+.shop-mark{
+    color: #cdcdcd;
+    font-size: 12px;
+}
+.shop-mark span{
+    color: #666666;
+    margin: 0 3px;
+}
 .shop .shop-title{
     color: #7bccff;
+    text-align: center;
 }
 .shop .shop-title-img{
     background: url("../images/list/shop.png") no-repeat 0 0;
@@ -85,4 +94,9 @@
     border: 0;
     font-size: 18px;
     color: #ffffff;
+}
+.shop-submit-text{
+    margin-top: 5px;
+    font-size: 12px;
+    color: #ff3f7e;
 }

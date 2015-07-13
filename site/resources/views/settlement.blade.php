@@ -78,14 +78,15 @@
                     <th>我们的承诺</th>
                 </tr>
                 <tr>
-                    <td>安德里广告牌</td>
-                    <td>12345</td>
-                    <td>232</td>
-                    <td>7天内无条件退换货</td>
+                    <td>{{$shop->adSpacesCart->title}}</td>
+                    <td>{{$shop->price}}</td>
+                    <td>{{$shop->quantity}}</td>
+                    <td>{{$shop->adSpacesCart->user->name}}</td>
                 </tr>
             </table>
             <div class="settlement-list-submit">
-                <span class="settlement-list-submit-total">总计：<span>23330,00</span></span>
+                <span
+class="settlement-list-submit-total">总计：<span>{{$shop->original_price}}</span></span>
                 <span class="settlement-list-submit-button"><button type="button">提交订单</button></span>
             </div>
         </div>

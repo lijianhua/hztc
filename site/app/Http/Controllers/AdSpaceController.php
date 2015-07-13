@@ -5,6 +5,10 @@ use App\Models\Navigator;
 use App\Models\AdSpace;
 use App\Models\AdPrice;
 use Illuminate\Database\Eloquent\Collection;
+use App\Models\AdSpaceUser;
+use Auth;
+use Illuminate\Http\Request;
+
 class AdSpaceController extends Controller {
 
   /**
@@ -65,5 +69,47 @@ class AdSpaceController extends Controller {
     return view('show')->with(compact('navigators', 'adspace'));
   }
  
+  /**
+   * 收藏
+   *
+   */
+  public function addCollect(Request $request)
+  {
+    $id = $request->input('id');
+    $collect = new AdSpaceUser;
+    if (Auth::check())
+    {
+      if (!$this->checkCollect($id, Auth::user()->id))
+      {
+        $collect->ad_space_id = $id;
+        $collect->user_id = Auth::user()->id;
+        $collect->save();
+        return response()->json(['name' => 'error', 'state' => '1']);
+      }
+      else
+      {
+        return response()->json(['name' => 'error', 'state' => '2']);
+      }
+
+      
+    }
+    else
+    {
+      return response()->json(['name' => 'error', 'state' => '3']);
+    }
+  }
+
+  /**
+   * 验证收藏
+   *
+   */
+  public function checkCollect($aid, $uid)
+  {
+    $iscollect = AdSpaceUser::where('ad_space_id', '=', $aid)
+      ->where('user_id', '=', $uid)
+      ->count();
+    return $iscollect;
+
+  }
 
 }

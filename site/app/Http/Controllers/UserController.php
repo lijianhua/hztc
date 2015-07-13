@@ -14,7 +14,6 @@ use App\Models\UserScoreDetail;
 use App\Models\AdSpaceUser;
 use App\Models\Refund;
 use App\Models\CustomerReview;
-use Auth;
 use  App\Http\Requests\PostEnterpriseRequest;
 use Illuminate\Http\Request;
 
