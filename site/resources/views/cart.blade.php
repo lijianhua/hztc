@@ -15,15 +15,19 @@
                     <th>操作</th>
                 </tr>
               @if ($carts)
-              @foreach ($carts as $cart)
+              @foreach ($carts as $index=>$cart)
                 <tr>
-                    <td style="width: 120px"><input type="radio" name="radio" checked></td>
+                    <td style="width: 120px">
+                      <input type="radio" name="radio" value='0' {{$index==0?'checked':''}}>
+                      <input name='aid' value='{{$cart->id}}' type='hidden' class='aid'>
+                    </td>
                     <td>{{$cart->adSpacesCart->title}}</td>
                     <td class="shop-price"><i class="fa fa-jpy">&nbsp;</i><span>{{$cart->price}}</span></td>
                     <td>
                         <div class="shop-number">
                             <span class="shop-add fl"></span>
-                            <span class="shop-enter fl"><input type="text" value="{{$cart->quantity}}" readonly></span>
+                            <span class="shop-enter fl"><input type="text"
+class='quantity' value="{{$cart->quantity}}" readonly></span>
                             <span class="shop-minus fl"></span>
                         </div>
                     </td>
@@ -36,6 +40,10 @@
         </div>
         <div class="shop-submit" style="margin-top: 150px">
             <span class="shop-submit-total">总计：<span>6000</span></span>
+            <form id='aid_form' action='/settlement' method='get'>
+              <input type='hidden' name='aid' id='aid_value'>
+              <input type='hidden' name='quantity' id='quantity_value'>
+            </form>
             <span class="shop-submit-button"><button type="button">提交订单</button></span>
         </div>
     </div>

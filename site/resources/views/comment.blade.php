@@ -18,7 +18,7 @@
                     <tr>
                         <td>{{$order->orderItems->first()->adSpace->title}}</td>
                         <td>{{$order->orderItems->first()->adSpace->created_at}}</td>
-                        <td>{{$order->customer->first()->id?'已评价':'未评价'}}</td>
+                        <td>{{$order->customerid?'已评价':'未评价'}}</td>
                     </tr>
                 </table>
             </div>

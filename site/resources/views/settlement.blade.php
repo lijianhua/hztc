@@ -62,7 +62,7 @@
         <div class="contract-agree">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox">是否同意本协议条款
+                    <input type="checkbox" value='0'>是否同意本协议条款
                 </label>
             </div>
         </div>
@@ -78,10 +78,14 @@
                     <th>我们的承诺</th>
                 </tr>
                 <tr>
+                    <form action='/pay' method='post' id="form_id">
+                        <input type='hidden' name="aid_id" value='{{$id}}' class='aid'>
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    </form>
                     <td>{{$shop->adSpacesCart->title}}</td>
                     <td>{{$shop->price}}</td>
                     <td>{{$shop->quantity}}</td>
-                    <td>{{$shop->adSpacesCart->user->name}}</td>
+                    <td>{{$shop->adSpacesCart->user->userInformations->first()->value}}</td>
                 </tr>
             </table>
             <div class="settlement-list-submit">

@@ -1,14 +1,14 @@
 var uploadPreview = function(setting) {
     /*
-     *author:ÖÜÏé
-     *date:2014Äê12ÔÂ11ÈÕ
-     *work:this(µ±Ç°¶ÔÏó)
+     *author:å‘¨ç¥¥
+     *date:2014å¹´12æœˆ11æ—¥
+     *work:this(å½“å‰å¯¹è±¡)
      */
     var _self = this;
     /*
-     *author:ÖÜÏé
-     *date:2014Äê12ÔÂ11ÈÕ
-     *work:ÅÐ¶ÏÎªnull»òÕß¿ÕÖµ
+     *author:å‘¨ç¥¥
+     *date:2014å¹´12æœˆ11æ—¥
+     *work:åˆ¤æ–­ä¸ºnullæˆ–è€…ç©ºå€¼
      */
     _self.IsNull = function(value) {
         if (typeof (value) == "function") { return false; }
@@ -18,9 +18,9 @@ var uploadPreview = function(setting) {
         return false;
     }
     /*
-     *author:ÖÜÏé
-     *date:2014Äê12ÔÂ11ÈÕ
-     *work:Ä¬ÈÏÅäÖÃ
+     *author:å‘¨ç¥¥
+     *date:2014å¹´12æœˆ11æ—¥
+     *work:é»˜è®¤é…ç½®
      */
     _self.DefautlSetting = {
         UpBtn: "",
@@ -29,13 +29,13 @@ var uploadPreview = function(setting) {
         Width: 100,
         Height: 100,
         ImgType: ["gif", "jpeg", "jpg", "bmp", "png"],
-        ErrMsg: "Ñ¡ÔñÎÄ¼þ´íÎó,Í¼Æ¬ÀàÐÍ±ØÐëÊÇ(gif,jpeg,jpg,bmp,png)ÖÐµÄÒ»ÖÖ",
+        ErrMsg: "é€‰æ‹©æ–‡ä»¶é”™è¯¯,å›¾ç‰‡ç±»åž‹å¿…é¡»æ˜¯(gif,jpeg,jpg,bmp,png)ä¸­çš„ä¸€ç§",
         callback: function() { }
     };
     /*
-     *author:ÖÜÏé
-     *date:2014Äê12ÔÂ11ÈÕ
-     *work:¶ÁÈ¡ÅäÖÃ
+     *author:å‘¨ç¥¥
+     *date:2014å¹´12æœˆ11æ—¥
+     *work:è¯»å–é…ç½®
      */
     _self.Setting = {
         UpBtn: _self.IsNull(setting.UpBtn) ? _self.DefautlSetting.UpBtn : setting.UpBtn,
@@ -48,9 +48,9 @@ var uploadPreview = function(setting) {
         callback: _self.IsNull(setting.callback) ? _self.DefautlSetting.callback : setting.callback
     };
     /*
-     *author:ÖÜÏé
-     *date:2014Äê12ÔÂ11ÈÕ
-     *work:»ñÈ¡ÎÄ±¾¿Ø¼þURL
+     *author:å‘¨ç¥¥
+     *date:2014å¹´12æœˆ11æ—¥
+     *work:èŽ·å–æ–‡æœ¬æŽ§ä»¶URL
      */
     _self.getObjectURL = function(file) {
         var url = null;
@@ -64,16 +64,16 @@ var uploadPreview = function(setting) {
         return url;
     }
     /*
-     *author:ÖÜÏé
-     *date:2014Äê12ÔÂ11ÈÕ
-     *work:°ó¶¨ÊÂ¼þ
+     *author:å‘¨ç¥¥
+     *date:2014å¹´12æœˆ11æ—¥
+     *work:ç»‘å®šäº‹ä»¶
      */
     _self.Bind = function() {
         document.getElementById(_self.Setting.UpBtn).onchange = function() {
             if (this.value) {
                 if (!RegExp("\.(" + _self.Setting.ImgType.join("|") + ")$", "i").test(this.value.toLowerCase())) {
-                    alert(_self.Setting.ErrMsg);
-                    this.value = "";
+                    alert(_self.Setting.ErrMsg)
+                    this.value = "";;
                     return false;
                 }
                 if (navigator.userAgent.indexOf("MSIE") > -1) {
@@ -98,22 +98,10 @@ var uploadPreview = function(setting) {
             }
         }
     }
-    $('#upload').submit(function(e){
-      e.preventDefault(); 
-      $(this).ajaxSubmit({
-        url      : 'info',
-        async    : false,
-        dataType : 'json',
-        success  : function (result) {
-        },
-        error    : function (jqXHR) {
-        }
-      });
-    })
     /*
-     *author:ÖÜÏé
-     *date:2014Äê12ÔÂ11ÈÕ
-     *work:Ö´ÐÐ°ó¶¨ÊÂ¼þ
+     *author:å‘¨ç¥¥
+     *date:2014å¹´12æœˆ11æ—¥
+     *work:æ‰§è¡Œç»‘å®šäº‹ä»¶
      */
     _self.Bind();
 }
