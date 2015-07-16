@@ -64,3 +64,4 @@ Route::post('collect/','AdSpaceController@addCollect');
 
 // 搜索
 Route::any('search', 'SearchController@search');
+Route::post('/Search/home/left', 'SearchController@search_index_filter');
