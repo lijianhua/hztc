@@ -533,7 +533,6 @@ body{
 }
 #banner{
     width: 100%;
-    background-color: #d8f0ff;
     height: 441px;
 }
 .layout{
@@ -675,10 +674,9 @@ header{
 /*}*/
 .nav-search{
     position: relative;
-    /*width: 253px;*/
     width: 50px;
     height: 34px;
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: #000000;
     border-radius: 25px;
     -webkit-border-radius:25px;
@@ -688,11 +686,8 @@ header{
 
 }
 .nav-search-hide{
-    /*position: absolute;*/
-    /*width: 0px;*/
-    overflow: hidden;
+    overflow-x: hidden;
     width: 205px;
-    /*margin-left: 105px;*/
     height: 34px;
 }
 .nav-search-bt{
@@ -771,7 +766,7 @@ header{
     height: 181px;
     width: 100%;
     text-align: center;
-    margin-top: 70px;
+    margin-top: 10px;
 }
 .plate-A{
     position: absolute;
@@ -796,19 +791,27 @@ header{
     display: inline-block;
     height: 36px;
     width: 36px;
-    border-radius: 50%;
-    -webkit-border-radius:50%;
-    background-color: rgb(41, 76, 97);
-    text-align: center;
     cursor: pointer;
-    font-size: 22px;
     position: relative;
-    color: #ffffff;
     margin: 0 5px;
-    line-height: 1.7;
 }
-.footer-top-item:hover{
-    background-color: #999999;
+.footer-top-item.wb{
+    background: url("../images/index/wb.png") no-repeat 0 0;
+}
+.footer-top-item.wb:hover{
+    background: url("../images/index/wbhover.png") no-repeat 0 0;
+}
+.footer-top-item.qq{
+    background: url("../images/index/qq.png") no-repeat 0 0;
+}
+.footer-top-item.qq:hover{
+    background: url("../images/index/qqhover.png") no-repeat 0 0;
+}
+.footer-top-item.wx{
+    background: url("../images/index/wx.png") no-repeat 0 0;
+}
+.footer-top-item.wx:hover{
+    background: url("../images/index/wxhover.png") no-repeat 0 0;
 }
 .ft-company{
     position: absolute;

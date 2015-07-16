@@ -31,10 +31,5 @@
   <!-- Scripts -->
   <script src="{{ asset('/js/vendor.js') }}"></script>
   <script src="{{ asset('/js/all.js') }}"></script>
-  <script src="{{ asset('/js/advertisers.js') }}"></script>
-  <script src="{{ asset('/js/uploadPreview.js') }}"></script>
-  <script src="{{ asset('/js/laravel.js') }}"></script>
-  <script src="{{ asset('/js/public.js') }}"></script>
-  <script src="{{ asset('/js/list.js') }}"></script>
 </body>
 </html>

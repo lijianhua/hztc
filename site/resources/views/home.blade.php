@@ -11,69 +11,60 @@
                 </div>
                 <div class="filter-nav">
                     <ul>
-                        <form class="form-horizontal" role="form" method="POST"
-action="{{ url('/Search/home/left') }}" id='login-form'>
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <li class="filter-nav-item">
-                                <span class="filter-nav-title">投放市场</span><br/>
-                                <div class="btn-group">
-                                    <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        <b id='city'>全部</b> <span class="filter-nav-caret caret"></span>
-                                        <input name='city' type='hidden' value='全部'>
-                                    </button>
-                                    <ul class="filter-nav-menu dropdown-menu" role="menu">
-                                        <li><a href="#">全部</a> </li>
-                                        <li><a href="#">北京</a> </li>
-                                        <li><a href="#">上海</a> </li>
-                                        <li><a href="#">广州</a> </li>
-                                        <li><a href="#">深圳</a> </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="filter-nav-item">
-                                <span class="filter-nav-title">媒体类型</span><br/>
-                                <div class="btn-group">
-                                    <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        <b id='type'>全部</b> <span class="filter-nav-caret caret"></span>
-                                        <input name='type' type='hidden' value='全部'>
-                                    </button>
-                                    <ul class="filter-nav-menu dropdown-menu" role="menu">
-                                        <li><a href="#">全部</a> </li>
-                                        <li><a href="#">新媒体</a> </li>
-                                        <li><a href="#">APP</a> </li>
-                                        <li><a href="#">网络</a> </li>
-                                        <li><a href="#">电视</a> </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="filter-nav-item">
-                                <span class="filter-nav-title">社会圈</span><br/>
-                                <div class="btn-group">
-                                    <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        <b id='society'>全部</b> <span class="filter-nav-caret caret"></span>
-                                        <input name='type2' type='hidden' value='全部'>
-                                    </button>
-                                    <ul class="filter-nav-menu dropdown-menu" role="menu">
-                                        <li><a href="#">全部</a> </li>
-                                        <li><a href="#">财富圈</a> </li>
-                                        <li><a href="#">地产圈</a> </li>
-                                        <li><a href="#">IT圈</a> </li>
-                                        <li><a href="#">金融圈</a> </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="filter-nav-item">
-                                <span class="filter-nav-title">价位</span><br/>
-                                <div class="filter-nav-input">
-                                    <span><input type="text" name='start_price' value='  '></span> 
-                                    <b>至</b> <span><input type="text" name='end_price' value='  '></span>
-                                </div>
-                            </li>
-                            <li class="filter-nav-item">
-                                <input class="filter-nav-retrieval" type='submit' value='检索'>
-                            </li>
-                        </ul>
-                    </form>
+                        <li class="filter-nav-item">
+                            <span class="filter-nav-title">投放市场</span><br/>
+                            <div class="btn-group">
+                                <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <b id='city'>全部</b> <span class="filter-nav-caret caret"></span>
+                                </button>
+                                <ul class="filter-nav-menu dropdown-menu" role="menu">
+                                    <li><a href="#">全部</a> </li>
+                                    <li><a href="#">北京</a> </li>
+                                    <li><a href="#">上海</a> </li>
+                                    <li><a href="#">广州</a> </li>
+                                    <li><a href="#">深圳</a> </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="filter-nav-item">
+                            <span class="filter-nav-title">媒体类型</span><br/>
+                            <div class="btn-group">
+                                <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <b id='type'>全部</b> <span class="filter-nav-caret caret"></span>
+                                </button>
+                                <ul class="filter-nav-menu dropdown-menu" role="menu">
+                                    <li><a href="#">全部</a> </li>
+                                    <li><a href="#">新媒体</a> </li>
+                                    <li><a href="#">APP</a> </li>
+                                    <li><a href="#">网络</a> </li>
+                                    <li><a href="#">电视</a> </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="filter-nav-item">
+                            <span class="filter-nav-title">社会圈</span><br/>
+                            <div class="btn-group">
+                                <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <b id='society'>全部</b> <span class="filter-nav-caret caret"></span>
+                                </button>
+                                <ul class="filter-nav-menu dropdown-menu" role="menu">
+                                    <li><a href="#">全部</a> </li>
+                                    <li><a href="#">财富圈</a> </li>
+                                    <li><a href="#">地产圈</a> </li>
+                                    <li><a href="#">IT圈</a> </li>
+                                    <li><a href="#">金融圈</a> </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="filter-nav-item">
+                            <span class="filter-nav-title">价位</span><br/>
+                            <div class="filter-nav-input">
+                                <span><input type="text" id='start_price'></span> 
+                                <b>至</b> <span><input type="text" id='end_price'></span>
+                            </div>
+                        </li>
+                        <li class="filter-nav-item"><button class="filter-nav-retrieval">检索</button></li>
+                    </ul>
                 </div>
             </div>
             <div class="banner-img">
@@ -94,43 +85,66 @@ action="{{ url('/Search/home/left') }}" id='login-form'>
                         </div>
                       @endforeach
                     </div>
-                    <div class="banner-project clearfix">
-                        <span class="banner-project-item active"><i class="fa fa-bullhorn"></i></span>
-                        <span class="banner-project-item"><i class="fa fa-lightbulb-o"></i></span>
-                        <span class="banner-project-item"><i class="fa fa-heart"></i></span>
-                        <span class="banner-project-item"><i class="fa fa-clipboard"></i></span>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="layout">
         <div class="plate">
-            <div class="plate-block clearfix">
-                <div class="plate-item plate-color1">
-                    <div class="plate-item-china">免费广告位</div>
-                    <div class="plate-item-big">MINIMAL OUTLINE ICONS</div>
-                    <div class="plate-item-small">enjoy & share & be happy</div>
-                </div>
-                <div class="plate-item plate-color2 ml3">
-                    <div class="plate-item-china">特价广告位</div>
-                    <div class="plate-item-big">MINIMAL OUTLINE ICONS</div>
-                    <div class="plate-item-small">enjoy & share & be happy</div>
-                </div>
-                <div class="plate-item plate-color3 ml3">
-                    <div class="plate-item-china">特色广告位</div>
-                    <div class="plate-item-big">MINIMAL OUTLINE ICONS</div>
-                    <div class="plate-item-small">enjoy & share & be happy</div>
-                </div>
-                <div class="plate-item plate-color4 ml2">
-                    <div class="plate-item-china">创意类广告位</div>
-                    <div class="plate-item-big">MINIMAL OUTLINE ICONS</div>
-                    <div class="plate-item-small"><i>enjoy & share & be happy</i></div>
-                </div>
-            </div>
-
+            <ul id="da-thumbs" class="plate-block da-thumbs">
+                <li class="mr15">
+                    <a href="#">
+                        <img src="images/index/bg.png" />
+                        <dl class="plate-text-show">
+                            <dd class="plate-item-china">免费广告</dd>
+                            <dd class="plate-item-big">MINIMAL OUTLINE ICONS</dd>
+                            <dd class="plate-item-small">enjoy & share & be happy</dd>
+                        </dl>
+                        <div class="plate-text">
+                            <span class="plate-item-china">免费广告</span></br>
+                            <span class="plate-item-big">MINIMAL OUTLINE ICONS</span></br>
+                            <span class="plate-item-small">enjoy & share & be happy</span></br>
+                        </div>
+                    </a>
+                </li>
+                <li class="mr15">
+                    <a href="#">
+                        <img src="images/index/bg.png" />
+                        <dl class="plate-text-show">
+                            <dd class="plate-item-china">创意广告</dd>
+                            <dd class="plate-item-big">MINIMAL OUTLINE ICONS</dd>
+                            <dd class="plate-item-small">enjoy & share & be happy</dd>
+                        </dl>
+                        <div class="plate-text">
+                            <span class="plate-item-china">创意广告</span></br>
+                            <span class="plate-item-big">MINIMAL OUTLINE ICONS</span></br>
+                            <span class="plate-item-small">enjoy & share & be happy</span></br>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/index/bg.png" />
+                        <dl class="plate-text-show">
+                            <dd class="plate-item-china">特价广告</dd>
+                            <dd class="plate-item-big">MINIMAL OUTLINE ICONS</dd>
+                            <dd class="plate-item-small">enjoy & share & be happy</dd>
+                        </dl>
+                        <div class="plate-text">
+                            <span class="plate-item-china">特价广告</span></br>
+                            <span class="plate-item-big">MINIMAL OUTLINE ICONS</span></br>
+                            <span class="plate-item-small">enjoy & share & be happy</span></br>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     <!-- banner-->
 </div>
+<script type="text/javascript">
+    $(
+        $('#da-thumbs > li').each( function() { $(this).hoverdir();});
+    });
+</script>
 @endsection
