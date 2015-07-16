@@ -143,7 +143,7 @@
     <!-- banner-->
 </div>
 <script type="text/javascript">
-    $(
+    $(function(){
         $('#da-thumbs > li').each( function() { $(this).hoverdir();});
     });
 </script>
