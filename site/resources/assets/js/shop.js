@@ -8,7 +8,18 @@ $(document).ready(function(){
         $(".shop-submit .shop-submit-total span").text(this_text * value)
     })
     $(".shop-number .shop-enter input").attr('readonly','readonly');
+    if($(".shop-list table tr").length <=1){
+      $(".shop-submit .shop-submit-total span").text("0");
+    }else{
     $(".shop-submit .shop-submit-total span").text($(".shop-list table tr:eq(1) .shop-enter input").val() * $(".shop-list table tr:eq(1) .shop-price").text())
+    $('.shop-submit button').click(function(){
+      var value_id = $('input[type=radio]:checked').parents('tr').index();
+      var aid = $('.aid').eq(value_id-1).val();
+      var quantity= $('.quantity').val();
+      $("#aid_value").val(aid);
+      $("#quantity_value").val(quantity);
+      $("#aid_form").submit();
+  });};
     $(".shop-number .shop-add").click(function () {
         if($(this).parents('tr').find('input[type=radio]:checked').val()==0){
            var this_text=  $(this).parents('tr').find('.shop-price').text();
@@ -28,18 +39,20 @@ $(document).ready(function(){
     });
 });
 
-$('.shop-submit button').click(function(){
-  var value_id = $('input[type=radio]:checked').parents('tr').index();
-  var aid = $('.aid').eq(value_id-1).val();
-  var quantity= $('.quantity').val();
-  $("#aid_value").val(aid);
-  $("#quantity_value").val(quantity);
-    $("#aid_form").submit();
-});
+//$('.shop-submit button').click(function(){
+//  var value_id = $('input[type=radio]:checked').parents('tr').index();
+//  var aid = $('.aid').eq(value_id-1).val();
+//  var quantity= $('.quantity').val();
+//  $("#aid_value").val(aid);
+//  $("#quantity_value").val(quantity);
+//    $("#aid_form").submit();
+//});
 $(".settlement-list-submit-button button").click(function(){
     if($(".checkbox input[type=checkbox]").is(':checked') ==true){
+        $("#agree_checked").val("1");
         $("#form_id").submit();
     }else{
+      $("#agree_checked").val("");
       alert("请同意我们的协议!")
     }
 })

@@ -80,6 +80,7 @@
                 <tr>
                     <form action='/pay' method='post' id="form_id">
                         <input type='hidden' name="aid_id" value='{{$id}}' class='aid'>
+                        <input type="hidden" name="agree_checked" id="agree_checked">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                     </form>
                     <td>{{$shop->adSpacesCart->title}}</td>

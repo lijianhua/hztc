@@ -148,6 +148,7 @@ return [
       'App\Providers\EventServiceProvider',
       'App\Providers\RouteServiceProvider',
       'Mews\Captcha\CaptchaServiceProvider',
+      'Latrell\Alipay\AlipayServiceProvider',
 
     ],
 

@@ -18,8 +18,11 @@ Route::get('/search', 'SearchController@index');
 Route::get('/cart', 'CartController@index');
 Route::delete('cart/cartdel/{id}', 'CartController@CartDel');
 Route::post('/pay', 'CartController@payMent');
+Route::post('/gopay', 'CartController@goPay');
 Route::get('/settlement', 'CartController@settlement');
 
+Route::get('alipay/return', 'CartController@webReturn');
+Route::get('alipay/notify', 'CartController@webNotify'); 
 
 //登录
 Route::get('auth/login', 'Auth\AuthController@getLogin');

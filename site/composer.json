@@ -10,7 +10,8 @@
     "mews/captcha": "~2.0",
     "laravelcollective/html": "~5.0",
     "codesleeve/laravel-stapler": "dev-master",
-    "iverberk/larasearch": "dev-L5"
+    "iverberk/larasearch": "dev-L5",
+    "latrell/alipay": "dev-master"
   },
   "minimum-stability": "dev",
   "require-dev": {

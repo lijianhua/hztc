@@ -110,8 +110,11 @@
             </div>
         </div>
         <div class="pay-submit">
-            <span class="pay-submit-total">总计：<span>{{$order->amount}}</span></span>
-            <span class="pay-submit-button"><button type="button">提交订单</button></span>
+            <form method='post' action='/gopay'>
+              <input type="hidden" name="_token" value="{{csrf_token()}}">
+              <span class="pay-submit-total">总计：<span>{{$order->amount}}</span></span>
+              <span class="pay-submit-button"><button type="submit">提交订单</button></span>
+            </form>
         </div>
     </div>
 </div>
