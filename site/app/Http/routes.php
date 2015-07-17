@@ -12,7 +12,6 @@
  */
 
 Route::get('/', 'HomeController@index');
-Route::get('/ads', 'AdSpaceController@index');
 Route::get('/ads/{id}', 'AdSpaceController@show');
 Route::get('/search', 'SearchController@index');
 Route::get('/cart', 'CartController@index');
@@ -65,3 +64,6 @@ Route::post('collect/','AdSpaceController@addCollect');
 // 搜索
 Route::any('search', 'SearchController@search');
 Route::post('/Search/home/left', 'SearchController@search_index_filter');
+Route::get('/Search/list', 'SearchController@search_list_filter');
+Route::get('/{list}/{sort?}', 'AdSpaceController@ad_list');
+//列表

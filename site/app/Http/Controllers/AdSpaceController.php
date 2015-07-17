@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Collection;
 use App\Models\AdSpaceUser;
 use Auth;
 use Illuminate\Http\Request;
-
+use App\Models\AdCategory;
+use App\Models\Address;
 class AdSpaceController extends Controller {
 
   /**
@@ -16,6 +17,7 @@ class AdSpaceController extends Controller {
    *
    * @return void
    */
+   private $list_array = array('all-ads'=>['name'=>'全部广告位', 'type'=> ''], 'free-ads'=>['name'=>'免费广告位', 'type'=> 1],'special-ads'=>['name'=>'特价广告位','type'=> 2], 'creative-ads'=>['name'=>'创意广告位', 'type'=> 3]);
   public function __construct()
   {
     // $this->middleware('auth');
@@ -27,26 +29,16 @@ class AdSpaceController extends Controller {
    *
    * @return Response
    */
-  public function index()
+  public function ad_list($list_name, $sort = 'id')
   {
-    $nav = '全部广告位';
-    Session::put('current_navigator', $nav);
-    $navigators = $this->navigators;
-
-    $adspaces   = AdSpace::with(['adPrices', 'images', 'orderItems', 'adSpaceUsers'])
-      ->where('ad_spaces.audited', '=', 1)
-      ->paginate(9);
-    $ideas = AdSpace::leftjoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
-                  ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
-                  ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
-                  ->where('ad_spaces.audited', '=', '1')
-                  ->where('ad_spaces.type', '=', '3')
-                  ->orderBy('order_items.quantity', 'desc')
-                  ->get();
-    return view('list')->with(compact('navigators', 'adspaces', 'ideas'));
+    foreach($this->list_array as $index => $value)
+    {
+      if(trim($index) == trim($list_name))
+      {
+        return $this->get_list_view($value['name'], $value['type'], $sort, $index);
+      }
+    }
   }
-
-
 
   /**
    * 广告位详情
@@ -110,6 +102,17 @@ class AdSpaceController extends Controller {
       ->count();
     return $iscollect;
 
+  }
+  private function get_list_view($nav, $type_nu, $sort, $index)
+  {
+    Session::put('current_navigator', $nav);
+    $navigators = $this->navigators;
+    $adcategories = AdCategory::where('parent_id', '=', NULL)->get(); 
+    $cities = Address::groupBy('city')->lists('city'); 
+    $para = AdSpace::get_ideas_adspaces($type_nu, $sort);
+    $adspaces = $para['adspaces'];
+    $ideas = $para['ideas'];
+    return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'index', 'sort'));
   }
 
 }

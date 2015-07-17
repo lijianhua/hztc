@@ -26,4 +26,8 @@ class AdCategory extends Model {
   {
     return $query->whereNull('parent_id');
   }
+  public function getChildren($query_str)
+  {
+    return $this::where('parent_id', '=', $query_str);
+  }
 }

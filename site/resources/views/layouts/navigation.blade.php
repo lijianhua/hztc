@@ -9,7 +9,7 @@
                 <ul>
                     @foreach ( $navigators as $nav)
                         <li class="nav-info-item fl {{ $nav->name == Session::get('current_navigator')?'active':''}}">
-                          <a href="{{ $nav->url }}">{{{$nav->name}}}</a></span>
+                          <a href="{{ url($nav->url) }}">{{{$nav->name}}}</a></span>
                         </li>
                     @endforeach
                 </ul>
