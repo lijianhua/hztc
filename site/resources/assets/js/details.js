@@ -113,9 +113,9 @@ $(document).ready(function () {
             headers  :{'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')}, 
             success:function(data){
               if(event.target.id == "details_id_now"){
-                window.location.href="http://www.baidu.com";
+                window.location.href="/cart";
               }else if(event.target.id == "details_id_cart"){
-                window.location.href="http://www.jd.com";
+                alert(data);
               }
             }
         });
