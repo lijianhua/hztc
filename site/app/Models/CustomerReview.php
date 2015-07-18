@@ -12,4 +12,8 @@ class CustomerReview extends Model
     return $this->belongsTo('App\Models\AdSpace');
   }
 
+  public function user()
+  {
+    return $this->hasOne('App\Models\user', 'id', 'user_id');
+  }
 }

@@ -10,6 +10,8 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Models\AdCategory;
 use App\Models\Address;
+use App\Models\CustomerReview;
+
 class AdSpaceController extends Controller {
 
   /**
@@ -56,11 +58,23 @@ class AdSpaceController extends Controller {
       ->where('id', '=', $id)
       ->firstOrFail();
 
-    //print_r($adspace->customerReviews->sum('id'));exit;
+    //商品评论
+    $comments = CustomerReview::where('ad_space_id', '=', $id)->paginate(1);
 
-    return view('show')->with(compact('navigators', 'adspace'));
+    //是否收藏
+    if (Auth::check())
+    {
+      $collect = AdSpaceUser::where('ad_space_id', '=', $id)
+        ->where('user_id', '=', Auth::user()->id)
+        ->count();
+    }else{
+      $collect = 0;
+    }
+
+    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments'));
   }
  
+
   /**
    * 收藏
    *

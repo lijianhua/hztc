@@ -91,7 +91,7 @@
             </table>
             <div class="settlement-list-submit">
                 <span
-class="settlement-list-submit-total">总计：<span>{{$shop->original_price}}</span></span>
+class="settlement-list-submit-total">总计：<span>{{$shop->subtotal}}</span></span>
                 <span class="settlement-list-submit-button"><button type="button">提交订单</button></span>
             </div>
         </div>

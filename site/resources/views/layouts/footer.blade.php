@@ -1,8 +1,8 @@
 <footer>
     <div class="ft-top">
-        <span class="footer-top-item wb"></span>
-        <span class="footer-top-item qq"></span>
-        <span class="footer-top-item wx"></span>
+        <a href="http://weibo.com/u/5654552416" target='__blank'><span class="footer-top-item wb"></span></a>
+        <a href="http://t.qq.com/momei88men" target='__blank'> <span class="footer-top-item qq"></span></a>
+        <a href="http://weibo.com/u/5654552416" target='__blank'><span class="footer-top-item wx"></span></a>
     </div>
     <div id="ft">
         <div class="footer">
@@ -11,12 +11,10 @@
                     <img src="/images/index/A.png">
                 </div>
                 <div class="ft-link">
-                    <span class="ft-link-item"><a href="#">关于我们</a> </span> /
-                    <span class="ft-link-item"><a href="#">关于我们</a> </span> /
-                    <span class="ft-link-item"><a href="#">关于我们</a> </span> /
-                    <span class="ft-link-item"><a href="#">关于我们</a> </span> /
-                    <span class="ft-link-item"><a href="#">关于我们</a> </span> /
-                    <span class="ft-link-item"><a href="#">关于我们</a> </span> /
+                    <span class="ft-link-item"><a href="#" target='__blank'>关于我们</a> </span> /
+                    <span class="ft-link-item"><a href="#" target='__blank'>联系我们</a> </span> /
+                    <span class="ft-link-item"><a href="#" target='__blank'>加入我们</a> </span> /
+                    <span class="ft-link-item"><a href="#" target='__blank'>法律声明</a> </span>
                 </div>
 
             </div>

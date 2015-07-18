@@ -16,6 +16,7 @@ Route::get('/ads/{id}', 'AdSpaceController@show');
 Route::get('/search', 'SearchController@index');
 Route::get('/cart', 'CartController@index');
 Route::delete('cart/cartdel/{id}', 'CartController@CartDel');
+Route::post('cart/addcart', 'CartController@create');
 Route::post('/pay', 'CartController@payMent');
 Route::post('/gopay', 'CartController@goPay');
 Route::get('/settlement', 'CartController@settlement');

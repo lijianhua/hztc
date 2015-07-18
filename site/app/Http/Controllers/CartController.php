@@ -6,6 +6,7 @@ use App\Models\ShoppingCart;
 use App\Models\Order;
 use Config;
 use App\Models\OrderItem;
+use App\Models\AdSpaceSnapshot;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
@@ -45,6 +46,34 @@ class CartController extends Controller {
     $cart = ShoppingCart::find($id);
     $cart->delete();
     return redirect('/cart')->with('status', '删除成功'); 
+  }
+
+  /**
+   * 添加到购物车
+   *
+   */
+  public function create(Request $request)
+  {
+    $id = $request->input('product_id');
+    $snapshots = AdSpaceSnapshot::where('ad_space_id', '=', $id)
+      ->orderBy('created_at', 'desc')->first();
+    if (Auth::check())
+    {
+      $shop = new ShoppingCart;
+      $shop->user_id = Auth::user()->id;
+      $shop->ad_space_id = $id;
+      $shop->ad_space_snapshot_id = $snapshots->id;
+      $shop->quantity = 0;
+      $shop->from = '2012-12-12';
+      $shop->to  = '2013-12-13';
+      $shop->original_price = 0;
+      $shop->price = 0;
+      $shop->subtotal = $shop->price * $shop->quantity;
+      $shop->is_validate = 0;
+      $shop->save();
+    }
+
+    return 1;
   }
 
   /**
@@ -137,7 +166,7 @@ class CartController extends Controller {
     $navigators = Navigator::all()->sortBy('sort');
     $shop = ShoppingCart::where('id', '=', $id)->first();
     $shop->quantity = $quantity;
-    $shop->original_price = $shop->price*$quantity;
+    $shop->subtotle= $shop->price*$quantity;
     $shop->save();
     return view('settlement')->with(compact('navigators', 'shop', 'id'));
   }

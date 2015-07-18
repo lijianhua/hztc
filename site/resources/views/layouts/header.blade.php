@@ -21,7 +21,10 @@
                     @endif
               </li>
               <li class="fr header-top-callme">
-                  <a href="#"> <img src="/images/callme.png"></a>
+                <a target="_blank"
+                href="http://wpa.qq.com/msgrd?v=3&uin=2300084649&site=qq&menu=yes"><img
+                border="0" src="http://wpa.qq.com/pa?p=2:2300084649:52" alt="点击这里给我发消息"
+                title="点击这里给我发消息"/>在线咨询</a>
               </li>
           </ul>
       </div>
