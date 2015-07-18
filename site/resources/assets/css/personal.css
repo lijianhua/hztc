@@ -5,13 +5,13 @@
     font-size: 16px;
 }
 .personal .order .order-list{
-    border-bottom: 2px solid #7bccff;
+    border-bottom: 2px solid #ff0000;
     margin-bottom: 250px;
     padding-bottom: 20px;
 }
 .personal .order .order-title{
     font-size: 18px;
-    border-bottom: 2px solid #7bccff;
+    border-bottom: 2px solid #ff0000;
     padding-bottom: 10px;
     padding-left: 10px;
     margin-top: 10px;
@@ -50,7 +50,7 @@
     width: 780px;
 }
 .personal .order .order-list-code b{
-    color: #ed145b;
+    color: #7bccff;
 }
 .personal .order .order-list-code-number{
     margin-right: 86px;
@@ -96,7 +96,7 @@
     color: #7bccff;
 }
 .personal .order .order-list-money-color{
-    color: #ed145b;
+    color: #ff0000;
 }
 .personal .order .order-list-operate-info div,
 .personal .order .order-list-operate-info a{

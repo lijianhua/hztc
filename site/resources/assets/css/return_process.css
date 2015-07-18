@@ -3,7 +3,7 @@
     margin-left: 25px;
     width: 780px;
     font-size: 16px;
-    border-bottom: 2px solid #7bccff;
+    border-bottom: 2px solid #ff0000;
     padding-bottom: 20px;
 }
 .personal .details .details-title{
@@ -81,7 +81,7 @@
     margin-top: 23%;
 }
 .personal .details .details-mark-line{
-    border-top: 5px solid #7ae17c;
+    border-top: 5px solid #ff0000;
     position: absolute;
     width: 288px;
     margin-left: 6px;
@@ -109,12 +109,12 @@
 
 
 .personal .details .details-list{
-    border-bottom: 2px solid #7bccff;
+    border-bottom: 2px solid #ff0000;
     padding-bottom: 20px;
 }
 .personal .details .details-title{
     font-size: 18px;
-    border-bottom: 2px solid #7bccff;
+    border-bottom: 2px solid #ff0000;
     padding-bottom: 10px;
     padding-left: 10px;
     margin-top: 10px;
@@ -153,7 +153,7 @@
     width: 780px;
 }
 .personal .details .details-list-code b{
-    color: #ed145b;
+    color: #7bccff;
 }
 .personal .details .details-list-code-number{
     margin-right: 86px;

@@ -79,14 +79,14 @@
     margin-top: 23%;
 }
 .personal .order-details .order-details-mark-line{
-    border-top: 5px solid #7ae17c;
+    border-top: 5px solid #ff4c4c;
     position: absolute;
     width: 288px;
     margin-left: 6px;
     top: 71px;
 }
 .personal .order-details .order-details-this{
-    color: #7ae17c;
+    color: #ff4c4c;
     margin-top: 63px;
     font-size: 20px;
 }
@@ -107,13 +107,13 @@
 
 
 .personal .order-details .order-details-list{
-    border-bottom: 2px solid #7bccff;
+    border-bottom: 2px solid #ff4c4c;
     margin-bottom: 250px;
     padding-bottom: 20px;
 }
 .personal .order-details .order-details-title{
     font-size: 18px;
-    border-bottom: 2px solid #7bccff;
+    border-bottom: 2px solid #ff4c4c;
     padding-bottom: 10px;
     padding-left: 10px;
     margin-top: 10px;
@@ -161,7 +161,7 @@
     margin-right: 60px;
 }
 .personal .order-details .order-details-list-code-state span{
-    color: #7bccff;
+    color: #ff4c4c;
 }
 .personal .order-details .order-details-list-table{
     padding: 14px 0;
@@ -198,11 +198,11 @@
     color: #7bccff;
 }
 .personal .order-details .order-details-list-money-color{
-    color: #ed145b;
+    color: #ff4c4c;
 }
 .personal .order-details .order-details-list-operate-info div,
 .personal .order-details .order-details-list-operate-info a{
-    color: #7bccff;
+    color: #333333;
 }
 .personal .order-details .order-details-list-operate-info a{
     margin: 0px 5px;

@@ -25,9 +25,9 @@
 }
 .contract .contract-info-title span{
     font-size: 18px;
-    color: #7bccff;
+    color: #333333;
     padding: 3px 6px;
-    border-bottom: 2px solid #7bccff;
+    border-bottom: 2px solid #ff0000;
     text-align: center;
 }
 .contract .contract-info dt{
@@ -64,7 +64,7 @@
 .settlement-list-submit{
     text-align: right;
     margin-top: 60px;
-    border-bottom: 3px solid #ff3f7e;
+    border-bottom: 3px solid #ff0000;
     padding-bottom: 10px;
     margin-bottom: 170px;
 }
@@ -74,7 +74,7 @@
 }
 .settlement-list-submit-total span{
     font-size: 20px;
-    color: #ff3f7e;
+    color: #ff0000;
 }
 .settlement-list-submit-button button{
     width: 170px;

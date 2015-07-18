@@ -6,7 +6,7 @@
     margin-bottom: 50px;
 }
 .advertisers .advertisers-tab{
-    border-bottom: 2px solid #7bccff;
+    border-bottom: 2px solid #ff0000;
     padding: 7px 0px 7px 5px;
 }
 .advertisers .advertisers-tab a{
@@ -28,11 +28,11 @@
     padding-left: 40px;
 }
 .advertisers .personal-title .personal-prompt-color{
-    color: #ed145b;
+    color: #ff0000;
     margin: 0 3px;
 }
 .advertisers .personal-title .personal-prompt-text{
-    color: #ed145b;
+    color: #ff0000;
     font-size: 12px;
     margin-left: 15px;
 }
@@ -51,7 +51,7 @@
     padding-left: 10px;
 }
 .advertisers .advertisers-personal-info .advertisers-personal-enter input:focus{
-    border: 2px solid #ed145b;
+    border: 2px solid #ff0000;
 }
 .advertisers .advertisers-personal-info .advertisers-add{
     background: url("../images/personal/add.png") no-repeat 0 0;

@@ -853,24 +853,39 @@ header{
     width: 295px;
 }
 .personal .personal-left .personal-left-title{
-    background: url("../images/personal/personal.png");
+    background: url("../images/personal/personal.jpg");
     width: 295px;
     height: 43px;
     margin-bottom: 10px;
 }
-.personal .personal-left .personal-left-item a{
-    display: inline-block;
+.personal .personal-left .personal-left-item span{
+
+    width: 295px;
     padding: 5px 0px 5px 67px;
+    display: inline-block;
+}
+.personal .personal-left .personal-left-item a{
     font-size: 18px;
     font-weight: 400;
-    width: 295px;
+    border-left: 2px solid #ffffff;
+    padding-left: 5px;
 }
-.personal .personal-left .personal-left-item a:hover{
+.personal .personal-left .personal-left-item span:hover{
     background-color: #fafafa;
 }
+.personal .personal-left .personal-left-item span:hover a{
+    border-left: 2px solid #ff4c4c;
+    padding-left: 5px;
+    color: #ff4c4c;
+}
+.personal .personal-left .personal-left-item span.active{
+    background-color: #fafafa;
+}
+.personal .personal-left .personal-left-item span.active a{color: #ff4c4c;}
 .personal .personal-left .personal-left-item a.active{
-    color: #7bccff;
-    background-color: #fafafa;
+    border-left: 2px solid #ff4c4c;
+    padding-left: 5px;
+    color: #ff4c4c;
 }
 
 /*个人中心*/
