@@ -73,9 +73,9 @@ $(document).ready(function () {
 
     //删除筛选
 
-    $(".filter-selected dl").on ('click','.filter-delete',function () {
-        $(this).parents('dd').remove()
-    });
+    // $(".filter-selected dl").on ('click','.filter-delete',function () {
+    //     $(this).parents('dd').remove()
+    // });
 
     $(".filter-recommend-item").hover(function () {
         $(this).find('.filter-recommend-item-bg').fadeIn();

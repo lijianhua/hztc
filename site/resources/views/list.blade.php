@@ -26,8 +26,7 @@
                     <dl>
                         <dt>{{$adcategory->name}}<span class="filter-mark"></span></dt>
                         @foreach($adcategory->getChildren($adcategory->id)->get() as $child)
-                          <dd rel="1" class="filter-operate"
-data-name="categories_{{$index}}" data-index="{{$child->id}}" data-value="{{$child->name}}"><b>{{$child->name}}</b><span class="filter-add"></span></dd>
+                          <dd rel="1" class="filter-operate" data-name="categories_{{$index}}" data-index="{{$child->id}}" data-value="{{$child->name}}"><b>{{$child->name}}</b><span class="filter-add"></span></dd>
                         @endforeach
                     </dl>
                 @endforeach
@@ -48,11 +47,10 @@ data-name="categories_{{$index}}" data-index="{{$child->id}}" data-value="{{$chi
         </div>
         <div class="list-main fl">
             <div class="list-sort">
-                <span class="list-sort-item {{$sort == 'id'? 'active':''}}"><a
-href="/{{$current_category}}/id">默认排序</a> </span>
-                <span class="list-sort-item {{$sort== 'quantity'?  'active':''}}"><a href="/{{$current_category}}/quantity">销量</a> </span>
-                <span class="list-sort-item {{$sort == 'price'?  'active':''}}"><a href="/{{$current_category}}/price">价格</a> </span>
-                <span class="list-sort-item {{$sort == 'date'? 'active':''}}"><a href="/{{$current_category}}/created_at">时间</a> </span>
+                <span class="list-sort-item {{$sort == 'id'? 'active':''}}"><a href="/list/{{$current_category}}/id">默认排序</a> </span>
+                <span class="list-sort-item {{$sort== 'quantity'?  'active':''}}"><a href="/list/{{$current_category}}/quantity">销量</a> </span>
+                <span class="list-sort-item {{$sort == 'price'?  'active':''}}"><a href="/list/{{$current_category}}/price">价格</a> </span>
+                <span class="list-sort-item {{$sort == 'date'? 'active':''}}"><a href="/list/{{$current_category}}/created_at">时间</a> </span>
             </div>
             <div class="list-info clearfix">
                 @for($i = 0; $i < count($adspaces); $i++)

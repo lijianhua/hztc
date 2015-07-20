@@ -1,7 +1,7 @@
 $(function ($) {
   var url = new YuezUrl();
 
-  $('.filter-operate-block .filter-operate, .page a').click({'url' : url}, function (e) {
+  $('.filter-operate-block .filter-operate, .page:has(a[data-name]) a').click({'url' : url}, function (e) {
     var url   = e.data.url,
         self  = $(this),
         name  = self.attr('data-name'),
@@ -19,4 +19,15 @@ $(function ($) {
     url.set(param);
     url.redirect();
   });
+    $(".filter-selected dl").on ('click','.filter-delete',function () {
+        var name  = $('.filter-selected-item').attr('data-name'),
+        index = $('.filter-selected-item').attr('data-index');
+        if (index)
+          key = name + "[" + index + "]";
+        else
+          key = name;
+        url.unset(key);
+        $(this).parents('dd').remove()
+        url.redirect();
+    });
 });

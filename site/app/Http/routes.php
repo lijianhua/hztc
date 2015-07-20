@@ -66,11 +66,12 @@ Route::post('collect/','AdSpaceController@addCollect');
 Route::any('search', 'SearchController@search');
 Route::post('/Search/home/left', 'SearchController@search_index_filter');
 Route::get('/Search/list', 'SearchController@search_list_filter');
-Route::get('/{list}/{sort?}', 'AdSpaceController@ad_list');
 //列表
 
 //底部
 Route::get('/about.html', 'AboutController@index');
 Route::get('/about/contact.html', 'AboutController@contact');
 Route::get('/about/law.html', 'AboutController@law');
+//列表搜索
+Route::get('/list/{list}/{sort?}', 'AdSpaceController@ad_list');
 
