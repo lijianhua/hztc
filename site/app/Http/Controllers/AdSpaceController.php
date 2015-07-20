@@ -76,7 +76,11 @@ class AdSpaceController extends Controller {
     //广告类型
     $type = $this->adSpaceType($adspace);
 
-    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type'));
+
+    $ad = new AdSpace;
+    $ideas = $ad->creative();
+
+    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas'));
   }
  
 

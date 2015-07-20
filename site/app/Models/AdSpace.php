@@ -143,6 +143,19 @@ class AdSpace extends Model implements StaplerableInterface {
                     ;
       }
     }
+    
+    $ideas = $this->creative();
+
+    return ['adspaces' => $adspaces,'ideas' => $ideas, 'current_page'=>$page, 'total'=>$total];
+  }
+
+  /**
+   * 人气创意广告
+   *
+   *
+   */
+  public function creative()
+  {
     $ideas = AdSpace::leftjoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
            ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
            ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
@@ -151,6 +164,7 @@ class AdSpace extends Model implements StaplerableInterface {
            ->orderBy('ad_prices.price', 'desc') ->orderBy('order_items.quantity', 'desc')
            ->groupBy('ad_spaces.id')
            ->get();
-    return ['adspaces' => $adspaces,'ideas' => $ideas, 'current_page'=>$page, 'total'=>$total];
+
+    return $ideas;
   }
 }
