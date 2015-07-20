@@ -7,11 +7,12 @@
             <div class="filter-selected">
                 <dl>
                     <dt>已选择</dt>
+                      @if(isset($query_array))
                         @foreach($query_array as $index => $query)
                               @foreach($query as $sindex => $value)
-                                    <dd rel="0" class="filter-selected-item"
-data-name="{{$index}}" data-value="{{$value}}" data-index="{{$sindex}}"><i>{{$value}}</i><span class="filter-delete"></span></dd> @endforeach
+                                    <dd rel="0" class="filter-selected-item" data-name="{{$index}}" data-value="{{$value}}" data-index="{{$sindex}}"><i>{{$value}}</i><span class="filter-delete"></span></dd> @endforeach
                         @endforeach
+                      @endif
                 </dl>
             </div>
             <div class="filter-operate-block">

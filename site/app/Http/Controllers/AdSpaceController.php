@@ -146,6 +146,10 @@ class AdSpaceController extends Controller {
     $adcategories = AdCategory::where('parent_id', '=', NULL)->get(); 
     $cities = Address::groupBy('city')->lists('city'); 
     $query = '';
+    if(array_key_exists('page', $query_array))
+    {
+      unset($query_array['page']);
+    }
     if($type_nu=='')
     {
       $query = (new SearchController())->get_query(['type' => [1,2,3]], []);
@@ -154,12 +158,7 @@ class AdSpaceController extends Controller {
     {
       $query = (new SearchController())->get_query(['type' => [$type_nu]], []);
     }
-   // $query = (new SearchController())->get_query(['cities' => ['北京市','上海市']], $query);
     $query = (new SearchController())->get_query($query_array,$query);
-    // print_r ($query);
-    // exit;
-    // print_r($query_array);
-    // exit;
     $para = AdSpace::get_ideas_adspaces($type_nu, $sort, $query, $page);
     $adspaces = $para['adspaces'];
     $ideas = $para['ideas'];
