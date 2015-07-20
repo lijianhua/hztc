@@ -114,7 +114,7 @@ class UserController extends Controller {
   {
     $nav    = '首页';
     $unav   = '我的订单';
-    $states = array('未支付', '已支付', '服务完成', '取消');
+    $states = array('提交订单', '付款成功', '广告商已确认', '提供服务', '审核完成');
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
@@ -130,7 +130,7 @@ class UserController extends Controller {
   {
     $nav    = '首页';
     $unav   = '我的订单';
-    $states = array('未支付', '已支付', '服务完成', '取消');
+    $states = array('提交订单', '付款成功', '广告商已确认', '提供服务', '审核完成');
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');

@@ -14,7 +14,7 @@
             <div class="order-details-flow">
                 <div class="order-details-flow-info">
                     <div class="order-details-mark-line"></div>
-                    @for ($i=0;$i<=3;$i++)
+                    @for ($i=0;$i<=4;$i++)
                       <span class="order-details-flow-item 
                         {{$i<$orders->state?'success':(($i==$orders->state)?'active':'will')}}">
                           <div class="order-details-flow-mark">
