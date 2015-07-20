@@ -130,13 +130,13 @@ class AdSpace extends Model implements StaplerableInterface {
     {
       if($index == $sort)
       {
-        $adspaces   = AdSpace::with(['images', 'orderItems', 'adSpaceUsers'])
+        $adspaces   = AdSpace
+                    ::whereIn('ad_spaces.id', $list)
                     ->leftJoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
                     ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
                     ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
-                    ->whereIn('ad_spaces.id', $list)
                     ->groupBy('ad_spaces.id')
-                    ->select("*", DB::raw('min(ad_prices.price) as price'))
+                    ->select("*",'ad_spaces.id', DB::raw('min(ad_prices.price) as price'))
                     ->where('ad_spaces.audited', '=', 1)
                     ->orderBy($value, 'desc')
                     ->get()
@@ -161,7 +161,9 @@ class AdSpace extends Model implements StaplerableInterface {
            ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
            ->where('ad_spaces.audited', '=', '1')
            ->where('ad_spaces.type', '=', '3')
-           ->orderBy('ad_prices.price', 'desc') ->orderBy('order_items.quantity', 'desc')
+           ->select("*",'ad_spaces.id') 
+           ->orderBy('ad_prices.price', 'desc') 
+           ->orderBy('order_items.quantity', 'desc')
            ->groupBy('ad_spaces.id')
            ->get();
 

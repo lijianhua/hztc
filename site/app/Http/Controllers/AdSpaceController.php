@@ -60,6 +60,7 @@ class AdSpaceController extends Controller {
       ->where('id', '=', $id)
       ->firstOrFail();
 
+
     //商品评论
     $comments = CustomerReview::where('ad_space_id', '=', $id)->paginate(1);
 

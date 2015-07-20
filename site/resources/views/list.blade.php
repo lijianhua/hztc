@@ -56,7 +56,7 @@ href="/{{$current_category}}/id">默认排序</a> </span>
             </div>
             <div class="list-info clearfix">
                 @for($i = 0; $i < count($adspaces); $i++)
-                  <a href="ads/{{$adspaces[$i]->id}}" class="link">
+                  <a href="/ads/{{$adspaces[$i]->id}}" class="link">
                     <div class="list-info-item {{$i/2 == 0 ? 'mr9':''}}">
                         <div class="list-info-item-img">
                             <img src="{{$adspaces[$i]->avatar->url}}">
@@ -69,7 +69,7 @@ href="/{{$current_category}}/id">默认排序</a> </span>
                                 <span class="list-info-item-money"><i class="fa fa-jpy"></i>{{$adspaces[$i]->AdPrices->min('price')}}/天</span>
                             </div>
                             <div class="list-info-item-description">
-                                {{$adspaces[$i]->description}} <a href="ads/{{$adspaces[$i]->id}}" class="link">查看详情》</a>
+                                {{$adspaces[$i]->description}} <a href="/ads/{{$adspaces[$i]->id}}" class="link">查看详情》</a>
                             </div>
                         </div>
                     </div>
