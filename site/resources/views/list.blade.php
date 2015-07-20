@@ -7,21 +7,26 @@
             <div class="filter-selected">
                 <dl>
                     <dt>已选择</dt>
-                    <dd rel="0" class="filter-selected-item"><i>北京</i><span class="filter-delete"></span></dd>
+                        @foreach($query_array as $index => $query)
+                              @foreach($query as $sindex => $value)
+                                    <dd rel="0" class="filter-selected-item"
+data-name="{{$index}}" data-value="{{$value}}" data-index="{{$sindex}}"><i>{{$value}}</i><span class="filter-delete"></span></dd> @endforeach
+                        @endforeach
                 </dl>
             </div>
             <div class="filter-operate-block">
                 <dl>
                     <dt>城市<span class="filter-mark"></span></dt>
-                    @foreach ($cities as $city)
-                      <dd rel="0" class="filter-operate"><b>{{$city}}</b><span class="filter-add"></span></dd>
+                    @foreach ($cities as $index => $city)
+                      <dd rel="0" class="filter-operate" data-name='cities' data-index="{{$index}}" data-value={{$city}}><b>{{$city}}</b><span class="filter-add"></span></dd>
                     @endforeach
                 </dl>
-                @foreach($adcategories as $adcategory)
+                @foreach($adcategories as $index => $adcategory)
                     <dl>
                         <dt>{{$adcategory->name}}<span class="filter-mark"></span></dt>
                         @foreach($adcategory->getChildren($adcategory->id)->get() as $child)
-                          <dd rel="1" class="filter-operate"><b>{{$child->name}}</b><span class="filter-add"></span></dd>
+                          <dd rel="1" class="filter-operate"
+data-name="categories_{{$index}}" data-index="{{$child->id}}" data-value="{{$child->name}}"><b>{{$child->name}}</b><span class="filter-add"></span></dd>
                         @endforeach
                     </dl>
                 @endforeach
@@ -42,10 +47,11 @@
         </div>
         <div class="list-main fl">
             <div class="list-sort">
-                <span class="list-sort-item {{$sort == 'id'? 'active':''}}"><a href="/{{$index}}/id">默认排序</a> </span>
-                <span class="list-sort-item {{$sort== 'quantity'? 'active':''}}"><a href="/{{$index}}/quantity">销量</a> </span>
-                <span class="list-sort-item {{$sort == 'price'? 'active':''}}"><a href="/{{$index}}/price">价格</a> </span>
-                <span class="list-sort-item {{$sort == 'date'? 'active':''}}"><a href="/{{$index}}/date">时间</a> </span>
+                <span class="list-sort-item {{$sort == 'id'? 'active':''}}"><a
+href="/{{$current_category}}/id">默认排序</a> </span>
+                <span class="list-sort-item {{$sort== 'quantity'?  'active':''}}"><a href="/{{$current_category}}/quantity">销量</a> </span>
+                <span class="list-sort-item {{$sort == 'price'?  'active':''}}"><a href="/{{$current_category}}/price">价格</a> </span>
+                <span class="list-sort-item {{$sort == 'date'? 'active':''}}"><a href="/{{$current_category}}/created_at">时间</a> </span>
             </div>
             <div class="list-info clearfix">
                 @for($i = 0; $i < count($adspaces); $i++)
@@ -70,12 +76,23 @@
                 @endfor
             </div>
             <div class="page">
-             <?php echo $adspaces->render(); ?>
-                <!-- <span><a href="#" class="page&#45;item&#45;previous">上一页</a> </span> -->
-                <!-- <span><a href="#" class="page&#45;item active">1</a> </span> -->
-                <!-- <span><a href="#" class="page&#45;item">2</a> </span> -->
-                <!-- <span><a href="#" class="page&#45;item">3</a> </span> -->
-                <!-- <span><a href="#" class="page&#45;item&#45;next">下一页</a> </span> -->
+              @if($total != 0)
+                @if($current_page != 1)
+                    <span><a href="/{{$index}}/{{$sort}}?page={{$current_page-1}}" class="page-item-previous" data-name="page" data-value="{{$current_page-1}}">上一页</a> </span>
+                @endif
+                <span><a href="/{{$index}}/{{$sort}}?page={{$current_page}}" class="page-item active" data-name="page" data-value="{{$current_page}}">{{$current_page}}</a> </span>
+                    @if(($total-$current_page)==0)
+                    @elseif($total-$current_page==1)
+                      <span><a href="/{{$index}}/{{$sort}}?page={{$current_page+1}}" class="page-item" data-name="page" data-value="{{$current_page+1}}">{{$current_page+1}}</a> </span>
+                    @else
+                        @for($i=1;$i<3;$i++)
+                            <span><a href="/{{$index}}/{{$sort}}?page={{$current_page+$i}}" class="page-item" data-name="page" data-value="{{$current_page+$i}}">{{$current_page+$i}}</a> </span>
+                        @endfor
+                    @endif
+                @if($current_page != $total)
+                    <span><a href="/{{$index}}/{{$sort}}?page={{$current_page+1}}" class="page-item-previous" data-name="page" data-value="{{$current_page+1}}">下一页</a> </span>
+                @endif
+              @endif
                 <!-- <span class="page&#45;return"> -->
                 <!--     <input type="text"> -->
                 <!--     <button>跳转</button> -->

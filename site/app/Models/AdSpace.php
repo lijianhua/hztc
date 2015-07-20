@@ -90,10 +90,9 @@ class AdSpace extends Model implements StaplerableInterface {
   {
     return $this->belongsTo('App\Models\Address');
   }
-
   /**
-   * @follow NEVER
-   **/
+    * @return \Illuminate\Database\Eloquent\Relations
+    **/
   public function orderItems()
   {
     return $this->hasMany('App\Models\OrderItem');
@@ -114,45 +113,34 @@ class AdSpace extends Model implements StaplerableInterface {
   {
     return $this->hasMany('App\Models\CustomerReview');
   }
-  public static function get_ideas_adspaces($type_nu, $sort)
+  public static function get_ideas_adspaces($type_nu, $sort, $query, $page, $per_page='6')
   {
-    $sort_array = ['price'=> 'ad_prices.price', 'quantity' => 'order_items.quantity', 'date' => 'ad_spaces.created_at', 'id' => 'ad_spaces.id'];
+    $sort_array = ['price'=> 'ad_prices.price', 'quantity' => 'order_items.quantity', 'created_at' => 'ad_spaces.created_at', 'id' => 'ad_spaces.id'];
     $adspaces = '';
-    if($type_nu == '')
+    $query = ['query' => ['filtered' => ['filter' => ['bool'=> ['must' => $query]]]]];
+    $response = AdSpace::searchByQuery($query, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
+    $results = $response->getResults();
+    $total = ceil(($response->getTotal())/$per_page);
+    $list = [];
+    foreach($results as $result)
     {
-      foreach ($sort_array as $index => $value)
-      {
-        if($index == $sort)
-        {
-          $adspaces   = AdSpace::with(['images', 'orderItems', 'adSpaceUsers'])
-                      ->leftJoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
-                      ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
-                      ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
-                      ->groupBy('ad_spaces.id')
-                      ->select("*", DB::raw('min(ad_prices.price) as price'))
-                      ->where('ad_spaces.audited', '=', 1)
-                      ->orderBy($value, 'desc')
-                      ->paginate(6);
-        }
-      }
-    }
-    else
+      array_push($list,$result->id);
+    }  
+    foreach ($sort_array as $index => $value)
     {
-      foreach ($sort_array as $index => $value)
+      if($index == $sort)
       {
-        if($index == $sort)
-        {
-          $adspaces   = AdSpace::with(['images', 'orderItems', 'adSpaceUsers'])
-                      ->leftJoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
-                      ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
-                      ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
-                      ->where('ad_spaces.type', '=', $type_nu)
-                      ->groupBy('ad_spaces.id')
-                      ->select("*", DB::raw('min(ad_prices.price) as price'))
-                      ->where('ad_spaces.audited', '=', 1)
-                      ->orderBy($value, 'desc')
-                      ->paginate(6);
-        }
+        $adspaces   = AdSpace::with(['images', 'orderItems', 'adSpaceUsers'])
+                    ->leftJoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
+                    ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
+                    ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
+                    ->whereIn('ad_spaces.id', $list)
+                    ->groupBy('ad_spaces.id')
+                    ->select("*", DB::raw('min(ad_prices.price) as price'))
+                    ->where('ad_spaces.audited', '=', 1)
+                    ->orderBy($value, 'desc')
+                    ->get()
+                    ;
       }
     }
     $ideas = AdSpace::leftjoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
@@ -160,10 +148,9 @@ class AdSpace extends Model implements StaplerableInterface {
            ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
            ->where('ad_spaces.audited', '=', '1')
            ->where('ad_spaces.type', '=', '3')
-           ->orderBy('ad_prices.price', 'desc')
-           ->orderBy('order_items.quantity', 'desc')
+           ->orderBy('ad_prices.price', 'desc') ->orderBy('order_items.quantity', 'desc')
            ->groupBy('ad_spaces.id')
            ->get();
-    return ['adspaces' => $adspaces,'ideas' => $ideas];
+    return ['adspaces' => $adspaces,'ideas' => $ideas, 'current_page'=>$page, 'total'=>$total];
   }
 }

@@ -41,6 +41,7 @@ class BuildAdSpaceSearchPath extends Command {
       'model'       => ['\App\Models\AdSpace'],
       '--relations' => [
         '\App\Models\Address',
+        '\App\Models\OrderItem',
         '\App\Models\AdPrice',
         '\App\Models\AdCategory',
       ],

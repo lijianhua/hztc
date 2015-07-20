@@ -3,7 +3,8 @@
         "App\\Models\\AdSpace": [
             "categories",
             "adPrices",
-            "address"
+            "address",
+            "orderItems.order"
         ]
     },
     "reversedPaths": {
@@ -18,6 +19,12 @@
         ],
         "App\\Models\\Address": [
             "adSpaces"
+        ],
+        "App\\Models\\OrderItem": [
+            "adSpace"
+        ],
+        "App\\Models\\Order": [
+            "orderItems.adSpace"
         ]
     }
 }

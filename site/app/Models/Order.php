@@ -16,6 +16,9 @@ class Order extends Model {
     return $this->belongsTo('App\Models\User');
   }
 
+  /**
+    * @return \Illuminate\Database\Eloquent\Relations
+    **/
   public function orderItems()
   {
     return $this->hasMany('App\Models\OrderItem');

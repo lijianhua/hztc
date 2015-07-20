@@ -2,10 +2,9 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Models\AdSpace;
 use Illuminate\Http\Request;
-
+use Collection;
 class SearchController extends Controller {
 
   public function search(Request $request)
@@ -65,13 +64,31 @@ class SearchController extends Controller {
   public function search_list_filter()
   {
       //$para2 = $request->all();
-      $para = [ 'filter_0' => ['北京','上海'], 'filter_1' =>['APP'], 'filter_2' =>['IT圈'], 'filter_7' => ['3']];
+    // $para = [ 
+    //             'filter_0' => ['北京','上海'], //city
+    //             'filter_1' =>['APP'],//name
+    //             'filter_2' =>['IT圈'],//name 
+    //             'filter_3' => ['APP'], //name
+    //             'filter_4' =>['APP'],//name
+    //             'filter_5' =>['IT圈'],//sex
+    //             'filter_6' =>['IT圈'],//name
+    //             'filter_7' => ['3'],//广告整体上的分类 如特价广告位、免费广告位、创意广告位
+    //             'filter_8' => ['id']//排序的字段
+    //         ];
+      $para = [];
       $query = [] ;
       $query = $this -> get_query($para, $query);
       $query = ['query' => ['filtered' => ['filter' => ['bool'=> ['must' => $query]]]]];
-      $results = AdSpace::searchByQuery($query)->getResults(); echo ($results); exit;
-      print_r ($results);
-      exit;
+      //$results = AdSpace::searchByQuery($query, ['per_page' => '1','offset' => '0'])->getResults(); echo ($results); exit;
+      //$results = AdSpace::searchByQuery($query)->getTotal(); echo ($results); exit;
+      $results = AdSpace::searchByQuery($query, ['per_page' => '1','offset' => '0'])->getResults();
+      $list = [];
+      foreach($results as $result)
+      {
+        array_push($list, $result->id);
+      } 
+      $query = AdSpace::whereIn('id', $list)->get();
+      return (new AdSpaceController)->get_list_view('全部广告位', '', 'id', 'all-ads', $results);
   } 
   private function get_search_array($array_str, $field_name, $query)
   {
@@ -97,35 +114,35 @@ class SearchController extends Controller {
       }
       return $array_str ;
   }
-  private function get_query($para, $query)
+  public function get_query($para, $query=[])
   {
      foreach ($para as $index => $str) 
      {
         switch ($index) 
         {
-            case 'filter_0':
-              $query = $this -> get_search_array($para['filter_0'], 'city', $query);
+            case 'cities':
+              $query = $this -> get_search_array(array_values($para['cities']), 'city', $query);
               break;
-            case 'filter_1':
-              $query = $this -> get_search_array($para['filter_1'], 'name', $query);
+            case 'categories_0':
+              $query = $this -> get_search_array(array_values($para['categories_0']), 'name', $query);
               break;
-            case 'filter_2':
-              $query = $this -> get_search_array($para['filter_2'], 'name', $query);
+            case 'categories_1':
+              $query = $this -> get_search_array(array_values( $para['categories_1']), 'name', $query);
               break;
-            case 'filter_3':
-              $query = $this -> get_search_array($para['filter_3'], 'name', $query);
+            case 'categories_2':
+              $query = $this -> get_search_array(array_values($para['categories_2']), 'name', $query);
               break;
-            case 'filter_4':
-              $query = $this -> get_search_array($para['filter_4'], 'name', $query);
+            case 'categories_3':
+              $query = $this -> get_search_array(array_values($para['categories_3']), 'name', $query);
               break;
-            case 'filter_5':
-              $query = $this -> get_search_array($para['filter_5'], 'name', $query);
+            case 'categories_4':
+              $query = $this -> get_search_array(array_values($para['categories_4']), 'name', $query);
               break;
-            case 'filter_6':
-              $query = $this -> get_search_array($para['filter_6'], 'name', $query);
+            case 'categories_5':
+              $query = $this -> get_search_array(array_values($para['categories_5']), 'name', $query);
               break;
-            case 'filter_7':
-              $query = $this -> get_search_array($para['filter_7'], 'type', $query);
+            case 'type':
+              $query = $this -> get_search_array(array_values($para['type']), 'type', $query);
               break;
         }
      }

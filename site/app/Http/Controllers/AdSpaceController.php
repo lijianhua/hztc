@@ -6,6 +6,7 @@ use App\Models\AdSpace;
 use App\Models\AdPrice;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\AdSpaceUser;
+use Illuminate\Support\Arr;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\AdCategory;
@@ -31,13 +32,14 @@ class AdSpaceController extends Controller {
    *
    * @return Response
    */
-  public function ad_list($list_name, $sort = 'id')
+  public function ad_list(Request $request, $list_name, $sort = 'id')
   {
+
     foreach($this->list_array as $index => $value)
     {
       if(trim($index) == trim($list_name))
       {
-        return $this->get_list_view($value['name'], $value['type'], $sort, $index);
+        return $this->get_list_view($value['name'], $value['type'], $sort, $index, Arr::get($request->all(), 'page', 1),$request->all());
       }
     }
   }
@@ -117,16 +119,33 @@ class AdSpaceController extends Controller {
     return $iscollect;
 
   }
-  private function get_list_view($nav, $type_nu, $sort, $index)
+  private function get_list_view($nav, $type_nu, $sort, $current_category,$page,$query_array)
   {
     Session::put('current_navigator', $nav);
     $navigators = $this->navigators;
     $adcategories = AdCategory::where('parent_id', '=', NULL)->get(); 
     $cities = Address::groupBy('city')->lists('city'); 
-    $para = AdSpace::get_ideas_adspaces($type_nu, $sort);
+    $query = '';
+    if($type_nu=='')
+    {
+      $query = (new SearchController())->get_query(['type' => [1,2,3]], []);
+    }
+    else
+    {
+      $query = (new SearchController())->get_query(['type' => [$type_nu]], []);
+    }
+   // $query = (new SearchController())->get_query(['cities' => ['北京市','上海市']], $query);
+    $query = (new SearchController())->get_query($query_array,$query);
+    // print_r ($query);
+    // exit;
+    // print_r($query_array);
+    // exit;
+    $para = AdSpace::get_ideas_adspaces($type_nu, $sort, $query, $page);
     $adspaces = $para['adspaces'];
     $ideas = $para['ideas'];
-    return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'index', 'sort'));
+    $current_page = $para['current_page'];
+    $total = $para['total'];
+    return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'current_category', 'sort', 'current_page', 'total','query_array'));
   }
 
 }

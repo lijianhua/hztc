@@ -14,11 +14,17 @@ class OrderItem extends Model
 
   protected $dates = [ 'from', 'to' ];
 
+  /**
+    * @return \Illuminate\Database\Eloquent\Relations
+    **/
   public function order()
   {
     return $this->belongsTo('App\Models\Order');
   }
 
+  /**
+    * @return \Illuminate\Database\Eloquent\Relations
+    **/
   public function adSpace()
   {
     return $this->belongsTo('App\Models\AdSpace');
