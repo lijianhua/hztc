@@ -1,0 +1,46 @@
+.about-main{
+    margin-top: 10px;
+}
+.about-title-text{
+    color: #e6e6e6;
+    font-size: 18px;
+}
+.about-title-text span{
+    color: #333333;
+    font-size: 12px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+.about-map{
+    width:560px;
+    height:500px;
+    border:#ccc solid 1px;
+    float: left;
+}
+
+.about-info{
+    margin-left: 50px;
+}
+.about-info .about-info-title{
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 39px;
+}
+.about-info .about-info-title span{
+    color: #ff4c4c;
+}
+.about-info .about-info-title strong{
+    font-size: 14px;
+    color: #262628;
+}
+.about-info-block{
+    width: 540px;
+    border-top: 1px dotted #bdbdbd;
+    margin-top: 50px;
+    padding-top: 20px;
+    font-size: 12px;
+    line-height: 2.2;
+}
+.about-color{
+    color: #1999fc;
+}

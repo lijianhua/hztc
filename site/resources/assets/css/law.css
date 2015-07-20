@@ -1,0 +1,40 @@
+.law{
+
+}
+.law-look{
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 130px;
+}
+.law-title-text{
+    color: #e6e6e6;
+    font-size: 18px;
+    margin-left: 50px;
+}
+.law-title-text span{
+    color: #333333;
+    font-size: 12px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+.law-info{
+    width: 1028px;
+    margin: 10px auto;
+    background-color: #f6f6f6;
+    padding: 20px 20px 20px 45px;
+}
+.law-info dl{
+    margin-bottom: 40px;
+}
+.law-info dd{
+    line-height: 2;
+    font-size: 12px;
+}
+.law-info dt span{
+    font-size: 16px;
+    color: #1999fc;
+    font-weight: normal;
+}
+.law-info dt strong{
+    font-size: 12px;
+}
