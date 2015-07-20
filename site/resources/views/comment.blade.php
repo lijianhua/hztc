@@ -18,7 +18,7 @@
                     <tr>
                         <td>{{$order->orderItems->first()->adSpace->title}}</td>
                         <td>{{$order->orderItems->first()->adSpace->created_at}}</td>
-                        <td>{{$order->customerid?'已评价':'未评价'}}</td>
+                        <td>{{$order->customer->count()?'已评价':'未评价'}}</td>
                     </tr>
                 </table>
             </div>
@@ -41,7 +41,11 @@
                     <li>
                         <strong>评论</strong>
                         <div class="single-info-text">
-                            <textarea></textarea>
+                            <input type='hidden' name='single' value='3'>
+                            <input type='hidden' name='order_id' value='{{ $order->id }}'>
+                            <input type='hidden' name='ad_space_id' value='{{ $order->orderItems->first()->ad_space_id }}'>
+                            <input type='hidden' name='score' value='{{ $order->orderItems->first()->score }}'>
+                            <textarea name='comment'></textarea>
                         </div>
                     </li>
                     <li class="single-personal-enter">

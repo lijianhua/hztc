@@ -192,14 +192,15 @@ class UserController extends Controller {
    *
    * 
    */
-  public function addComment()
+  public function addComment(Request $request)
   {
     $CustomerReview = new CustomerReview;
     $CustomerReview->user_id = Auth::user()->id;
-    $CustomerReview->order_id = 3;
-    $CustomerReview->ad_space_id = 1;
-    $CustomerReview->score = 100;
-    $CustomerReview->body = 'fdasfdsaf';
+    $CustomerReview->order_id = $request->input('order_id');
+    $CustomerReview->ad_space_id = $request->input('ad_space_id');
+    $CustomerReview->score = $request->input('score');
+    $CustomerReview->grade = $request->input('single');
+    $CustomerReview->body = $request->input('comment');
     $CustomerReview->save();
 
     return redirect('/users/order')->with('status', '添加成功'); 
@@ -304,7 +305,7 @@ class UserController extends Controller {
   public function detail($id)
   {
     $nav  = '首页';
-    $unav = '退货流程';
+    $unav = '退货清单';
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');

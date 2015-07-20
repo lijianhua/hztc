@@ -115,7 +115,7 @@ $(document).ready(function () {
               if(event.target.id == "details_id_now"){
                 window.location.href="/cart";
               }else if(event.target.id == "details_id_cart"){
-                alert(data);
+                window.location.href="/cart";
               }
             }
         });
