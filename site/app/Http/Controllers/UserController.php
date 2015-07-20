@@ -265,7 +265,7 @@ class UserController extends Controller {
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
-    $collects = AdSpaceUser::where('user_id', '=', Auth::user()->id)->paginate(5);
+    $collects = AdSpaceUser::where('user_id', '=', Auth::user()->id)->paginate(1);
     return view('collect')->with(compact('navigators', 'collects'));
   }
 

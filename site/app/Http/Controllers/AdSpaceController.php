@@ -73,9 +73,29 @@ class AdSpaceController extends Controller {
       $collect = 0;
     }
 
-    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments'));
+    //广告类型
+    $type = $this->adSpaceType($adspace);
+
+    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type'));
   }
  
+
+  /**
+   * 广告类型
+   *
+   *
+   */
+  public function adSpaceType($adspace)
+  {
+    $categories = $adspace->categories;
+    $type = '';
+    foreach ($categories as $category)
+    {
+      $type .= $category->name. ',';
+    }
+
+    return rtrim($type, ',');
+  }
 
   /**
    * 收藏

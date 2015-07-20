@@ -1,7 +1,6 @@
 @extends('app')
 
 @section('content')
-<article>
 <div class="layout">
     <div class="personal clearfix">
       @include ('layouts.user_nav')
@@ -46,9 +45,9 @@ class="order-color">价格：<span>{{$collect->adSpaces->adPrices->min('price')}
                     </div>
                 </div>
                 @endforeach
+              <?php echo $collects->render()?>
             </div>
         </div>
     </div>
 </div>
-</article>
 @endsection

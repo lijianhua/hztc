@@ -9,8 +9,8 @@
                 <dl>
                     <dt>其他资源</dt>
                     <dd>
-                        <div><a href="#">同类更多资源</a> </div>
-                        <div><a href="#">本公司其他资源</a> </div>
+                        <div><a href="/ads?name={{$type}}">同类更多资源</a> </div>
+                        <div><a href="/ads?puid={{ $adspace->user_id}}">本公司其他资源</a> </div>
                     </dd>
                 </dl>
             </span>
