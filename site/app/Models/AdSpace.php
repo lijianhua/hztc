@@ -139,12 +139,11 @@ class AdSpace extends Model implements StaplerableInterface {
                     ->select("*",'ad_spaces.id', DB::raw('min(ad_prices.price) as price'))
                     ->where('ad_spaces.audited', '=', 1)
                     ->orderBy($value, 'desc')
-                    ->get()
-                    ;
+                    ->get() ;
       }
     }
     
-    $ideas = $this->creative();
+    $ideas = AdSpace::creative();
 
     return ['adspaces' => $adspaces,'ideas' => $ideas, 'current_page'=>$page, 'total'=>$total];
   }
@@ -154,7 +153,7 @@ class AdSpace extends Model implements StaplerableInterface {
    *
    *
    */
-  public function creative()
+  public static function creative()
   {
     $ideas = AdSpace::leftjoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
            ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
