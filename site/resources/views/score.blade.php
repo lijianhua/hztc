@@ -28,9 +28,11 @@
                           <td>{{ $score->created_at }}</td>
                       </tr>
                       @endforeach
+                      @endif
                   </table>
+                  @if ($redscore)
                   <?php echo $redscore->render()?>
-              @endif
+                  @endif
               </div>
           </div>
       </div>
