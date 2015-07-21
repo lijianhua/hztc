@@ -126,7 +126,7 @@ class OrderController extends Controller
     $order = Order::findOrFail($id);
 
     if ($order->isPending()) {
-      $order->state = 2;
+      $order->state = 3;
       $order->save();
 
       if ($request->ajax()) {

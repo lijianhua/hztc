@@ -1,13 +1,13 @@
 @extends('fullscreen')
 
 @section ('title')
-  重置密码 - 布谷广告
+  重置密码 - 魔媒网
 @stop
 
 @section('content')
 <div class="login-box">
   <div class="login-logo">
-    <a href="/"><b>布谷广告</b>LET</a>
+    <a href="/"><b>魔媒网</b>LET</a>
   </div>
 
   <div class="login-box-body">

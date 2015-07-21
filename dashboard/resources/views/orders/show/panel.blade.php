@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="clearfix header-tools">
-        @if ($order->state == 1)
+        @if ($order->isPending())
           <a href="{{ url("orders/proccessing/{$order->id}") }}" class="pull-right text-muted" title="标记为已投放" data-toggle="tooltip" data-method="PUT">
             <span class="fa-stack fa-lg">
               <i class="fa fa-square-o fa-stack-2x"></i>

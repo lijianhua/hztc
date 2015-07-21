@@ -56,15 +56,18 @@ EOF;
         return '<span class="label bg-navy">未付款</span>';
         break;
       case 1:
-        return '<span class="label label-danger">待投放</span>';
+        return '<span class="label bg-navy">已付款</span>';
         break;
       case 2:
-        return '<span class="label label-warning">待确认</span>';
+        return '<span class="label label-danger">待投放</span>';
         break;
       case 3:
-        return '<span class="label label-success">已完成</span>';
+        return '<span class="label label-warning">待确认</span>';
         break;
       case 4:
+        return '<span class="label label-success">已完成</span>';
+        break;
+      case 5:
         return '<span class="label label-default">已取消</span>';
         break;
     }

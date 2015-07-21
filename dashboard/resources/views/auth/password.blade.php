@@ -1,12 +1,12 @@
 @extends('fullscreen')
 
 @section ('title')
-找回密码 - 布谷广告
+找回密码 - 魔媒网
 @stop
 
 @section('content')
 <div class="login-box">
-  <div class="login-logo"><a href="/"><b>布谷广告</b>LTE</a></div>
+  <div class="login-logo"><a href="/"><b>魔媒网</b>LTE</a></div>
 
   <div class="login-box-body">
     @include ('shared.status')

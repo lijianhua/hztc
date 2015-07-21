@@ -1,13 +1,13 @@
   @extends ('fullscreen')
 
   @section ('title')
-    登录 - 布谷广告
+    登录 - 魔媒网
   @stop
 
   @section ('content')
   <div class="login-box">
     <div class="login-logo">
-      <a href="/"><b>布谷广告</b>LTE</a>
+      <a href="/"><b>魔媒网</b>LTE</a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">
 

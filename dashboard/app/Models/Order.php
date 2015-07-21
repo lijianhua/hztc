@@ -28,11 +28,11 @@ class Order extends Model {
 
   public function scopePendingProccess($query)
   {
-    return $query->whereState(1);
+    return $query->whereState(2);
   }
 
   public function isPending()
   {
-    return $this->state == 1;
+    return $this->state == 2;
   }
 }
