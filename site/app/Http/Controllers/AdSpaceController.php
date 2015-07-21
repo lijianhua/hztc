@@ -75,9 +75,14 @@ class AdSpaceController extends Controller {
     }
 
     //广告类型
-    $type = $this->adSpaceType($adspace);
-
-
+    $list = [];
+    $str_type = '';
+    $list=explode(',', $this->adSpaceType($adspace));
+    foreach($list as $index => $value)
+    {
+      $str_type = $str_type.'categories_0'.'['.$index.']'.'='.$value.'&';
+    }
+    $type = rtrim($str_type,'&');
     $ad = new AdSpace;
     $ideas = $ad->creative();
 
@@ -171,7 +176,48 @@ class AdSpaceController extends Controller {
     $ideas = $para['ideas'];
     $current_page = $para['current_page'];
     $total = $para['total'];
+    $query_str = [];
+    foreach($query_array as $index => $value)
+    {
+        if(is_array($value)) 
+        {
+          foreach($value as $inner_index => $inner_value)
+          {
+            array_push($query_str,$inner_value); 
+          }
+        }
+        else
+        {
+          array_push($query_str, $value);
+        }
+    }
+    $query_array = $this->get_clean_query_array(array_diff_assoc($query_str,array_unique($query_str)),$query_array);
     return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'current_category', 'sort', 'current_page', 'total','query_array','str'));
+  }
+  public function get_clean_query_array($str, $list)
+  {
+    $repetition='';
+    foreach($str as $name)
+    {
+      foreach($list as $index => $value)
+      {
+        if(is_array($value)) 
+        {
+          foreach($value as $inner_index => $inner_value) 
+          {
+            if($inner_value != $repetition)
+            {
+                if($inner_value == $name) 
+                {
+                  unset($list[$index][$inner_index]);
+                  $repetition = $name;
+                }
+            }
+          }
+        }
+      }  
+    }
+    return $list;
   }
 
 }
