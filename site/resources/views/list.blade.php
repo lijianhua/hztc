@@ -9,8 +9,13 @@
                     <dt>已选择</dt>
                       @if(isset($query_array))
                         @foreach($query_array as $index => $query)
-                              @foreach($query as $sindex => $value)
-                                    <dd rel="0" class="filter-selected-item" data-name="{{$index}}" data-value="{{$value}}" data-index="{{$sindex}}"><i>{{$value}}</i><span class="filter-delete"></span></dd> @endforeach
+                              @if(is_array($query))
+                                  @foreach($query as $sindex => $value)
+                                        <dd rel="0" class="filter-selected-item" data-name="{{$index}}" data-value="{{$value}}" data-index="{{$sindex}}"><i>{{$value}}</i><span class="filter-delete"></span></dd>
+                                  @endforeach
+                              @else
+                                        <dd rel="0" class="filter-selected-item" data-name="{{$index}}" data-value="{{$query}}" >{{$query}}</i><span class="filter-delete"></span></dd>
+                              @endif
                         @endforeach
                       @endif
                 </dl>
@@ -47,10 +52,10 @@
         </div>
         <div class="list-main fl">
             <div class="list-sort">
-                <span class="list-sort-item {{$sort == 'id'? 'active':''}}"><a href="/list/{{$current_category}}/id">默认排序</a> </span>
-                <span class="list-sort-item {{$sort== 'quantity'?  'active':''}}"><a href="/list/{{$current_category}}/quantity">销量</a> </span>
-                <span class="list-sort-item {{$sort == 'price'?  'active':''}}"><a href="/list/{{$current_category}}/price">价格</a> </span>
-                <span class="list-sort-item {{$sort == 'date'? 'active':''}}"><a href="/list/{{$current_category}}/created_at">时间</a> </span>
+                <span class="list-sort-item {{$sort == 'id'? 'active':''}}"><a href="/list/{{$current_category}}/id?{{$str}}">默认排序</a> </span>
+                <span class="list-sort-item {{$sort== 'quantity'?  'active':''}}"><a href="/list/{{$current_category}}/quantity?{{$str}}">销量</a> </span>
+                <span class="list-sort-item {{$sort == 'price'?  'active':''}}"><a href="/list/{{$current_category}}/price?{{$str}}">价格</a> </span>
+                <span class="list-sort-item {{$sort == 'date'? 'active':''}}"><a href="/list/{{$current_category}}/created_at?{{$str}}">时间</a> </span>
             </div>
             <div class="list-info clearfix">
                 @for($i = 0; $i < count($adspaces); $i++)

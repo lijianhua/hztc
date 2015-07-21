@@ -20,14 +20,14 @@ $(function ($) {
     url.redirect();
   });
     $(".filter-selected dl").on ('click','.filter-delete',function () {
-        var name  = $('.filter-selected-item').attr('data-name'),
-        index = $('.filter-selected-item').attr('data-index');
+        var item = $(this).closest('.filter-selected-item'),
+            name  = item.attr('data-name'),
+            index = item.attr('data-index');
         if (index)
           key = name + "[" + index + "]";
         else
           key = name;
         url.unset(key);
-        $(this).parents('dd').remove()
         url.redirect();
     });
 });

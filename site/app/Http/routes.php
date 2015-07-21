@@ -64,7 +64,6 @@ Route::post('collect/','AdSpaceController@addCollect');
 
 // 搜索
 Route::any('search', 'SearchController@search');
-Route::post('/Search/home/left', 'SearchController@search_index_filter');
 Route::get('/Search/list', 'SearchController@search_list_filter');
 //列表
 
@@ -74,4 +73,6 @@ Route::get('/about/contact.html', 'AboutController@contact');
 Route::get('/about/law.html', 'AboutController@law');
 //列表搜索
 Route::get('/list/{list}/{sort?}', 'AdSpaceController@ad_list');
+//首页检索
+Route::post('/Search','SearchController@search_index_filter');
 

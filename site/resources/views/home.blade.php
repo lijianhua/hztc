@@ -10,61 +10,67 @@
                     <img src="images/index/advert.jpg">
                 </div>
                 <div class="filter-nav">
-                    <ul>
-                        <li class="filter-nav-item">
-                            <span class="filter-nav-title">投放市场</span><br/>
-                            <div class="btn-group">
-                                <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <b id='city'>全部</b> <span class="filter-nav-caret caret"></span>
-                                </button>
-                                <ul class="filter-nav-menu dropdown-menu" role="menu">
-                                    <li><a href="#">全部</a> </li>
-                                    <li><a href="#">北京</a> </li>
-                                    <li><a href="#">上海</a> </li>
-                                    <li><a href="#">广州</a> </li>
-                                    <li><a href="#">深圳</a> </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="filter-nav-item">
-                            <span class="filter-nav-title">媒体类型</span><br/>
-                            <div class="btn-group">
-                                <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <b id='type'>全部</b> <span class="filter-nav-caret caret"></span>
-                                </button>
-                                <ul class="filter-nav-menu dropdown-menu" role="menu">
-                                    <li><a href="#">全部</a> </li>
-                                    <li><a href="#">新媒体</a> </li>
-                                    <li><a href="#">APP</a> </li>
-                                    <li><a href="#">网络</a> </li>
-                                    <li><a href="#">电视</a> </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="filter-nav-item">
-                            <span class="filter-nav-title">社会圈</span><br/>
-                            <div class="btn-group">
-                                <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    <b id='society'>全部</b> <span class="filter-nav-caret caret"></span>
-                                </button>
-                                <ul class="filter-nav-menu dropdown-menu" role="menu">
-                                    <li><a href="#">全部</a> </li>
-                                    <li><a href="#">财富圈</a> </li>
-                                    <li><a href="#">地产圈</a> </li>
-                                    <li><a href="#">IT圈</a> </li>
-                                    <li><a href="#">金融圈</a> </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="filter-nav-item">
-                            <span class="filter-nav-title">价位</span><br/>
-                            <div class="filter-nav-input">
-                                <span><input type="text" id='start_price'></span> 
-                                <b>至</b> <span><input type="text" id='end_price'></span>
-                            </div>
-                        </li>
-                        <li class="filter-nav-item"><button class="filter-nav-retrieval">检索</button></li>
-                    </ul>
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/Search') }}" id='login-form'>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <ul>
+                            <li class="filter-nav-item">
+                                <span class="filter-nav-title">投放市场</span><br/>
+                                <div class="btn-group">
+                                    <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <b id='city'>全部</b> <span class="filter-nav-caret caret"></span>
+                                        <input name='city' type='hidden' value='全部'/>
+                                    </button>
+                                    <ul class="filter-nav-menu dropdown-menu" role="menu">
+                                        <li><a href="#">全部</a> </li>
+                                        <li><a href="#">北京市</a> </li>
+                                        <li><a href="#">上海市</a> </li>
+                                        <li><a href="#">广州市</a> </li>
+                                        <li><a href="#">深圳市</a> </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="filter-nav-item">
+                                <span class="filter-nav-title">媒体类型</span><br/>
+                                <div class="btn-group">
+                                    <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <b id='type'>全部</b> <span class="filter-nav-caret caret"></span>
+                                        <input name='type' type='hidden' value='全部'/>
+                                    </button>
+                                    <ul class="filter-nav-menu dropdown-menu" role="menu">
+                                        <li><a href="#">全部</a> </li>
+                                        <li><a href="#">新媒体</a> </li>
+                                        <li><a href="#">APP</a> </li>
+                                        <li><a href="#">网络</a> </li>
+                                        <li><a href="#">电视</a> </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="filter-nav-item">
+                                <span class="filter-nav-title">社会圈</span><br/>
+                                <div class="btn-group">
+                                    <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <b id='society'>全部</b> <span class="filter-nav-caret caret"></span>
+                                        <input name='type2' type='hidden' value='全部'/>
+                                    </button>
+                                    <ul class="filter-nav-menu dropdown-menu" role="menu">
+                                        <li><a href="#">全部</a> </li>
+                                        <li><a href="#">财富圈</a> </li>
+                                        <li><a href="#">地产圈</a> </li>
+                                        <li><a href="#">IT圈</a> </li>
+                                        <li><a href="#">金融圈</a> </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="filter-nav-item">
+                                <span class="filter-nav-title">价位</span><br/>
+                                <div class="filter-nav-input">
+                                    <span><input type="text" name='start_price' value=''></span> 
+                                    <b>至</b> <span><input type="text" name='end_price' value=''></span>
+                                </div>
+                            </li>
+                            <li class="filter-nav-item"><button class="filter-nav-retrieval" type='submit'>检索</button></li>
+                        </ul>
+                  </form>
                 </div>
             </div>
             <div class="banner-img">

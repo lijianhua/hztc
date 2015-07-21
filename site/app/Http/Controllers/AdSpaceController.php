@@ -163,13 +163,15 @@ class AdSpaceController extends Controller {
     {
       $query = (new SearchController())->get_query(['type' => [$type_nu]], []);
     }
-    $query = (new SearchController())->get_query($query_array,$query);
+    $query_price = (new SearchController())->get_price_array($query_array, $query);
+    $query = (new SearchController())->get_query($query_array,$query_price);
+    $str = (new SearchController())->get_url_str($query_array);
     $para = AdSpace::get_ideas_adspaces($type_nu, $sort, $query, $page);
     $adspaces = $para['adspaces'];
     $ideas = $para['ideas'];
     $current_page = $para['current_page'];
     $total = $para['total'];
-    return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'current_category', 'sort', 'current_page', 'total','query_array'));
+    return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'current_category', 'sort', 'current_page', 'total','query_array','str'));
   }
 
 }

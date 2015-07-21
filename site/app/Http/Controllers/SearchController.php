@@ -1,10 +1,14 @@
 <?php namespace App\Http\Controllers;
-
+use Redirect;
+use Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\AdSpace;
 use Illuminate\Http\Request;
 use Collection;
+use App\Models\Navigator;
+use App\Models\AdCategory;
+use App\Models\Address;
 class SearchController extends Controller {
 
   public function search(Request $request)
@@ -16,71 +20,48 @@ class SearchController extends Controller {
   public function search_index_filter(Request $request)
   {
     $para = $request->all();
-    $query = [] ;
-    if ($para['city'] == '全部')
+    unset($para['_token']);
+    $query = $this->get_price_array($para);
+    foreach($para as $index=>$value)
     {
-    }
-    else
-    {
-       array_push($query, ['terms' => ['city' => [trim($para['city'])] ]]);
-
-    }
-    if ($para['type'] == '全部')
-    {
-    }
-    else
-    {
-       array_push($query, ['terms' => ['name' => [trim($para['type'])]]]);
-    }
-    if ($para['type2'] == '全部')
-    {
-    }
-    else
-    {
-        array_push($query, ['terms' => ['name' => [trim($para['type2'])]]]);
-    }
-    if(is_numeric($para['start_price'])) 
-    {
-      if(is_numeric($para['end_price']))
+      if($value=='全部' || $value=='')
       {
-        array_push($query, ['range' => ['price' => ['gte'=> trim($para['start_price']),'lte'=> trim($para['end_price'])]]]);
-      }
-      else
-      {
-        array_push($query, ['range' => ['price' => ['gte'=> trim($para['start_price'])]]]);
-      }
+        unset($para[$index]);
+      } 
     }
-    else
+    $list = [];
+    foreach($para as $index=>$value)
     {
-      if(is_numeric($para['end_price']))
+      if($index=='city') 
       {
-        array_push($query, ['range' => ['price' => ['lte'=> trim($para['end_price'])]]]);
+        $list['cities']= [$value];
       }
-      
+      if($index=='type') 
+      {
+        $list['categories_0']= [$value];
+      }
+      if($index=='type2') 
+      {
+        $list['categories_5']= [$value];
+      }
+      if($index=='start_price') 
+      {
+        $list['start_price']= $value;
+      }
+      if($index=='end_price') 
+      {
+        $list['end_price']= $value;
+      }
     }
-   $query = ['query' => ['filtered' => ['filter' => ['bool'=> ['must' => $query]]]]];
-   $results = AdSpace::searchByQuery($query)->getResults(); echo ($results); exit;
+    $str = $this->get_url_str($list,$str='');
+    return Redirect::to('/list/all-ads/id?'.$str);
   }
   public function search_list_filter()
   {
-      //$para2 = $request->all();
-    // $para = [ 
-    //             'filter_0' => ['北京','上海'], //city
-    //             'filter_1' =>['APP'],//name
-    //             'filter_2' =>['IT圈'],//name 
-    //             'filter_3' => ['APP'], //name
-    //             'filter_4' =>['APP'],//name
-    //             'filter_5' =>['IT圈'],//sex
-    //             'filter_6' =>['IT圈'],//name
-    //             'filter_7' => ['3'],//广告整体上的分类 如特价广告位、免费广告位、创意广告位
-    //             'filter_8' => ['id']//排序的字段
-    //         ];
       $para = [];
       $query = [] ;
       $query = $this -> get_query($para, $query);
       $query = ['query' => ['filtered' => ['filter' => ['bool'=> ['must' => $query]]]]];
-      //$results = AdSpace::searchByQuery($query, ['per_page' => '1','offset' => '0'])->getResults(); echo ($results); exit;
-      //$results = AdSpace::searchByQuery($query)->getTotal(); echo ($results); exit;
       $results = AdSpace::searchByQuery($query, ['per_page' => '1','offset' => '0'])->getResults();
       $list = [];
       foreach($results as $result)
@@ -147,6 +128,77 @@ class SearchController extends Controller {
         }
      }
      return $query;
+  }
+  public function get_price_array($para, $query=[])
+  {
+    if(array_key_exists('start_price', $para))
+    {
+        if(is_numeric($para['start_price'])) 
+        {
+            if(array_key_exists('end_price', $para))
+            {
+                if(is_numeric($para['end_price']))
+                {
+                  array_push($query, ['range' => ['price' => ['gte'=> trim($para['start_price']),'lte'=> trim($para['end_price'])]]]);
+                }
+                else
+                {
+                  array_push($query, ['range' => ['price' => ['gte'=> trim($para['start_price'])]]]);
+                }
+            }
+            else
+            {
+                  array_push($query, ['range' => ['price' => ['gte'=> trim($para['start_price'])]]]);
+            }
+        }
+        else
+        {
+            if(array_key_exists('end_price', $para))
+            {
+                if(is_numeric($para['end_price']))
+                {
+                  array_push($query, ['range' => ['price' => ['lte'=> trim($para['end_price'])]]]);
+                }
+            }
+        }
+    }
+    else
+    {
+      if(array_key_exists('end_price', $para))
+      {
+          if(is_numeric($para['end_price']))
+          {
+            array_push($query, ['range' => ['price' => ['lte'=> trim($para['end_price'])]]]);
+          }
+      }
+
+    }
+    return $query;
+  }
+  public function get_url_str($list,$str='')
+  {
+    if(is_array($list))
+    {
+        if(count($list)>0)
+        {
+            foreach($list as $key => $inner_list)
+            {
+              if(is_array($inner_list))
+              {
+                  foreach($inner_list as $index => $value)
+                  {
+                    $str = $str.$key.'['.$index.']'.'='.$value.'&' ;
+                  }
+              }
+              else
+              {
+                  $str = $str.$key.'='.$inner_list.'&' ;
+              }
+            }
+            $str = rtrim($str,'&');
+        }
+    }
+    return $str;
   }
 }
 
