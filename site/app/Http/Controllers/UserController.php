@@ -118,7 +118,7 @@ class UserController extends Controller {
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
-    $orders     = Order::where('user_id', '=', Auth::user()->id)->paginate(10);
+    $orders     = Order::where('user_id', '=', Auth::user()->id)->paginate(5);
     return view('order')->with(compact('navigators', 'orders', 'states'));
   }
 
@@ -247,7 +247,7 @@ class UserController extends Controller {
     $redscore = '';
     if ($scores)
     {
-      $redscore = $scores->ScoreDetails()->paginate(10);
+      $redscore = $scores->ScoreDetails()->paginate(5);
     }
     return view('score')->with(compact('navigators', 'scores', 'redscore'));
   }
@@ -265,7 +265,7 @@ class UserController extends Controller {
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
-    $collects = AdSpaceUser::where('user_id', '=', Auth::user()->id)->paginate(1);
+    $collects = AdSpaceUser::where('user_id', '=', Auth::user()->id)->paginate(5);
     return view('collect')->with(compact('navigators', 'collects'));
   }
 

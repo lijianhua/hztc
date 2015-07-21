@@ -45,8 +45,8 @@ class="order-color">价格：<span>{{$collect->adSpaces->adPrices->min('price')}
                     </div>
                 </div>
                 @endforeach
-              <?php echo $collects->render()?>
             </div>
+              <?php echo $collects->render()?>
         </div>
     </div>
 </div>

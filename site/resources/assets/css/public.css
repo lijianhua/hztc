@@ -851,10 +851,11 @@ header{
 .personal-left{
     float: left;
     width: 295px;
+    border: 1px solid #eeeeee;
 }
 .personal .personal-left .personal-left-title{
     background: url("../images/personal/personal.jpg");
-    width: 295px;
+    width: 293px;
     height: 43px;
     margin-bottom: 10px;
 }
@@ -892,7 +893,54 @@ header{
 
 
 
-
+.page{
+    height: 30px;
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.page .page-item{
+    border:1px solid #e5e5e5;
+    padding: 6px 10px;
+    font-size: 12px;
+    text-align: center;
+    display: inline-block;
+    float: left;
+}
+.page span{
+    margin: 0 4px;
+    float: left;
+}
+.page .page-item.active{
+    background-color: #ff4c4c;
+    color: #ffffff;
+}
+.page .page-item-previous,
+.page .page-item-next{
+    border:1px solid #e5e5e5;
+    width: 56px;
+    padding: 6px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+}
+.page-return{
+    position: relative;
+}
+.page-return input{
+    width: 53px;
+    font-size: 12px;
+    padding: 6px;
+    border: 1px solid #ff3f7e;
+    height: 30px;
+}
+.page-return button{
+    width: 56px;
+    font-size: 12px;
+    padding: 6px 0;
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+}
 
 
 

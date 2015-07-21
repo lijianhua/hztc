@@ -34,6 +34,12 @@
     $(function(){
         $('#da-thumbs > li').each( function() { $(this).hoverdir();});
     });
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 </script>
 
 </body>

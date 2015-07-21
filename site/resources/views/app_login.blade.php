@@ -7,6 +7,7 @@
   <title>ADbugo</title>
 
   <link href="{{ asset('/css/all.css') }}" rel="stylesheet">
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,7 +22,12 @@
   <!-- Scripts -->
   <script src="{{ asset('/js/vendor.js') }}"></script>
   <script src="{{ asset('/js/all.js') }}"></script>
-  <script src="{{ asset('/js/login.js') }}"></script>
-  <script src="{{ asset('/js/sign.js') }}"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 </body>
 </html>

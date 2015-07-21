@@ -51,6 +51,7 @@ class="order-color">积分：<span>-{{$refund->orderItems->sum('score')}}</span>
                     </div>
                 @endforeach
             </div>
+            <?php echo $refunds->render();?>
         </div>
     </div>
 </div>

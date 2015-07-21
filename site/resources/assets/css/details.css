@@ -288,7 +288,7 @@
     margin-top: 30px;
 }
 .details .details-specifics .details-recommend{
-    width: 280px;
+    width: 300px;
 }
 .details .details-recommend-title{
     border-left: 10px solid #ededed;
@@ -336,7 +336,7 @@
     bottom: 2px;
 }
 .details .introduction{
-    margin-left: 65px;
+    margin-left: 45px;
     width: 849px;
 }
 .details .introduction-list-title{
@@ -442,112 +442,5 @@
     color: #c4c4c4;
     margin-top: 2px;
 }
-
-
-.page{
-    height: 30px;
-    float: right;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-.page .page-item{
-    border:1px solid #e5e5e5;
-    padding: 6px 0;
-    font-size: 12px;
-    text-align: center;
-    width: 26px;
-    display: inline-block;
-    float: left;
-}
-.page span{
-    margin: 0 4px;
-    float: left;
-}
-.page .page-item.active{
-    background-color: #ff4c4c;
-    color: #ffffff;
-}
-.page .page-item-previous,
-.page .page-item-next{
-    border:1px solid #e5e5e5;
-    width: 56px;
-    padding: 6px 0;
-    text-align: center;
-    display: inline-block;
-    font-size: 12px;
-}
-.page-return{
-    position: relative;
-}
-.page-return input{
-    width: 53px;
-    font-size: 12px;
-    padding: 6px;
-    border: 1px solid #ff4c4c;
-    height: 30px;
-}
-.page-return button{
-    width: 56px;
-    font-size: 12px;
-    padding: 6px 0;
-    border: 1px solid #e5e5e5;
-    background-color: #ffffff;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

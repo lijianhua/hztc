@@ -53,8 +53,8 @@
                     @endforeach
                 </div>
             @endforeach
-              <?php echo $orders->render()?>
             </div>
+              <?php echo $orders->render()?>
         </div>
     </div>
 </div>

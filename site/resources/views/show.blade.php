@@ -4,7 +4,8 @@
 <div class="layout">
     <div class="details">
         <div class="details-title">
-            <span class="details-title-text"><span>首页</span><i class="fa fa-angle-right"></i><span>套ii安g情</span></span>
+            <span class="details-title-text"><span>首页</span>
+            <i class="fa fa-angle-right"></i><span>{{ $adspace->title}}</span></span>
             <span class="details-title-bt">
                 <dl>
                     <dt>其他资源</dt>
