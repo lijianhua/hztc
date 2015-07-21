@@ -12,14 +12,6 @@ use App\Reponsitories\ImageReponsitory;
 
 class SlideController extends Controller
 {
-  protected $imageRepons;
-
-  public function __construct(ImageReponsitory $imageRepons)
-  {
-    $this->imageRepons = $imageRepons;
-
-    parent::__construct();
-  }
 
   /**
    * Display a listing of the resource.
@@ -30,16 +22,6 @@ class SlideController extends Controller
   {
     $slides = Slide::all();
     return view("slides.index")->with(compact('slides'));
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return Response
-   */
-  public function create()
-  {
-    //
   }
 
   /**
@@ -70,9 +52,8 @@ class SlideController extends Controller
    */
   public function show($id)
   {
-    $slide  = Slide::find($id);
-    $repons = $this->imageRepons;
-    return view('slides.show')->with(compact('slide', 'repons'));
+    $slide  = Slide::with('slideItems')->find($id);
+    return view('slides.show')->with(compact('slide'));
   }
 
   /**

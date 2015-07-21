@@ -14,7 +14,7 @@
   <tr>
     <td>{{{ $slideItem->id }}}</td>
     <td>
-      {!! $repons->tag($slideItem->picture, ['height' => 100]) !!}
+      {!! HTML::image($slideItem->avatar->url('thumb')) !!}
     </td>
     <td>{{{ $slideItem->url }}}</td>
     <td>{{{ $slideItem->note }}}</td>

@@ -42,7 +42,7 @@ class @CommonDataTableObject
     @api().row(@selectedRow()).data(rowData).draw false
 
   newRow: (rowData) ->
-    row = @api().row.add(rowData).node().draw false
+    row = @api().row.add(rowData).draw false
     $(row).addClass('success')
     setTimeout (row) ->
       $(row).removeClass('success')

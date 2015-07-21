@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use HTML;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -14,33 +15,6 @@ use App\Reponsitories\ImageReponsitory;
 
 class SlideItemController extends Controller
 {
-  protected $imageRepons;
-
-  public function __construct(ImageReponsitory $imageRepons)
-  {
-    $this->imageRepons = $imageRepons;
-  }
-
-  /**
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
-  public function index()
-  {
-    //
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return Response
-   */
-  public function create()
-  {
-    //
-  }
-
   /**
    * Store a newly created resource in storage.
    *
@@ -48,45 +22,23 @@ class SlideItemController extends Controller
    */
   public function store(PostSlideItemRequest $request, $slide_id)
   {
-    $slide = Slide::find($slide_id);
-    $attributes = $request->only('url', 'note', 'sort');
-    $picture = $this->imageRepons->save($request->file('picture'));
-    $attributes['picture'] = $picture->getFilename();
+    $slide                = Slide::find($slide_id);
+    $attributes           = $request->only('url', 'note', 'sort');
+    $picture              = $request->file('picture');
+    $attributes['avatar'] = $picture;
+    $slideItem            = $slide->slideItems()->create($attributes);
 
-    $slideItem = $slide->slideItems()->create($attributes);
     return response()->json([
       'state' => 'OK',
       'message' => '添加成功',
       'data' => [
         $slideItem->id,
-        $this->imageRepons->tag($slideItem->picture, ['height' => 100]),
+        HTML::image($slideItem->avatar->url('thumb')),
         $slideItem->url,
         $slideItem->note,
         $slideItem->sort,
         $slideItem->slide_id
       ]]);
-  }
-
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function show($id)
-  {
-    //
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function edit($id)
-  {
-    //
   }
 
   /**
@@ -100,21 +52,18 @@ class SlideItemController extends Controller
     $slideItem = SlideItem::find($id);
 
     if ($request->hasFile('picture'))
-      $picture = $this->imageRepons->save($request->file('picture'));
+      $slideItem->avatar = $request->file('picture');
 
     $attributes = $request->only('url', 'note', 'sort');
-
-    if (isset($picture))
-      $attributes['picture'] = $picture->getFilename();
-
-    $slideItem->update($attributes);
+    $slideItem->fill($attributes);
+    $slideItem->save();
 
     return response()->json([
       'state' => 'OK',
       'message' => '更新成功',
       'data' => [
         $slideItem->id,
-        $this->imageRepons->tag($slideItem->picture, ['height' => 100]),
+        HTML::image($slideItem->avatar->url('thumb')),
         $slideItem->url,
         $slideItem->note,
         $slideItem->sort,
