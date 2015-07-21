@@ -14,7 +14,9 @@
             </div>
             <div class="details-flow">
                 <div class="details-flow-info">
-                    <div class="details-mark-line"></div>
+                    @if ($refund->state > 0)
+                      <div class="details-mark-line"></div>
+                    @endif
                     @for($i =0 ; $i < 3 ; $i++)
                     <span class="details-flow-item {{$i<$refund->state?'success':(($i==$refund->state)? 'active':'will')}}">
                         <div class="details-flow-mark">
