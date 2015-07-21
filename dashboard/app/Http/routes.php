@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::delete('slides/{id}', 'SlideController@destroy');
   Route::put('slides/{id}', 'SlideController@update');
   Route::post('slides', 'SlideController@store');
+
   // 轮播图中的项
   Route::post('slides/{slide_id}/slide-items', 'SlideItemController@store');
   Route::delete('slides/{slide_id}/slide-items/{id}', 'SlideItemController@destroy');
@@ -87,6 +88,9 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::get('orders/pending-proccess', 'OrderController@pending');
   Route::get('orders/server-pending', 'OrderController@pendingServer');
   Route::put('orders/proccessing/{id}', 'OrderController@proccess');
+  Route::put('orders/confirm/{id}', 'OrderController@confirm');
+  Route::get('orders/newest', 'OrderController@newest');
+  Route::get('orders/server-newest', 'OrderController@newestServer');
   Route::get('orders', 'OrderController@index');
   Route::get('orders/{id}', 'OrderController@show');
 });

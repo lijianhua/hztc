@@ -10,6 +10,14 @@
             </span>
           </a>
         @endif
+        @if ($order->isNewest())
+          <a href="{{ url("orders/confirm/{$order->id}") }}" class="pull-right text-muted" title="标记为已接单" data-toggle="tooltip" data-method="PUT">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-paw fa-stack-1x"></i>
+            </span>
+          </a>
+        @endif
       </div>
       <h5 class="page-header">
         <i class="fa fa-bookmark-o"></i>

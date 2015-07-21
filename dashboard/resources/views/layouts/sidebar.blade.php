@@ -48,6 +48,12 @@
         </a>
         <ul class="treeview-menu">
           <li>
+            <a href="{{ url('orders/newest') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>最新订单</span>
+              <small class="label pull-right bg-green">{{ $__counts['newestOrders'] }}</small>
+            </a>
+          <li>
             <a href="{{ url('orders/pending-proccess') }}">
               <i class="fa fa-circle-o"></i>
               <span>待投放订单</span>
@@ -70,7 +76,7 @@
         <a href="{{ url('admins') }}">
           <i class="fa fa-user-secret"></i>
           <span>管理员</span>
-        </a> 
+        </a>
       </li>
       <li>
         <a href="#">
@@ -82,4 +88,3 @@
   </section>
   <!-- /.sidebar -->
 </aside>
-

@@ -1,4 +1,4 @@
-<table id="pendingOrdersTable" class="table table-striped">
+<table id="newestOrdersTable" class="table table-striped">
   <thead>
     <tr>
       <th>订单日期</th>

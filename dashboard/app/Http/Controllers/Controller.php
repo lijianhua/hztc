@@ -18,6 +18,7 @@ abstract class Controller extends BaseController
     // 待审核产品
     $__counts['waitingForAuditedAd'] = \App\Models\AdSpace::waitingForAudited()->count();
     $__counts['pendingProccessOrders'] = \App\Models\Order::pendingProccess()->count();
+    $__counts['newestOrders'] = \App\Models\Order::newest()->count();
 
     view()->share('__counts', $__counts);
   }

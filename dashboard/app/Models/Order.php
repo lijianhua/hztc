@@ -31,8 +31,18 @@ class Order extends Model {
     return $query->whereState(2);
   }
 
+  public function scopeNewest($query)
+  {
+    return $query->whereState(1);
+  }
+
   public function isPending()
   {
     return $this->state == 2;
+  }
+
+  public function isNewest()
+  {
+    return $this->state == 1;
   }
 }

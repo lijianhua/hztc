@@ -41,6 +41,11 @@ class OrderController extends Controller
     return view('orders.pending');
   }
 
+  public function newest()
+  {
+    return view('orders.newest');
+  }
+
   public function server()
   {
     $orders = Order::with('user', 'orderItems', 'orderItems.adSpace')->recent();
@@ -51,6 +56,13 @@ class OrderController extends Controller
   public function pendingServer()
   {
     $orders = Order::with('user', 'orderItems', 'orderItems.adSpace')->recent()->pendingProccess();
+
+    return $this->service->datatables($orders);
+  }
+
+  public function newestServer()
+  {
+    $orders = Order::with('user', 'orderItems', 'orderItems.adSpace')->recent()->newest();
 
     return $this->service->datatables($orders);
   }
@@ -127,6 +139,29 @@ class OrderController extends Controller
 
     if ($order->isPending()) {
       $order->state = 3;
+      $order->save();
+
+      if ($request->ajax()) {
+        return $this->okResponse('标记完成。');
+      } else {
+        return redirect()
+          ->action('OrderController@show', ['id' => $order->id])
+          ->with('status', '标记完成');
+      }
+    }
+    if ($request->ajax()) {
+      return $this->failResponse('标记错误。这个订单不能标记为已投放。');
+    } else {
+      return redirect()->action('OrderController@show', ['id' => $order->id]);
+    }
+  }
+
+  public function confirm(Request $request, $id)
+  {
+    $order = Order::findOrFail($id);
+
+    if ($order->isNewest()) {
+      $order->state = 2;
       $order->save();
 
       if ($request->ajax()) {
