@@ -7,6 +7,7 @@
             <span class="pay-code-left">
               订单提交成功！&nbsp;&nbsp;&nbsp;&nbsp;订单号：<b>{{$order->order_seq}}</b></span>
             <span class="pay-code-right">应付金额：<b><i class="fa fa-jpy"></i>{{$order->amount}}</b></span>
+		<input type='hidden' name='order_id' value='{{ $order->id}}' >
         </div>
         <div class="bank-code">
             <div class="bank-code-title">请选择您的支付方式</div>

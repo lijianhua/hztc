@@ -86,7 +86,7 @@
                     <td>{{$shop->adSpacesCart->title}}</td>
                     <td>{{$shop->price}}</td>
                     <td>{{$shop->quantity}}</td>
-                    <td>{{$shop->adSpacesCart->user->userInformations->first()->value}}</td>
+                    <td>{{$shop->adSpacesCart->user->name}}</td>
                 </tr>
             </table>
             <div class="settlement-list-submit">

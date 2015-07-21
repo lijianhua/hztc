@@ -58,15 +58,13 @@ class CartController extends Controller {
     $id = $request->input('product_id');
     $pid = $request->input('price_id');
     $quantity = $request->input('count');
-    $snapshots = AdSpaceSnapshot::where('ad_space_id', '=', $id)
-      ->orderBy('created_at', 'desc')->first();
     $price = AdPrice::find($pid);
     if (Auth::check())
     {
       $shop = new ShoppingCart;
       $shop->user_id = Auth::user()->id;
       $shop->ad_space_id = $id;
-      $shop->ad_space_snapshot_id = $snapshots->id;
+      $shop->ad_space_snapshot_id = 0; 
       $shop->quantity = $quantity;
       $shop->from = $price->from;
       $shop->to  = $price->to;
@@ -136,7 +134,7 @@ class CartController extends Controller {
     $order->user_id = Auth::user()->id;
     $order->order_seq = $this->orderNub();
     $order->state = 0;
-    $order->amount = $shop->original_price;
+    $order->amount = $shop->subtotal;
     $order->count_price = $shop->adSpacesCart->adPrices->max('score')*$shop->quantity;
     $order->save();
     return $order;
@@ -180,7 +178,7 @@ class CartController extends Controller {
    *
    *
    */
-  public function goPay()
+  public function goPay(Request $request)
   {
      $alipay = app('alipay.web');
      $alipay->setOutTradeNo('D12311321');
