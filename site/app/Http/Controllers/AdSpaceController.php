@@ -192,6 +192,20 @@ class AdSpaceController extends Controller {
         }
     }
     $query_array = $this->get_clean_query_array(array_diff_assoc($query_str,array_unique($query_str)),$query_array);
+    foreach($query_array as $index => $value)
+    {
+      if(is_array($value) )
+      {
+            $query_array[$index] = array_filter($value);
+      }
+      else
+      {
+        if($value == '') 
+        {
+          unset($query_array[$index]); 
+        }
+      }
+    }
     return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'current_category', 'sort', 'current_page', 'total','query_array','str'));
   }
   public function get_clean_query_array($str, $list)

@@ -125,6 +125,9 @@ class SearchController extends Controller {
             case 'type':
               $query = $this -> get_search_array(array_values($para['type']), 'type', $query);
               break;
+            case 'puid':
+              $query = $this -> get_search_array(array_values([$para['puid']]), 'user_id', $query);
+              break;
         }
      }
      return $query;
