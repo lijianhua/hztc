@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost:8800/system/:class/:attachment/:id_partition/:style/:filename',
+    'url' => env('IMAGE_HOST') . '/system/:class/:attachment/:id_partition/:style/:filename',
 
     /*
     |--------------------------------------------------------------------------
