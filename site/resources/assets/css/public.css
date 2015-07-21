@@ -553,6 +553,10 @@ header{
 
     /*width: 1200px;*/
 }
+ .logo{
+     margin-top: 6px;
+     margin-left:80px;
+ }
 .header-top-info{
     /*width: 520px;*/
     float: right;
