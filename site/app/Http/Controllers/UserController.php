@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\UserScoreAccount;
 use App\Models\Enterprise;
 use App\Models\ReviewMaterial;
+use App\Models\UserInformation;
 use App\Models\UserScoreDetail;
 use App\Models\AdSpaceUser;
 use App\Models\Refund;
@@ -221,9 +222,9 @@ class UserController extends Controller {
     $navigators = Navigator::all()->sortBy('sort');
     $enterprise = Enterprise::find($user->enterprise_id);
     $enterprise = $enterprise?$enterprise:'';
-    $truthname     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','truthname')->first();
-    $idcard     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','idcard')->first();
-    $telphone     = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','telphone')->first();
+    $truthname     = UserInformation::where('user_id','=',$user->id)->where('key','=','truthname')->first();
+    $idcard     = UserInformation::where('user_id','=',$user->id)->where('key','=','idcard')->first();
+    $telphone     = UserInformation::where('user_id','=',$user->id)->where('key','=','telphone')->first();
     $license = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','license')->first();
     $tax = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','tax')->first();
     $organizing = ReviewMaterial::where('enterprise_id','=',$user->enterprise_id)->where('name','=','organizing')->first();
@@ -322,14 +323,15 @@ class UserController extends Controller {
   {
     $attributes = $request->only('id', 'idcard', 'truthname', 'enterprise','telphone');
     $user = Auth::user();
-    if($user->enterprise_id)
+    $userinfo = UserInformation::where('user_id', '=', $user->id)->first();
+    if($userinfo && $user->enterprise_id)
     {
       DB::transaction(function() use ($attributes,$user)
       {
         Enterprise::where('id', '=', $user->enterprise_id)->update(['name' => $attributes['enterprise']]); 
-        ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name', '=', 'idcard')->update(['note' => $attributes['idcard']]);
-        ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name', '=', 'truthname')->update(['note' => $attributes['truthname']]);
-        ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name', '=', 'telphone')->update(['note' => $attributes['telphone']]);
+        UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'idcard')->update(['value' => $attributes['idcard']]);
+        UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'truthname')->update(['value' => $attributes['truthname']]);
+        UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'telphone')->update(['value' => $attributes['telphone']]);
       });   
     }
     else
@@ -338,9 +340,9 @@ class UserController extends Controller {
       {
         $enterprise = Enterprise::create(['name' => $attributes['enterprise']]); 
         User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise->id]);
-        ReviewMaterial::create(['enterprise_id' => $enterprise->id, 'name' => 'idcard', 'note' => $attributes['idcard'], 'is_text'=>0, 'is_image'=>0]);
-        ReviewMaterial::create(['enterprise_id' => $enterprise->id, 'name' => 'truthname', 'note' => $attributes['truthname'], 'is_text'=>0, 'is_image'=>0]);
-        ReviewMaterial::create(['enterprise_id' => $enterprise->id, 'name' => 'telphone', 'note' => $attributes['telphone'], 'is_text'=>0, 'is_image'=>0]);
+        UserInformation::create(['user_id' => $user->id, 'key' => 'idcard', 'value' => $attributes['idcard'], 'authority' => 0]);
+        UserInformation::create(['user_id' => $user->id, 'key' => 'truthname', 'value' => $attributes['truthname'], 'authority' => 0]);
+        UserInformation::create(['user_id' => $user->id, 'key' => 'telphone', 'value' => $attributes['telphone'], 'authority' => 0]);
       });   
     }
     return Redirect::to('users/info');

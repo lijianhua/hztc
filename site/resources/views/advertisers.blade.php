@@ -19,8 +19,8 @@ style='position:absolute;font-size:12px;margin-top:200px;margin-left:500px;color
             <div class="advertisers-personal">
                 <div class="personal-title">
                     <span class="personal-prompt">广告主信息<span
-class="personal-prompt-color">{{$enterprise && $enterprise->is_audited == 1 ? '(已认证)':'(未认证)'}}</span></span>
-                    <span class="personal-prompt-text">{{$enterprise && $enterprise->is_audited == 1? '':'<sub>*</sub>请补充信息完成认证'}}</span>
+class="personal-prompt-color">{{$user->is_verify == 1 ? '(已认证)':'(未认证)'}}</span></span>
+                    <span class="personal-prompt-text">{{$user->is_verify == 1? '':'*请补充信息完成认证'}}</span>
                 </div>
                 <?= Form::open(['url' => action('UserController@store_user_auth'), 'method' => 'POST', 'files' => true ]) ?>
 						        <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -34,17 +34,17 @@ class="personal-prompt-color">{{$enterprise && $enterprise->is_audited == 1 ? '(
                         <div class="advertisers-personal-enter">
                             <strong>真实姓名</strong><br/>
                             <span><input type="text" name='truthname'
-value='{{isset($truthname)? $truthname->note:''}}'></span>
+value='{{isset($truthname)? $truthname->value:''}}'></span>
                         </div>
                         <div class="advertisers-personal-enter">
                             <strong>身份证号码</strong><br/>
                             <span><input type="text" name='idcard'
-value='{{isset($idcard)? $idcard->note:''}}'></span>
+value='{{isset($idcard)? $idcard->value:''}}'></span>
                         </div>
                         <div class="advertisers-personal-enter">
                             <strong>手机号</strong><br/>
                             <span><input type="text" name='telphone'
-value='{{isset($telphone)? $telphone->note: ''}}'></span>
+value='{{isset($telphone)? $telphone->value: ''}}'></span>
                         </div>
                         <div class="advertisers-personal-enter">
                             <strong>邮箱</strong><br/>
@@ -69,7 +69,7 @@ value='{{$enterprise? $enterprise->name:''}}'></span>
                       <span class="personal-prompt-color">{{$enterprise && $enterprise->is_verify==1? '(已认证)':'(未认证)'}}</span>
                     </span>
                     <span class="personal-prompt-text">
-                      {{$enterprise && $enterprise->is_verify==1?'':'<sub>*</sub> 请补充信息完成认证'}}
+                      {{$enterprise && $enterprise->is_verify==1?'':'* 请补充信息完成认证'}}
                     </span>
                 </div>
                 <?= Form::open(['url' => action('UserController@store_company_auth'), 'method' => 'POST', 'files' => true, 'id' => 'upload' ]) ?>
