@@ -2,7 +2,11 @@
     <div class="ft-top">
         <a href="http://weibo.com/u/5654552416" target='__blank'><span class="footer-top-item wb"></span></a>
         <a href="http://t.qq.com/momei88men" target='__blank'> <span class="footer-top-item qq"></span></a>
-        <a href="http://weibo.com/u/5654552416" target='__blank'><span class="footer-top-item wx"></span></a>
+        <a href="http://weibo.com/u/5654552416" target='__blank'><span class="footer-top-item wx">
+            <div class="footer-top-item-bd">
+                <img src="/images/wcode.jpg">
+            </div>
+        </span></a>
     </div>
     <div id="ft">
         <div class="footer">

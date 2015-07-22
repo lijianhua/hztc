@@ -950,17 +950,23 @@ header{
     background-color: #ffffff;
 }
 
+.footer-top-item.wx:hover .footer-top-item-bd{
+    display: block;
+}
+.footer-top-item-bd{
+    display: none;
+    background: url("../images/wcode-border.png") no-repeat 0 0;
+    width: 82px;
+    height: 91px;
+    position: absolute;
+    bottom: 30px;
+    left:-25px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.footer-top-item-bd img{
+    display: block;
+    height: 78px;
+    width: 78px;
+    margin-top: 2px;
+    margin-left: 2px;
+}
