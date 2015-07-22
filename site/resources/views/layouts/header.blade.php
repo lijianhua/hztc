@@ -1,7 +1,7 @@
 <header>
   <div class="layout">
       <div class="header-top clearfix">
-          <div class="logo fl"><a href="#"><img src="/images/logo.png"></a> </div>
+          <div class="logo fl"><a href="/"><img src="/images/logo.png"></a> </div>
           <ul class="header-top-info fr">
               <li class="header-top-have fl"><a href="#"><span>我要发广告</span></a> </li>
               <li class="header-top-have fl"><a href="#"><span>我有广告位</span></a> </li>

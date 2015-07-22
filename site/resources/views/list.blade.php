@@ -62,7 +62,7 @@
                   <a href="/ads/{{$adspaces[$i]->id}}" class="link">
                     <div class="list-info-item {{$i/2 == 0 ? 'mr9':''}}">
                         <div class="list-info-item-img">
-                            <img src="{{$adspaces[$i]->avatar->url}}">
+                            <img src="{{$adspaces[$i]->avatar->url()}}">
                         </div>
                         <div class="list-info-item-block">
                             <div class="list-info-item-name">{{$adspaces[$i]->title}}</div>
