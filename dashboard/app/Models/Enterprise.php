@@ -41,4 +41,9 @@ class Enterprise extends Model implements StaplerableInterface {
   {
     return $this->hasMany('App\Models\ReviewMaterial');
   }
+
+  public function scopePending($query)
+  {
+    return $query->whereIsVerify(false);
+  }
 }

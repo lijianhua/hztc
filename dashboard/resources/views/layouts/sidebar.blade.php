@@ -104,6 +104,12 @@
           <span>用户审核</span>
         </a>
       </li>
+      <li>
+        <a href="{{ url('enterprises/pending-verify') }}">
+          <i class="fa fa-bank"></i>
+          <span>企业审核</span>
+        </a>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->

@@ -48,14 +48,14 @@ $factory->define(App\Models\Enterprise::class, function ($faker) {
   return [
     'name'       => $faker->company,
     'trade'      => $faker->catchPhrase,
-    'is_verify'  => true,
-    'is_audited' => true
+    'is_verify'  => false,
+    'is_audited' => false
   ];
 });
 
 $factory->defineAs(App\Models\Enterprise::class, 'root', function ($faker) use ($factory) {
   $enterprise = $factory->raw('App\Models\Enterprise');
-  return array_merge($enterprise, ['name' => '安家传媒', 'trade' => '广告传媒']);
+  return array_merge($enterprise, ['name' => '安家传媒', 'trade' => '广告传媒', 'is_verify' => true, 'is_audited' => true]);
 });
 
 $factory->define(App\Models\User::class, function ($faker) {

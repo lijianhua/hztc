@@ -110,6 +110,10 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::get('users/pending-verify', 'UserController@pending');
   Route::get('users/server-pending-verify', 'UserController@pendingServer');
   Route::put('users/{id}/aggree', 'UserController@aggree');
+
+  Route::get('enterprises/pending-verify', 'EnterpriseController@pending');
+  Route::get('enterprises/server-pending-verify', 'EnterpriseController@pendingServer');
+  Route::put('enterprises/{id}/aggree', 'EnterpriseController@aggree');
 });
 
 // 用户登录
