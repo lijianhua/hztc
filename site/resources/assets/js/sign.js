@@ -42,11 +42,14 @@ $(document).ready(function () {
 
         var usertext = /^[\u4e00-\u9fa5a-zA-Z1-9_]+$/gi;
 
-        if (username.length >= 6 && usertext.test(username)) {
-            $('#username').parents('td').find('.sign-warning').css('display','none');
+        if (username.length < 6) {
+            $('#username').parents('td').find('.sign-warning').text('用户名不能小于6位').css('display','inline-block');
+            return false;
+        }else if(!usertext.test(username)){
+            $('#username').parents('td').find('.sign-warning').text('用户名不能有特殊字符').css('display','inline-block');
+            return false;
         } else {
-            $('#username').parents('td').find('.sign-warning').css('display','inline-block');
-            return false
+            $('#username').parents('td').find('.sign-warning').css('display','none');
         }
 
         if (username.length != 0 && reg.test(email)){
@@ -86,5 +89,11 @@ $(document).ready(function () {
     })
     $("#agree").click(function(){
         $(".clause-bg").hide();
-    })
+    });
+    $(window).keydown(function (event) {
+        if(event.keyCode == 13)
+        {
+            $('.sign-submit').click()
+        }
+    });
 })

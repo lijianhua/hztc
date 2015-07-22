@@ -12,7 +12,7 @@
                 <div class="filter-nav">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/Search') }}" id='login-form'>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <ul>
+                    <ul>
                             <li class="filter-nav-item">
                                 <span class="filter-nav-title">投放市场</span><br/>
                                 <div class="btn-group">
@@ -34,7 +34,7 @@
                                 <div class="btn-group">
                                     <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         <b id='type'>全部</b> <span class="filter-nav-caret caret"></span>
-                                        <input name='type' type='hidden' value='全部'/>
+                                        <input name='type' type='hidden' value='全部'>
                                     </button>
                                     <ul class="filter-nav-menu dropdown-menu" role="menu">
                                         <li><a href="#">全部</a> </li>

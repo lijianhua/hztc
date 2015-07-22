@@ -32,7 +32,13 @@ $(document).ready(function(){
 $(".nav-search").click(function () {
         $(this).css({'overflow':'inherit'});
         $(".nav-search").animate({"width":255},500, function () {
-            $(this).find('button').prop('type','submit')
+            $(this).find('.nav-search-bt button').prop('type','submit');
+            $(window).keydown(function (event) {
+            if(event.keyCode == 13)
+            {
+                $(this).find('.nav-search-bt button').click()
+            }
+    });
         });
     })
 
@@ -41,7 +47,7 @@ $(".nav-search").click(function () {
         var target = $(e.target);
         if(target.closest(".nav-search").length == 0){
             $(".nav-search").animate({"width":50},500, function () {
-                $(this).find('button').prop('type','button')
+                $(this).find('.nav-search-bt button').prop('type','button')
                 $(this).css({'overflow':'hidden'});
             });
         }else{
@@ -51,30 +57,12 @@ $(".nav-search").click(function () {
         }
     });
 
-    // $(".nav-search").click(function () {
-    //     $(".nav-search").animate({"width":255},500, function () {
-    //         $(this).css({'overflow':'inherit'});
-    //     });
-    // })
-
-    // //search 搜索框隐藏显示
-    // $(document).bind("click",function(e){
-    //     var target = $(e.target);
-    //     if(target.closest(".nav-search").length == 0){
-    //         $(".nav-search").animate({"width":50},500, function () {
-    //             $(this).css({'overflow':'hidden'});
-    //         });
-    //     }else{
-    //         $(".nav-search").animate({"width":255},500, function () {
-    //             //$(this).css({'overflow':'inherit'});
-    //         });
-    //     }
-    // });
-
     //返回顶部
     $(".float-top").click(function () {
         $("body,html").animate({"scrollTop":0},500);
     });
+
+
 })
 
 //bootstrap 轮播图

@@ -65,4 +65,10 @@ $(document).ready(function () {
     }
       
   })
+  $(window).keydown(function (event) {
+        if(event.keyCode == 13)
+        {
+            $('.login-submit button').click()
+        }
+    });
 });
