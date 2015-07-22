@@ -63,10 +63,9 @@ class EnterpriseReponsitory
   public function imageUrl($material, $tag = '')
   {
     $avatar = $material->avatar;
-    $path   = $avatar->path($tag);
+    $path   = $avatar->url($tag);
     $host   = env('SITE_IMAGE_HOST');
 
     return $host . $path;
   }
 }
-
