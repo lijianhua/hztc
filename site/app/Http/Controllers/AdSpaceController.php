@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 use DB;
+use Input;
 use Illuminate\Support\Facades\Session;
 use App\Models\Navigator;
 use App\Models\AdSpace;
@@ -162,7 +163,7 @@ class AdSpaceController extends Controller {
     }
     if($type_nu=='')
     {
-      $query = (new SearchController())->get_query(['type' => [1,2,3]], []);
+      $query = (new SearchController())->get_query(['type' => [0,1,2,3]], []);
     }
     else
     {
