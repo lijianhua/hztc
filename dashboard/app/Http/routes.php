@@ -84,6 +84,7 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::get('addresses', 'AddressController@index');
 
   // 订单管理
+  Route::get('orders', 'OrderController@index');
   Route::get('orders/server-proccessing', 'OrderController@server');
   Route::get('orders/pending-proccess', 'OrderController@pending');
   Route::get('orders/server-pending', 'OrderController@pendingServer');
@@ -91,8 +92,13 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::put('orders/confirm/{id}', 'OrderController@confirm');
   Route::get('orders/newest', 'OrderController@newest');
   Route::get('orders/server-newest', 'OrderController@newestServer');
-  Route::get('orders', 'OrderController@index');
   Route::get('orders/{id}', 'OrderController@show');
+
+  // 客户退单
+  Route::get('refunds', 'RefundController@index');
+  Route::get('refunds/server-proccessing', 'RefundController@server');
+  Route::get('refunds/pending-prccess', 'RefundController@pending');
+  Route::get('refunds/server-pending', 'RefundController@pendingServer');
 });
 
 // 用户登录

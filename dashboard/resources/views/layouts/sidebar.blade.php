@@ -68,6 +68,27 @@
           </li>
         </ul>
       </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-table"></i>
+          <span>客户退单</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <a href="{{ url('refunds/pending-proccess') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>待处理退单</span>
+              <small class="label pull-right bg-red">{{ $__counts['pendingProcessRefunds'] }}</small>
+            </a>
+          <li>
+            <a href="{{ url('refunds') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>所有退单</span>
+            </a>
+          </li>
+        </ul>
+      </li>
       <li class="header">站点与资源</li>
       <li><a href="{{{ url('navigators') }}}"><i class="fa fa-navicon"></i> <span>全局导航</span></a></li>
       <li><a href="{{{ url('slides') }}}"><i class="fa fa-file-image-o"></i> <span>轮播图</span></a></li>
