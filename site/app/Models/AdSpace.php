@@ -113,11 +113,22 @@ class AdSpace extends Model implements StaplerableInterface {
   {
     return $this->hasMany('App\Models\CustomerReview');
   }
-  public static function get_ideas_adspaces($type_nu, $sort, $query, $page, $per_page='6')
+  public static function get_ideas_adspaces($type_nu, $sort, $query, $page, $per_page='6',$q = '')
   {
     $sort_array = ['price'=> 'ad_prices.price', 'quantity' => 'order_items.quantity', 'created_at' => 'ad_spaces.created_at', 'id' => 'ad_spaces.id'];
     $adspaces = '';
-    $query = ['query' => ['filtered' => ['filter' => ['bool'=> ['must' => $query]]]]];
+    if(trim($q) != '')
+    {
+      //$query = ['query' => ['wildcard' => ['title' => '*'.$q.'*' ],'wildcard' => ['description' => '*'.$q.'*' ]]];
+      $query = ['query' => ['filtered' => ['query'=>['wildcard' => ['title' => '*'.$q.'*' ],'wildcard' => ['description' => '*'.$q.'*' ]],'filter' => ['bool'=> ['must' => $query]]]]];
+      //$query = ['query' => ['filtered' => ['query'=>['wildcard' => ['description' => '*'.$q.'*' ]],'query'=>['wildcard' => ['title' => '*'.$q.'*' ]],'filter' => ['bool'=> ['must' => $query]]]]];
+    }
+    else
+    {
+      $query = ['query' => ['filtered' => ['filter' => ['bool'=> ['must' => $query]]]]];
+    }
+    // print_r($query);
+    // exit;
     $response = AdSpace::searchByQuery($query, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
     $results = $response->getResults();
     $total = ceil(($response->getTotal())/$per_page);

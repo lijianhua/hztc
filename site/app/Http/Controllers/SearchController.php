@@ -52,6 +52,10 @@ class SearchController extends Controller {
       {
         $list['end_price']= $value;
       }
+      if($index=='q') 
+      {
+        $list['q']= $value;
+      }
     }
     $str = $this->get_url_str($list,$str='');
     return Redirect::to('/list/all-ads/id?'.$str);

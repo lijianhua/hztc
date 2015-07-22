@@ -20,7 +20,7 @@ class AdSpaceController extends Controller {
    *
    * @return void
    */
-   private $list_array = array('all-ads'=>['name'=>'全部广告位', 'type'=> ''], 'free-ads'=>['name'=>'免费广告位', 'type'=> 1],'special-ads'=>['name'=>'特价广告位','type'=> 2], 'creative-ads'=>['name'=>'创意广告位', 'type'=> 3]);
+   private $list_array = array('all-ads'=>['name'=>'全部广告位', 'type'=> ''], 'free-ads'=>['name'=>'免费广告位', 'type'=> 1],'special-ads'=>['name'=>'特价广告位','type'=> 2], 'creative-ads'=>['name'=>'创意类广告', 'type'=> 3]);
   public function __construct()
   {
     // $this->middleware('auth');
@@ -171,7 +171,12 @@ class AdSpaceController extends Controller {
     $query_price = (new SearchController())->get_price_array($query_array, $query);
     $query = (new SearchController())->get_query($query_array,$query_price);
     $str = (new SearchController())->get_url_str($query_array);
-    $para = AdSpace::get_ideas_adspaces($type_nu, $sort, $query, $page);
+    $q = '';
+    if(array_key_exists('q', $query_array))
+    {
+      $q = $query_array['q']; 
+    }
+    $para = AdSpace::get_ideas_adspaces($type_nu, $sort, $query, $page, $per_page='6',$q);
     $adspaces = $para['adspaces'];
     $ideas = $para['ideas'];
     $current_page = $para['current_page'];

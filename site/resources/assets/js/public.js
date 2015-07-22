@@ -12,6 +12,7 @@ $(document).ready(function(){
         flash = false;
         var text = $(this).text();
         $(this).parents(".button-classify").find(".nav-classify b").text(text)
+        $(this).parents(".button-classify").find(".nav-classify input").val(text)
     })
 
     // 轮播图

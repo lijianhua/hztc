@@ -99,7 +99,7 @@
         <div class="plate">
             <ul id="da-thumbs" class="plate-block da-thumbs">
                 <li class="mr15">
-                    <a href="#">
+                    <a href="/list/free-ads">
                         <img src="images/index/bg.png" />
                         <dl class="plate-text-show">
                             <dd class="plate-item-china">免费广告</dd>
@@ -114,7 +114,7 @@
                     </a>
                 </li>
                 <li class="mr15">
-                    <a href="#">
+                    <a href="/list/creative-ads">
                         <img src="images/index/bg.png" />
                         <dl class="plate-text-show">
                             <dd class="plate-item-china">创意广告</dd>
@@ -129,7 +129,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/list/special-ads">
                         <img src="images/index/bg.png" />
                         <dl class="plate-text-show">
                             <dd class="plate-item-china">特价广告</dd>
