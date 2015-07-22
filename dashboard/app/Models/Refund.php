@@ -21,8 +21,23 @@ class Refund extends Model
     return $query->whereConfirmed(0);
   }
 
+  public function scopeUnderway($query)
+  {
+    return $query->whereState(1);
+  }
+
   public function scopeRecent($query)
   {
     return $query->orderBy('apply_at', 'desc');
+  }
+
+  public function isPending()
+  {
+    return $this->confirmed == 0;
+  }
+
+  public function isUnderway()
+  {
+    return $this->state == 1;
   }
 }

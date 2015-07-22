@@ -97,8 +97,13 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   // 客户退单
   Route::get('refunds', 'RefundController@index');
   Route::get('refunds/server-proccessing', 'RefundController@server');
-  Route::get('refunds/pending-prccess', 'RefundController@pending');
+  Route::get('refunds/pending-proccess', 'RefundController@pending');
   Route::get('refunds/server-pending', 'RefundController@pendingServer');
+  Route::get('refunds/underway', 'RefundController@underway');
+  Route::get('refunds/server-underway', 'RefundController@underwayServer');
+  Route::put('refunds/{id}/aggree', 'RefundController@aggree');
+  Route::put('refunds/{id}/refuse', 'RefundController@refuse');
+  Route::put('refunds/{id}/finish', 'RefundController@finish');
 });
 
 // 用户登录

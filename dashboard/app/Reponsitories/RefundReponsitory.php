@@ -46,10 +46,10 @@ class RefundReponsitory
         return '<span class="label bg-navy">申请中</span>';
         break;
       case 1:
-        return '<span class="label bg-navy">退款中</span>';
+        return '<span class="label label-warning">退款中</span>';
         break;
       case 2:
-        return '<span class="label bg-navy">退款完成</span>';
+        return '<span class="label label-success">退款完成</span>';
         break;
     }
   }

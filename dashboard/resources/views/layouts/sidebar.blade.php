@@ -81,6 +81,11 @@
               <span>待处理退单</span>
               <small class="label pull-right bg-red">{{ $__counts['pendingProcessRefunds'] }}</small>
             </a>
+            <a href="{{ url('refunds/underway') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>退款中退单</span>
+              <small class="label pull-right label-warning">{{ $__counts['underwayRefunds'] }}</small>
+            </a>
           <li>
             <a href="{{ url('refunds') }}">
               <i class="fa fa-circle-o"></i>
