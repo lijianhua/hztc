@@ -7,7 +7,7 @@ class ReviewMaterial extends Model implements StaplerableInterface {
 
   use EloquentTrait;
   //
-  protected $fillable = ['enterprise_id', 'name', 'note', 'avatar'];
+  protected $fillable = ['enterprise_id', 'name', 'note', 'avatar', 'is_text', 'is_image'];
 
   public function __construct(array $attributes = array()) 
   {

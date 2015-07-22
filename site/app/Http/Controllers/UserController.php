@@ -338,9 +338,9 @@ class UserController extends Controller {
       {
         $enterprise = Enterprise::create(['name' => $attributes['enterprise']]); 
         User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise->id]);
-        ReviewMaterial::create(['enterprise_id' => $enterprise->id, 'name' => 'idcard', 'note' => $attributes['idcard']]);
-        ReviewMaterial::create(['enterprise_id' => $enterprise->id, 'name' => 'truthname', 'note' => $attributes['truthname']]);
-        ReviewMaterial::create(['enterprise_id' => $enterprise->id, 'name' => 'telphone', 'note' => $attributes['telphone']]);
+        ReviewMaterial::create(['enterprise_id' => $enterprise->id, 'name' => 'idcard', 'note' => $attributes['idcard'], 'is_text'=>0, 'is_image'=>0]);
+        ReviewMaterial::create(['enterprise_id' => $enterprise->id, 'name' => 'truthname', 'note' => $attributes['truthname'], 'is_text'=>0, 'is_image'=>0]);
+        ReviewMaterial::create(['enterprise_id' => $enterprise->id, 'name' => 'telphone', 'note' => $attributes['telphone'], 'is_text'=>0, 'is_image'=>0]);
       });   
     }
     return Redirect::to('users/info');
