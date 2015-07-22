@@ -103,7 +103,7 @@ class="fa fa-jpy"></i><span></span> </span></span>
                 <div class="introduction-list-title"><span class="active">广告详情</span><span>客户评论</span></div>
                 <div class="introduction-advert">
                     <div class="introduction-list">
-                      {{ $adspace->detail }}
+                      {{ strip_tags($adspace->detail) }}
                     </div>
                 </div>
                 <div class="introduction-consumer display">
