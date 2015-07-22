@@ -33,7 +33,7 @@ class RefundReponsitory
 
     return HTML::decode(
       '<p>'
-      . HTML::link('refunds/' . $refund->id, '<strong>'.$refund->order_seq.'</strong>', ['class' => 'text-primary'])
+      . HTML::link('refunds/' . $refund->id, '<strong>'.$refund->order_seq.'</strong>', ['class' => 'text-primary', 'data-toggle' => 'tooltip', 'title' => '查看详情', 'data-placement' => 'right'])
       . '</p>'
       . $orderService->adsDetailOfOrder($refund->order)
     );

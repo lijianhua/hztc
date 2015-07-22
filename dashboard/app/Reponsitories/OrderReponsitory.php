@@ -28,7 +28,7 @@ class OrderReponsitory
   {
     return HTML::decode(
       '<p>'
-      . HTML::link('orders/' . $order->id, '<strong>'.$order->order_seq.'</strong>', ['class' => 'text-primary'])
+      . HTML::link('orders/' . $order->id, '<strong>'.$order->order_seq.'</strong>', ['class' => 'text-primary', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => '查看详情'])
       . '</p>'
       . $this->adsDetailOfOrder($order)
     );
