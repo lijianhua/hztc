@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'url' => env('IMAGE_HOST') . '/system/:class/:attachment/:id_partition/:style/:filename',
+    'url' => '/system/:class/:attachment/:id_partition/:style/:filename',
 
     /*
     |--------------------------------------------------------------------------

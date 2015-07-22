@@ -20,7 +20,7 @@
             <div class="details-picture fl">
                 <div class="details-picture-img">
                     @foreach ($adspace->images as $index=>$image)
-                      <span class="{{ $index==0?'':'display'}}"><img src="{{ $image->avatar->url() }}"></span>
+                      <span class="{{ $index==0?'':'display'}}"><img src="{{ env('IMAGE_HOST').$image->avatar->url() }}"></span>
                     @endforeach
                 </div>
                 <div class="details-picture-tab clearfix">
@@ -29,7 +29,7 @@
                         <div class="details-picture-tab-line">
                             @foreach ($adspace->images as $index=>$image)
                               <span class="details-picture-tab-item {{$index==0?'active':''}}">
-                                <img src="{{ $image->avatar->url('thumb') }}">
+                                <img src="{{ env('IMAGE_HOST').$image->avatar->url('thumb') }}">
                               </span>
                             @endforeach
                         </div>
