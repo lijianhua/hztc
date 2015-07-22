@@ -36,4 +36,9 @@ class Enterprise extends Model implements StaplerableInterface {
   {
     return $this->hasMany('App\Models\User');
   }
+
+  public function reviewMaterials()
+  {
+    return $this->hasMany('App\Models\ReviewMaterial');
+  }
 }

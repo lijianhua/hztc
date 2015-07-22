@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Reponsitories\RefundReponsitory;
@@ -54,6 +55,13 @@ class RefundController extends Controller
     $refunds = Refund::with('order', 'order.orderItems', 'order.orderItems.adSpace')->recent()->underway();
 
     return $this->service->datatables($refunds);
+  }
+
+  public function show($id)
+  {
+    $refund = Refund::with('order', 'order.orderItems', 'order.orderItems.adSpace', 'user', 'user.enterprise')->findOrFail($id);
+
+    return view('refunds.show', compact('refund'));
   }
 
   public function aggree(Request $request, $id)
@@ -110,7 +118,8 @@ class RefundController extends Controller
     $refund = Refund::findOrFail($id);
 
     if ($refund->isUnderway()) {
-      $refund->state = 2;
+      $refund->state     = 2;
+      $refund->refund_at = new Carbon();
       $refund->save();
 
       if ($request->ajax()) {

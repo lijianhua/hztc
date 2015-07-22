@@ -104,6 +104,7 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::put('refunds/{id}/aggree', 'RefundController@aggree');
   Route::put('refunds/{id}/refuse', 'RefundController@refuse');
   Route::put('refunds/{id}/finish', 'RefundController@finish');
+  Route::get('refunds/{id}', 'RefundController@show');
 });
 
 // 用户登录
