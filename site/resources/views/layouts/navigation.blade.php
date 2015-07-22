@@ -12,7 +12,7 @@
                           <a href="{{ url($nav->url) }}">{{{$nav->name}}}</a></span>
                         </li>
                     @endforeach
-                </ul>
+             i   </ul>
             </div>
             <div class="nav-search fr">
               <form class="form-horizontal" role="form" method="POST" action="{{ url('/Search') }}" id='login-form'>
@@ -42,7 +42,7 @@
                         <input type="text" class="search-input" placeholder="搜索广告位" name='q'>
                     </div>
                     <div class="nav-search-bt fl">
-                        <button type='submit' class='fa fa-search' style='background-color:black;margin:0px;padding:0px;border:0px;font-size:20px;color:#999999'></button>
+                        <button type='button'><b class='fa fa-search'></b></button>
                     </div>
                 </div>
             </form>

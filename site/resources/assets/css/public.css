@@ -694,19 +694,23 @@ header{
     width: 205px;
     height: 34px;
 }
-.nav-search-bt{
+.nav-search-bt button{
+    font-size: 20px;
+    cursor: pointer;
+    color: #888888;
+    margin-left: 16px;
+}
+.nav-search-bt button{
     background-color: #000000;
     border-radius: 25px;
     -webkit-border-radius:25px;
     position: absolute;
     right: 0;
-    display: inline-block;
     text-align: center;
-    padding-top:6px;
     height: 34px;
-    /*margin-left: 15px;*/
     cursor: pointer;
     width: 50px;
+    border: 0;
 }
 .nav-classify{
     border-radius: 25px;
