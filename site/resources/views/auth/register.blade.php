@@ -23,25 +23,24 @@
                       <span class="sign-prompt">请使用常用帐号，用于登录，6位以上，不能含有特殊字符。</span>
                   </td>
               </tr>
-              <tr>
-                  <td class="sign-block-left"><strong>手机号：</strong></td>
-                  <td>
-                      <input type="text" class="sign-enter" name="tel" value="{{old('name') }}" id='tel'>
-                  </td>
-              </tr>
-              <tr>
-                  <td class="sign-block-left"><strong></strong></td>
-                  <td>
-                      <input type="button" name="tel_code_button"
-value="获取短信验证码" id='tel_code_botton'>
-                  </td>
-              </tr>
-              <tr>
-                  <td class="sign-block-left"><strong>短信验证码：</strong></td>
-                  <td>
-                      <input type="text" class="sign-enter" name="tel" value="{{old('name') }}" id='tel'>
-                  </td>
-              </tr>
+              <!-- <tr> -->
+              <!--     <td class="sign&#45;block&#45;left"><strong>手机号：</strong></td> -->
+              <!--     <td> -->
+              <!--         <input type="text" class="sign&#45;enter" name="tel" value="{{old('name') }}" id='tel'> -->
+              <!--     </td> -->
+              <!-- </tr> -->
+              <!-- <tr> -->
+              <!--     <td class="sign&#45;block&#45;left"><strong></strong></td> -->
+              <!--     <td> -->
+              <!--         <input type="button" name="tel_code_button" value="获取短信验证码" id='tel_code_botton'> -->
+              <!--     </td> -->
+              <!-- </tr> -->
+              <!-- <tr> -->
+              <!--     <td class="sign&#45;block&#45;left"><strong>短信验证码：</strong></td> -->
+              <!--     <td> -->
+              <!--         <input type="text" class="sign&#45;enter" name="tel" value="{{old('name') }}" id='tel'> -->
+              <!--     </td> -->
+              <!-- </tr> -->
               <tr>
                   <td class="sign-block-left"><strong>电子邮箱：</strong></td>
                   <td>
