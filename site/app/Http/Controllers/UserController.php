@@ -369,36 +369,36 @@ class UserController extends Controller {
         {
           if(!$key_a)
           {
-            ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'license', 'note' => 'license','avatar' => $requests['license']]);
+            ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'license', 'note' => 'license','avatar' => $requests['license'],'is_text'=>0, 'is_image'=>0]);
           }
           else
           {
               ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','license')->delete();
-              ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'license', 'note' => 'license','avatar' => $requests['license']]);
+              ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'license', 'note' => 'license','avatar' => $requests['license'],'is_text'=>0, 'is_image'=>0]);
           }
         }
         if(array_key_exists('tax',$requests))
         {
           if(!$key_b)
           {
-            ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'tax', 'note' => 'tax','avatar' => $requests['tax']]);
+            ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'tax', 'note' => 'tax','avatar' => $requests['tax'], 'is_text'=>0, 'is_image'=>0]);
           }
           else
           {
               ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','tax')->delete();
-              ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'tax', 'note' => 'tax','avatar' => $requests['tax']]);
+              ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'tax', 'note' => 'tax','avatar' => $requests['tax'], 'is_text'=>0, 'is_image'=>0]);
           }
         }
         if(array_key_exists('organizing',$requests))
         {
           if(!$key_c)
           {
-            ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'organizing', 'note' => 'organizing','avatar' => $requests['organizing']]);
+            ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'organizing', 'note' => 'organizing','avatar' => $requests['organizing'], 'is_text'=>0, 'is_image'=>0]);
           }
           else
           {
               ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','organizing')->delete();
-              ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'organizing', 'note' => 'organizing','avatar' => $requests['organizing']]);
+              ReviewMaterial::create(['enterprise_id' => $user->enterprise_id, 'name' => 'organizing', 'note' => 'organizing','avatar' => $requests['organizing'], 'is_text'=>0, 'is_image'=>0]);
           }
         }
       });   
