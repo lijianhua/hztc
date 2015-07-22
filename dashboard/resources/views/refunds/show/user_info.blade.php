@@ -14,7 +14,7 @@
         <th style="width: 50%">联系方式</th>
         <td>
         @if ($user->enterprise)
-          {{ $user->enterprise->reviewMaterials()->whereName('telphone')->select('note')->first() }}
+          {{ $user->userInformations()->whereKey('telphone')->select('value')->first() }}
         @endif
         </td>
       </tr>
