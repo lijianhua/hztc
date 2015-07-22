@@ -64,13 +64,13 @@ $factory->define(App\Models\User::class, function ($faker) {
     'email'     => $faker->email,
     'password'  => $faker->password,
     'confirmed' => true,
-    'is_verify' => true
+    'is_verify' => false
   ];
 });
 
 $factory->defineAs(App\Models\User::class, 'admin', function ($faker) use ($factory) {
   $user = $factory->raw('App\Models\User');
-  return array_merge($user, ['admin' => true]);
+  return array_merge($user, ['admin' => true, 'is_verify' => true]);
 });
 
 $factory->defineAs(App\Models\User::class, 'root', function ($faker) use ($factory) {

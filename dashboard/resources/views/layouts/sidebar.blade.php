@@ -99,15 +99,9 @@
       <li><a href="{{{ url('slides') }}}"><i class="fa fa-file-image-o"></i> <span>轮播图</span></a></li>
       <li class="header">用户中心</li>
       <li>
-        <a href="{{ url('admins') }}">
-          <i class="fa fa-user-secret"></i>
-          <span>管理员</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-users"></i>
-          <span>注册用户</span>
+        <a href="{{ url('users/pending-verify') }}">
+          <i class="fa fa-street-view"></i>
+          <span>用户审核</span>
         </a>
       </li>
     </ul>

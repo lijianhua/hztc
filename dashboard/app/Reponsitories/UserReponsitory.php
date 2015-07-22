@@ -2,6 +2,9 @@
 
 namespace App\Reponsitories;
 
+use HTML;
+use Datatables;
+
 use App\Models\User;
 
 /**
@@ -11,12 +14,9 @@ class UserReponsitory
 {
   protected $defaultImage;
 
-  protected $imageRepons;
-
-  public function __construct(ImageReponsitory $imageRepons)
+  public function __construct()
   {
     $this->defaultImage = 'default-profile.jpg';
-    $this->imageRepons  = $imageRepons;
   }
 
   /**
@@ -32,5 +32,35 @@ class UserReponsitory
     } else {
       return $user->avatar->url('thumb');
     }
+  }
+
+  public function datatables($query)
+  {
+    return Datatables::of($query)
+      ->editColumn('is_verify', function ($user) {
+        return " <span class=\"label label-warning\">等待认证</span>";
+      })
+      ->addColumn('truthname', function ($user) {
+        $info = $user->userInformations()->whereKey('truthname')->first();
+        if ($info) {
+          return $info->value;
+        }
+        return '';
+      })
+      ->addColumn('idcard', function ($user) {
+        $info = $user->userInformations()->whereKey('idcard')->first();
+        if ($info) {
+          return $info->value;
+        }
+        return '';
+      })
+      ->addColumn('telphone', function ($user) {
+        $info = $user->userInformations()->whereKey('telphone')->first();
+        if ($info) {
+          return $info->value;
+        }
+        return '';
+      })
+      ->make(true);
   }
 }

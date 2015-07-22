@@ -10,4 +10,9 @@ class UserInformation extends Model
   {
     return $this->belongsTo('App\Models\User');
   }
+
+  public function scopeVerified($query)
+  {
+    return $query->whereIn('key', ['telphone', 'idcard', 'truthname']);
+  }
 }

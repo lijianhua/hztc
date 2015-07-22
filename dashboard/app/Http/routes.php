@@ -105,6 +105,11 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::put('refunds/{id}/refuse', 'RefundController@refuse');
   Route::put('refunds/{id}/finish', 'RefundController@finish');
   Route::get('refunds/{id}', 'RefundController@show');
+
+  // 用户、企业审核
+  Route::get('users/pending-verify', 'UserController@pending');
+  Route::get('users/server-pending-verify', 'UserController@pendingServer');
+  Route::put('users/{id}/aggree', 'UserController@aggree');
 });
 
 // 用户登录

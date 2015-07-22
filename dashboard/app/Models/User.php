@@ -69,4 +69,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
   {
     return $this->hasMany('App\Models\Order');
   }
+
+  public function scopePending($query)
+  {
+    return $query->whereIsVerify(false);
+  }
 }
