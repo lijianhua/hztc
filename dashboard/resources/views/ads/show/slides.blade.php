@@ -7,7 +7,7 @@
   <div class="carousel-inner" role="listbox">
     @foreach($ad->images as $index => $image)
       <div class="item {{ $index == 0 ? "active" : "" }}">
-        <img src="{{ $image->avatar->url() }}" alt="{{ $ad->title }}产品示意图-{{ $index }}">
+        <img src="{{ $image->avatar->url('detail') }}" alt="{{ $ad->title }}产品示意图-{{ $index }}">
       </div>
     @endforeach
   </div>
