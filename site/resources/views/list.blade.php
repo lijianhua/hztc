@@ -59,7 +59,7 @@
             </div>
             <div class="list-info clearfix">
                 @for($i = 0; $i < count($adspaces); $i++)
-                    <div class="list-info-item {{$i/2 == 0 ? 'mr9':''}}">
+                    <div class="list-info-item {{$i%2 == 0 ? 'mr9':''}}">
                         <div class="list-info-item-img">
                             <img src="{{env('IMAGE_HOST').$adspaces[$i]->avatar->url()}}">
                         </div>
