@@ -9,7 +9,7 @@
             </div>
             <div class="login-right fl">
                 <div class="login-title">
-                    <img src="../images/login/logo.jpg">
+                    <img src="../images/login/logo.png">
                 </div>
                       <div class='login-error' style='position:absolute;font-size:12px;margin-top:22px;margin-left:90px;color:red'>
                         @if (count($errors) > 0)
