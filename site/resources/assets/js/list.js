@@ -6,17 +6,21 @@ $(document).ready(function () {
 
     
 
-
-
     $(".filter-operate-block dt").click(function () {
-        $(this).find('span').removeClass('filter-mark');
-        $(this).find('span').addClass('filter-mark-active');
-        $(this).parent().siblings().find('dt span').removeClass('filter-mark-active');
-        $(this).parent().siblings().find('dt span').addClass('filter-mark');
-        $(this).parent().find('dd').show();
-        $(this).parent().siblings().children('dd').hide()
+        var filter_this = $(this).attr('class');
+        if(filter_this == undefined || filter_this == ""){
+                $(this).addClass('active_show');
+                $(this).find('span').removeClass('filter-mark');
+                $(this).find('span').addClass('filter-mark-active');
+                $(this).parent().siblings().find('dt span').removeClass('filter-mark-active');
+                $(this).parent().siblings().find('dt span').addClass('filter-mark');
+                $(this).parent().find('dd').show();
+                $(this).parent().siblings().children('dd').hide();
+            }else{
+                    $(this).removeClass('active_show');
+                    $(this).parent().find('dd').hide();
+        }
     });
-
     //点击添加筛选
 
     $(".filter-operate-block dd").click(function () {
