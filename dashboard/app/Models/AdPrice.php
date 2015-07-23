@@ -11,7 +11,7 @@ class AdPrice extends Model {
 
   public function adSpace()
   {
-    return $this->belongsTo('App\Models\AdSpace');
+    return $this->belongsTo('App\Models\AdSpace')->withTrashed();
   }
 
   public function toArrayWithDateRange()

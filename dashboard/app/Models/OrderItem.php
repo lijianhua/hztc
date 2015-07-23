@@ -16,11 +16,11 @@ class OrderItem extends Model
 
   public function order()
   {
-    return $this->belongsTo('App\Models\Order');
+    return $this->belongsTo('App\Models\Order')->withTrashed();
   }
 
   public function adSpace()
   {
-    return $this->belongsTo('App\Models\AdSpace');
+    return $this->belongsTo('App\Models\AdSpace')->withTrashed();
   }
 }
