@@ -57,6 +57,11 @@
     border: 1px solid #eeeeee;
     padding:12px 0px 36px 0px;
 }
+
+.filter-operate-block dl{
+  max-height: 300px;
+  overflow-y: auto;
+}
 .filter-operate-block dt,
 .filter-operate-block dd{
     padding: 5px 0 5px 68px;
