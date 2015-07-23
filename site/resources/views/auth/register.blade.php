@@ -72,8 +72,7 @@
                   <td class="sign-block-left"></td>
                   <td>
                       <input type="checkbox" class="sign-checkbox">
-                      <span class="sign-checkbox-text">已阅读并同意<a href="#"
-id='clause-view'>《360媒体网用户协议》</a> </span><br/>
+                      <span class="sign-checkbox-text">已阅读并同意<a href="#" id='clause-view'>《魔媒网用户协议》</a> </span><br/>
                   </td>
               </tr>
               <tr>
