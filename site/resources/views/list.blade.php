@@ -41,7 +41,7 @@
                 @foreach($ideas as $idea)
                   <div class="filter-recommend-item">
                       <a href="ads/{{$idea->id}}">
-                          <img src="{{env('IMAGE_HOST').$idea->avatar->url}}">
+                          <img src="{{env('IMAGE_HOST').$idea->avatar->url()}}">
                           <div class="filter-recommend-item-bg">
                             {{$idea->description}}
                           </div>
