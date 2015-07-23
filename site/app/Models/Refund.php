@@ -15,7 +15,7 @@ class Refund extends Model {
 
   public function orders()
   {
-    return $this->hasOne('App\Models\Order', 'id', 'order_id');
+    return $this->hasOne('App\Models\Order', 'id', 'order_id')->withTrashed();
   }
 
 }

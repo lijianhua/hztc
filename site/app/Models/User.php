@@ -62,12 +62,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
   public function adSpaces()
   {
-    return $this->hasMany('App\Models\AdSpace');
+    return $this->hasMany('App\Models\AdSpace')->withTrashed();
   }
 
   public function orders()
   {
-    return $this->hasMany('App\Models\Order');
+    return $this->hasMany('App\Models\Order')->withTrashed();
   }
 }
 
