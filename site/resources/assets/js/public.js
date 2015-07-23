@@ -21,7 +21,7 @@ $(document).ready(function(){
     })
     $('.carousel').carousel({
         "pause": "false",
-        "interval": 2000
+        "interval": 5000
     });
     $('.carousel').on('slide.bs.carousel', function (event) {
         var itemIndex = parseInt($(event.relatedTarget).attr("tag"));
