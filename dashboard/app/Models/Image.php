@@ -17,8 +17,7 @@ class Image extends Model implements StaplerableInterface
       'styles' => [
         'medium' => '300x300',
         'thumb'  => '150x150',
-        'cover'  => '280x160',
-        'detail' => '480x280',
+        'cover'  => '280x160'
       ]
     ]);
 
