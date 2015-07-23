@@ -55,7 +55,7 @@
                 <span class="list-sort-item {{$sort == 'id'? 'active':''}}"><a href="/list/{{$current_category}}/id?{{$str}}">默认排序</a> </span>
                 <span class="list-sort-item {{$sort== 'quantity'?  'active':''}}"><a href="/list/{{$current_category}}/quantity?{{$str}}">销量</a> </span>
                 <span class="list-sort-item {{$sort == 'price'?  'active':''}}"><a href="/list/{{$current_category}}/price?{{$str}}">价格</a> </span>
-                <span class="list-sort-item {{$sort == 'date'? 'active':''}}"><a href="/list/{{$current_category}}/created_at?{{$str}}">时间</a> </span>
+                <span class="list-sort-item {{$sort == 'created_at'? 'active':''}}"><a href="/list/{{$current_category}}/created_at?{{$str}}">时间</a> </span>
             </div>
             <div class="list-info clearfix">
                 @for($i = 0; $i < count($adspaces); $i++)
