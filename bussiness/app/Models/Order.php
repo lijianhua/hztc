@@ -23,7 +23,7 @@ class Order extends Model {
 
   public function scopeRecent($query)
   {
-    return $query->orderBy('created_at', 'desc');
+    return $query->orderBy('orders.created_at', 'desc');
   }
 
   public function scopePendingProccess($query)
@@ -34,6 +34,14 @@ class Order extends Model {
   public function scopeNewest($query)
   {
     return $query->whereState(1);
+  }
+
+  public function scopeByUser($query, $user_id)
+  {
+    return $query
+      ->leftJoin('order_items', 'order_items.order_id', '=', 'orders.id')
+      ->leftJoin('ad_spaces', 'order_items.ad_space_id', '=', 'ad_spaces.id')
+      ->where('ad_spaces.user_id', '=', $user_id);
   }
 
   public function isPending()

@@ -50,21 +50,31 @@ class OrderController extends Controller
   public function server()
   {
     $orders = Order::with('user', 'orderItems', 'orderItems.adSpace')
-      ->recent();
+      ->byUser(Auth::user()->id)
+      ->recent()
+      ->select('orders.*');
 
     return $this->service->datatables($orders);
   }
 
   public function pendingServer()
   {
-    $orders = Order::with('user', 'orderItems', 'orderItems.adSpace')->recent()->pendingProccess();
+    $orders = Order::with('user', 'orderItems', 'orderItems.adSpace')
+      ->byUser(Auth::user()->id)
+      ->recent()
+      ->pendingProccess()
+      ->select('orders.*');
 
     return $this->service->datatables($orders);
   }
 
   public function newestServer()
   {
-    $orders = Order::with('user', 'orderItems', 'orderItems.adSpace')->recent()->newest();
+    $orders = Order::with('user', 'orderItems', 'orderItems.adSpace')
+      ->byUser(Auth::user()->id)
+      ->recent()
+      ->newest()
+      ->select('orders.*');
 
     return $this->service->datatables($orders);
   }
