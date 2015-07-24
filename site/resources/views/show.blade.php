@@ -107,7 +107,9 @@ class="fa fa-jpy"></i><span></span> </span></span>
                     </div>
                 </div>
                 <div class="introduction-consumer display">
+                @if ($adspace->customerReviews->count('id') > 0)
                   @include('adcomment')
+                @endif
                 </div>
             </div>
         </div>

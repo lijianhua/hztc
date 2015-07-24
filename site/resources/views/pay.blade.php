@@ -15,97 +15,7 @@
                 <span class="bank-code-item mr19">
                     <label>
                         <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
-                    </label>
-                </span>
-                <span class="bank-code-item mr19">
-                    <label>
-                        <input type="radio" name="radio">
-                        <img src="images/list/bank.png">
+                        <img src="/images/zhifubao.jpg">
                     </label>
                 </span>
             </div>
@@ -113,6 +23,9 @@
         <div class="pay-submit">
             <form method='post' action='/gopay'>
               <input type="hidden" name="_token" value="{{csrf_token()}}">
+              <input type='hidden' name='pay_id' value='{{$order->id}}'>
+              <input type='hidden' name='pay_seq' value='{{$order->order_seq}}'>
+              <input type='hidden' name='pay_amount' value='{{$order->amount}}'>
               <span class="pay-submit-total">总计：<span>{{$order->amount}}</span></span>
               <span class="pay-submit-button"><button type="submit">提交订单</button></span>
             </form>

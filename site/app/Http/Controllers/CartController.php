@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Session;
 use App\Models\Navigator;
 use App\Models\ShoppingCart;
+use App\Models\UserScoreAccount;
+use App\Models\UserScoreDetail;
 use App\Models\Order;
 use Config;
 use App\Models\OrderItem;
@@ -95,6 +97,7 @@ class CartController extends Controller {
     {
       $order = $this->addOrder($shop);
       $orderItem = $this->addOrderItem($shop, $order);
+      $shop->delete();
       return $order;
     });
     return view('pay')->with(compact('navigators', 'order'));
@@ -178,13 +181,13 @@ class CartController extends Controller {
    *
    *
    */
-  public function goPay(Request $request)
-  {
+  public function goPay(Request $request) {
      $alipay = app('alipay.web');
-     $alipay->setOutTradeNo('D12311321');
-     $alipay->setTotalFee('123');
-     $alipay->setSubject('测试订单');
+     $alipay->setOutTradeNo($request->get('pay_seq'));
+     $alipay->setTotalFee(money_format('%.2n', $request->get('pay_amount')));
+     $alipay->setSubject('魔媒订单');
      $alipay->setBody('goods_description');
+
 
     // 跳转到支付页面。
      return redirect()->to($alipay->getPayLink());
@@ -203,11 +206,24 @@ class CartController extends Controller {
           ]);
           return 'fail';
       }
+      $out_trade_no = Input::get('out_trade_no');
 
       // 判断通知类型。
       switch (Input::get('trade_status')) {
           case 'TRADE_SUCCESS':
           case 'TRADE_FINISHED':
+            DB::transaction(function() use ($out_trade_no){
+              $order = Order::where('order_seq', '=', Input::get('out_trade_no'))->first();
+              $order->state = 1;
+              $user = UserScoreAccount::where('user_id', '=', Auth::user()->id)->firstOrFail();
+              $user->total_score += $order->count_price;
+              $user->save();
+              $userScore = new UserScoreDetail;
+              $userScore->user_score_account_id = $user->id;
+              $userScore->score = $order->count_price;
+              $userScore->reason = '购买广告位';
+              $userScore->save();
+            });
               // TODO: 支付成功，取得订单号进行其它相关操作。
               Log::debug('Alipay notify post data verification success.', [
                   'out_trade_no' => Input::get('out_trade_no'),
@@ -231,11 +247,24 @@ class CartController extends Controller {
           ]);
           return view('alipay.fail');
       }
+      $out_trade_no = Input::get('out_trade_no');
 
       // 判断通知类型。
       switch (Input::get('trade_status')) {
           case 'TRADE_SUCCESS':
           case 'TRADE_FINISHED':
+            DB::transaction(function() use ($out_trade_no){
+              $order = Order::where('order_seq', '=', Input::get('out_trade_no'))->first();
+              $order->state = 1;
+              $user = UserScoreAccount::where('user_id', '=', Auth::user()->id)->firstOrFail();
+              $user->total_score += $order->count_price;
+              $user->save();
+              $userScore = new UserScoreDetail;
+              $userScore->user_score_account_id = $user->id;
+              $userScore->score = $order->count_price;
+              $userScore->reason = '购买广告位';
+              $userScore->save();
+            });
               // TODO: 支付成功，取得订单号进行其它相关操作。
               Log::debug('Alipay notify get data verification success.', [
                   'out_trade_no' => Input::get('out_trade_no'),

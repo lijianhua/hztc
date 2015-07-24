@@ -32,7 +32,7 @@ class="order-color">价格：<span>{{$collect->adSpaces->adPrices->min('price')}
                         </span>
                         <span class="collection-list-people table-border">
                             <div>
-                                <span>{{ $collect->adSpaces->type}}</span>
+                                <span>{{ $type_space[$collect->adSpaces->type]}}</span>
                             </div>
                         </span>
                         <span class="collection-list-operate order-list-operate-info">

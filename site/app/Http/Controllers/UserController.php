@@ -119,7 +119,9 @@ class UserController extends Controller {
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
     $navigators = Navigator::all()->sortBy('sort');
-    $orders     = Order::where('user_id', '=', Auth::user()->id)->paginate(5);
+    $orders     = Order::where('user_id', '=', Auth::user()->id)
+      ->orderBy('created_at', 'desc')
+      ->paginate(5);
     return view('order')->with(compact('navigators', 'orders', 'states'));
   }
 
@@ -248,7 +250,9 @@ class UserController extends Controller {
     $redscore = '';
     if ($scores)
     {
-      $redscore = $scores->ScoreDetails()->paginate(5);
+      $redscore = $scores->ScoreDetails()
+        ->orderBy('created_at', 'desc')
+        ->paginate(5);
     }
     return view('score')->with(compact('navigators', 'scores', 'redscore'));
   }
@@ -265,9 +269,12 @@ class UserController extends Controller {
     $unav = '我的收藏';
     Session::put('current_navigator', $nav);
     Session::put('user_navigator', $unav);
+    $type_space = array('正常广告位', '特价广告位', '免费广告位', '新奇特广告位');
     $navigators = Navigator::all()->sortBy('sort');
-    $collects = AdSpaceUser::where('user_id', '=', Auth::user()->id)->paginate(5);
-    return view('collect')->with(compact('navigators', 'collects'));
+    $collects = AdSpaceUser::where('user_id', '=', Auth::user()->id)
+      ->orderBy('created_at', 'desc')
+      ->paginate(5);
+    return view('collect')->with(compact('navigators', 'collects', 'type_space'));
   }
 
   /**
