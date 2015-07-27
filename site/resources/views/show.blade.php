@@ -7,13 +7,8 @@
             <span class="details-title-text"><span>首页</span>
             <i class="fa fa-angle-right"></i><span>{{ $adspace->title}}</span></span>
             <span class="details-title-bt">
-                <dl>
-                    <dt>其他资源</dt>
-                    <dd>
-                        <div><a href="/list/all-ads?{{$type}}">同类更多资源</a> </div>
-                        <div><a href="/list/all-ads?puid={{ $adspace->user_id}}">本公司其他资源</a> </div>
-                    </dd>
-                </dl>
+              <span class="details-title-link"><a href="/list/all-ads?{{$type}}">同类更多资源</a> </span>
+              <span class="details-title-link"><a href="/list/all-ads?puid={{ $adspace->user_id}}">本公司其他资源</a> </span>
             </span>
         </div>
         <div class="details-top clearfix">
