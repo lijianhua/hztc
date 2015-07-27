@@ -119,7 +119,9 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::get('promotions/create', 'PromotionController@create');
   Route::post('promotions', 'PromotionController@store');
   Route::get('promotions', 'PromotionController@index');
-  Route::get('promotions/server-proccessing', 'PromotionController@server');
+  Route::get('promotions/server-proccessing', 'PromotionController@proccessingServer');
+  Route::get('promotions/server', 'PromotionController@server');
+  Route::get('promotions/proccessing', 'PromotionController@proccessing');
   Route::delete('promotions/{id}', 'PromotionController@destroy');
   Route::put('promotions/{id}', 'PromotionController@update');
 });

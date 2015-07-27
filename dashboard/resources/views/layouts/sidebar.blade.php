@@ -54,12 +54,6 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('promotions/soon') }}">
-              <i class="fa fa-circle-o"></i>
-              <span>未开始的秒杀</span>
-            </a>
-          </li>
-          <li>
             <a href="{{ url('promotions/proccessing') }}">
               <i class="fa fa-circle-o"></i>
               <span>正在进行的秒杀</span>

@@ -45,6 +45,13 @@ class PromotionController extends Controller
     return $this->service->datatables($query);
   }
 
+  public function proccessingServer()
+  {
+    $query = Promotion::with('adSpace', 'adSpace.address')->proccessing();
+
+    return $this->service->datatables($query);
+  }
+
   public function destroy($id)
   {
     Promotion::destroy($id);
@@ -58,5 +65,10 @@ class PromotionController extends Controller
     $promotion->update($request->all());
 
     return $this->okResponse('更新成功, 请重新刷新。');
+  }
+
+  public function proccessing()
+  {
+    return view('promotions.proccessing');
   }
 }

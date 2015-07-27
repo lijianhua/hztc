@@ -2,14 +2,14 @@ $ = jQuery
 
 $ ->
   toggleButtonStateOnSelect = (nButton, oConfig, nRow) ->
-    tableTool = TableTools.fnGetInstance('promotions-table')
+    tableTool = TableTools.fnGetInstance('proccessing-promotions-table')
 
     if tableTool.fnGetSelected().length == 1
       $(nButton).removeClass 'disabled'
     else
       $(nButton).addClass 'disabled'
 
-  $('#promotions-table').dataTable
+  $('#proccessing-promotions-table').dataTable
     dom: "<'row'<'col-sm-6'T><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>"
     language:
       url: '/dataTables_zh_CN.json'
@@ -22,7 +22,7 @@ $ ->
      { data: 'state', searchable: false, orderable: false },
     ]
     order: [[0, 'desc']]
-    ajax: '/promotions/server'
+    ajax: '/promotions/server-proccessing'
     tableTools:
       sRowSelect: 'os'
       aButtons: [
@@ -42,7 +42,7 @@ $ ->
         fnInit: CommonDataTableObject.initButtonToolTip
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
-          promotion = new Promotion 'promotions-table'
+          promotion = new Promotion 'proccessing-promotions-table'
 
           if promotion.isSelectedOne()
             promotion.editSelectedRow([
@@ -86,10 +86,11 @@ $ ->
         fnInit: CommonDataTableObject.initButtonToolTip
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
-          promotion = new Promotion 'promotions-table'
+          promotion = new Promotion 'proccessing-promotions-table'
           new TenderConfirmAlert('danger').alert '危险！这个操作将无法逆转。确认删除吗?', ->
             promotion.deleteSelectedRow() if promotion.isSelectedOne()
           , '危险'
       ]
+
 
 
