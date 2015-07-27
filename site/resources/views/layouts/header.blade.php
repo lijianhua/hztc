@@ -3,8 +3,8 @@
       <div class="header-top clearfix">
           <div class="logo fl"><a href="/"><img src="/images/logo.png"></a> </div>
           <ul class="header-top-info fr">
-              <li class="header-top-have fl"><a href="/list/all-ads"><span>我要发广告</span></a> </li>
-              <li class="header-top-have fl"><a href="http://dash.momeiw.com"><span>我有广告位</span></a> </li>
+              <li class="header-top-have fl"><a href="/list/all-ads" target="__blank"><span>我要发广告</span></a> </li>
+              <li class="header-top-have fl"><a href="http://dash.momeiw.com:8800" target="__blank"><span>我有广告位</span></a> </li>
               <li class="header-top-user fr">
                     @if(Auth::check())
                             <a href="/users/order">
