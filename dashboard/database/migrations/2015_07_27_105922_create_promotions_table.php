@@ -14,6 +14,7 @@ class CreatePromotionsTable extends Migration
   {
     Schema::create('promotions', function (Blueprint $table) {
       $table->increments('id');
+      $table->integer('ad_space_id')->unsigned()->index();
       $table->string('title');
       $table->integer('stock');
       $table->decimal('price', 10, 3);

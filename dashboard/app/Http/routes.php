@@ -118,6 +118,8 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   // 秒杀活动
   Route::get('promotions/create', 'PromotionController@create');
   Route::post('promotions', 'PromotionController@store');
+  Route::get('promotions', 'PromotionController@index');
+  Route::get('promotions/server-proccessing', 'PromotionController@server');
 });
 
 // 用户登录

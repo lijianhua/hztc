@@ -19,7 +19,7 @@ class @Promotion extends CommonDataTableObject
           '九月', '十月', '十一月', '十二月'
         ]
         firstDay         : 1
-      format             : 'YYYY/MM/DD HH:mm'
+      format             : 'YYYY-MM-DD HH:mm:ss'
       timePicker         : true
       singleDatePicker   : true
       timePicker24Hour   : true

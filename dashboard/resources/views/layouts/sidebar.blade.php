@@ -50,7 +50,7 @@
           <li>
             <a href="{{ url('promotions/create') }}">
               <i class="fa fa-circle-o"></i>
-              <span>创建秒杀</span>
+              <span>创建秒杀活动</span>
             </a>
           </li>
           <li>
@@ -69,7 +69,7 @@
           <li>
             <a href="{{ url('promotions') }}">
               <i class="fa fa-circle-o"></i>
-              <span>所有秒杀</span>
+              <span>所有秒杀活动</span>
             </a>
           </li>
         </ul>

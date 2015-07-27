@@ -9,9 +9,7 @@ class Promotion extends Model
 {
   protected $dates    = ['start', 'end'];
 
-  protected $fillable = [ 'title', 'stock', 'price', 'start', 'end' ];
-
-  protected $dateFormat   = 'Y/m/d H:i';
+  protected $fillable = [ 'title', 'stock', 'price', 'start', 'end', 'ad_space_id' ];
 
   public function adSpace()
   {
@@ -35,6 +33,11 @@ class Promotion extends Model
   {
     $now = Carbon::now();
     return $query->where('end', '<', $now);
+  }
+
+  public function scopeRecent($query)
+  {
+    return $query->orderBy('created_at', 'desc');
   }
 
   public function isProccessing()
