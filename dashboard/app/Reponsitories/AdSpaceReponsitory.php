@@ -90,7 +90,7 @@ class AdSpaceReponsitory
             return '特价广告';
             break;
           case 3:
-            return '创意广告';
+            return '新奇特广告';
             break;
         }
       })

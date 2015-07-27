@@ -30,7 +30,7 @@
       {!! Form::radio('type', 2) !!} 免费广告
     </label>
     <label class="radio-inline">
-      {!! Form::radio('type', 3) !!} 创意广告
+      {!! Form::radio('type', 3) !!} 新奇特广告
     </label>
   </p>
 </div>

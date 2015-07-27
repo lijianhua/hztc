@@ -28,7 +28,7 @@
       <input type="radio" name="type" value="2"> 免费广告
     </label>
     <label class="radio-inline">
-      <input type="radio" name="type" value="3"> 创意广告
+      <input type="radio" name="type" value="3"> 新奇特广告
     </label>
   </p>
 </div>
