@@ -103,13 +103,11 @@
                         <img src="images/index/bg.png" />
                         <dl class="plate-text-show">
                             <dd class="plate-item-china">免费广告</dd>
-                            <dd class="plate-item-big">MINIMAL OUTLINE ICONS</dd>
-                            <dd class="plate-item-small">enjoy & share & be happy</dd>
+                            <dd class="plate-item-big">天价广告资源  0元秒杀</dd>
                         </dl>
                         <div class="plate-text">
                             <span class="plate-item-china">免费广告</span></br>
-                            <span class="plate-item-big">MINIMAL OUTLINE ICONS</span></br>
-                            <span class="plate-item-small">enjoy & share & be happy</span></br>
+                            <dd class="plate-item-big">天价广告资源  0元秒杀</dd>
                         </div>
                     </a>
                 </li>
@@ -118,13 +116,11 @@
                         <img src="images/index/bg.png" />
                         <dl class="plate-text-show">
                             <dd class="plate-item-china">创意广告</dd>
-                            <dd class="plate-item-big">MINIMAL OUTLINE ICONS</dd>
-                            <dd class="plate-item-small">enjoy & share & be happy</dd>
+                            <dd class="plate-item-big">创意资源  点子变金子</dd>
                         </dl>
                         <div class="plate-text">
                             <span class="plate-item-china">创意广告</span></br>
-                            <span class="plate-item-big">MINIMAL OUTLINE ICONS</span></br>
-                            <span class="plate-item-small">enjoy & share & be happy</span></br>
+                            <dd class="plate-item-big">创意资源  点子变金子</dd>
                         </div>
                     </a>
                 </li>
@@ -133,13 +129,11 @@
                         <img src="images/index/bg.png" />
                         <dl class="plate-text-show">
                             <dd class="plate-item-china">特价广告</dd>
-                            <dd class="plate-item-big">MINIMAL OUTLINE ICONS</dd>
-                            <dd class="plate-item-small">enjoy & share & be happy</dd>
+                            <dd class="plate-item-big">折到想不到  低到离谱</dd>
                         </dl>
                         <div class="plate-text">
                             <span class="plate-item-china">特价广告</span></br>
-                            <span class="plate-item-big">MINIMAL OUTLINE ICONS</span></br>
-                            <span class="plate-item-small">enjoy & share & be happy</span></br>
+                            <dd class="plate-item-big">折到想不到  低到离谱</dd>
                         </div>
                     </a>
                 </li>
