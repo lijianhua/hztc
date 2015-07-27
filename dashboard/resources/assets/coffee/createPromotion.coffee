@@ -23,6 +23,7 @@ class @Promotion extends CommonDataTableObject
       timePicker         : true
       singleDatePicker   : true
       timePicker24Hour   : true
+      drops              : 'up'
 
 $ = jQuery
 

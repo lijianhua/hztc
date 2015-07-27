@@ -324,12 +324,11 @@ class @CommonDataTableObject
       e.preventDefault()
 
       $(@).ajaxSubmit
-        async    : false
         dataType : 'json'
         context  : context
         success  : (result) ->
           modal.modal 'hide'
-          if result.state == 'OK'
+          if result.state == 'OK' && result.data
             if @method == 'PUT'
               @redrawSelectedRow result.data
             else
@@ -338,6 +337,9 @@ class @CommonDataTableObject
         error    : (jqXHR) ->
           if jqXHR.status == 422
             @formInModalHasErrors jqXHR.responseJSON, modal
+          else
+            modal.modal 'hide'
+            new TenderAlert('danger').alert '出现错误, 请重试。'
 
   formInModalHasErrors: (errors, modal) ->
     form = $(modal).find 'form'

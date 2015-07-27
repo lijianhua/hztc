@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
 {
-  protected $dates = ['start', 'end'];
+  protected $dates    = ['start', 'end'];
 
   protected $fillable = [ 'title', 'stock', 'price', 'start', 'end' ];
+
+  protected $dateFormat   = 'Y/m/d H:i';
 
   public function adSpace()
   {
