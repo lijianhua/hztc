@@ -282,8 +282,9 @@ class @CommonDataTableObject
   errorField: (field, errors, form) ->
     formGroup = form.find("[name=#{field}]").parent '.form-group'
     formGroup.find('div.help-block').remove()
+    label     = formGroup.find('label').text()
     helpBlock = $('<div class="help-block"></div>')
-    helpBlock.append "<p>#{error}</p>" for error in errors
+    helpBlock.append "<p>#{error.replace /^(\w*\s*)*/, label}</p>" for error in errors
     formGroup.addClass('has-error').append helpBlock
 
   ###
