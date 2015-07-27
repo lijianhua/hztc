@@ -13,7 +13,7 @@ class PromotionReponsitory
       ->addColumn('ad', function ($promotion) {
         return $this->promotionDetail($promotion);
       })
-      ->editColumn('price', function ($promotion) {
+      ->addColumn('__price', function ($promotion) {
         return '￥' . money_format('%.2n', $promotion->price);
       })
       ->addColumn('state', function ($promotion) {
@@ -38,7 +38,8 @@ class PromotionReponsitory
     return <<< EOF
       <p class="leading">
         {$promotion->start->format('Y/m/d H:i')} - {$promotion->end->format('Y/m/d H:i')} <br>
-        {$promotion->title}
+        {$promotion->title} <br>
+        库存：{$promotion->stock}
       </p>
       <hr>
       <p class="text-muted">

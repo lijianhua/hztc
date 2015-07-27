@@ -4,6 +4,15 @@ class @Promotion extends CommonDataTableObject
     super fileds
     @initDateTimePicker()
 
+  deleteSelectedRow: ->
+    @actionUrl = "/promotions/#{@selectedRowData().id}"
+    super
+
+  editSelectedRow: (fields) ->
+    @actionUrl = "/promotions/#{@selectedRowData().id}"
+    super fields
+    @initDateTimePicker()
+
   initDateTimePicker: ->
     window.jQuery('input[type=datetime]').daterangepicker
       locale:

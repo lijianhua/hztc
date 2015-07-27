@@ -120,6 +120,8 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::post('promotions', 'PromotionController@store');
   Route::get('promotions', 'PromotionController@index');
   Route::get('promotions/server-proccessing', 'PromotionController@server');
+  Route::delete('promotions/{id}', 'PromotionController@destroy');
+  Route::put('promotions/{id}', 'PromotionController@update');
 });
 
 // 用户登录

@@ -44,4 +44,19 @@ class PromotionController extends Controller
 
     return $this->service->datatables($query);
   }
+
+  public function destroy($id)
+  {
+    Promotion::destroy($id);
+
+    return $this->okResponse('删除成功');
+  }
+
+  public function update(CreatePromotionRequest $request, $id)
+  {
+    $promotion = Promotion::find($id);
+    $promotion->update($request->all());
+
+    return $this->okResponse('更新成功, 请重新刷新。');
+  }
 }
