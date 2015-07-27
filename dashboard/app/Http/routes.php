@@ -30,8 +30,8 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::post('slides', 'SlideController@store');
 
   // 轮播图中的项
-  Route::post('slides/{slide_id}/slide-items', 'SlideItemController@store');
   Route::delete('slides/{slide_id}/slide-items/{id}', 'SlideItemController@destroy');
+  Route::post('slides/{slide_id}/slide-items', 'SlideItemController@store');
   Route::put('slides/{slide_id}/slide-items/{id}', 'SlideItemController@update');
 
   // 广告分类管理
