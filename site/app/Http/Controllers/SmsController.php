@@ -2,8 +2,9 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Helpers\SMSHelper;
 use Illuminate\Http\Request;
+use App\Models\REST;
+use App\Models\SendTemplateSMS;
 
 class SmsController extends Controller {
 
@@ -15,8 +16,10 @@ class SmsController extends Controller {
 	public function index()
 	{
 		//
-    $a = new SMSHelper();
-    $a->sendSMS('13120135753',array('今天天气真好','1'),'1');
+    $a = new SendTemplateSMS();
+    $data = $a->sendTemplateSMS('13120135753',array('fisdfsfdsfsdfsdfdsfnessssssssss, fine ,fine , fine, fine ,thinks,and you','1'),'1');
+    print_r($data);
+    exit;
 	}
 
 	/**

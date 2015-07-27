@@ -126,6 +126,9 @@ class SearchController extends Controller {
             case 'categories_5':
               $query = $this -> get_search_array(array_values($para['categories_5']), 'name', $query);
               break;
+            case 'categories_6':
+              $query = $this -> get_search_array(array_values($para['categories_6']), 'name', $query);
+              break;
             case 'type':
               $query = $this -> get_search_array(array_values($para['type']), 'type', $query);
               break;

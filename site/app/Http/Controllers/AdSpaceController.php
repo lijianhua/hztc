@@ -21,7 +21,7 @@ class AdSpaceController extends Controller {
    *
    * @return void
    */
-   private $list_array = array('all-ads'=>['name'=>'全部广告位', 'type'=> ''], 'free-ads'=>['name'=>'免费广告位', 'type'=> 1],'special-ads'=>['name'=>'特价广告位','type'=> 2], 'creative-ads'=>['name'=>'创意类广告', 'type'=> 3]);
+   private $list_array = array('all-ads'=>['name'=>'全部广告位', 'type'=> ''], 'free-ads'=>['name'=>'免费广告位', 'type'=> 1],'special-ads'=>['name'=>'特价广告位','type'=> 2], 'creative-ads'=>['name'=>'新奇特广告', 'type'=> 3]);
   public function __construct()
   {
     // $this->middleware('auth');
@@ -154,7 +154,15 @@ class AdSpaceController extends Controller {
   {
     Session::put('current_navigator', $nav);
     $navigators = $this->navigators;
-    $adcategories = AdCategory::where('parent_id', '=', NULL)->get(); 
+    $adcategories = '';
+    if($current_category == 'creative-ads')
+    {
+        $adcategories = AdCategory::where('parent_id', '=', NULL)->get(); 
+    }
+    else
+    {
+        $adcategories = AdCategory::where('parent_id', '=', NULL)->where('name', '!=', '新奇特广告')->get(); 
+    }
     $cities = Address::groupBy('city')->lists('city'); 
     $query = '';
     if(array_key_exists('page', $query_array))

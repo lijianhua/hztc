@@ -23,30 +23,28 @@
                       <span class="sign-prompt">请使用常用帐号，用于登录，6位以上，不能含有特殊字符。</span>
                   </td>
               </tr>
-              <!-- <tr> -->
-              <!--     <td class="sign&#45;block&#45;left"><strong>手机号：</strong></td> -->
-              <!--     <td> -->
-              <!--         <input type="text" class="sign&#45;enter" name="tel" value="{{old('name') }}" id='tel'> -->
-              <!--     </td> -->
-              <!-- </tr> -->
-              <!-- <tr> -->
-              <!--     <td class="sign&#45;block&#45;left"><strong></strong></td> -->
-              <!--     <td> -->
-              <!--         <input type="button" name="tel_code_button" value="获取短信验证码" id='tel_code_botton'> -->
-              <!--     </td> -->
-              <!-- </tr> -->
-              <!-- <tr> -->
-              <!--     <td class="sign&#45;block&#45;left"><strong>短信验证码：</strong></td> -->
-              <!--     <td> -->
-              <!--         <input type="text" class="sign&#45;enter" name="tel" value="{{old('name') }}" id='tel'> -->
-              <!--     </td> -->
-              <!-- </tr> -->
               <tr>
                   <td class="sign-block-left"><strong>电子邮箱：</strong></td>
                   <td>
                       <input type="email" id='email' class="sign-enter" name="email" value="{{ old('email') }}">
                       <span class="sign-warning">请填写正确的邮箱</span><br/>
                       <span class="sign-prompt">请使用常用邮箱作为注册帐号，用于登录、找回密码等重要操作。</span>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="sign-block-left"><strong>手机号：</strong></td>
+                  <td>
+                      <input type="text" class="sign-enter" id="phone" name='phone' value="{{old('name') }}" ><button class="tel_bt" type='button'>获取验证码</button>
+                      <span class="sign-warning" style="margin-left: 110px">请填写正确的手机格式</span><br/>
+                      <span class="sign-prompt">请使用常用手机号码注册。</span>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="sign-block-left"><strong>验证码：</strong></td>
+                  <td>
+                      <input type="text" class="sign-enter" id="phone_code" value="{{old('name') }}"  name='phone_code' style="width: 100px">
+                      <span class="sign-warning">手机验证码</span><br/>
+                      <span class="sign-prompt">请输入验证码。</span>
                   </td>
               </tr>
               <tr>
