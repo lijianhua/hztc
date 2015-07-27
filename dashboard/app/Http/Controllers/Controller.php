@@ -21,6 +21,7 @@ abstract class Controller extends BaseController
     $__counts['newestOrders'] = \App\Models\Order::newest()->count();
     $__counts['pendingProcessRefunds'] = \App\Models\Refund::pendingProccess()->count();
     $__counts['underwayRefunds'] = \App\Models\Refund::underway()->count();
+    $__counts['proccessingPromotion'] = \App\Models\Promotion::proccessing()->count();
 
     view()->share('__counts', $__counts);
   }

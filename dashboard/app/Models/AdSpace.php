@@ -76,4 +76,9 @@ class AdSpace extends Model implements StaplerableInterface {
   {
     return $this->hasMany('App\Models\Order')->withTrashed();
   }
+
+  public function promotions()
+  {
+    return $this->hasMany('App\Models\Promotion');
+  }
 }

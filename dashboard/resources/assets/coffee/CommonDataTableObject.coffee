@@ -157,6 +157,8 @@ class @CommonDataTableObject
         @imageField field
       when 'select'
         @selectField field
+      when 'datetime'
+        @formGroupDateTimeField field
 
   selectField: (field) ->
     @formGroupSelectField field
@@ -231,6 +233,14 @@ class @CommonDataTableObject
     </div>
     """
 
+  formGroupDateTimeField: (field) ->
+    """
+    <div class="form-group">
+      <label>#{field.label}</label>
+      #{delete field.label  && @datetimeField field}
+    </div>
+    """
+
   formGroupTextArea: (field) ->
     """
     <div class="form-group">
@@ -249,6 +259,10 @@ class @CommonDataTableObject
 
   fileField: (field) ->
     field.type  = 'file'
+    @inputField field
+
+  datetimeField: (field) ->
+    field.type = 'datetime'
     @inputField field
 
   textarea: (attributes) ->

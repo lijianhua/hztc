@@ -24,6 +24,11 @@ class ModelEventsProvider extends ServiceProvider
       else
         $ad->version = 1;
     });
+
+    // 广告位删除时，删除对应的促销活动
+    AdSpace::deleted(function ($ad) {
+      $ad->promotions()->delete();
+    });
   }
 
   /**

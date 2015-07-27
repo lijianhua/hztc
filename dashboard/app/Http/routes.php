@@ -114,6 +114,9 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::get('enterprises/pending-verify', 'EnterpriseController@pending');
   Route::get('enterprises/server-pending-verify', 'EnterpriseController@pendingServer');
   Route::put('enterprises/{id}/aggree', 'EnterpriseController@aggree');
+
+  // 秒杀活动
+  Route::get('promotions/create', 'PromotionController@create');
 });
 
 // 用户登录

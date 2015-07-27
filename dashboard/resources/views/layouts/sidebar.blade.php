@@ -42,6 +42,40 @@
       </li>
       <li class="treeview">
         <a href="#">
+          <i class="fa fa-bolt"></i>
+          <span>秒杀活动</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <a href="{{ url('promotions/create') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>创建秒杀</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url('promotions/soon') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>未开始的秒杀</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url('promotions/proccessing') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>正在进行的秒杀</span>
+              <small class="label pull-right bg-red">{{ $__counts['proccessingPromotion'] }}</small>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url('promotions') }}">
+              <i class="fa fa-circle-o"></i>
+              <span>所有秒杀</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
           <i class="fa fa-file-text-o"></i>
           <span>客户订单</span>
           <i class="fa fa-angle-left pull-right"></i>
@@ -53,6 +87,7 @@
               <span>最新订单</span>
               <small class="label pull-right bg-green">{{ $__counts['newestOrders'] }}</small>
             </a>
+          </li>
           <li>
             <a href="{{ url('orders/pending-proccess') }}">
               <i class="fa fa-circle-o"></i>
