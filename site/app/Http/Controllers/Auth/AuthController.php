@@ -72,6 +72,7 @@ class AuthController extends Controller {
 		$this->validate($request, [
 			'name' => 'required|max:255|min:6|alpha_dash',
 			'email' => 'required|email|max:255|unique:users',
+      'captcha' => 'required|captcha',
 			'password' => 'required|confirmed|min:6'],
       [ 'email.required'=> '邮箱不能为空', 
         'email.unique'=> '邮箱已经存在', 
@@ -81,6 +82,8 @@ class AuthController extends Controller {
         'name.alpha_dash'=> '用户名含有特殊字符', 
         'password.required' => '密码不能为空', 
         'password.confirmed' => '两次密码不匹配', 
+        'captcha.captcha' => '验证码错误',
+        'captcha.required' => '验证码不能为空'
       ]);
     $name = $request->get('name');
     $email = $request->get('email');

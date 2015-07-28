@@ -40,7 +40,7 @@
                   </td>
               </tr>
               <tr>
-                  <td class="sign-block-left"><strong>验证码：</strong></td>
+                  <td class="sign-block-left"><strong>短信验证码：</strong></td>
                   <td>
                       <input type="text" class="sign-enter" id="phone_code" value="{{old('name') }}"  name='phone_code' style="width: 100px">
                       <span class="sign-warning">手机验证码</span><br/>
@@ -64,6 +64,14 @@
                   <td>
                       <input type="password" class="sign-enter" name="password_confirmation" id='re_password'>
                       <span class="sign-warning">密码不一致</span><br/>
+                  </td>
+              </tr>
+              <tr>
+                  <td class='sign-block-left'><strong>验证码：</strong> <br/></td>
+                  <td>
+                  <input type="text" id="usercode" class="login-code" name='captcha' >
+                  {!! Html::image(captcha_src(), '验证码',['id' => 'captchda']) !!}
+                  <span class="no-look"><a id='captcha_validate'>看不清</a> </span>
                   </td>
               </tr>
               <tr>
