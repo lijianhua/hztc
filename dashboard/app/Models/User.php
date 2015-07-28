@@ -74,4 +74,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
   {
     return $query->whereIsVerify(false);
   }
+
+  public function scopeAdmin($query)
+  {
+    return $query->whereAdmin(true);
+  }
+
+  public function scopeLeftJoinEnterprise($query)
+  {
+    return $query->leftJoin('enterprises', 'enterprises.id', '=', 'users.enterprise_id');
+  }
 }

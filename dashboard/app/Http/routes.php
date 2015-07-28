@@ -55,6 +55,9 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
 
   // 管理员管理
   Route::get('admins', 'AdminController@index');
+  Route::get('admins/server', 'AdminController@server');
+  Route::put('admins/{id}/appointed', 'AdminController@appointed');
+  Route::put('admins/{id}/unappointed', 'AdminController@unappointed');
 
   // 广告管理
   Route::get('ads', 'AdSpaceController@index');

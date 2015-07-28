@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use Auth;
+use Datatables;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -19,67 +23,54 @@ class AdminController extends Controller
     return view('admins.index');
   }
 
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return Response
-   */
-  public function create()
+  public function server()
   {
-    //
+    $query = User::leftJoinEnterprise()
+      ->admin()
+      ->with('enterprise')
+      ->select(DB::raw('users.name as user_name, enterprises.name as enterprise_name, users.id, users.email, users.admin'));
+
+    return Datatables::of($query)
+      ->addColumn('status', function ($user) {
+        if ($user->admin) {
+          $style = 'bg-green';
+          $label = '管理员';
+        } else {
+          $style = 'bg-navy';
+          $label = '注册用户';
+        }
+        return sprintf("<span class=\"label %s\">%s</span>", $style, $label);
+      })
+      ->make(true);
   }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @return Response
-   */
-  public function store()
+  public function appointed($id)
   {
-    //
+    if ($id == 1) {
+      return $this->failResponse('您不能操作系统管理员');
+    }
+
+    if ($id == Auth::user()->id) {
+      return $this->failResponse('您不能操作自身');
+    }
+
+    User::whereId($id)->update(['admin' => true]);
+
+    return $this->okResponse('任命成功');
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function show($id)
+  public function unappointed($id)
   {
-    //
-  }
+    if ($id == 1) {
+      return $this->failResponse('您不能操作系统管理员');
+    }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function edit($id)
-  {
-    //
-  }
+    if ($id == Auth::user()->id) {
+      return $this->failResponse('您不能操作自身');
+    }
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function update($id)
-  {
-    //
-  }
+    User::whereId($id)->update(['admin' => false]);
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function destroy($id)
-  {
-    //
+    return $this->okResponse('撤销任命成功');
   }
 }

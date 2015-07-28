@@ -139,6 +139,12 @@
           <span>企业审核</span>
         </a>
       </li>
+      <li>
+        <a href="{{ url('admins') }}">
+          <i class="fa fa-user-secret"></i>
+          <span>管理员</span>
+        </a>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->
