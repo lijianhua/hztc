@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'url' => '/system/:class/:attachment/:id_partition/:style/:filename',
+    'url' => env('STAPLER_PUBLIC_PATH', '') . '/system/:class/:attachment/:id_partition/:style/:filename',
 
     /*
     |--------------------------------------------------------------------------
