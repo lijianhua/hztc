@@ -9,7 +9,7 @@
     <li><a href="{{{ url('/') }}}"><i class="fa fa-dashboard"></i>首页</a></li>
     <li><a href="{{{ url('ads') }}}"><i class="fa fa-shirtsinbulk"></i>所有广告位</a></li>
     <li><a href="{{{ url('ads/' . $ad->id) }}}"><i class="fa fa-circle-o"></i>{{ $ad->title}}</a></li>
-    <li><a href="{{{ url('ads/' . $ad->id . '/edit') }}}"><i class="fa fa-edit"></i>编辑广告位</a></li>
+    <li><a href="{{{ url('ad-spaces/' . $ad->id . '/edit') }}}"><i class="fa fa-edit"></i>编辑广告位</a></li>
   </ol>
 @stop
 
