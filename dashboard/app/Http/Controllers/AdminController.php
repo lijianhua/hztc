@@ -26,7 +26,6 @@ class AdminController extends Controller
   public function server()
   {
     $query = User::leftJoinEnterprise()
-      ->admin()
       ->with('enterprise')
       ->select(DB::raw('users.name as user_name, enterprises.name as enterprise_name, users.id, users.email, users.admin'));
 
