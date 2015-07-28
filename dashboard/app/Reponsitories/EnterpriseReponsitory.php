@@ -64,8 +64,7 @@ class EnterpriseReponsitory
   {
     $avatar = $material->avatar;
     $path   = $avatar->url($tag);
-    $host   = env('SITE_IMAGE_HOST');
 
-    return $host . $path;
+    return $path;
   }
 }
