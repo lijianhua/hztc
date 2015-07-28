@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'path' => ':app_root/public:url',
+    'path' => ':app_root/public/system/:class/:attachment/:id_partition/:style/:filename',
 
     /*
     |--------------------------------------------------------------------------
