@@ -159,7 +159,7 @@ class AdSpaceReponsitory
   public function parseAndStoreCategoriesFor($ad, $input)
   {
     $categoryIds = Arr::get($input, 'category_ids');
-    if ($category_ids != null) {
+    if ($categoryIds != null) {
       $categoryIds = array_filter($categoryIds);
       foreach ($categoryIds as $categoryId)
         $ad->categories()->attach($categoryId);
