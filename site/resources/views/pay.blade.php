@@ -24,6 +24,7 @@
             <form method='post' action='/gopay'>
               <input type="hidden" name="_token" value="{{csrf_token()}}">
               <input type='hidden' name='pay_id' value='{{$order->id}}'>
+              <input type='text' name='pay_price_id' value='{{$order->price_id}}'>
               <input type='hidden' name='pay_seq' value='{{$order->order_seq}}'>
               <input type='hidden' name='pay_amount' value='{{$order->amount}}'>
               <span class="pay-submit-total">总计：<span>{{$order->amount}}</span></span>

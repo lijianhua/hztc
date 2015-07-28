@@ -66,7 +66,7 @@ class CartController extends Controller {
       $shop = new ShoppingCart;
       $shop->user_id = Auth::user()->id;
       $shop->ad_space_id = $id;
-      $shop->ad_space_snapshot_id = 0; 
+      $shop->ad_space_snapshot_id = $price->id;
       $shop->quantity = $quantity;
       $shop->from = $price->from;
       $shop->to  = $price->to;
@@ -97,7 +97,7 @@ class CartController extends Controller {
     {
       $order = $this->addOrder($shop);
       $orderItem = $this->addOrderItem($shop, $order);
-      $shop->delete();
+      $order->price_id = $shop->ad_space_snapshot_id;
       return $order;
     });
     return view('pay')->with(compact('navigators', 'order'));
@@ -139,6 +139,7 @@ class CartController extends Controller {
     $order->state = 0;
     $order->amount = $shop->subtotal;
     $order->count_price = $shop->adSpacesCart->adPrices->max('score')*$shop->quantity;
+    $order->space_price_id = $shop->ad_space_snapshot_id;
     $order->save();
     return $order;
 
@@ -213,11 +214,24 @@ class CartController extends Controller {
           case 'TRADE_SUCCESS':
           case 'TRADE_FINISHED':
             DB::transaction(function() use ($out_trade_no){
-              $order = Order::where('order_seq', '=', Input::get('out_trade_no'))->first();
+              $order = Order::where('order_seq', '=', $out_trade_no)->first();
               $order->state = 1;
-              $user = UserScoreAccount::where('user_id', '=', Auth::user()->id)->firstOrFail();
-              $user->total_score += $order->count_price;
-              $user->save();
+              $order->save();
+
+              $ucount = UserScoreAccount::where('user_id', '=', Auth::user()->id)->count();
+              if ($ucount)
+              {
+                $user = UserScoreAccount::where('user_id', '=', Auth::user()->id)->first();
+                $user->total_score += $order->count_price;
+                $user->save();
+              }else{
+                $user= new UserScoreAccount;
+                $user->user_id = Auth::user()->id;
+
+                $user->total_score += $order->count_price;
+                $user->state = 1;
+                $user->save();
+              }
               $userScore = new UserScoreDetail;
               $userScore->user_score_account_id = $user->id;
               $userScore->score = $order->count_price;
@@ -254,11 +268,24 @@ class CartController extends Controller {
           case 'TRADE_SUCCESS':
           case 'TRADE_FINISHED':
             DB::transaction(function() use ($out_trade_no){
-              $order = Order::where('order_seq', '=', Input::get('out_trade_no'))->first();
+              $order = Order::where('order_seq', '=', $out_trade_no)->first();
               $order->state = 1;
-              $user = UserScoreAccount::where('user_id', '=', Auth::user()->id)->firstOrFail();
-              $user->total_score += $order->count_price;
-              $user->save();
+              $order->save();
+
+              $ucount = UserScoreAccount::where('user_id', '=', Auth::user()->id)->count();
+              if ($ucount)
+              {
+                $user = UserScoreAccount::where('user_id', '=', Auth::user()->id)->first();
+                $user->total_score += $order->count_price;
+                $user->save();
+              }else{
+                $user= new UserScoreAccount;
+                $user->user_id = Auth::user()->id;
+
+                $user->total_score += $order->count_price;
+                $user->state = 1;
+                $user->save();
+              }
               $userScore = new UserScoreDetail;
               $userScore->user_score_account_id = $user->id;
               $userScore->score = $order->count_price;
