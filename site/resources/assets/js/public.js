@@ -40,8 +40,7 @@ $(".nav-search").click(function () {
             }
     });
         });
-    })
-
+});
     //sarch 搜索框隐藏显示
     $(document).bind("click",function(e){
         var target = $(e.target);
