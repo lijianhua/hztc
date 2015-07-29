@@ -54,4 +54,16 @@ class AboutController extends Controller {
     $navigators = Navigator::all()->sortBy('sort');
     return view('about.law')->with(compact('navigators'));
   }
+
+
+  public function notFound()
+  {
+    return view('about.404')->with(compact(''));
+  }
+
+
+  public function notCode()
+  {
+    return view('about.500')->with(compact(''));
+  }
 }

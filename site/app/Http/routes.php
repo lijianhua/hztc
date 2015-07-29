@@ -72,6 +72,8 @@ Route::get('/Search/list', 'SearchController@search_list_filter');
 Route::get('/about.html', 'AboutController@index');
 Route::get('/about/contact.html', 'AboutController@contact');
 Route::get('/about/law.html', 'AboutController@law');
+Route::get('/404.html', 'AboutController@notFound');
+Route::get('/500.html', 'AboutController@notCode');
 //列表搜索
 Route::get('/list/{list}/{sort?}', 'AdSpaceController@ad_list');
 //首页检索
