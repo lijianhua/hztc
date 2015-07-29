@@ -48,6 +48,7 @@ Route::controllers([
 Route::get('user/{email}','UserController@showemail');
 Route::get('users/order','UserController@order');
 Route::get('users/orderDetail/{id}','UserController@orderDetail');
+Route::post('users/endorder','UserController@endOrder');
 Route::delete('users/orderDel/{id}/{state}','UserController@orderDel');
 Route::get('users/comment/{id}','UserController@getComment');
 Route::post('users/comment','UserController@addComment');

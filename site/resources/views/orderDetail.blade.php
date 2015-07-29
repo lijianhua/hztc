@@ -10,6 +10,9 @@
             <div class="order-details-list-code">
                 <span class="order-details-list-code-number">订单编号：<b>{{$orders->order_seq}}</b></span>
                 <span class="order-details-list-code-state">状态:<span>{{$states[$orders->state]}}</span></span>
+                @if ($orders->state == 3)
+                <span class="order-over"><a href='{{$orders->id}}'> 审核完成 </a></span>
+                @endif
             </div>
             <div class="order-details-flow">
                 <div class="order-details-flow-info">

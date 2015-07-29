@@ -421,5 +421,19 @@ class UserController extends Controller {
         return Redirect::to('users/info');
     }
   } 
+
+
+  /**
+   * 审核完成
+   *
+   */
+  public function endOrder(Request $request)
+  {
+    $orderId = $request->input('oid');
+    $order = Order::find($orderId);
+    $order->state = 4;
+    $order->save();
+    return 1;
+  }
 }
 
