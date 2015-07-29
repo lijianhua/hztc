@@ -81,4 +81,3 @@ Route::get('/list/{list}/{sort?}', 'AdSpaceController@ad_list');
 Route::post('/Search','SearchController@search_index_filter');
 //免费广告位
 Route::get('/free-ads','AdSpaceController@free');
-Route::get('/show-free/{id}','AdSpaceController@showFree');

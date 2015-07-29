@@ -110,53 +110,6 @@ class AdSpaceController extends Controller {
   }
  
 
-  /**
-   * 广告位详情
-   *
-   */
-  public function showFree($id)
-  {
-    $nav = '首页';
-    $navigators = $this->navigators;
-    Session::put('current_navigator', $nav);
-
-    $free = Promotion::find($id);
-    $aid = $free->ad_space_id;
-
-    $adspace   = AdSpace::with(['adPrices', 'images', 'customerReviews'])
-      ->where('ad_spaces.audited', '=', 1)
-      ->where('id', '=', $aid)
-      ->firstOrFail();
-
-
-    //商品评论
-    $comments = CustomerReview::where('ad_space_id', '=', $aid)->paginate(15);
-
-    //是否收藏
-    if (Auth::check())
-    {
-      $collect = AdSpaceUser::where('ad_space_id', '=', $aid)
-        ->where('user_id', '=', Auth::user()->id)
-        ->count();
-    }else{
-      $collect = 0;
-    }
-
-    //广告类型
-    $list = [];
-    $str_type = '';
-    $list=explode(',', $this->adSpaceType($adspace));
-    foreach($list as $index => $value)
-    {
-      $str_type = $str_type.'categories_0'.'['.$index.']'.'='.$value.'&';
-    }
-    $type = rtrim($str_type,'&');
-    $ad = new AdSpace;
-    $ideas = $ad->creative();
-
-    return view('showFree')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas', 'free'));
-  }
-
 
   /**
    * 广告类型
