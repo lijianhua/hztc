@@ -17,8 +17,10 @@ $(document).ready(function () {
                 $(this).parent().find('dd').show();
                 $(this).parent().siblings().children('dd').hide();
             }else{
-                    $(this).removeClass('active_show');
-                    $(this).parent().find('dd').hide();
+              $(this).find('span').addClass('filter-mark');
+              $(this).find('span').removeClass('filter-mark-active');
+              $(this).removeClass('active_show');
+              $(this).parent().find('dd').hide();
         }
     });
     //点击添加筛选
