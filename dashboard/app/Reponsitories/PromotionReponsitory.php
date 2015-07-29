@@ -38,8 +38,7 @@ class PromotionReponsitory
     return <<< EOF
       <p class="leading">
         {$promotion->start->format('Y/m/d H:i')} - {$promotion->end->format('Y/m/d H:i')} <br>
-        {$promotion->title} <br>
-        库存：{$promotion->stock}
+        {$promotion->title}
       </p>
       <hr>
       <p class="text-muted">

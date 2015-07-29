@@ -18,7 +18,6 @@ $ ->
     columns: [
      { data: 'created_at', 'name': 'created_at' , searchable: false },
      { data: 'ad',  name: 'title', orderable: false },
-     { data: '__price', searchable: false, orderable: false },
      { data: 'state', searchable: false, orderable: false },
     ]
     order: [[0, 'desc']]
@@ -58,13 +57,12 @@ $ ->
               name  : 'stock'
               label : '库存'
               value : promotion.selectedRowData().stock
-              type  : 'number'
-              class : 'form-control'
+              type  : 'hidden'
             ,
               name  : 'price'
               label : '价格'
               value : promotion.selectedRowData().price
-              type  : 'text'
+              type  : 'hidden'
             ,
               name  : 'start'
               label : '开始时间'

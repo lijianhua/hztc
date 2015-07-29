@@ -88,13 +88,12 @@ $ ->
               name  : 'stock'
               label : '库存'
               value : 1
-              type  : 'number'
-              class : 'form-control'
+              type  : 'hidden'
             ,
               name  : 'price'
               label : '价格'
               value : 0
-              type  : 'text'
+              type  : 'hidden'
             ,
               name  : 'start'
               label : '开始时间'
