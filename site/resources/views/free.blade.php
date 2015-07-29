@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                     <div class="spike-bt">
-                                        <a href="/ads/{{$adspace->ad_space_id}}">{{$adspace->isProccessing()?  '立即抢购':'敬请期待'}}</a>
+                                        <a href="/show-free/{{$adspace->id}}">{{$adspace->isProccessing()?  '立即抢购':'敬请期待'}}</a>
                                     </div>
                                 </div>
                             </div>

@@ -23,7 +23,7 @@
 
             </div>
             <div class="ft-company">
-                <span>copyright ©2013 / 京ICP备06013722号 安家传媒集团版权所有</span>
+                <span>copyright ©2015 / 京ICP备15037356号 安家传媒集团版权所有</span>
             </div>
         </div>
     </div>
