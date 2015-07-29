@@ -14,7 +14,7 @@
                 <span class="order-over"><a href='{{$orders->id}}'> 审核完成 </a></span>
                 @endif
             </div>
-            <div class="order-details-flow">
+            <div class="order-details-flow order-new-line">
                 <div class="order-details-flow-info">
                     @if ($orders->state > 0)
                       <div class="order-details-mark-line"></div>

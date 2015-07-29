@@ -1,5 +1,8 @@
 $(document).ready(function(){
-    $(".order-details-mark-line").width($(".order-details-flow-item.active").offset().left-$(".order-details-flow-info").offset().left);
+
+  if($(".order-new-line .order-details-flow-item").attr('class') != undefined){
+     $(".order-new-line .order-details-mark-line").width($(".order-new-line .order-details-flow-item.active").offset().left-$(".order-new-line .order-details-flow-info").offset().left);
+  }
     $(".order-over a").click(function(event){
         var this_id = $(this).attr('href');
         $.ajax({
