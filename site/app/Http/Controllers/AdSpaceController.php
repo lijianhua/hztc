@@ -58,7 +58,7 @@ class AdSpaceController extends Controller {
     Session::put('current_navigator', $nav);
 
 
-    $adspaces = Promotion::with(['adSpace'])->SoonOrProccessing()->recent()->paginate(1);
+    $adspaces = Promotion::with(['adSpace'])->SoonOrProccessing()->recent()->paginate(2);
     $ideas     = AdSpace::creative();
     return view('free')->with(compact('navigators', 'adspaces', 'ideas'));
   }
