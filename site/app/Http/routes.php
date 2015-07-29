@@ -79,4 +79,5 @@ Route::get('/500.html', 'AboutController@notCode');
 Route::get('/list/{list}/{sort?}', 'AdSpaceController@ad_list');
 //首页检索
 Route::post('/Search','SearchController@search_index_filter');
-
+//免费广告位
+Route::get('/free-ads','AdSpaceController@free');

@@ -47,9 +47,23 @@
     cursor: pointer;
     vertical-align: middle;
 }
+/* .filter-operate b{ */
+/*     font-weight: normal; */
+/*     padding-left: 6px; */
+/* } */
 .filter-operate b{
     font-weight: normal;
     padding-left: 6px;
+    display: inline-block;
+    position: relative;
+}
+.filter-operate-hot{
+    background: url("../images/hot.jpg") no-repeat 0 0;
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    right: -16px;
+    vertical-align: middle;
 }
 .filter-operate-block{
     margin-top: 20px;

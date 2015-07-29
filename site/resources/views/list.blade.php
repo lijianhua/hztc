@@ -31,7 +31,7 @@
                     <dl>
                         <dt>{{$adcategory->name}}<span class="filter-mark"></span></dt>
                         @foreach($adcategory->getChildren($adcategory->id)->get() as $child)
-                          <dd rel="1" class="filter-operate" data-name="categories_{{$index}}" data-index="{{$child->id}}" data-value="{{$child->name}}"><b>{{$child->name}}</b><span class="filter-add"></span></dd>
+                          <dd rel="1" class="filter-operate" data-name="categories_{{$index}}" data-index="{{$child->id}}" data-value="{{$child->name}}"><b>{{$child->name}}<i class="filter-operate-{{$index==6? 'hot':''}}"></i></b><span class="filter-add"></span></dd>
                         @endforeach
                     </dl>
                 @endforeach
@@ -78,7 +78,7 @@
                 @endfor
             </div>
             <div class="page">
-              @if($total != 0)
+              @if(count($adspaces) != 0)
                 @if($current_page != 1)
                     <span><a href="/{{$index}}/{{$sort}}?page={{$current_page-1}}" class="page-item-previous" data-name="page" data-value="{{$current_page-1}}">上一页</a> </span>
                 @endif

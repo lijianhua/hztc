@@ -29,6 +29,12 @@ class Promotion extends Model
     $now = Carbon::now();
     return $query->where('start', '>', $now);
   }
+  //即将开始的和正在进行的
+  public function scopeSoonOrProccessing($query)
+  {
+    $now = Carbon::now();
+    return $query->where('end', '>', $now);
+  }
   //已经过期的
   public function scopeExpired($query)
   {

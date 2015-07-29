@@ -1,0 +1,224 @@
+.spike-content{
+    margin-top: 10px;
+}
+.spike{
+    margin-top: 10px;
+}
+.spike-content .spike-title-text{
+    color: #e6e6e6;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.spike-content .spike-title-text span{
+    color: #333333;
+    font-size: 12px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+.spike .spike-specifics .spike-recommend{
+    width: 300px;
+    margin-top: 100px;
+}
+.spike .spike-recommend-title{
+    border-left: 10px solid #ededed;
+    font-size: 18px;
+    /*line-height: 0;*/
+    /*position: relative;*/
+    background-color: #f9f9f9;
+    padding: 7px 0px 6px 28px;
+}
+.spike .filter-recommend-item{
+    width: 300px;
+    height: 136px;
+    position: relative;
+    margin-top: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dotted #959595;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    overflow: hidden;
+}
+.spike .filter-recommend-item img{
+    width: 300px;
+    height: 136px;
+    display: block;
+}
+.spike .filter-recommend-item-bg{
+    display: none;
+    position: absolute;
+    width: 300px;
+    height: 136px;
+    color: #ffffff;
+    font-size: 20px;
+    left: 0;
+    top: 0;
+    text-align: center;
+    background: url("../images/list/filter-bg.png") repeat 0 0;
+    line-height: 7;
+}
+.spike-recommend-more-mark{
+    font-size: 16px;
+    vertical-align: middle;
+    font-weight: normal;
+    position: relative;
+    bottom: 2px;
+}
+.spike-main{
+    margin-left: 20px;
+    width: 879px;
+}
+.spike .spike-item{
+    height: 280px;
+    width: 880px;
+    position: relative;
+    margin-bottom: 60px;
+}
+.spike .spike-item .spike-picture{
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+.spike .spike-item .spike-picture img{
+    height: 280px;
+    width: 585px;
+    display: block;
+}
+.spike .spike-item .spike-picture .spike-mark{
+    width: 77px;
+    height: 92px;
+    background: url("../images/spike/spike-mark.png") no-repeat 0 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.spike .spike-item .spike-picture .spike-wait{
+    width: 77px;
+    height: 92px;
+    background: url("../images/spike/spike-wait.png") no-repeat 0 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.spike .spike-item .spike-picture .spike-bottom{
+    width: 585px;
+    height: 85px;
+    background: url("../images/spike/spike-bm.png") no-repeat 0 0;
+    position: absolute;
+    left: 0;
+    bottom: -85px;
+    padding: 28px 139px 0 22px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #ffffff;
+}
+.spike .spike-info{
+    float: left;
+    width: 295px;
+    height: 280px;
+    position: relative;
+}
+.spike .spike-info .spike-info-bg{
+    background: url("../images/spike/spike-info.png") no-repeat 0 0;
+    width: 295px;
+    height: 305px;
+    position: absolute;
+    top: -13px;
+    left: -5px;
+    text-align: center;
+    color: #ffffff;
+}
+.spike .spike-info-title{
+    font-size: 25px;
+    border-bottom: 1px solid #ffffff;
+    display: block;
+    padding-bottom: 15px;
+    margin: 25px 20px 0px 25px;
+}
+.spike .spike-info-date{
+    margin-top: 25px;
+    padding-left: 5px;
+}
+.spike .spike-info-date-day span,
+.spike .spike-info-date-day i{
+    font-size: 20px;
+    font-style: normal;
+    color: #fff800;
+}
+.spike .spike-info-date-write{
+    width: 39px;
+    height: 47px;
+    background: url("../images/spike/date1.png") no-repeat 0 0;
+    font-size: 25px;
+    color: #272729;
+}
+.spike .spike-info-date-yellow{
+    width: 39px;
+    height: 47px;
+    background: url("../images/spike/date2.png") no-repeat 0 0;
+    font-size: 25px;
+    color: #f70000;
+}
+.spike .spike-info-date-count{
+    margin-top: 15px;
+    line-height: 1;
+    margin-left: 20px;
+}
+.spike .spike-info-date-count span{
+    display: block;
+    float: left;
+    line-height: 1.9;
+}
+.spike .spike-bt{
+    position: relative;
+    margin-top: 40px;
+}
+.spike .spike-bt a{
+    display: inline-block;
+    line-height: 1.6;
+    height: 40px;
+    width: 221px;
+    border: 3px solid #ffffff;
+    font-size: 20px;
+    color: #ffffff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin:  0 auto;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

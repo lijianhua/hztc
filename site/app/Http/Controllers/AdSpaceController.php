@@ -3,15 +3,16 @@ use DB;
 use Input;
 use Illuminate\Support\Facades\Session;
 use App\Models\Navigator;
-use App\Models\AdSpace;
-use App\Models\AdPrice;
-use Illuminate\Database\Eloquent\Collection;
-use App\Models\AdSpaceUser;
+use App\Models\AdSpace; 
+use App\Models\AdPrice; 
+use Illuminate\Database\Eloquent\Collection; 
+use App\Models\AdSpaceUser; 
 use Illuminate\Support\Arr;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\AdCategory;
 use App\Models\Address;
+use App\Models\Promotion;
 use App\Models\CustomerReview;
 
 class AdSpaceController extends Controller {
@@ -43,6 +44,23 @@ class AdSpaceController extends Controller {
         return $this->get_list_view($value['name'], $value['type'], $sort, $index, Arr::get($request->all(), 'page', 1),$request->all());
       }
     }
+  }
+  /**
+   * Show free adspaces 
+   *
+   * @return Response
+   */
+  public function free()
+  {
+
+    $nav = '免费广告位';
+    $navigators = $this->navigators;
+    Session::put('current_navigator', $nav);
+
+
+    $adspaces = Promotion::with(['adSpace'])->SoonOrProccessing()->recent()->paginate(1);
+    $ideas     = AdSpace::creative();
+    return view('free')->with(compact('navigators', 'adspaces', 'ideas'));
   }
 
   /**
