@@ -22,7 +22,7 @@
                     <div class="order-list-table">
                         <span class="collection-list-content table-border order-list-name">
                             <span class="order-list-img">
-                                <img src="{{ env('IMAGE_HOST').$collect->adSpaces->avatar->url()}}">
+                                <img src="{{ $collect->adSpaces->avatar->url()}}">
                             </span>
                             <span class="order-list-name-text">
                                 <span>{{ $collect->adSpaces->title}}</span><br/>

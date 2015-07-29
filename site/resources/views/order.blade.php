@@ -27,7 +27,7 @@
                         <span class="order-list-content table-border order-list-name">
                             <a href='/ads/{{ $orderitem->ad_space_id }}' target='__blank'>
                               <span class="order-list-img">
-                                  <img src="{{  env('IMAGE_HOST').$orderitem->adSpace->avatar->url() }}">
+                                  <img src="{{  $orderitem->adSpace->avatar->url() }}">
                               </span>
                               <span class="order-list-name-text">
                                   <span>{{ $orderitem->adSpace->title }}</span><br/>

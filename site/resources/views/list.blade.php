@@ -41,7 +41,7 @@
                 @foreach($ideas as $idea)
                   <div class="filter-recommend-item">
                       <a href="/ads/{{$idea->id}}">
-                          <img src="{{env('IMAGE_HOST').$idea->avatar->url()}}">
+                          <img src="{{$idea->avatar->url()}}">
                           <div class="filter-recommend-item-bg">
                             {{$idea->description}}
                           </div>
@@ -61,7 +61,7 @@
                 @for($i = 0; $i < count($adspaces); $i++)
                     <div class="list-info-item {{$i%2 == 0 ? 'mr9':''}}">
                         <div class="list-info-item-img">
-                            <img src="{{env('IMAGE_HOST').$adspaces[$i]->avatar->url()}}">
+                            <img src="{{$adspaces[$i]->avatar->url()}}">
                         </div>
                         <div class="list-info-item-block">
                             <div class="list-info-item-name">{{$adspaces[$i]->title}}</div>

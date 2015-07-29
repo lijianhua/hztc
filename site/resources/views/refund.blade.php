@@ -27,7 +27,7 @@
                             <span class="refund-list-content table-border order-list-name">
                                 <span class="order-list-img">
                                     <img
-src="{{env('IMAGE_HOST').$refund->orderItems()->first()->adSpace()->first()->avatar->url()}}">
+src="{{$refund->orderItems()->first()->adSpace()->first()->avatar->url()}}">
                                 </span>
                                 <span class="order-list-name-text">
                                     <span>{{$refund->orderItems->adSpace()->first()->title}}</span><br/>
