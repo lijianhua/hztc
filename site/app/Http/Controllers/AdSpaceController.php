@@ -14,6 +14,7 @@ use App\Models\AdCategory;
 use App\Models\Address;
 use App\Models\Promotion;
 use App\Models\CustomerReview;
+use App\Models\Enterprise;
 
 class AdSpaceController extends Controller {
 
@@ -237,6 +238,10 @@ class AdSpaceController extends Controller {
           unset($query_array[$index]); 
         }
       }
+    }
+    if(array_key_exists('puid',$query_array))
+    {
+      $query_array['puid'] = Enterprise::whereId($query_array['puid'])->first()->name; 
     }
     return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'current_category', 'sort', 'current_page', 'total','query_array','str'));
   }
