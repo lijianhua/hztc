@@ -7,11 +7,9 @@
         <div class="introduction-consumer-assess-block">
             <div class="introduction-consumer-assess-heart">
         <span>评分：
-            <i class="fa fa-heart active"></i>
-            <i class="fa fa-heart active"></i>
-            <i class="fa fa-heart active"></i>
-            <i class="fa fa-heart active"></i>
-            <i class="fa fa-heart"></i>
+          @for ($i=0; $i<5; $i++ )
+            <i class="fa fa-heart {{$comment->grade>=$i?'active':''}}"></i>
+          @endfor
         </span>
             </div>
             <div class="introduction-consumer-assess-text">

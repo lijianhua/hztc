@@ -82,7 +82,7 @@ class AdSpaceController extends Controller {
 
 
     //商品评论
-    $comments = CustomerReview::where('ad_space_id', '=', $id)->paginate(15);
+    $comments = CustomerReview::where('ad_space_id', '=', $id)->orderBy('created_at', 'desc')->paginate(15);
 
     //是否收藏
     if (Auth::check())

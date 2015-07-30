@@ -41,7 +41,7 @@
                     <li>
                         <strong>评论</strong>
                         <div class="single-info-text">
-                            <input type='hidden' name='single' value='3'>
+                            <input type='hidden' name='single' id="single-heart-index" value='0'>
                             <input type='hidden' name='order_id' value='{{ $order->id }}'>
                             <input type='hidden' name='ad_space_id' value='{{ $order->orderItems->first()->ad_space_id }}'>
                             <input type='hidden' name='score' value='{{ $order->orderItems->first()->score }}'>

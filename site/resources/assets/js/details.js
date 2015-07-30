@@ -125,6 +125,8 @@ $(document).ready(function () {
                 }
               }
           });
+       }else{
+        window.location.href="/auth/login";
        }
     });
 

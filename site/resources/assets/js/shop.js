@@ -63,17 +63,23 @@ $(document).ready(function(){
                 data:{value_number:value,pro_from:pro_from,pro_to:pro_to,pro_id:pro_id},
                 success:function(data){
                     var sucess_data = parseInt(data);
-                    if(data < 0){
+                    if(sucess_data < 0){
+                     if(value == -sucess_data){
+                          _this.parents('.shop-number').find('.shop-enter input').val(0);
+                          $(".shop-submit .shop-submit-total span").text(0);
+                      }else{
                       value >= (sucess_data+value) ? _this.parents('.shop-number').find('.shop-enter input').val(sucess_data+value) : _this.parents('.shop-number').find('.shop-enter input').val(value + 1);
                       $(".shop-submit .shop-submit-total span").text(this_text * (value+1))
+                      } 
                     }else{
                       if(value >= (sucess_data+value)){
                         _this.parents('.shop-number').find('.shop-enter input').val(sucess_data+value);
                         alert("库存只有"+(sucess_data+value));
                       }else{
                         _this.parents('.shop-number').find('.shop-enter input').val(value + 1);
+                        $(".shop-submit .shop-submit-total span").text(this_text * (value + 1));
                       }
-                      $(".shop-submit .shop-submit-total span").text(this_text * (value+1));
+                     // $(".shop-submit .shop-submit-total span").text(this_text * (value+1));
                   }
               }});
           }

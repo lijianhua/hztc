@@ -3,6 +3,7 @@ $(document).ready(function () {
         $(this).addClass('active');
         $(this).prevAll().addClass('active');
         $(this).nextAll().removeClass('active');
+        $("#single-heart-index").val($(this).index()+1);
     });
 
     $(".single-tag .single-tag-item").click(function(){
