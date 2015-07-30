@@ -41,6 +41,24 @@ class CartController extends Controller {
   }
 
   /**
+   * 自动请求库存
+   *
+   *
+   */
+  public function spaceSalecount(Request $request)
+  {
+    $count = $request->get('value_number');
+    $aid = $request->get('pro_id');
+    $from = $request->get('pro_from');
+    $to = $request->get('pro_to');
+    $adprice = AdPrice::where('ad_space_id', '=', $aid)
+      ->where('from', '=', $from)
+      ->where('to', '=', $to)
+      ->first();
+    return $adprice->sale_count - $count;
+  }
+
+  /**
    * 删除购物车内广告位
    *
    *

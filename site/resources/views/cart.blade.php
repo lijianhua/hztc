@@ -20,6 +20,10 @@
                     <td style="width: 120px">
                       <input type="radio" name="radio" value='0' {{$index==0?'checked':''}}>
                       <input name='aid' value='{{$cart->id}}' type='hidden' class='aid'>
+                      <input name='adspaceid' value='{{$cart->ad_space_id}}' type='text' class='adspaceid'>
+                      <input name='to' value='{{$cart->to}}' type='text' class=''>
+                      <input name='pro_from' value='{{$cart->from}}' type='text' class=''>
+  
                     </td>
                     <td>{{$cart->adSpacesCart->title}}</td>
                     <td class="shop-price"><i class="fa fa-jpy">&nbsp;</i><span>{{$cart->price}}</span></td>

@@ -20,6 +20,7 @@ Route::post('cart/addcart', 'CartController@create');
 Route::post('/pay', 'CartController@payMent');
 Route::post('/gopay', 'CartController@goPay');
 Route::get('/settlement', 'CartController@settlement');
+Route::post('/spacesale', 'CartController@spaceSalecount');
 
 Route::get('alipay/return', 'CartController@webReturn');
 Route::get('alipay/notify', 'CartController@webNotify'); 
