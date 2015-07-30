@@ -23,7 +23,7 @@
 
             </div>
             <div class="ft-company">
-                <span>copyright ©2015 / 京ICP备15037356号 安家传媒集团版权所有</span>
+                <span>copyright ©2015 / 京ICP备15037356号 北京八八门网络科技有限公司版权所有</span>
             </div>
         </div>
     </div>
