@@ -38,7 +38,7 @@
                         <td
 class="details-info-right">线下返还&nbsp;&nbsp;&nbsp;金额：<span
 class="return-process-color">{{$refund->orders->amount}}</span>元&nbsp;&nbsp;&nbsp;积分：<span
-class="return-process-color">-{{$refund->orderItems->sum('score')}}</span></td>
+class="return-process-color">-{{$refund->orders->count_price}}</span></td>
                     </tr>
                     <tr>
                         <td class="details-info-left">处理方式</td>
