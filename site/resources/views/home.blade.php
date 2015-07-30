@@ -62,7 +62,7 @@
                                 </div>
                             </li>
                             <li class="filter-nav-item">
-                                <span class="filter-nav-title">价位</span><br/>
+                                <span class="filter-nav-title">预算价位</span><br/>
                                 <div class="filter-nav-input">
                                     <span><input type="text" name='start_price' value=''></span> 
                                     <b>至</b> <span><input type="text" name='end_price' value=''></span>
