@@ -3,7 +3,7 @@
     @if ($ideas)
     @foreach($ideas as $idea)
       <div class="filter-recommend-item">
-          <a href="ads/{{$idea->id}}">
+          <a href="/ads/{{$idea->id}}">
               <img src="{{$idea->avatar->url()}}">
               <div class="filter-recommend-item-bg">
                 {{$idea->description}}

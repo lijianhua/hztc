@@ -75,7 +75,6 @@
                     <th>产品名称</th>
                     <th>价格</th>
                     <th>数量</th>
-                    <th>我们的承诺</th>
                 </tr>
                 <tr>
                     <form action='/pay' method='post' id="form_id">
@@ -86,7 +85,6 @@
                     <td>{{$shop->adSpacesCart->title}}</td>
                     <td>{{$shop->price}}</td>
                     <td>{{$shop->quantity}}</td>
-                    <td>{{$shop->adSpacesCart->user->name}}</td>
                 </tr>
             </table>
             <div class="settlement-list-submit">

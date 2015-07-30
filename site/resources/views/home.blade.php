@@ -38,7 +38,7 @@
                                     </button>
                                     <ul class="filter-nav-menu dropdown-menu" role="menu">
                                         <li><a href="#">全部</a> </li>
-                                        <li><a href="#">新媒体</a> </li>
+                                        <li><a href="#">户外</a> </li>
                                         <li><a href="#">APP</a> </li>
                                         <li><a href="#">网络</a> </li>
                                         <li><a href="#">电视</a> </li>
@@ -54,7 +54,7 @@
                                     </button>
                                     <ul class="filter-nav-menu dropdown-menu" role="menu">
                                         <li><a href="#">全部</a> </li>
-                                        <li><a href="#">财富圈</a> </li>
+                                        <li><a href="#">养生圈</a> </li>
                                         <li><a href="#">地产圈</a> </li>
                                         <li><a href="#">IT圈</a> </li>
                                         <li><a href="#">金融圈</a> </li>
@@ -99,7 +99,7 @@
         <div class="plate">
             <ul id="da-thumbs" class="plate-block da-thumbs">
                 <li class="mr15">
-                    <a href="/list/free-ads">
+                    <a href="/free-ads">
                         <img src="images/index/bg.png" />
                         <dl class="plate-text-show">
                             <dd class="plate-item-china">免费广告</dd>
@@ -115,11 +115,11 @@
                     <a href="/list/creative-ads">
                         <img src="images/index/bg.png" />
                         <dl class="plate-text-show">
-                            <dd class="plate-item-china">创意广告</dd>
+                            <dd class="plate-item-china">新奇特广告</dd>
                             <dd class="plate-item-big">创意资源  点子变金子</dd>
                         </dl>
                         <div class="plate-text">
-                            <span class="plate-item-china">创意广告</span></br>
+                            <span class="plate-item-china">新奇特广告</span></br>
                             <dd class="plate-item-big">创意资源  点子变金子</dd>
                         </div>
                     </a>
