@@ -35,7 +35,7 @@
                             </span>
                             <span class="refund-list-people table-border">
                                 <div style="position:relative;top: -10px">
-                                    <div>退款金额：{{$refund->orders->amount)}}</div>
+                                    <div>退款金额：{{$refund->orders->amount}}</div>
                                     <div class="order-color">积分：<span>-{{$refund->orderItems->sum('score')}}</span></div>
                                 </div>
                             </span>
