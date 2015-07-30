@@ -12,6 +12,8 @@ class AdPrice extends Model {
     'from', 'to', 'send_count', 'sale_count'
   ];
 
+  public static $__es_enable = [];
+
   /**
     * @return \Illuminate\Database\Eloquent\Relations
     **/

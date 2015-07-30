@@ -12,6 +12,7 @@ use App\Models\AdPrice;
 use App\Models\AdSpaceSnapshot;
 use Auth;
 use DB;
+use Input;
 use Illuminate\Http\Request;
 class CartController extends Controller {
 
@@ -189,7 +190,6 @@ class CartController extends Controller {
      $alipay->setSubject('魔媒订单');
      $alipay->setBody('goods_description');
 
-
     // 跳转到支付页面。
      return redirect()->to($alipay->getPayLink());
   }
@@ -202,9 +202,6 @@ class CartController extends Controller {
   {
       // 验证请求。
       if (! app('alipay.web')->verify()) {
-          Log::notice('Alipay notify post data verification fail.', [
-              'data' => Request::instance()->getContent()
-          ]);
           return 'fail';
       }
       $out_trade_no = Input::get('out_trade_no');
@@ -218,6 +215,10 @@ class CartController extends Controller {
               $order->state = 1;
               $order->save();
 
+              $adPrices = AdPrice::find($order->space_price_id);
+              $orderItem = OrderItem::where('order_id', '=', $order->id)->first();
+              $adPrices->sale_count -= $orderItem->quantity;
+              $adPrices->save();
               $ucount = UserScoreAccount::where('user_id', '=', Auth::user()->id)->count();
               if ($ucount)
               {
@@ -239,10 +240,6 @@ class CartController extends Controller {
               $userScore->save();
             });
               // TODO: 支付成功，取得订单号进行其它相关操作。
-              Log::debug('Alipay notify post data verification success.', [
-                  'out_trade_no' => Input::get('out_trade_no'),
-                  'trade_no' => Input::get('trade_no')
-              ]);
               break;
       }
 
@@ -256,10 +253,7 @@ class CartController extends Controller {
   {
       // 验证请求。
       if (! app('alipay.web')->verify()) {
-          Log::notice('Alipay return query data verification fail.', [
-              'data' => Request::getQueryString()
-          ]);
-          return view('alipay.fail');
+          return '支付失败，请重新购买';
       }
       $out_trade_no = Input::get('out_trade_no');
 
@@ -272,6 +266,10 @@ class CartController extends Controller {
               $order->state = 1;
               $order->save();
 
+              $adPrices = AdPrice::find($order->space_price_id);
+              $orderItem = OrderItem::where('order_id', '=', $order->id)->first();
+              $adPrices->sale_count -= $orderItem->quantity;
+              $adPrices->save();
               $ucount = UserScoreAccount::where('user_id', '=', Auth::user()->id)->count();
               if ($ucount)
               {
@@ -293,13 +291,9 @@ class CartController extends Controller {
               $userScore->save();
             });
               // TODO: 支付成功，取得订单号进行其它相关操作。
-              Log::debug('Alipay notify get data verification success.', [
-                  'out_trade_no' => Input::get('out_trade_no'),
-                  'trade_no' => Input::get('trade_no')
-              ]);
               break;
       }
 
-      return view('alipay.success');
+      return redirect('/users/order')->with('status', '支付成功'); 
   }
 }

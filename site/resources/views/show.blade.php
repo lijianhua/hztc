@@ -51,6 +51,7 @@ fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('price')}}</span></span>
                         <span class="details-info-evaluation-down">{{$adspace->customerReviews->count('id') }}</span>
                     </div>
                 </div>
+                  <input type='hidden' value='{{Auth::check()?Auth::user()->id:0}}' id='user_id'>
                 <div class="details-info-amount">
                     <span>数量：</span>
                     <span class="details-amount clearfix">
@@ -72,7 +73,8 @@ class="fa fa-jpy"></i><span></span> </span></span>
                             <td class="details-stage-block">
                               @foreach($adspace->adPrices as $index=>$price) 
                                 <span class="details-stage-item {{$index==0?'active':''}}" 
-                                data-price='{{ $price->price}}' data-priceid='{{ $price->id}}'>
+                                data-price='{{ $price->price}}' data-priceid='{{ $price->id}}' 
+                                data-sale-count='{{ $price->sale_count}}'>
                                    {{$price->from}}--{{$price->to}}
                                 </span>
                               @endforeach
