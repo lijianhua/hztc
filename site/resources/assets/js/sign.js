@@ -1,3 +1,4 @@
+ var tel_interval;
 $(document).ready(function () {
     $(".sign-change .sign-change-item").click(function () {
         $(this).find('i').addClass('fa-dot-circle-o');
@@ -98,8 +99,27 @@ $(document).ready(function () {
     });
     $(".clause-close i").click(function(){
         $(".clause-bg").hide();
-    })
+    });
     $("#agree").click(function(){
         $(".clause-bg").hide();
-    })
+    });
+    
+    $(".tel_bt").click(function(){
+      tel_seconds = 60;
+      $(this).attr('disabled',true);
+       tel_interval = window.setInterval(set_time,1000);
+    });
+
 })
+var tel_seconds = 60;
+function set_time(){
+  if(tel_seconds <= 0){
+    $(".tel_bt").val("再次获取验证码");
+    $('.tel_bt').removeAttr('disabled');
+    window.clearInterval(tel_interval);
+  }else{
+    tel_seconds -= 1;
+    $(".tel_bt").val(tel_seconds+"秒后再次获取");
+  }
+}
+
