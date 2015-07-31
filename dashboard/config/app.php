@@ -203,4 +203,5 @@ return [
 
     ],
 
+    'order_auto_complete' => '30'
 ];

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Console\Scheduling\Schedule;
 
 class Order extends Model {
 
@@ -44,5 +45,25 @@ class Order extends Model {
   public function isNewest()
   {
     return $this->state == 1;
+  }
+
+  /**
+   * 设置自动完成订单的定时人物
+   *
+   * @param $time time when finished
+   *
+   * @return void
+   **/
+  public function mayAutoFinished($time)
+  {
+    $schedule = new Schedule();
+    $self     = $this;
+
+    $schedule->call(function() use ($self) {
+      DB::table('orders')
+        ->whereId($self->id)
+        ->whereState($self->state)
+        ->update(['state' => 4]);
+    })->at($time);
   }
 }
