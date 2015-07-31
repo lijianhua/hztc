@@ -36,17 +36,7 @@ this.YuezUrl = (function() {
     }
   };
 
-  YuezUrl.prototype.reload = function() {
-    window.location.protocol = this.protocol;
-    window.location.hostname = this.hostname;
-    window.location.port = this.port;
-    window.location.pathname = this.pathname;
-    window.location.search = this.search;
-    return window.location.hash = this.hash;
-  };
-
   YuezUrl.prototype.redirect = function() {
-    this.reload();
     return window.location.href = this.href();
   };
 
