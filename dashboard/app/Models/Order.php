@@ -57,12 +57,13 @@ class Order extends Model {
   public function mayAutoFinished($time)
   {
     $schedule = new Schedule();
-    $self     = $this;
+    $id       = $this->id;
+    $table    = $this->table;
 
-    $schedule->call(function() use ($self) {
-      DB::table('orders')
-        ->whereId($self->id)
-        ->whereState($self->state)
+    $schedule->call(function() use ($id, $table) {
+      DB::table($table)
+        ->whereId($id)
+        ->whereState(3)
         ->update(['state' => 4]);
     })->at($time);
   }
