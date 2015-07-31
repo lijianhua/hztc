@@ -46,11 +46,16 @@ $(document).ready(function () {
 
         var usertext = /^[\u4e00-\u9fa5a-zA-Z1-9_]+$/gi;
 
-        if (username.length >= 6 && usertext.test(username)) {
+        if (!usertext.test(username)) {
+          $('#username').parents('td').find('.sign-warning').text('用户名不能有特殊字符');
+           $('#username').parents('td').find('.sign-warning').css('display','inline-block');
+            return false;
+        }else if(username.length < 6){
+          $('#username').parents('td').find('.sign-warning').text('用户名长度不能小于6');
+          $('#username').parents('td').find('.sign-warning').css('display','inline-block');
+          return false;
+        }else {
             $('#username').parents('td').find('.sign-warning').css('display','none');
-        } else {
-            $('#username').parents('td').find('.sign-warning').css('display','inline-block');
-            return false
         }
 
         if (email.length != 0 && reg.test(email)){

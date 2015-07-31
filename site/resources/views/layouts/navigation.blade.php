@@ -33,9 +33,6 @@
                               <span><a href="#">纸媒广告</a> </span>
                           </li>
                           <li>
-                              <span><a href="#">纸媒广告</a> </span>
-                          </li>
-                          <li>
                               <span><a href="#">广告平台</a> </span>
                           </li>
                         </ul>
