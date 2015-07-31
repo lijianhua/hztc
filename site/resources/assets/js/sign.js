@@ -97,7 +97,12 @@ $(document).ready(function () {
             $('.sign-checkbox').parents('td').find('.checkbox-sign-warning').css('display','inline-block');
             return false
         }
+        login_code();
     });
+
+ $(".login-code").blur(function(){
+    login_code();
+ })
 
     $("#clause-view").click(function () {
         $(".clause-bg").show();
@@ -110,6 +115,7 @@ $(document).ready(function () {
     });
     
     $(".tel_bt").click(function(){
+      login_code();
       tel_seconds = 60;
       $(this).attr('disabled',true);
        tel_interval = window.setInterval(set_time,1000);
@@ -126,5 +132,24 @@ function set_time(){
     tel_seconds -= 1;
     $(".tel_bt").val(tel_seconds+"秒后再次获取");
   }
+}
+
+
+function login_code(){
+    var login_code = $.trim($(".login-code").val());
+    // var _token = $("input[name=_token]").val();
+    $.ajax({
+        type:'get',
+        url:'/getcaptcha',
+        data:{captcha:login_code},
+        success:function(data){
+            if(data == 1){
+                $(".login-code").parents('td').find('.sign-warning').css('display','none');
+            }else{
+                $(".login-code").parents('td').find('.sign-warning').css('display','inline-block');
+                return false;
+            }
+        }
+    })
 }
 

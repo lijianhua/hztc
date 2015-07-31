@@ -56,6 +56,7 @@
                   <input type="text" id="usercode" class="login-code" name='captcha' >
                   {!! Html::image(captcha_src(), '验证码',['id' => 'captchda']) !!}
                   <span class="no-look"><a id='captcha_validate'>看不清</a> </span>
+                  <span class="sign-warning" style="margin-left:60px">验证码错误</span><br/>  
                   </td>
               </tr>
               <tr>
