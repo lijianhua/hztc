@@ -79,7 +79,7 @@
                         <div class="carousel-inner nav-banner">
                           @foreach ($slides->slideItems as $index => $slide)
                             <div class="page item {{ $index==0?'active':''}}">
-                              <a href="#"><img src="{{ $slide->avatar->url()}}"></a>
+                              <a href="{{$slide->url?$slide->url:'#'}}"><img src="{{ $slide->avatar->url()}}"></a>
                             </div>
                           @endforeach
                         </div>

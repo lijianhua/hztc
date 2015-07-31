@@ -43,7 +43,7 @@
 fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('price')}}</span></span>
                         </div>
                         <div class="details-info-price-service">
-                            服  务：<span style="color: #878787">由本平台统一发货并提供一切售后服务</span>
+                   <!--         服  务：<span style="color: #878787">由本平台统一发货并提供一切售后服务</span>-->
                         </div>
                     </div>
                     <div class="details-info-evaluation fr">
