@@ -331,26 +331,55 @@ class UserController extends Controller {
     $attributes = $request->only('id', 'idcard', 'truthname', 'enterprise','telphone');
     $user = Auth::user();
     $userinfo = UserInformation::where('user_id', '=', $user->id)->first();
-    if($userinfo && $user->enterprise_id)
+    $enterprise_name = Enterprise::whereName($attributes['enterprise'])->first();
+    if(count($enterprise_name) != 0)
     {
-      DB::transaction(function() use ($attributes,$user)
-      {
-        Enterprise::where('id', '=', $user->enterprise_id)->update(['name' => $attributes['enterprise']]); 
-        UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'idcard')->update(['value' => $attributes['idcard']]);
-        UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'truthname')->update(['value' => $attributes['truthname']]);
-        UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'telphone')->update(['value' => $attributes['telphone']]);
-      });   
+        $enterprise_id = $enterprise_name->id;
+        if($userinfo && $user->enterprise_id)
+        {
+          DB::transaction(function() use ($attributes,$user,$enterprise_id)
+          {
+            User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise_id]);
+            UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'idcard')->update(['value' => $attributes['idcard']]);
+            UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'truthname')->update(['value' => $attributes['truthname']]);
+            UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'telphone')->update(['value' => $attributes['telphone']]);
+          });   
+        }
+        else
+        {
+          DB::transaction(function() use ($attributes, $user,$enterprise_id)
+          {
+            User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise_id]);
+            UserInformation::create(['user_id' => $user->id, 'key' => 'idcard', 'value' => $attributes['idcard'], 'authority' => 0]);
+            UserInformation::create(['user_id' => $user->id, 'key' => 'truthname', 'value' => $attributes['truthname'], 'authority' => 0]);
+            UserInformation::create(['user_id' => $user->id, 'key' => 'telphone', 'value' => $attributes['telphone'], 'authority' => 0]);
+          });   
+        }
     }
     else
     {
-      DB::transaction(function() use ($attributes, $user)
-      {
-        $enterprise = Enterprise::create(['name' => $attributes['enterprise']]); 
-        User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise->id]);
-        UserInformation::create(['user_id' => $user->id, 'key' => 'idcard', 'value' => $attributes['idcard'], 'authority' => 0]);
-        UserInformation::create(['user_id' => $user->id, 'key' => 'truthname', 'value' => $attributes['truthname'], 'authority' => 0]);
-        UserInformation::create(['user_id' => $user->id, 'key' => 'telphone', 'value' => $attributes['telphone'], 'authority' => 0]);
-      });   
+        if($userinfo && $user->enterprise_id)
+        {
+          DB::transaction(function() use ($attributes,$user)
+          {
+            $enterprise = Enterprise::create(['name' => $attributes['enterprise']]); 
+            User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise->id]);
+            UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'idcard')->update(['value' => $attributes['idcard']]);
+            UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'truthname')->update(['value' => $attributes['truthname']]);
+            UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'telphone')->update(['value' => $attributes['telphone']]);
+          });   
+        }
+        else
+        {
+          DB::transaction(function() use ($attributes, $user)
+          {
+            $enterprise = Enterprise::create(['name' => $attributes['enterprise']]); 
+            User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise->id]);
+            UserInformation::create(['user_id' => $user->id, 'key' => 'idcard', 'value' => $attributes['idcard'], 'authority' => 0]);
+            UserInformation::create(['user_id' => $user->id, 'key' => 'truthname', 'value' => $attributes['truthname'], 'authority' => 0]);
+            UserInformation::create(['user_id' => $user->id, 'key' => 'telphone', 'value' => $attributes['telphone'], 'authority' => 0]);
+          });   
+        }
     }
     return Redirect::to('users/info');
   }
