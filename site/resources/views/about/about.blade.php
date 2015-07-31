@@ -11,18 +11,15 @@
                     <div class="about-info-title"><span>联系我们</span>/<strong> Relation US</strong></div>
                     <div class="about-info-block">
                         <div><strong>全国免费客服电话</strong></div>
-                        <div><span class="about-color">400-6056-360</span> 客服留言</div>
-                        <div>400-6056-360 客服留言</div>
-                        <div>电 话：+86 20 87701818</div>
-                        <div>传 真：+86 20 87630400</div>
-                        <div>客服QQ： 2501668445 2036238165 1786605019</div>
-                        <div>E-mail：service@360mt.com</div>
-                        <div>地 址：北京市海淀区知春路1号学院国际大厦  <a href="#" class="about-color">地图>></a> </div>
-                        <div>邮 编：510100</div>
-                        <div>即时通： 360客服001</div>
+                        <div><span class="about-color">400-831-9003</span></div>
+                        <div>电 话：010-82338988</div>
+                        <div>客服QQ： 2300084649 </div>
+                        <div>E-mail：momei@momeiw.com</div>
+                        <div>地 址： 北京市海淀区知春路一号学院国际大厦1701室 </div>
+                        <div>邮 编：100083</div>
                         <br/>
                         <br/>
-                        <div><strong>网站运营方：安家传媒集团</strong></div>
+                        <div><strong>网站运营方：北京八八门网络科技有限公司</strong></div>
                     </div>
                 </div>
 

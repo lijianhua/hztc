@@ -46,7 +46,7 @@
                                 </div>
                             </li>
                             <li class="filter-nav-item">
-                                <span class="filter-nav-title">社会圈</span><br/>
+                                <span class="filter-nav-title">目标受众</span><br/>
                                 <div class="btn-group">
                                     <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         <b id='society'>全部</b> <span class="filter-nav-caret caret"></span>
