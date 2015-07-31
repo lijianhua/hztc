@@ -117,6 +117,7 @@ class CartController extends Controller {
       $order = $this->addOrder($shop);
       $orderItem = $this->addOrderItem($shop, $order);
       $order->price_id = $shop->ad_space_snapshot_id;
+      $shop->delete();
       return $order;
     });
     return view('pay')->with(compact('navigators', 'order'));
