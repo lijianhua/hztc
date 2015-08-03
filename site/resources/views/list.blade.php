@@ -68,7 +68,7 @@
                             <div class="list-info-item-combination">
                                 <!-- <span class="list&#45;info&#45;item&#45;collection">收藏<i class="fa fa&#45;star"></i></span> -->
                                 <span class="list-info-item-buy"><code>{{$adspaces[$i]->orderItems->sum('quantity')}}</code>人购买</span>
-                                <span class="list-info-item-money"><i class="fa fa-jpy"></i>{{$adspaces[$i]->AdPrices->min('price')}}/天</span>
+                                <span class="list-info-item-money"><i class="fa fa-jpy"></i>{{$adspaces[$i]->AdPrices->min('price')}}/期</span>
                             </div>
                             <div class="list-info-item-description">
                                 {{$adspaces[$i]->description}} <a href="/ads/{{$adspaces[$i]->id}}" class="link">查看详情》</a>
