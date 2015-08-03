@@ -39,11 +39,11 @@
                         <div class="details-info-price-number">
                             <span>价格：</span>
                             <span class="details-info-price-info details-info-price-color">
-                              <i class="fa
-fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('price')}}</span></span>
+                              <i class="fa fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('price')}}</span></span>
                         </div>
                         <div class="details-info-price-service">
-                   <!--         服  务：<span style="color: #878787">由本平台统一发货并提供一切售后服务</span>-->
+                           公司：<span style="color: #878787">{{$company->name}}</span>
+                           联系方式：<span style="color: #878787">{{$company->telphone}}</span>
                         </div>
                     </div>
                     <div class="details-info-evaluation fr">
@@ -56,14 +56,12 @@ fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('price')}}</span></span>
                     <span>数量：</span>
                     <span class="details-amount clearfix">
                         <span class="details-amount-plus"></span>
-                        <span class="details-amount-input"><input
-id="details-amount-count" type="text" readonly value="1"></span>
+                        <span class="details-amount-input"><input id="details-amount-count" type="text" readonly value="1"></span>
                         <span class="details-amount-minus"></span>
                     </span>
                     <span>&nbsp;&nbsp;&nbsp;件</span>
                     <span class="details-amount-total">
-                        <span>合计：<span class="details-amount-total-text"><i
-class="fa fa-jpy"></i><span></span> </span></span>
+                        <span>合计：<span class="details-amount-total-text"><i class="fa fa-jpy"></i><span></span> </span></span>
                     </span>
                 </div>
                 <div class="details-stage clearfix">

@@ -83,6 +83,7 @@ class AdSpaceController extends Controller {
 
     //商品评论
     $comments = CustomerReview::where('ad_space_id', '=', $id)->orderBy('created_at', 'desc')->paginate(15);
+    $company = Enterprise::where('id', '=', AdSpace::where('id', '=', $id)->first()->user_id)->first();
 
     //是否收藏
     if (Auth::check())
@@ -106,7 +107,7 @@ class AdSpaceController extends Controller {
     $ad = new AdSpace;
     $ideas = $ad->creative();
 
-    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas'));
+    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas', 'company'));
   }
  
 
