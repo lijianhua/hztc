@@ -84,10 +84,10 @@ class AdSpaceReponsitory
             return '正常广告';
             break;
           case 1:
-            return '免费广告';
+            return '特价广告';
             break;
           case 2:
-            return '特价广告';
+            return '免费广告';
             break;
           case 3:
             return '新奇特广告';
