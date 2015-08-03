@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Iverberk\Larasearch\Traits\TransformableTrait;
+use Iverberk\Larasearch\Traits\CallableTrait;
 
 class OrderItem extends Model
 {
-  use TransformableTrait;
+  use TransformableTrait, CallableTrait;
   protected $fillable = [
     'ad_space_id', 'order_id', 'ad_space_snapshot_id',
     'from', 'to', 'original_price', 'price',
@@ -16,9 +17,6 @@ class OrderItem extends Model
 
   protected $dates = [ 'from', 'to' ];
 
-  /**
-    * @return \Illuminate\Database\Eloquent\Relations
-    **/
   public function order()
   {
     return $this->belongsTo('App\Models\Order')->withTrashed();
