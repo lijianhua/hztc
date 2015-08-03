@@ -115,10 +115,28 @@ $(document).ready(function () {
     });
     
     $(".tel_bt").click(function(){
-      login_code();
-      tel_seconds = 60;
-      $(this).attr('disabled',true);
-       tel_interval = window.setInterval(set_time,1000);
+        var login_code = $.trim($(".login-code").val());
+        $.ajax({
+            type:'get',
+            url:'/getcaptcha',
+            data:{captcha:login_code},
+            success:function(data){
+                if(data == 1){
+                    tel_seconds = 60;
+                    $(this).attr('disabled',true);
+                    tel_interval = window.setInterval(set_time,1000);
+                    $(".login-code").parents('td').find('.sign-warning').css('display','none');
+                }else{
+                    $(".login-code").parents('td').find('.sign-warning').css('display','inline-block');
+                    return false;
+                }
+            }
+        })
+
+      // login_code();
+      // tel_seconds = 60;
+      // $(this).attr('disabled',true);
+      //  tel_interval = window.setInterval(set_time,1000);
     });
 
 })
@@ -145,6 +163,7 @@ function login_code(){
         success:function(data){
             if(data == 1){
                 $(".login-code").parents('td').find('.sign-warning').css('display','none');
+                $(this).attr('disabled',false);
             }else{
                 $(".login-code").parents('td').find('.sign-warning').css('display','inline-block');
                 return false;
