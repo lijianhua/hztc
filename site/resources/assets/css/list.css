@@ -248,6 +248,11 @@
     font-size: 18px;
     color: #64a7e5;
     margin: 5px 5px;
+    width: 400px;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 .list-info  .list-info-item-block{
     width: 440px;
@@ -262,6 +267,11 @@
     padding: 10px 10px 17px 10px;
     margin: 0 4px;
     border-bottom: 1px dashed #959595;
+    width: 430px;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 .list-info  .list-info-item-description a.link{
     color: #7bccff;

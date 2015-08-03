@@ -16,6 +16,14 @@
     vertical-align: middle;
     margin: 0 5px;
 }
+.details-title-text-break{
+    display: inline-block;
+    width: 100px;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
 .details-title-bt{
     position: absolute;
     right: 0;
@@ -136,6 +144,11 @@
     margin-top: 30px;
     font-size: 24px;
     margin-left: 19px;
+    width: 570px;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 .details .details-info-price{
     background-color: #f8f8f8;

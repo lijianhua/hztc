@@ -5,7 +5,7 @@
     <div class="details">
         <div class="details-title">
             <span class="details-title-text"><span>首页</span>
-            <i class="fa fa-angle-right"></i><span>{{ $adspace->title}}</span></span>
+            <i class="fa fa-angle-right"></i><span class="details-title-text-break" title="{{ $adspace->title}}">{{ $adspace->title}}</span></span>
             <span class="details-title-bt">
               <span class="details-title-link"><a href="/list/all-ads?{{$type}}">同类更多资源</a> </span>
               <span class="details-title-link"><a href="/list/all-ads?puid={{ $adspace->user_id}}">本公司其他资源</a> </span>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="details-info">
-                <div class="details-info-title"><span>{{{ $adspace->title }}}</span></div>
+                <div class="details-info-title" title='{{{ $adspace->title }}}'><span>{{{ $adspace->title }}}</span></div>
                 <div class="details-info-price clearfix">
                     <div class="details-info-price-left fl">
                         <div class="details-info-price-number">

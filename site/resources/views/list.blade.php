@@ -64,7 +64,7 @@
                             <img src="{{$adspaces[$i]->avatar->url()}}">
                         </div>
                         <div class="list-info-item-block">
-                            <div class="list-info-item-name">{{$adspaces[$i]->title}}</div>
+                            <div class="list-info-item-name" title="{{$adspaces[$i]->title}}">{{$adspaces[$i]->title}}</div>
                             <div class="list-info-item-combination">
                                 <!-- <span class="list&#45;info&#45;item&#45;collection">收藏<i class="fa fa&#45;star"></i></span> -->
                                 <span class="list-info-item-buy"><code>{{$adspaces[$i]->orderItems->sum('quantity')}}</code>人购买</span>
