@@ -1,4 +1,4 @@
 #!/bin/sh
 . /etc/profile
-cd /Users/pxy/adbugo/site
+cd /alidata/adbugo/site/
 php artisan larasearch:adspace
