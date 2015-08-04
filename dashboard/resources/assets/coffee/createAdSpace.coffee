@@ -8,6 +8,7 @@ $ ->
   class CreateAdSpaceForm
     constructor: (@id) ->
       @$ = window.jQuery
+      @form            = @$("##{@id}")
       @get_address_url = '/addresses'
       @provinceSelect  = @$('#addr_province')
       @citySelect      = @$('#addr_city')
@@ -33,6 +34,71 @@ $ ->
       @initCKEditor()
       # 监听分类选择全部的时候的事件
       @bindChangeEventOnCategories()
+      # 异步提交表单
+      @initSubmit()
+
+    initSubmit: ->
+      @form.submit context: @, (e) ->
+        e.preventDefault()
+
+        context = e.data.context
+        $       = context.$
+        form    = $(@)
+        alert   = new TenderAlert 'danger'
+
+        context.loading()
+        context.updateCKEditor()
+
+        form.ajaxSubmit
+          timeout: 120000
+          error  : (jqXHR, status) ->
+            if jqXHR.status == 422
+              @clearErrors()
+              @errorFields jqXHR.responseJSON
+              alert.alert '上传的内容有误，请检查后重新保存。'
+            else if status == 'timeout'
+              alert.alert '网络连接错误，请检查您的网络。'
+            else
+              alert.alert '发生了一些错误，请重新提交。'
+            @scrollToTop()
+            @removeLoading()
+          success: (data) ->
+            window.location = data.href
+
+    updateCKEditor: ->
+      for instance of CKEDITOR.instances
+        CKEDITOR.instances[instance].updateElement()
+
+    errorFields: (errors) ->
+      for field, messages of errors
+        @errorField field, messages
+
+    errorField: (field, messages) ->
+      formGroup = @form.find("[name='#{field}']").closest '.form-group'
+      label     = formGroup.find('label').text()
+      helpBlock = $('<div class="help-block"></div>')
+      for message in messages
+        error = message.replace /^(\w*\s*)*/, label
+        helpBlock.append error
+      formGroup.addClass('has-error').append helpBlock
+
+    clearErrors: ->
+      @$('.form-group').removeClass('has-error').find('.help-block').remove()
+
+    scrollToTop: ->
+      @$('body', 'html').animate scrollTop: 0
+
+    loading: ->
+      @$('body').prepend(
+        """
+        <div class="ypjh-overlay">
+          <i class="fa fa-spinner fa-pulse"></i>
+        </div>
+        """
+      )
+
+    removeLoading: ->
+      @$('.ypjh-overlay').remove()
 
     ###
     # 初始化文件上传

@@ -25,11 +25,11 @@ class AdSpaceReponsitory
    * 保存用户上传的广告位信息
    *
    * @var array $input
-   * @return void
+   * @return adspace
    **/
   public function store($input)
   {
-    DB::transaction(function () use ($input) {
+    return DB::transaction(function () use ($input) {
       // 保存广告位基本信息
       $adSpace = $this->parseAndCreateAdSpace($input);
       // 保存广告位分类信息
@@ -38,6 +38,8 @@ class AdSpaceReponsitory
       $this->parseAndStoreImagesFor($adSpace, $input);
       // 保存价格信息
       $this->parseAndStorePricesFor($adSpace, $input);
+
+      return $adSpace;
     });
   }
 
