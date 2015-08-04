@@ -17,6 +17,11 @@
                         <input type="radio" name="radio" checked>
                         <img src="/images/zhifubao.jpg">
                     </label>
+                    <label>
+                        <div>账户名：北京八八门网络科技有限公司</div>
+                        <div>账  号：35100188000056111</div>
+                        <div>开户行：光大银行北京花园路支行</div>
+                    </label>
                 </span>
             </div>
         </div>
