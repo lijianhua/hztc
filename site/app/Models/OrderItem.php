@@ -9,6 +9,7 @@ use Iverberk\Larasearch\Traits\CallableTrait;
 class OrderItem extends Model
 {
   use TransformableTrait, CallableTrait;
+  public static $__es_enable;
   protected $fillable = [
     'ad_space_id', 'order_id', 'ad_space_snapshot_id',
     'from', 'to', 'original_price', 'price',
