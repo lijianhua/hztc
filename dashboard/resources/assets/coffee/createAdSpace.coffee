@@ -34,6 +34,7 @@ $ ->
       @initCKEditor()
       # 监听分类选择全部的时候的事件
       @bindChangeEventOnCategories()
+      @bindClickEventOnClearButton()
       # 异步提交表单
       @initSubmit()
 
@@ -316,6 +317,14 @@ $ ->
         context = e.data.context
         context.clearHiddenCategories(@)
         context.selectAllCategories(@) if '' in context.$(@).val()
+
+    bindClickEventOnClearButton: ->
+      @form.find('.clear-select').click context: @, (e) ->
+        context = e.data.context
+        select  = context.$(@).closest('.form-group').find('select')
+
+        context.clearHiddenCategories(select)
+        select.val([])
 
     clearHiddenCategories: (select) ->
       @$(select).find("input[type=hidden][name='category_ids[]']").remove()
