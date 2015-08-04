@@ -159,7 +159,7 @@ class CartController extends Controller {
     $order->state = 0;
     $order->amount = $shop->subtotal;
     $order->count_price = $shop->adSpacesCart->adPrices->max('score')*$shop->quantity;
-    //$order->space_price_id = $shop->ad_space_snapshot_id;
+    $order->space_price_id = $shop->ad_space_snapshot_id;
     $order->save();
     return $order;
 
@@ -287,7 +287,6 @@ class CartController extends Controller {
 
               $adPrices = AdPrice::find($order->space_price_id);
               $orderItem = OrderItem::where('order_id', '=', $order->id)->first();
-              $adPrices = AdPrice::where('ad_space_id','=',$orderItem->ad_space_id)->first();
               $adPrices->sale_count -= $orderItem->quantity;
               $adPrices->save();
               $ucount = UserScoreAccount::where('user_id', '=', Auth::user()->id)->count();
