@@ -10,13 +10,13 @@
     </div>
     <div class="box-body">
       <div class="form-group">
-        <label>原价</label>
+        <label>刊例价</label>
         <input class="form-control" type="text"
                name="ad_prices[{{ isset($index) ? $index : 0 }}][original_price]"
                value="{{ isset($price) ?  $price['original_price'] : 0 }}">
       </div>
       <div class="form-group">
-        <label>单价</label>
+        <label>执行价</label>
         <input class="form-control" type="text"
                name="ad_prices[{{ isset($index) ? $index : 0 }}][price]"
                value="{{ isset($price) ? $price['price'] : 0 }}">

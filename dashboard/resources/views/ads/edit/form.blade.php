@@ -62,7 +62,7 @@
 </div>
 
 <div class="form-group">
-  {!! Form::text('street_address', null, ['class' => 'form-control']) !!}
+  {!! Form::text('street_address', null, ['class' => 'form-control', 'placeholder' => '辐射区域']) !!}
 </div>
 
 @foreach($categories as $category)

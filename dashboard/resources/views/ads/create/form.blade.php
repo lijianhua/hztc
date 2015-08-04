@@ -60,7 +60,7 @@
 </div>
 
 <div class="form-group">
-  <input type="text" name="street_address" class="form-control" value="{{ old('street_address') }}" placeholder="详细地址">
+  <input type="text" name="street_address" class="form-control" value="{{ old('street_address') }}" placeholder="辐射区域">
 </div>
 
 @foreach($categories as $category)

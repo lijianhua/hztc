@@ -3,8 +3,8 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>价格（元）</th>
-        <th>原价（元）</th>
+        <th>执行价（元）</th>
+        <th>刊例价（元）</th>
         <th>积分</th>
         <th>起始日期</th>
         <th>截止日期</th>
