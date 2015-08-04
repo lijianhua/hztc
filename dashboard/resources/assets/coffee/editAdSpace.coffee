@@ -47,6 +47,7 @@ $ ->
       @initCategories()
       # 监听分类选择全部的时候的事件
       @bindChangeEventOnCategories()
+      @bindClickEventOnClearButton()
       # 异步提交表单
       @initSubmit()
       # 开始编辑
@@ -374,5 +375,13 @@ $ ->
 
     addHiddenCategoryValueToSelect: (select, value) ->
       @$(select).append " <input type=\"hidden\" name=\"category_ids[]\" value=\"#{value}\"> "
+
+    bindClickEventOnClearButton: ->
+      @form.find('.clear-select').click context: @, (e) ->
+        context = e.data.context
+        select  = context.$(@).closest('.form-group').find('select')
+
+        context.clearHiddenCategories(select)
+        select.val([])
 
   form = new EditAdSpaceForm 'updateAdSpaceForm', $
