@@ -17,12 +17,12 @@
                         <input type="radio" name="radio" checked>
                         <img src="/images/zhifubao.jpg">
                     </label>
-                    <label>
-                        <div>账户名：北京八八门网络科技有限公司</div>
-                        <div>账  号：35100188000056111</div>
-                        <div>开户行：光大银行北京花园路支行</div>
-                    </label>
                 </span>
+            </div>
+            <div class='bank-code-block'>
+                <span style='display:block'>账户名：北京八八门网络科技有限公司</span>
+                <span style='display:block;margin-top:5px;margin-bottom:5px'>账　号：35100188000056111</span>
+                <span style='display:block'>开户行：光大银行北京花园路支行</span>
             </div>
         </div>
         <div class="pay-submit">
