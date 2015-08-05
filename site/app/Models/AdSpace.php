@@ -118,6 +118,7 @@ class AdSpace extends Model implements StaplerableInterface {
     $sort_array = ['price'=> 'ad_prices.price', 'quantity' => 'order_items.quantity', 'created_at' => 'ad_spaces.created_at', 'id' => 'ad_spaces.id'];
     $adspaces = '';
     $list = [];
+    $total = '';
     if(trim($q) != '')
     {
       //模糊匹配广告标题
@@ -128,28 +129,29 @@ class AdSpace extends Model implements StaplerableInterface {
       {
         array_push($list,$result->id);
       }  
+      $total = ceil($response1->getTotal()/$per_page);
       
       //模糊匹配广告简介
-      $query2 = ['query' => ['filtered' => ['query'=>['wildcard' => ['description' => '*'.$q.'*' ]],'filter' => ['bool'=> ['must' => $query]]]]];
-      $response2 = AdSpace::searchByQuery($query2, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
-      $results2 = $response2->getResults();
-      foreach($results2 as $result)
-      {
-        array_push($list,$result->id);
-      }  
-      array_unique($list);
+      // $query2 = ['query' => ['filtered' => ['query'=>['wildcard' => ['description' => '*'.$q.'*' ]],'filter' => ['bool'=> ['must' => $query]]]]];
+      // $response2 = AdSpace::searchByQuery($query2, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
+      // $results2 = $response2->getResults();
+      // foreach($results2 as $result)
+      // {
+      //   array_push($list,$result->id);
+      // }  
+      // array_unique($list);
     }
     else
     {
       $query = ['query' => ['filtered' => ['filter' => ['bool'=> ['must' => $query]]]]];
       $response = AdSpace::searchByQuery($query, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
       $results = $response->getResults();
+      $total = ceil($response->getTotal()/$per_page);
       foreach($results as $result)
       {
         array_push($list,$result->id);
       }  
     }
-    $total = ceil(count($list)/$per_page);
     foreach ($sort_array as $index => $value)
     {
       if($index == $sort)
