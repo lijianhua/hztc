@@ -62,8 +62,7 @@
               <tr>
                   <td class="sign-block-left"><strong>手机号：</strong></td>
                   <td>
-                      <input type="text" class="sign-enter" id="phone"
-name='phone' value="{{old('name') }}" ><input class="tel_bt" type='button'
+                      <input type="text" class="sign-enter" id="phone" name='phone' value="{{old('name') }}" ><input class="tel_bt" type='button'
 value="获取验证码">
                       <span class="sign-warning" style="margin-left: 110px">请填写正确的手机格式</span><br/>
                       <span class="sign-prompt">请使用常用手机号码注册。</span>
@@ -73,7 +72,7 @@ value="获取验证码">
                   <td class="sign-block-left"><strong>短信验证码：</strong></td>
                   <td>
                       <input type="text" class="sign-enter" id="phone_code" value="{{old('name') }}"  name='phone_code' style="width: 100px">
-                      <span class="sign-warning">手机验证码</span><br/>
+                      <span class="sign-warning">短信验证码</span><br/>
                       <span class="sign-prompt">请输入验证码。</span>
                   </td>
               </tr>

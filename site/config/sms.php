@@ -14,8 +14,8 @@ return array(
    * Do <em>NOT FORGET</em> to replace it with production url
    * when this application get to run as production.
    **/
-  //'host' => 'app.cloopen.com',
-  'host' => 'sandboxapp.cloopen.com',
+  'host' => 'app.cloopen.com',
+  //'host' => 'sandboxapp.cloopen.com',
 
   /**
    * Port of yuntongxun.com service api
@@ -42,15 +42,14 @@ return array(
    * It's demo application now, you shoud replace it
    * with 8a48b551488d07a801489a435c6703aa in production evironment.
    **/
-  // 'appId' => 'aaf98f89488d0aad01489234efdd0178',
-  'appId' => '8a48b5514e3e5862014e4db0adcc0e74',
+  'appId' => 'aaf98f894e3e5b81014e4db1e2e20f73',
 
   /**
    * 1 is test template id.
    * This should be replace with the template id that you supplier
    * at yuntongxun.com in production evironment.
    **/
-  'tempId' => '5658',
+  'tempId' => '27854',
 
   /**
    * 用户获取积分后的短信模板id

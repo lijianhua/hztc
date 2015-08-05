@@ -64,7 +64,7 @@ Route::get('users/refund','UserController@refund');
 Route::get('users/refund/detail/{id}','UserController@detail');
 Route::post('collect/','AdSpaceController@addCollect');
 
-Route::get('/SMS','SmsController@index');
+Route::post('/SMS','SmsController@message');
 // 搜索
 Route::any('search', 'SearchController@search');
 Route::get('/Search/list', 'SearchController@search_list_filter');

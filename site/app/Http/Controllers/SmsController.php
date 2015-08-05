@@ -4,8 +4,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\REST;
-use App\Models\SendTemplateSMS;
-
+use App\Models\SMSRepository;
+use Queue;
+use Session;
 class SmsController extends Controller {
 
 	/**
@@ -15,11 +16,21 @@ class SmsController extends Controller {
 	 */
 	public function index()
 	{
-		//
-    $a = new SendTemplateSMS();
-    $data = $a->sendTemplateSMS('13120135753',array('fisdfsfdsfsdfsdfdsfnessssssssss, fine ,fine , fine, fine ,thinks,and you','1'),'1');
-    print_r($data);
-    exit;
+
+	}
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function message(Request $request)
+	{
+      $sendMessage = new SMSRepository();
+      $message = rand(100000, 999999);
+      Session::put('message', $message);
+      $data = array($message, '1');
+      $sendMessage->sendQueueScoreGainedMessage(trim($request->get('phone')),$data,'27854');
+      return $message;
 	}
 
 	/**

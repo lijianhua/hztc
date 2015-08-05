@@ -117,24 +117,39 @@ class AdSpace extends Model implements StaplerableInterface {
   {
     $sort_array = ['price'=> 'ad_prices.price', 'quantity' => 'order_items.quantity', 'created_at' => 'ad_spaces.created_at', 'id' => 'ad_spaces.id'];
     $adspaces = '';
+    $list = [];
     if(trim($q) != '')
     {
-      //$query = ['query' => ['wildcard' => ['title' => '*'.$q.'*' ],'wildcard' => ['description' => '*'.$q.'*' ]]];
-      $query = ['query' => ['filtered' => ['query'=>['wildcard' => ['title' => '*'.$q.'*' ],'wildcard' => ['description' => '*'.$q.'*' ]],'filter' => ['bool'=> ['must' => $query]]]]];
-      //$query = ['query' => ['filtered' => ['query'=>['wildcard' => ['description' => '*'.$q.'*' ]],'query'=>['wildcard' => ['title' => '*'.$q.'*' ]],'filter' => ['bool'=> ['must' => $query]]]]];
+      //模糊匹配广告标题
+      $query1 = ['query' => ['filtered' => ['query'=>['wildcard' => ['title' => '*'.$q.'*' ]],'filter' => ['bool'=> ['must' => $query]]]]];
+      $response1 = AdSpace::searchByQuery($query1, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
+      $results1 = $response1->getResults();
+      foreach($results1 as $result)
+      {
+        array_push($list,$result->id);
+      }  
+      
+      //模糊匹配广告简介
+      $query2 = ['query' => ['filtered' => ['query'=>['wildcard' => ['description' => '*'.$q.'*' ]],'filter' => ['bool'=> ['must' => $query]]]]];
+      $response2 = AdSpace::searchByQuery($query2, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
+      $results2 = $response2->getResults();
+      foreach($results2 as $result)
+      {
+        array_push($list,$result->id);
+      }  
+      array_unique($list);
     }
     else
     {
       $query = ['query' => ['filtered' => ['filter' => ['bool'=> ['must' => $query]]]]];
+      $response = AdSpace::searchByQuery($query, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
+      $results = $response->getResults();
+      foreach($results as $result)
+      {
+        array_push($list,$result->id);
+      }  
     }
-    $response = AdSpace::searchByQuery($query, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
-    $results = $response->getResults();
-    $total = ceil(($response->getTotal())/$per_page);
-    $list = [];
-    foreach($results as $result)
-    {
-      array_push($list,$result->id);
-    }  
+    $total = ceil(count($list)/$per_page);
     foreach ($sort_array as $index => $value)
     {
       if($index == $sort)

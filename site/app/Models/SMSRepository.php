@@ -1,6 +1,7 @@
 <?php namespace App\Models;
 use App\Models\REST;
 use Config;
+use Queue;
 /**
  * Send messages service throught yuntongxun.com
  **/
@@ -20,9 +21,20 @@ class SMSRepository
     $rest->setAppId(Config::get('sms.appId'));
     // Send message.
     $result = $rest->sendTemplateSMS($to, $data, $tempId);
-    print_r($result);
-    exit;
     return $result && $result->statusCode == 0;
+  }
+  /**
+   * 用队列发送用户获取积分短信
+   *
+   * @return void
+   * @author Yuez
+   **/
+  public function sendQueueScoreGainedMessage($to, $data, $tempId)
+  {
+    Queue::push(function($job) use ($to, $data, $tempId) {
+      $this->sendTemplateMessage($to, $data, $tempId);
+      $job->delete();
+    });
   }
 
   /**
