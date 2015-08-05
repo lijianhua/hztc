@@ -38,9 +38,13 @@
                     <div class="details-info-price-left fl">
                         <div class="details-info-price-number">
                             <span>刊例价：</span>
-                            <span class="">
-                              <i class="fa fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('original_price')}}</span></span>
-                            <div style='display:inline-block'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <span class="details-info-price-info details-info-price-color">
+                              <i class="fa fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('price')}}</span></span>
+                        </div>
+                        <div class="details-info-price-number">
+                            <span>刊例价：</span>
+                            <span class="details-info-price-info details-info-price-color">
+                              <i class="fa fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('price')}}</span></span>
                             <span>执行价：</span>
                             <span class="details-info-price-info details-info-price-color">
                               <i class="fa fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('price')}}</span></span>
