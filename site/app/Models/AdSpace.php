@@ -121,37 +121,19 @@ class AdSpace extends Model implements StaplerableInterface {
     $total = '';
     if(trim($q) != '')
     {
-      //模糊匹配广告标题
-      $query1 = ['query' => ['filtered' => ['query'=>['wildcard' => ['title' => '*'.$q.'*' ]],'filter' => ['bool'=> ['must' => $query]]]]];
-      $response1 = AdSpace::searchByQuery($query1, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
-      $results1 = $response1->getResults();
-      foreach($results1 as $result)
-      {
-        array_push($list,$result->id);
-      }  
-      $total = ceil($response1->getTotal()/$per_page);
-      
-      //模糊匹配广告简介
-      // $query2 = ['query' => ['filtered' => ['query'=>['wildcard' => ['description' => '*'.$q.'*' ]],'filter' => ['bool'=> ['must' => $query]]]]];
-      // $response2 = AdSpace::searchByQuery($query2, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
-      // $results2 = $response2->getResults();
-      // foreach($results2 as $result)
-      // {
-      //   array_push($list,$result->id);
-      // }  
-      // array_unique($list);
+      $query = ['query' => ['filtered' => ['query'=>['wildcard' => ['_all' => '*'.$q.'*',]],'filter' => ['bool'=> ['must' => $query]]]]];
     }
     else
     {
       $query = ['query' => ['filtered' => ['filter' => ['bool'=> ['must' => $query]]]]];
-      $response = AdSpace::searchByQuery($query, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
-      $results = $response->getResults();
-      $total = ceil($response->getTotal()/$per_page);
-      foreach($results as $result)
-      {
-        array_push($list,$result->id);
-      }  
     }
+    $response = AdSpace::searchByQuery($query, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
+    $results = $response->getResults();
+    $total = ceil($response->getTotal()/$per_page);
+    foreach($results as $result)
+    {
+      array_push($list,$result->id);
+    }  
     foreach ($sort_array as $index => $value)
     {
       if($index == $sort)
