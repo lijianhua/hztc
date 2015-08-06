@@ -11,7 +11,8 @@
     "laravelcollective/html": "~5.0",
     "codesleeve/laravel-stapler": "dev-master",
     "iverberk/larasearch": "dev-L5",
-    "latrell/alipay": "dev-master"
+    "latrell/alipay": "dev-master",
+    "mews/purifier": "~2.0"
   },
   "minimum-stability": "dev",
   "require-dev": {

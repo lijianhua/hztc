@@ -139,6 +139,7 @@ return [
       'Collective\Html\HtmlServiceProvider',
       'Codesleeve\LaravelStapler\Providers\L5ServiceProvider',
       'Iverberk\Larasearch\LarasearchServiceProvider',
+      'Mews\Purifier\PurifierServiceProvider',
       /*
        * Application Service Providers...
        */
@@ -200,6 +201,7 @@ return [
       'Captcha' => 'Mews\Captcha\Facades\Captcha',
       'Form' => 'Collective\Html\FormFacade',
       'Html' => 'Collective\Html\HtmlFacade',
+      'Purifier'   => 'Mews\Purifier\Facades\Purifier',
     ],
 
   ];
