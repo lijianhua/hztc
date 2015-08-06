@@ -47,9 +47,7 @@
                               <span>{{$adspace->adPrices->min('price')}}</span>/
                               {{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}
                             </span>
-                            <span style="display:block">
-                               <b><span>{{$adspace->AdPrices->max('note')?$adspace->AdPrices->max('note'):''}}</span></b>
-                            </span>
+                            <p>{{$adspace->AdPrices->max('note')?$adspace->AdPrices->max('note'):''}}</p>
                         </div>
                         <div class="details-info-price-service">
                            公司：<span style="color: #878787">{{$company->name}}</span> &nbsp;&nbsp;&nbsp;&nbsp;
