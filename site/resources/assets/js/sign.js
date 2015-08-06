@@ -1,4 +1,7 @@
  var tel_interval;
+ var tel_phone_code;
+ var tel_number;
+ var tel_seconds = 60;
 $(document).ready(function () {
     $(".sign-change .sign-change-item").click(function () {
         $(this).find('i').addClass('fa-dot-circle-o');
@@ -70,7 +73,7 @@ $(document).ready(function () {
             $('#phone').parents('td').find('.sign-warning').css('display','inline-block');
             return false;
         }
-        if (phone_code.length != 0) {
+        if (phone_code == tel_phone_code && phone ==tel_number) {
             $('#phone_code').parents('td').find('.sign-warning').css('display','none');
         }else{
             $('#phone_code').parents('td').find('.sign-warning').css('display','inline-block');
@@ -115,7 +118,9 @@ $(document).ready(function () {
     });
     
     $(".tel_bt").click(function(){
+        
         var login_code = $.trim($(".login-code").val());
+        
         $.ajax({
             type:'get',
             url:'/getcaptcha',
@@ -123,15 +128,25 @@ $(document).ready(function () {
             success:function(data){
                 if(data == 1){
                     tel_seconds = 60;
-                    $(this).attr('disabled',true);
-                    tel_interval = window.setInterval(set_time,1000);
+                    tel_code();
                     $(".login-code").parents('td').find('.sign-warning').css('display','none');
                 }else{
                     $(".login-code").parents('td').find('.sign-warning').css('display','inline-block');
                     return false;
                 }
             }
-        })
+        });
+        
+        
+
+        // $.ajax({
+        //     url:'/SMS',
+        //     type:'post',
+        //     data:{phone:tel},
+        //     success:function(data){
+        //         // alert(data);
+        //     }
+        // })
 
       // login_code();
       // tel_seconds = 60;
@@ -139,16 +154,39 @@ $(document).ready(function () {
       //  tel_interval = window.setInterval(set_time,1000);
     });
 
-})
-var tel_seconds = 60;
+});
+
+function tel_code(){
+    var reg_phone = /^0?1[3|4|5|8][0-9]\d{8}$/;
+    var tel = $.trim($('#phone').val());
+    if (reg_phone.test(tel) && tel.length == 11) {
+        $.ajax({
+            url:'/SMS',
+            type:'post',
+            data:{phone:tel},
+            success:function(data){
+                tel_phone_code = data;
+                tel_number = tel;
+            }
+        });
+        tel_interval = window.setInterval(set_time,1000);
+        $('#phone').parents('td').find('.sign-warning').css('display','none');
+    }else{
+        $('#phone').parents('td').find('.sign-warning').css('display','inline-block');
+        return false;
+    }
+}
+
 function set_time(){
   if(tel_seconds <= 0){
     $(".tel_bt").val("再次获取验证码");
     $('.tel_bt').removeAttr('disabled');
     window.clearInterval(tel_interval);
   }else{
+    $('.tel_bt').attr('disabled',true);
     tel_seconds -= 1;
     $(".tel_bt").val(tel_seconds+"秒后再次获取");
+    
   }
 }
 
@@ -171,4 +209,7 @@ function login_code(){
         }
     })
 }
+
+
+
 
