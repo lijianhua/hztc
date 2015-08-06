@@ -17,9 +17,23 @@
       </div>
       <div class="form-group">
         <label>执行价</label>
+        <div class="input-group">
+          <input class="form-control" type="text"
+                name="ad_prices[{{ isset($index) ? $index : 0 }}][price]"
+                value="{{ isset($price) ? $price['price'] : 0 }}">
+          <span class="input-group-addon">元/</span>
+          <input class="form-control" type="text"
+                 name="ad_prices[{{ isset($index) ? $index : 0 }}][unit]"
+                 value="{{ isset($price) ? $price['unit'] : '' }}"
+                 placeholder="期、周等">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>备注</label>
         <input class="form-control" type="text"
-               name="ad_prices[{{ isset($index) ? $index : 0 }}][price]"
-               value="{{ isset($price) ? $price['price'] : 0 }}">
+                name="ad_prices[{{ isset($index) ? $index : 0 }}][note]"
+                value="{{ isset($price) ? $price['note'] : '' }}"
+                placeholder="比如描述广告频次等">
       </div>
       <div class="form-group">
         <label>积分</label>

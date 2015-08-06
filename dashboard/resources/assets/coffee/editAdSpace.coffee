@@ -296,12 +296,26 @@ $ ->
             </div>
             <div class="box-body">
               <div class="form-group">
-                <label>原价</label>
+                <label>刊例价</label>
                 <input class="form-control" type="text" name="ad_prices[#{seed}][original_price]">
               </div>
               <div class="form-group">
-                <label>单价</label>
-                <input class="form-control" type="text" name="ad_prices[#{seed}][price]">
+                <label>执行价</label>
+                <div class="input-group">
+                  <input class="form-control" type="text"
+                        name="ad_prices[#{seed}][price]"
+                        value="0">
+                  <span class="input-group-addon">元/</span>
+                  <input class="form-control" type="text"
+                        name="ad_prices[#{seed}][unit]"
+                        placeholder="期、周等">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>备注</label>
+                <input class="form-control" type="text"
+                        name="ad_prices[#{seed}][note]"
+                        placeholder="比如描述广告频次等">
               </div>
               <div class="form-group">
                 <label>积分</label>
