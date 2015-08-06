@@ -39,12 +39,14 @@
                         <div class="details-info-price-number">
                             <span>刊例价：</span>
                             <span class="">
-                              <i class="fa fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('original_price')}}/{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}} {{$adspace->AdPrices->max('note')?$adspace->AdPrices->max('note'):''}}</span></span>
+                              <i class="fa fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('original_price')}}/{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}</span></span>
                             <div style='display:inline-block'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                             <span>执行价：</span>
                             <span class="details-info-price-info details-info-price-color">
-                              <i class="fa fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('price')}}</span>{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}
-{{$adspace->AdPrices->max('note')?$adspace->AdPrices->max('note'):''}}</span>
+                              <i class="fa fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('price')}}/</span>{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}</span>
+                            <span style="display:block">
+                               <span>{{$adspace->AdPrices->max('note')?$adspace->AdPrices->max('note'):''}}</span>
+                            </span>
                         </div>
                         <div class="details-info-price-service">
                            公司：<span style="color: #878787">{{$company->name}}</span>
