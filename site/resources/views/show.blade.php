@@ -45,7 +45,7 @@
                             <span class="details-info-price-info details-info-price-color">
                               <i class="fa fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('price')}}/</span>{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}</span>
                             <span style="display:block">
-                               <span>{{$adspace->AdPrices->max('note')?$adspace->AdPrices->max('note'):''}}</span>
+                               <b><span>{{$adspace->AdPrices->max('note')?$adspace->AdPrices->max('note'):''}}</span></b>
                             </span>
                         </div>
                         <div class="details-info-price-service">
