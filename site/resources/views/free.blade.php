@@ -8,7 +8,7 @@
             <div class="spike clearfix">
                 <div class="spike-left">
                     <div class="spike-recommend fl">
-                        <div class="spike-recommend-title"><span>人气创意广告</span></div>
+                        <div class="spike-recommend-title"><span>人气新奇特广告</span></div>
                         @foreach($ideas as $idea)
                           <div class="filter-recommend-item">
                               <a href="/ads/{{$idea->id}}">

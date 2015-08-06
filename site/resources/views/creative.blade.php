@@ -1,5 +1,5 @@
 <div class="details-recommend fl">
-    <div class="details-recommend-title"><span>人气创意广告</span></div>
+    <div class="details-recommend-title"><span>人气新奇特广告</span></div>
     @if ($ideas)
     @foreach($ideas as $idea)
       <div class="filter-recommend-item">
