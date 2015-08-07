@@ -7,7 +7,6 @@ use Session;
  **/
 class ValiCodeRepository {
   const VALI_CODE_KEY = 'message';
-
   /**
    * Generate a validation code 
    * and set the code into session.
