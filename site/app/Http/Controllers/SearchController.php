@@ -24,7 +24,7 @@ class SearchController extends Controller {
     $query = $this->get_price_array($para);
     foreach($para as $index=>$value)
     {
-      if($value=='全部' || $value=='')
+      if(trim($value)=='全部' || $value=='')
       {
         unset($para[$index]);
       } 
