@@ -73,7 +73,9 @@ value="获取验证码">
                   <td>
                       <input type="text" class="sign-enter" id="phone_code" value="{{old('name') }}"  name='phone_code' style="width: 100px">
                       <span class="sign-warning">请输入正确短信验证码</span><br/>
-                      <span class="sign-prompt">请输入验证码。</span>
+                      <span class="sign-prompt" id="value-sign" >请输入验证码。</span>
+                      <input type="hidden" id="sign-info-phone" value="{{isset($phone)?  $phone:''}}">
+                      <input type="hidden" id="sign-info-code"  value="{{isset($message)?$message:''}}">
                   </td>
               </tr>
               <tr>
