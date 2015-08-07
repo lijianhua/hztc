@@ -352,7 +352,7 @@ class UserController extends Controller {
             User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise_id]);
             UserInformation::create(['user_id' => $user->id, 'key' => 'idcard', 'value' => $attributes['idcard'], 'authority' => 0]);
             UserInformation::create(['user_id' => $user->id, 'key' => 'truthname', 'value' => $attributes['truthname'], 'authority' => 0]);
-            UserInformation::create(['user_id' => $user->id, 'key' => 'telphone', 'value' => $attributes['telphone'], 'authority' => 0]);
+            UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'telphone')->update(['value' => $attributes['telphone']]);
           });   
         }
     }
@@ -377,7 +377,7 @@ class UserController extends Controller {
             User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise->id]);
             UserInformation::create(['user_id' => $user->id, 'key' => 'idcard', 'value' => $attributes['idcard'], 'authority' => 0]);
             UserInformation::create(['user_id' => $user->id, 'key' => 'truthname', 'value' => $attributes['truthname'], 'authority' => 0]);
-            UserInformation::create(['user_id' => $user->id, 'key' => 'telphone', 'value' => $attributes['telphone'], 'authority' => 0]);
+            UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'telphone')->update(['value' => $attributes['telphone']]);
           });   
         }
     }

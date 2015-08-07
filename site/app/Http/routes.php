@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
  */
-
+include 'validators.php';
 Route::get('/', 'HomeController@index');
 Route::get('/ads/{id}', 'AdSpaceController@show');
 Route::get('/search', 'SearchController@index');

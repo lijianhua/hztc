@@ -8,6 +8,9 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Http\Middleware\BeforeLoginMiddleware;
+use App\Models\ValiCodeRepository;
+use Session;
+use App\Models\UserInformation;
 class AuthController extends Controller {
   protected $redirectTo = '/';
 
@@ -67,12 +70,24 @@ class AuthController extends Controller {
           '密码错误',
 					]);
 	}
+	public function getRegister()
+  {
+    if(Session::has('message')&&Session::has('phone'))
+    {
+      $message = Session::get('message');
+      $phone = Session::get('phone');
+      return view('/auth/register')->with(compact('message', 'phone'));
+    }
+    return view('/auth/register');
+  }
 	public function postRegister(Request $request)
 	{
 		$this->validate($request, [
 			'name' => 'required|max:255|min:6|alpha_dash',
 			'email' => 'required|email|max:255|unique:users',
       'captcha' => 'required|captcha',
+      'phone_code' => 'required|phonecode',
+      'phone' => 'required|tel',
 			'password' => 'required|confirmed|min:6'],
       [ 'email.required'=> '邮箱不能为空', 
         'email.unique'=> '邮箱已经存在', 
@@ -83,7 +98,11 @@ class AuthController extends Controller {
         'password.required' => '密码不能为空', 
         'password.confirmed' => '两次密码不匹配', 
         'captcha.captcha' => '验证码错误',
-        'captcha.required' => '验证码不能为空'
+        'captcha.required' => '验证码不能为空',
+        'phone_code.required' => '手机短信码不能为空',
+        'phone_code.phonecode' => '手机短信码错误',
+        'phone.required' => '手机号不能为空',
+        'phone.tel' => '手机格式错误'
       ]);
     $name = $request->get('name');
     $email = $request->get('email');
@@ -94,6 +113,12 @@ class AuthController extends Controller {
 			'email' => $email,
       'password' => $pwd,
       'active_token' => $active_token
+		]);
+	  UserInformation::create([
+			'user_id' => $user->id,
+			'key' => 'telphone',
+      'value' => $request->get('phone'),
+      'authority' => 0 
 		]);
 //    return Redirect::to('auth/email/'.$user->id);
     Auth::login($user);

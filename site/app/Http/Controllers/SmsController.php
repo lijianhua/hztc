@@ -28,9 +28,10 @@ class SmsController extends Controller {
       $sendMessage = new SMSRepository();
       $message = rand(100000, 999999);
       Session::put('message', $message);
+      Session::put('phone', $request->get('phone'));
       $data = array($message, '1');
       $sendMessage->sendQueueScoreGainedMessage(trim($request->get('phone')),$data,'27854');
-      return $message;
+      return array('message'=>$message, 'phone'=>$request->get('phone'));
 	}
 
 	/**

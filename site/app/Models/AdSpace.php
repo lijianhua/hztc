@@ -172,6 +172,7 @@ class AdSpace extends Model implements StaplerableInterface {
            ->orderBy('ad_prices.price', 'desc') 
            ->orderBy('order_items.quantity', 'desc')
            ->groupBy('ad_spaces.id')
+           ->take(3)
            ->get();
 
     return $ideas;
