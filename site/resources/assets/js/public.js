@@ -1,6 +1,8 @@
 $(document).ready(function(){
     var flash = true;
 
+    $('[data-toggle="tooltip"]').tooltip();
+
     //nav 左侧栏下拉选择
     $(".filter-nav-menu li").click(function(){
         var text = $(this).text();

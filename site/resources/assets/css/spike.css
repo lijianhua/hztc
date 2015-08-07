@@ -133,6 +133,10 @@
     border-bottom: 1px solid #ffffff;
     display: block;
     padding-bottom: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 240px;
+    word-break: keep-all;
     margin: 25px 20px 0px 25px;
 }
 .spike .spike-info-date{
@@ -189,36 +193,3 @@
     -moz-border-radius: 30px;
     border-radius: 30px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="spike-main fl">
-                   @foreach($adspaces as $adspace) 
+                   @foreach($adspaces as $adspace)
                         <div class="spike-item clearfix" date-start="{{$adspace->start}}" date-end="{{$adspace->end}}">
                             <div class="spike-picture">
                                 <img src="{{$adspace->adSpace->avatar->url()}}">
@@ -33,7 +33,8 @@
                             </div>
                             <div class="spike-info">
                                 <div class="spike-info-bg">
-                                    <div class="spike-info-title">【{{$adspace->title}}】</div>
+                                    <div class="spike-info-title" title="{{$adspace->title}}"
+                                         data-toggle="tooltip" data-placement="bottom">【{{$adspace->title}}】</div>
                                     <div class="spike-info-date">
                                         <div class="spike-info-date-day fz16">
                                             距离<span>{{$adspace->isProccessing()?  '结束':'开抢'}}</span>时间还有 <i>20</i> 天
