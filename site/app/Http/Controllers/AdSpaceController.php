@@ -70,6 +70,7 @@ class AdSpaceController extends Controller {
    */
   public function show($id)
   {
+    
     $nav = '首页';
     $navigators = $this->navigators;
     Session::put('current_navigator', $nav);
@@ -104,9 +105,8 @@ class AdSpaceController extends Controller {
       $str_type = $str_type.'categories_0'.'['.$index.']'.'='.$value.'&';
     }
     $type = rtrim($str_type,'&');
-    $ad = new AdSpace;
-    $ideas = $ad->creative();
-
+    $ideas = AdSpace::creative();
+    
     return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas', 'company'));
   }
  
