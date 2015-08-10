@@ -203,7 +203,7 @@ class AdSpace extends Model implements StaplerableInterface {
     foreach($adspaces as $adspace)
     {
       $categories = $adspace->categories()->whereIn('name',$array_categories)->get();
-      if($categories)
+      if(count($categories))
       {
         array_push($array_adspace,$adspace->id); 
       }
