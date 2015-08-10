@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use Iverberk\Larasearch\Traits\SearchableTrait;
+use App\Models\Enterprise;
+use App\Models\User;
 
 class AdSpace extends Model implements StaplerableInterface {
 
@@ -184,22 +186,39 @@ class AdSpace extends Model implements StaplerableInterface {
    */
   public static function app_media($company_name, $array_categories=['APP', '新媒体(微信、微博、其他)'])
   {
-    $app_media = AdSpace::leftjoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
+    //同一公司的广告位
+    $company_id = Enterprise::where('name', '=', $company_name)->first()->id; 
+    $users = User::where('enterprise_id', '=', $company_id)->get();
+    $array_user = [];
+    foreach($users as $user)
+    {
+      $adspaces = self::where('user_id', '=', $user->id)->get();
+      foreach($adspaces as $adspace)
+      {
+        array_push($array_user,$adspace->id);
+      }
+    }
+    $adspaces = AdSpace::whereIn('id', $array_user)->get();  
+    $array_adspace = [];
+    foreach($adspaces as $adspace)
+    {
+      $categories = $adspace->categories()->whereIn('name',$array_categories)->get();
+      if($categories)
+      {
+        array_push($array_adspace,$adspace->id); 
+      }
+    }
+    $app_medias = AdSpace::leftjoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
            ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
            ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
-           ->leftjoin('ad_category_ad_space', 'ad_spaces.id', '=', 'ad_category_ad_space.ad_space_id')
-           ->leftjoin('ad_categories', 'ad_categories.id', '=', 'ad_categories.id')
-           ->leftjoin('users', 'ad_spaces.user_id', '=', 'users.id')
-           ->leftjoin('enterprises', 'enterprises.id', '=', 'users.enterprise_id')
-           ->whereIn('ad_categories.name',  $array_categories)
-           ->where('enterprises.name', '=', $company_name)
            ->where('ad_spaces.audited', '=', '1')
-           ->select("*",'ad_spaces.id','ad_spaces.avatar_file_name','ad_spaces.avatar_file_size','ad_spaces.avatar_content_type','ad_spaces.avatar_updated_at') 
+           ->whereIn('ad_spaces.id',$array_adspace)
+           ->select("*",'ad_spaces.id') 
            ->orderBy('ad_prices.price', 'desc') 
            ->orderBy('order_items.quantity', 'desc')
            ->groupBy('ad_spaces.id')
            ->take(3)
            ->get();
-    return $app_media;
+    return $app_medias;
   }
 }
