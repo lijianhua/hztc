@@ -43,6 +43,10 @@ $(document).ready(function () {
         var password = $.trim($('#password').val());
         var phone = $.trim($('#phone').val());
         var phone_code = $.trim($('#phone_code').val());
+        tel_phone_code = $("#sign-info-code").val();
+        tel_number = $("#sign-info-phone").val();
+
+
         var re_password = $.trim($('#re_password').val());
         var reg = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
         var reg_phone = /^0?1[3|4|5|8][0-9]\d{8}$/;
@@ -72,7 +76,7 @@ $(document).ready(function () {
         }else{
             $('#phone').parents('td').find('.sign-warning').css('display','inline-block');
             return false;
-        }               
+        }
 
         if (phone_code == tel_phone_code && phone == tel_number) {
             $('#phone_code').parents('td').find('.sign-warning').css('display','none');
@@ -166,10 +170,10 @@ function tel_code(){
             type:'post',
             data:{phone:tel},
             success:function(data){
-                tel_phone_code = data['message'];
-                tel_number = data['phone'];
-                var tel_phone_code = $("#sign-info-code").val();
-                var tel_number = $("#sign-info-phone").val();
+                tel_phone_code = $("#sign-info-code").val(data['message']);
+                tel_number = $("#sign-info-phone").val(data['phone']);
+                $("#sign-info-code").val(data['message']);
+                $("#sign-info-phone").val(data['phone']);
             }
         });
         tel_interval = window.setInterval(set_time,1000);
