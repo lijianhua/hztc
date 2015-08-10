@@ -14,3 +14,27 @@ request body = <TemplateSMS>
                   </TemplateSMS>
 request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5514e3e5862014e4daffd900e71/SMS/TemplateSMS?sig=A8EE007F583A31D91C7FFD97F3F62420
 response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Response><statusCode>112314</statusCode><statusMsg>【短信】短信下发超过当日发送限制</statusMsg></Response>
+request body = <TemplateSMS>
+                    <to>13120315753</to> 
+                    <appId>aaf98f894e3e5b81014e4db1e2e20f73</appId>
+                    <templateId>27854</templateId>
+                    <datas><data>992613</data><data>1</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5514e3e5862014e4daffd900e71/SMS/TemplateSMS?sig=8DFDBC40A154F2B1BC65DD6C3C5A411D
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Response><statusCode>112314</statusCode><statusMsg>【短信】短信下发超过当日发送限制</statusMsg></Response>
+request body = <TemplateSMS>
+                    <to>13120315753</to> 
+                    <appId>aaf98f894e3e5b81014e4db1e2e20f73</appId>
+                    <templateId>27854</templateId>
+                    <datas><data>840028</data><data>1</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5514e3e5862014e4daffd900e71/SMS/TemplateSMS?sig=59B22F1B6D8EE9FF9E7383B4ACB46AAA
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Response><statusCode>112314</statusCode><statusMsg>【短信】短信下发超过当日发送限制</statusMsg></Response>
+request body = <TemplateSMS>
+                    <to>13120315753</to> 
+                    <appId>aaf98f894e3e5b81014e4db1e2e20f73</appId>
+                    <templateId>27854</templateId>
+                    <datas><data>230251</data><data>1</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a48b5514e3e5862014e4daffd900e71/SMS/TemplateSMS?sig=457B253B19283FACFF6183B7197C452C
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Response><statusCode>112314</statusCode><statusMsg>【短信】短信下发超过当日发送限制</statusMsg></Response>
