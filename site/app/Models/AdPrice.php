@@ -32,4 +32,16 @@ class AdPrice extends Model {
 
     return $array;
   }
+  public static function getLowPrice($results)
+  {
+    $LowPrice = $results->min('price');
+    foreach($results as $result)
+    {
+      if($result->price==$LowPrice) 
+      {
+        return $result; 
+      }
+    }
+    return null;
+  }
 }

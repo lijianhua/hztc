@@ -29,7 +29,7 @@ class SmsController extends Controller {
       $message = rand(100000, 999999);
       Session::put('message', $message);
       Session::put('phone', $request->get('phone'));
-      $data = array($message, '1');
+      $data = array($message, '20');
       $sendMessage->sendQueueScoreGainedMessage(trim($request->get('phone')),$data,'27854');
       return array('message'=>$message, 'phone'=>$request->get('phone'));
 	}
