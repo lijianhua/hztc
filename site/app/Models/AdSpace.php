@@ -194,14 +194,12 @@ class AdSpace extends Model implements StaplerableInterface {
            ->whereIn('ad_categories.name',  $array_categories)
            ->where('enterprises.name', '=', $company_name)
            ->where('ad_spaces.audited', '=', '1')
-           ->where('ad_spaces.type', '=', '3')
-           ->select("*",'ad_spaces.id') 
+           ->select("*",'ad_spaces.id','ad_spaces.avatar_file_name','ad_spaces.avatar_file_size','ad_spaces.avatar_content_type','ad_spaces.avatar_updated_at') 
            ->orderBy('ad_prices.price', 'desc') 
            ->orderBy('order_items.quantity', 'desc')
            ->groupBy('ad_spaces.id')
            ->take(3)
            ->get();
-
     return $app_media;
   }
 }
