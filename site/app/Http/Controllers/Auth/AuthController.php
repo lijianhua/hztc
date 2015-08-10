@@ -104,6 +104,7 @@ class AuthController extends Controller {
         'phone.required' => '手机号不能为空',
         'phone.tel' => '手机格式错误'
       ]);
+    echo ($request);exit;
     $name = $request->get('name');
     $email = $request->get('email');
     $pwd = bcrypt($request->get('password'));
