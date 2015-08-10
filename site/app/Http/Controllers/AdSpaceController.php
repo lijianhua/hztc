@@ -15,6 +15,7 @@ use App\Models\Address;
 use App\Models\Promotion;
 use App\Models\CustomerReview;
 use App\Models\Enterprise;
+use App\Models\User;
 
 class AdSpaceController extends Controller {
 
@@ -105,9 +106,14 @@ class AdSpaceController extends Controller {
       $str_type = $str_type.'categories_0'.'['.$index.']'.'='.$value.'&';
     }
     $type = rtrim($str_type,'&');
+    //创意类广告
     $ideas = AdSpace::creative();
     
-    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas', 'company'));
+
+    //APP自媒体广告
+    $company_name = Enterprise::find(User::find($adspace->user_id)->enterprise_id)->name;
+    $app_medias = AdSpace::app_media($company_name);
+    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas', 'company', 'app_medias'));
   }
  
 

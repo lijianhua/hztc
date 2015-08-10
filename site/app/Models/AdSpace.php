@@ -177,4 +177,31 @@ class AdSpace extends Model implements StaplerableInterface {
 
     return $ideas;
   }
+  /**
+   * APP或者自媒体
+   *
+   *
+   */
+  public static function app_media($company_name, $array_categories=['APP', '新媒体(微信、微博、其他)'])
+  {
+    $app_media = AdSpace::leftjoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
+           ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
+           ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
+           ->leftjoin('ad_category_ad_space', 'ad_spaces.id', '=', 'ad_category_ad_space.ad_space_id')
+           ->leftjoin('ad_categories', 'ad_categories.id', '=', 'ad_categories.id')
+           ->leftjoin('users', 'ad_spaces.user_id', '=', 'users.id')
+           ->leftjoin('enterprises', 'enterprises.id', '=', 'users.enterprise_id')
+           ->whereIn('ad_categories.name',  $array_categories)
+           ->where('enterprises.name', '=', $company_name)
+           ->where('ad_spaces.audited', '=', '1')
+           ->where('ad_spaces.type', '=', '3')
+           ->select("*",'ad_spaces.id') 
+           ->orderBy('ad_prices.price', 'desc') 
+           ->orderBy('order_items.quantity', 'desc')
+           ->groupBy('ad_spaces.id')
+           ->take(3)
+           ->get();
+
+    return $app_media;
+  }
 }
