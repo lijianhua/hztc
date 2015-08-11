@@ -16,6 +16,14 @@
     vertical-align: middle;
     margin: 0 5px;
 }
+.details-title-text-break{
+    display: inline-block;
+    width: 100px;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
 .details-title-bt{
     position: absolute;
     right: 0;
@@ -146,6 +154,11 @@
     margin-top: 30px;
     font-size: 24px;
     margin-left: 19px;
+    width: 570px;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 .details .details-info-price{
     background-color: #f8f8f8;
@@ -253,7 +266,7 @@
     width: 40px;
 }
 .details-stage-block{
-    width: 300px;
+    width: 370px;
 }
 .details-stage .details-stage-item{
     color: #7bccff;
@@ -551,6 +564,10 @@
 .page .page-item.active{
     background-color: #ff4c4c;
     color: #ffffff;
+    padding: 5px 15px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 }
 .page .page-item-previous,
 .page .page-item-next{
