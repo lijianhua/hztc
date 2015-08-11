@@ -73,7 +73,7 @@
                                 {{App\Models\AdPrice::getLowPrice($adspaces[$i]->AdPrices)->price}}/{{App\Models\AdPrice::getLowPrice($adspaces[$i]->AdPrices)->unit !='' ?App\Models\AdPrice::getLowPrice($adspaces[$i]->AdPrices)->unit:'期' }}
                             </div>
                             <div class="list-info-item-description">
-                                {{$adspaces[$i]->description}} <a href="/ads/{{$adspaces[$i]->id}}" class="link">查看详情》</a>
+                               <span style='color:black'>{{$adspaces[$i]->description}}</span><a href="/ads/{{$adspaces[$i]->id}}" class="link" style='color:#333333'>查看详情》</a>
                             </div>
                         </div>
                     </div>
