@@ -24,7 +24,7 @@ class AdSpaceController extends Controller {
    *
    * @return void
    */
-   private $list_array = array('all-ads'=>['name'=>'全部广告位', 'type'=> ''], 'free-ads'=>['name'=>'免费广告位', 'type'=> 2],'special-ads'=>['name'=>'特价广告位','type'=> 1], 'creative-ads'=>['name'=>'新奇特广告', 'type'=> 3]);
+   private $list_array = array('all-ads'=>['name'=>'全部广告资源', 'type'=> ''], 'free-ads'=>['name'=>'免费广告资源', 'type'=> 2],'special-ads'=>['name'=>'特价广告资源','type'=> 1], 'creative-ads'=>['name'=>'新奇特广告资源', 'type'=> 3]);
   public function __construct()
   {
     // $this->middleware('auth');
