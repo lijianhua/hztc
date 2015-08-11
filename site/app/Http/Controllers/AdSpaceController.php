@@ -55,7 +55,7 @@ class AdSpaceController extends Controller {
   public function free()
   {
 
-    $nav = '免费广告位';
+    $nav = '免费广告资源';
     $navigators = $this->navigators;
     Session::put('current_navigator', $nav);
 
