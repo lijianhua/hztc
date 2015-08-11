@@ -104,36 +104,34 @@
           @include ('creative')
             <div class="introduction fl">
                 <div class="introduction-list-title"><span class="active">广告详情</span><span>客户评论</span></div>
-                <div>{!! Purifier::clean($adspace->detail) !!}</div>
-                <div class="introduction-advert">
-                    <div class="introduction-list">
-                        <div class="introduction-seller">
-                                <div class="introduction-list-title"><span class="active">商家介绍</span></div>
-                            </div>
-                        <table>
-                            <tr>
-                                <td class="introduction-list-strong">公司名称</td>
-                                <td class="introduction-list-info">{{$company->name}}</td>
-                            </tr>
-                            <tr>
-                                <td class="introduction-list-strong">联系方式</td>
-                                <td class="introduction-list-info">{{$company->telphone}}</td>
-                            </tr>
-                            <tr>
-                                <td class="introduction-list-strong">qq</td>
-                                <td class="introduction-list-info">{{$company->qq}}</td>
-                            </tr>
-                            <tr>
-                                <td class="introduction-list-strong">微信</td>
-                                <td class="introduction-list-info">{{$company->weixin}}</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                <div class="introduction-advert">{!! Purifier::clean($adspace->detail) !!}</div>
                 <div class="introduction-consumer display">
                 @if ($adspace->customerReviews->count('id') > 0)
                   @include('adcomment')
                 @endif
+                </div>
+                <div class="introduction-list">
+                    <div class="introduction-seller">
+                            <div class="introduction-list-title"><span class="active">商家介绍</span></div>
+                        </div>
+                    <table>
+                        <tr>
+                            <td class="introduction-list-strong">公司名称</td>
+                            <td class="introduction-list-info">{{$company->name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="introduction-list-strong">联系方式</td>
+                            <td class="introduction-list-info">{{$company->telphone}}</td>
+                        </tr>
+                        <tr>
+                            <td class="introduction-list-strong">qq</td>
+                            <td class="introduction-list-info">{{$company->qq}}</td>
+                        </tr>
+                        <tr>
+                            <td class="introduction-list-strong">微信</td>
+                            <td class="introduction-list-info">{{$company->weixin}}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
