@@ -133,6 +133,31 @@
                         </tr>
                     </table>
                 </div>
+                <div class="introduction-me">
+                    <div class="introduction-me-show">
+                        <div class="introduction-me-left"></div>
+                        <div class="introduction-me-right"></div>
+                        <div class="introduction-me-title">本公司其他资源</div>
+                        <div class="introduction-me-block">
+                            @if ($app_medias['company_adspaces'])
+                            @foreach($app_medias['company_adspaces'] as $idea)
+                              <div class="introduction-me-line clearfix">
+                                  <div class="introduction-me-item">
+                                    <a href="/ads/{{$idea->id}}">
+                                        <div class="introduction-me-item-img">
+                                          <img src="{{$idea->avatar->url()}}">
+                                        </div>
+                                        <div class="introduction-me-item-name">
+                                          {{$idea->title}}
+                                        </div>
+                                    </a>
+                                  </div>
+                              </div>
+                            @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

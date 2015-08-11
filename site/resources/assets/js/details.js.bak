@@ -129,21 +129,5 @@ $(document).ready(function () {
         window.location.href="/auth/login";
        }
     });
-    var  introduction_item_length = $('.introduction-me-item').length;
-    var  introduction_item_width = $('.introduction-me-item').width();
-    var roll_index = parseInt(Math.floor($('.introduction-me-block').width()/introduction_item_width));
-    var introduction_index = 0;
-    $(".introduction-me-right").click(function () {
-        if(introduction_item_length > roll_index+introduction_index){
-        introduction_index+=1;
-        $(".introduction-me-line").animate({marginLeft:-(introduction_item_width+12)*introduction_index},1000)
-        }
-    });
-    $(".introduction-me-left").click(function () {
-        if(introduction_index > 0){
-            introduction_index-=1;
-            $(".introduction-me-line").animate({marginLeft:-(introduction_item_width+12)*introduction_index},1000)
-        }
-    });
 
 });

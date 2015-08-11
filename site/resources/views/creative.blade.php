@@ -16,8 +16,8 @@
         <!--<a href="#">发现更多<i class="fa fa-angle-right details-recommend-more-mark"></i></a>-->
     <!--</div>-->
     <div class="details-recommend-title"><span>APP、自媒体广告</span></div>
-    @if ($app_medias)
-    @foreach($app_medias as $idea)
+    @if ($app_medias['app_medias'])
+    @foreach($app_medias['app_medias'] as $idea)
       <div class="filter-recommend-item">
           <a href="/ads/{{$idea->id}}">
               <img src="{{$idea->avatar->url()}}">

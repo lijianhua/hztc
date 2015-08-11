@@ -16,14 +16,6 @@
     vertical-align: middle;
     margin: 0 5px;
 }
-.details-title-text-break{
-    display: inline-block;
-    width: 100px;
-    word-break:keep-all;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
 .details-title-bt{
     position: absolute;
     right: 0;
@@ -57,6 +49,16 @@
 .details-title-bt dd a:hover{
     background-color: #ebebeb;
     color: #ff4c4c;
+}
+.details-title-link a{
+    font-size: 12px;
+    margin: 10px;
+    background-color: #ff4c4c;
+    color: #ffffff;
+    padding: 5px 15px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 }
 .details .details-picture{
     position: relative;
@@ -144,11 +146,6 @@
     margin-top: 30px;
     font-size: 24px;
     margin-left: 19px;
-    width: 570px;
-    word-break:keep-all;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
 }
 .details .details-info-price{
     background-color: #f8f8f8;
@@ -256,7 +253,7 @@
     width: 40px;
 }
 .details-stage-block{
-    width: 370px;
+    width: 300px;
 }
 .details-stage .details-stage-item{
     color: #7bccff;
@@ -455,14 +452,187 @@
     color: #c4c4c4;
     margin-top: 2px;
 }
+.introduction-me{
+    margin-top: 30px;
+    border-top: 2px solid #ff4c4c;
+    padding-top: 8px;
+}
+.introduction-me .introduction-me-show{
+    border: 1px solid #eeeeee;
+    position: relative;
+}
+.introduction-me-title{
+    padding: 4px 35px;
+    background-color: #f9f9f9;
+    height: 32px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+.introduction-me-block{
+    margin-top: 13px;
+    width: 812px;
+    margin-left: 17px;
+    overflow: hidden;
+}
+.introduction-me-line{
+    width: 10000px;
+}
+.introduction-me-item{
+    float: left;
+    margin-right: 12px;
+    text-align: center;
+}
+.introduction-me-item:hover .introduction-me-item-img{
+    border:2px solid #ff4c4c;
+}
+.introduction-me .introduction-me-item-img{
+    width: 243px;
+    height: 156px;
+    border:2px solid #ffffff;
+}
+.introduction-me .introduction-me-item-img img{
+    width: 239px;
+    height: 152px;
+}
+.introduction-me-item-name{
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 13px;
+}
+.introduction-me-item:hover .introduction-me-item-name{
+    color: #1999fc;
+}
+.introduction-me-left{
+    background: url("../images/details/introduction_left1.jpg") no-repeat 0 0;
+    width: 24px;
+    height: 70px;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    cursor: pointer;
+}
+.introduction-me-left:hover{
+    background: url("../images/details/introduction_left2.jpg") no-repeat 0 0;
+}
+.introduction-me-right{
+    background: url("../images/details/introduction_right1.jpg") no-repeat 0 0;
+    width: 24px;
+    height: 70px;
+    position: absolute;
+    right: 0;
+    top: 80px;
+    cursor: pointer;
+}
+.introduction-me-right:hover{
+    background: url("../images/details/introduction_right2.jpg") no-repeat 0 0;
+}
 
-.details-title-link a{
+
+
+.page{
+    height: 30px;
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.page .page-item{
+    border:1px solid #e5e5e5;
+    padding: 6px 0;
     font-size: 12px;
-    margin: 10px;
+    text-align: center;
+    width: 26px;
+    display: inline-block;
+    float: left;
+}
+.page span{
+    margin: 0 4px;
+    float: left;
+}
+.page .page-item.active{
     background-color: #ff4c4c;
     color: #ffffff;
-    padding: 5px 15px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
 }
+.page .page-item-previous,
+.page .page-item-next{
+    border:1px solid #e5e5e5;
+    width: 56px;
+    padding: 6px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+}
+.page-return{
+    position: relative;
+}
+.page-return input{
+    width: 53px;
+    font-size: 12px;
+    padding: 6px;
+    border: 1px solid #ff4c4c;
+    height: 30px;
+}
+.page-return button{
+    width: 56px;
+    font-size: 12px;
+    padding: 6px 0;
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
