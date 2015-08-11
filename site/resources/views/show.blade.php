@@ -139,23 +139,23 @@
                         <div class="introduction-me-right"></div>
                         <div class="introduction-me-title">本公司其他资源</div>
                         <div class="introduction-me-block">
-                            @if ($app_medias['company_adspaces'])
                               <div class="introduction-me-line clearfix">
-                                @foreach($app_medias['company_adspaces'] as $idea)
                                   <div class="introduction-me-line clearfix">
-                                      <div class="introduction-me-item">
-                                        <a href="/ads/{{$idea->id}}">
-                                            <div class="introduction-me-item-img">
-                                              <img src="{{$idea->avatar->url()}}">
-                                            </div>
-                                            <div class="introduction-me-item-name">
-                                              {{$idea->title}}
-                                            </div>
-                                        </a>
-                                      </div>
-                                @endforeach
+                                    @if ($app_medias['company_adspaces'])
+                                        @foreach($app_medias['company_adspaces'] as $idea)
+                                              <div class="introduction-me-item">
+                                                <a href="/ads/{{$idea->id}}">
+                                                    <div class="introduction-me-item-img">
+                                                      <img src="{{$idea->avatar->url()}}" alt="{{$idea->title}}" title="{{$idea->title}}">
+                                                    </div>
+                                                    <div class="introduction-me-item-name">
+                                                    </div>
+                                                </a>
+                                              </div>
+                                        @endforeach
+                                    @endif
+                                  </div>
                               </div>
-                            @endif
                         </div>
                     </div>
                 </div>
