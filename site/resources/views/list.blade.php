@@ -59,6 +59,7 @@
             </div>
             <div class="list-info clearfix">
                 @for($i = 0; $i < count($adspaces); $i++)
+                <a href="/ads/{{$adspaces[$i]->id}}" class="link">
                     <div class="list-info-item {{$i%2 == 0 ? 'mr9':''}}">
                         <div class="list-info-item-img">
                             <img src="{{$adspaces[$i]->avatar->url()}}">
@@ -76,6 +77,7 @@
                             </div>
                         </div>
                     </div>
+                </a>
                 @endfor
             </div>
             <div class="page">
