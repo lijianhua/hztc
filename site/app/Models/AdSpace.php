@@ -219,6 +219,6 @@ class AdSpace extends Model implements StaplerableInterface {
            ->groupBy('ad_spaces.id')
            ->take(3)
            ->get();
-    return array('company_adspaces'=>$adspaces, 'app_medias'=>$adspaces);
+    return array('company_adspaces'=>$adspaces, 'app_medias'=>$app_medias);
   }
 }
