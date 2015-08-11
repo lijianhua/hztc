@@ -199,6 +199,17 @@ class AdSpace extends Model implements StaplerableInterface {
       }
     }
     $adspaces = AdSpace::whereIn('id', $array_user)->get();  
+    $adspaces_top10 = AdSpace::leftjoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
+           ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
+           ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
+           ->where('ad_spaces.audited', '=', '1')
+           ->whereIn('ad_spaces.id', $array_user)
+           ->select("*",'ad_spaces.id') 
+           ->orderBy('ad_prices.price', 'desc') 
+           ->orderBy('order_items.quantity', 'desc')
+           ->groupBy('ad_spaces.id')
+           ->take(10)
+           ->get();
     $array_adspace = [];
     foreach($adspaces as $adspace)
     {
@@ -219,6 +230,6 @@ class AdSpace extends Model implements StaplerableInterface {
            ->groupBy('ad_spaces.id')
            ->take(3)
            ->get();
-    return array('company_adspaces'=>$adspaces, 'app_medias'=>$app_medias);
+    return array('company_adspaces'=>$adspaces_top10, 'app_medias'=>$app_medias);
   }
 }
