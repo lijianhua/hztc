@@ -140,7 +140,6 @@
                         <div class="introduction-me-title">本公司其他资源</div>
                         <div class="introduction-me-block">
                               <div class="introduction-me-line clearfix">
-                                  <div class="introduction-me-line clearfix">
                                     @if ($app_medias['company_adspaces'])
                                         @foreach($app_medias['company_adspaces'] as $idea)
                                               <div class="introduction-me-item">
@@ -154,7 +153,6 @@
                                               </div>
                                         @endforeach
                                     @endif
-                                  </div>
                               </div>
                         </div>
                     </div>
