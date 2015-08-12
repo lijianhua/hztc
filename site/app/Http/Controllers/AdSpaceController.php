@@ -204,6 +204,11 @@ class AdSpaceController extends Controller {
     {
       $query = (new SearchController())->get_query(['type' => [$type_nu]], []);
     }
+    if(array_key_exists('puid', $query_array))
+     {
+        $company_id = User::where('enterprise_id', '=', User::find($query_array['puid'])->enterprise_id)->lists('id'); 
+        $query_array['puid'] = $company_id;
+     }
     $query_price = (new SearchController())->get_price_array($query_array, $query);
     $query = (new SearchController())->get_query($query_array,$query_price);
     $str = (new SearchController())->get_url_str($query_array);
@@ -249,7 +254,7 @@ class AdSpaceController extends Controller {
     }
     if(array_key_exists('puid',$query_array))
     {
-      $query_array['puid'] = Enterprise::whereId($query_array['puid'])->first()->name; 
+      $query_array['puid'] = Enterprise::whereId($query_array['puid'][0])->first()->name; 
     }
     return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'current_category', 'sort', 'current_page', 'total','query_array','str'));
   }

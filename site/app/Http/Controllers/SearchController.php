@@ -9,6 +9,7 @@ use Collection;
 use App\Models\Navigator;
 use App\Models\AdCategory;
 use App\Models\Address;
+use App\Models\User;
 class SearchController extends Controller {
 
   public function search(Request $request)
@@ -133,7 +134,7 @@ class SearchController extends Controller {
               $query = $this -> get_search_array(array_values($para['type']), 'type', $query);
               break;
             case 'puid':
-              $query = $this -> get_search_array(array_values([$para['puid']]), 'user_id', $query);
+              $query = $this -> get_search_array(array_values($para['puid']), 'user_id', $query);
               break;
         }
      }
