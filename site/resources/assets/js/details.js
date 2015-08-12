@@ -5,7 +5,7 @@ $(document).ready(function () {
     var itemlength = $(".details-picture-tab-item").length;
 
 
-    $(".details-picture-tab-item").click(function(){
+    $(".details-picture-tab-item").hover(function(){
         var index = $(this).index();
         $(this).addClass('active');
         $(this).siblings().removeClass('active');
