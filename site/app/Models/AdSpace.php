@@ -123,7 +123,7 @@ class AdSpace extends Model implements StaplerableInterface {
     $total = '';
     if(trim($q) != '')
     {
-      $query = ['query' => ['filtered' => ['query'=>['wildcard' => ['_all' => '*'.$q.'*']],'filter' => ['bool'=> ['must' => $query]]]]];
+      $query = ['query' => ['filtered' => ['query'=>['fuzzy_like_this' => ['like_text' => '*'.$q.'*']],'filter' => ['bool'=> ['must' => $query]]]]];
     }
     else
     {
