@@ -8,11 +8,14 @@ use Codesleeve\Stapler\ORM\EloquentTrait;
 use Iverberk\Larasearch\Traits\SearchableTrait;
 use App\Models\Enterprise;
 use App\Models\User;
-
+use App\Traits\Models\AdSpaceTransformableTrait; 
 class AdSpace extends Model implements StaplerableInterface {
 
-  Use SoftDeletes, EloquentTrait, SearchableTrait;
-
+  Use SoftDeletes, EloquentTrait, SearchableTrait, AdSpaceTransformableTrait
+  {
+    AdSpaceTransformableTrait::transform insteadof SearchableTrait;
+  }
+  
   public static $__es_config = [
     'autocomplete' => ['title'],
     'suggest'      => ['title'],
