@@ -198,7 +198,7 @@ class AdSpaceController extends Controller {
     }
     if($type_nu=='')
     {
-      $query = (new SearchController())->get_query(['type' => [0,1,2,3]], []);
+      $query = (new SearchController())->get_query(['type' => [0,2,3]], []);
     }
     else
     {
