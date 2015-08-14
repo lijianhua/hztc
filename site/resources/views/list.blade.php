@@ -74,7 +74,8 @@
                                 </span>
                             </div>
                             <div class="list-info-item-description">
-                               <div style='color:#333333;text-align:left' title="{{$adspaces[$i]->description}}">{{$adspaces[$i]->description}}</div><a href="/ads/{{$adspaces[$i]->id}}" class="link" style='color:#333333'>查看详情》</a>
+                               <div style='color:#333333;text-align:left' title="{{$adspaces[$i]->description}}">{{$adspaces[$i]->description}}</div>
+                               <div class="link" style='color:#333333;text-align:right'>查看详情》</div>
                             </div>
                         </div>
                     </div>
