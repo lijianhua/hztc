@@ -71,6 +71,7 @@
                                 <span class="list-info-item-buy"><code>{{$adspaces[$i]->orderItems->sum('quantity')}}</code>人购买</span>
                                 <span class="list-info-item-money"><i class="fa fa-jpy"></i>
                                 {{App\Models\AdPrice::getLowPrice($adspaces[$i]->AdPrices)->price}}/{{App\Models\AdPrice::getLowPrice($adspaces[$i]->AdPrices)->unit !='' ?App\Models\AdPrice::getLowPrice($adspaces[$i]->AdPrices)->unit:'期' }}
+                                </span>
                             </div>
                             <div class="list-info-item-description">
                                <div style='color:#333333;text-align:left' title="{{$adspaces[$i]->description}}">{{$adspaces[$i]->description}}</div><a href="/ads/{{$adspaces[$i]->id}}" class="link" style='color:#333333'>查看详情》</a>
