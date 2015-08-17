@@ -120,7 +120,13 @@ class CartController extends Controller {
       $shop->delete();
       return $order;
     });
-    return view('pay')->with(compact('navigators', 'order'));
+    if ($order->state == 1)
+    {
+      return redirect('/users/order')->with('status', '支付成功'); 
+    }
+    else {
+      return view('pay')->with(compact('navigators', 'order'));
+    }
   }
 
   /**
@@ -157,6 +163,10 @@ class CartController extends Controller {
     $order->user_id = Auth::user()->id;
     $order->order_seq = $this->orderNub();
     $order->state = 0;
+    if ($shop->subtotal == 0)
+    {
+      $order->state = 1;
+    }
     $order->amount = $shop->subtotal;
     $order->count_price = $shop->adSpacesCart->adPrices->max('score')*$shop->quantity;
     $order->space_price_id = $shop->ad_space_snapshot_id;
