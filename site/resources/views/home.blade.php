@@ -7,7 +7,7 @@
         <div class="layout ">
             <div class="left-nav">
                 <div class="advert">
-                    <img src="images/index/advert.jpg">
+                    <img src="images/index/advert.png">
                 </div>
                 <div class="filter-nav">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/Search') }}" id='login-form'>
