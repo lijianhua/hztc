@@ -30,7 +30,7 @@
                                 </div>
                             </li>
                             <li class="filter-nav-item">
-                                <span class="filter-nav-title">媒体类型</span><br/>
+                                <span class="filter-nav-title">传播媒介</span><br/>
                                 <div class="btn-group">
                                     <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         <b id='type'>全部</b> <span class="filter-nav-caret caret"></span>
@@ -38,15 +38,15 @@
                                     </button>
                                     <ul class="filter-nav-menu dropdown-menu" role="menu">
                                         <li><a href="#">全部</a> </li>
-                                        <li><a href="#">户外</a> </li>
-                                        <li><a href="#">APP</a> </li>
-                                        <li><a href="#">网络</a> </li>
-                                        <li><a href="#">电视</a> </li>
+                                        <li><a href="#">热门活动</a> </li>
+                                        <li><a href="#">新媒体</a> </li>
+                                        <li><a href="#">报纸</a> </li>
+                                        <li><a href="#">杂志</a> </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="filter-nav-item">
-                                <span class="filter-nav-title">目标受众</span><br/>
+                                <span class="filter-nav-title">受众偏好</span><br/>
                                 <div class="btn-group">
                                     <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         <b id='society'>全部</b> <span class="filter-nav-caret caret"></span>
@@ -54,10 +54,10 @@
                                     </button>
                                     <ul class="filter-nav-menu dropdown-menu" role="menu">
                                         <li><a href="#">全部</a> </li>
-                                        <li><a href="#">养生圈</a> </li>
-                                        <li><a href="#">地产圈</a> </li>
-                                        <li><a href="#">IT圈</a> </li>
-                                        <li><a href="#">金融圈</a> </li>
+                                        <li><a href="#">时尚</a> </li>
+                                        <li><a href="#">地产</a> </li>
+                                        <li><a href="#">IT</a> </li>
+                                        <li><a href="#">金融</a> </li>
                                     </ul>
                                 </div>
                             </li>
