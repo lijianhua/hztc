@@ -22,7 +22,7 @@
             </div>
             <div class="filter-operate-block">
                 <dl>
-                    <dt>城市<span class="filter-mark"></span></dt>
+                    <dt>投放市场<span class="filter-mark"></span></dt>
                     @foreach ($cities as $index => $city)
                       <dd rel="0" class="filter-operate" data-name='cities' data-index="{{$index}}" data-value={{$city}}><b>{{$city}}</b><span class="filter-add"></span></dd>
                     @endforeach
