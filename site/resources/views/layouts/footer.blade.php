@@ -18,7 +18,8 @@
                     <span class="ft-link-item"><a href="/about/contact.html" target='__blank'>关于我们</a> </span> /
                     <span class="ft-link-item"><a href="/about.html" target='__blank'>联系我们</a> </span> /
                     <span class="ft-link-item"><a href="http://special.zhaopin.com/pagepublish/15278881/index.html" target='__blank'>加入我们</a> </span> /
-                    <span class="ft-link-item"><a href="/about/law.html" target='__blank'>法律声明</a> </span>
+                    <span class="ft-link-item"><a href="/about/law.html" target='__blank'>法律声明</a> </span> /
+                    <span class="ft-link-item"><a href="/help.pdf" target='__blank'>帮助</a> </span>
                 </div>
 
             </div>
