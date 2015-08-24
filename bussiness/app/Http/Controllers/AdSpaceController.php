@@ -12,6 +12,7 @@ use App\Models\AdCategory;
 use App\Models\AdSpace;
 use App\Http\Requests\PostAdSpaceRequest;
 use App\Http\Requests\UpdateAdSpaceRequest;
+use Auth;
 
 class AdSpaceController extends Controller
 {
