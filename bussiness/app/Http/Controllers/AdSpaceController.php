@@ -51,7 +51,8 @@ class AdSpaceController extends Controller
 
   public function server()
   {
-    $ads = AdSpace::with(['user', 'user.enterprise', 'address']);
+    $ads = AdSpace::with(['user', 'user.enterprise', 'address'])
+        ->where('ad_spaces.user_id', '=', Auth::user()->id);
     return $this->store->datatables($ads);
   }
 
