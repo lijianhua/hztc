@@ -25,11 +25,11 @@ class AdSpaceReponsitory
    * 保存用户上传的广告位信息
    *
    * @var array $input
-   * @return void
+   * @return adspace
    **/
   public function store($input)
   {
-    DB::transaction(function () use ($input) {
+    return DB::transaction(function () use ($input) {
       // 保存广告位基本信息
       $adSpace = $this->parseAndCreateAdSpace($input);
       // 保存广告位分类信息
@@ -38,6 +38,8 @@ class AdSpaceReponsitory
       $this->parseAndStoreImagesFor($adSpace, $input);
       // 保存价格信息
       $this->parseAndStorePricesFor($adSpace, $input);
+
+      return $adSpace;
     });
   }
 
@@ -84,13 +86,13 @@ class AdSpaceReponsitory
             return '正常广告';
             break;
           case 1:
-            return '免费广告';
-            break;
-          case 2:
             return '特价广告';
             break;
+          case 2:
+            return '免费广告';
+            break;
           case 3:
-            return '创意广告';
+            return '新奇特广告';
             break;
         }
       })
@@ -159,9 +161,11 @@ class AdSpaceReponsitory
   public function parseAndStoreCategoriesFor($ad, $input)
   {
     $categoryIds = Arr::get($input, 'category_ids');
-    $categoryIds = array_filter($categoryIds);
-    foreach ($categoryIds as $categoryId)
-      $ad->categories()->attach($categoryId);
+    if ($categoryIds != null) {
+      $categoryIds = array_filter($categoryIds);
+      foreach ($categoryIds as $categoryId)
+        $ad->categories()->attach($categoryId);
+    }
   }
 
   public function parseAndUpdateCategoriesFor($ad, $input)

@@ -40,6 +40,7 @@
               <span>最新订单</span>
               <small class="label pull-right bg-green">{{ $__counts['newestOrders'] }}</small>
             </a>
+          </li>
           <li>
             <a href="{{ url('orders/pending-proccess') }}">
               <i class="fa fa-circle-o"></i>

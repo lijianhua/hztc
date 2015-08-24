@@ -8,6 +8,7 @@ $ ->
   class CreateAdSpaceForm
     constructor: (@id) ->
       @$ = window.jQuery
+      @form            = @$("##{@id}")
       @get_address_url = '/addresses'
       @provinceSelect  = @$('#addr_province')
       @citySelect      = @$('#addr_city')
@@ -33,6 +34,72 @@ $ ->
       @initCKEditor()
       # 监听分类选择全部的时候的事件
       @bindChangeEventOnCategories()
+      @bindClickEventOnClearButton()
+      # 异步提交表单
+      @initSubmit()
+
+    initSubmit: ->
+      @form.submit context: @, (e) ->
+        e.preventDefault()
+
+        context = e.data.context
+        $       = context.$
+        form    = $(@)
+        alert   = new TenderAlert 'danger'
+
+        context.loading()
+        context.updateCKEditor()
+
+        form.ajaxSubmit
+          timeout: 120000
+          error  : (jqXHR, status) ->
+            if jqXHR.status == 422
+              @clearErrors()
+              @errorFields jqXHR.responseJSON
+              alert.alert '上传的内容有误，请检查后重新保存。'
+            else if status == 'timeout'
+              alert.alert '网络连接错误，请检查您的网络。'
+            else
+              alert.alert '发生了一些错误，请重新提交。'
+            @scrollToTop()
+            @removeLoading()
+          success: (data) ->
+            window.location = data.href
+
+    updateCKEditor: ->
+      for instance of CKEDITOR.instances
+        CKEDITOR.instances[instance].updateElement()
+
+    errorFields: (errors) ->
+      for field, messages of errors
+        @errorField field, messages
+
+    errorField: (field, messages) ->
+      formGroup = @form.find("[name='#{field}']").closest '.form-group'
+      label     = formGroup.find('label').text()
+      helpBlock = $('<div class="help-block"></div>')
+      for message in messages
+        error = message.replace /^(\w*\s*)*/, label
+        helpBlock.append error
+      formGroup.addClass('has-error').append helpBlock
+
+    clearErrors: ->
+      @$('.form-group').removeClass('has-error').find('.help-block').remove()
+
+    scrollToTop: ->
+      @$('body', 'html').animate scrollTop: 0
+
+    loading: ->
+      @$('body').prepend(
+        """
+        <div class="ypjh-overlay">
+          <i class="fa fa-spinner fa-pulse"></i>
+        </div>
+        """
+      )
+
+    removeLoading: ->
+      @$('.ypjh-overlay').remove()
 
     ###
     # 初始化文件上传
@@ -139,12 +206,26 @@ $ ->
             </div>
             <div class="box-body">
               <div class="form-group">
-                <label>原价</label>
+                <label>刊例价</label>
                 <input class="form-control" type="text" name="ad_prices[#{seed}][original_price]">
               </div>
               <div class="form-group">
-                <label>单价</label>
-                <input class="form-control" type="text" name="ad_prices[#{seed}][price]">
+                <label>执行价</label>
+                <div class="input-group">
+                  <input class="form-control" type="text"
+                        name="ad_prices[#{seed}][price]"
+                        value="0">
+                  <span class="input-group-addon">元/</span>
+                  <input class="form-control" type="text"
+                        name="ad_prices[#{seed}][unit]"
+                        placeholder="期、周等">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>备注</label>
+                <input class="form-control" type="text"
+                        name="ad_prices[#{seed}][note]"
+                        placeholder="比如描述广告频次等">
               </div>
               <div class="form-group">
                 <label>积分</label>
@@ -250,6 +331,14 @@ $ ->
         context = e.data.context
         context.clearHiddenCategories(@)
         context.selectAllCategories(@) if '' in context.$(@).val()
+
+    bindClickEventOnClearButton: ->
+      @form.find('.clear-select').click context: @, (e) ->
+        context = e.data.context
+        select  = context.$(@).closest('.form-group').find('select')
+
+        context.clearHiddenCategories(select)
+        select.val([])
 
     clearHiddenCategories: (select) ->
       @$(select).find("input[type=hidden][name='category_ids[]']").remove()

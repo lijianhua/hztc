@@ -20,8 +20,9 @@ class SlideItemController extends Controller
    *
    * @return Response
    */
-  public function store(PostSlideItemRequest $request, $slide_id)
+  public function store(PostSlideItemRequest $request)
   {
+    $slide_id             = $request->get('slide_id');
     $slide                = Slide::find($slide_id);
     $attributes           = $request->only('url', 'note', 'sort');
     $picture              = $request->file('picture');

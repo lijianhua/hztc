@@ -23,7 +23,7 @@ $ ->
       super fields
 
     new: (fields) ->
-      @actionUrl = "/slides/#{@slideId()}/slide-items/"
+      @actionUrl = "/slide-items"
       super fields
 
     slideId: ->

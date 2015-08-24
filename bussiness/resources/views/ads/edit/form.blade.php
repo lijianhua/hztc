@@ -30,7 +30,7 @@
       {!! Form::radio('type', 2) !!} 免费广告
     </label>
     <label class="radio-inline">
-      {!! Form::radio('type', 3) !!} 创意广告
+      {!! Form::radio('type', 3) !!} 新奇特广告
     </label>
   </p>
 </div>
@@ -62,12 +62,16 @@
 </div>
 
 <div class="form-group">
-  {!! Form::text('street_address', null, ['class' => 'form-control']) !!}
+  {!! Form::text('street_address', null, ['class' => 'form-control', 'placeholder' => '辐射区域']) !!}
 </div>
 
 @foreach($categories as $category)
   <div class="form-group">
-    <label>{{ $category->name }}</label>
+    <label>
+      {{ $category->name }}
+      <button class="clear-select" title="清空选择" data-toggle="tooltip"
+      data-placement="right" type="button"> <i class="fa fa-close"></i></button>
+    </label>
     <select class="form-control" name="category_ids[]" multiple size="8" data-id="{{ $category->id }}">
       <option value>全部</option>
       @foreach($category->children()->get() as $option)

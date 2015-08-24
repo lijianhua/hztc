@@ -62,16 +62,26 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
   public function adSpaces()
   {
-    return $this->hasMany('App\Models\AdSpace');
+    return $this->hasMany('App\Models\AdSpace')->withTrashed();
   }
 
   public function orders()
   {
-    return $this->hasMany('App\Models\Order');
+    return $this->hasMany('App\Models\Order')->withTrashed();
   }
 
   public function scopePending($query)
   {
     return $query->whereIsVerify(false);
+  }
+
+  public function scopeAdmin($query)
+  {
+    return $query->whereAdmin(true);
+  }
+
+  public function scopeLeftJoinEnterprise($query)
+  {
+    return $query->leftJoin('enterprises', 'enterprises.id', '=', 'users.enterprise_id');
   }
 }

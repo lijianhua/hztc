@@ -26,9 +26,7 @@
               <img src="{{ $userRepons->userImageUrl(Auth::user()) }}" class="img-circle" alt="{{ Auth::user()->name }}"/>
               <p>
                 {{ Auth::user()->name }}
-                @if (Auth::user()->enterprise)
-                  <small>{{ Auth::user()->enterprise->name }}</small>
-                @endif
+                <small>{{ Auth::user()->enterprise->name }}</small>
                 <small>自{{ date('Y年, m月', strtotime(Auth::user()->created_at)) }}加入</small>
               </p>
             </li>

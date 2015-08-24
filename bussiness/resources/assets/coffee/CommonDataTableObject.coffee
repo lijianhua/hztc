@@ -157,6 +157,8 @@ class @CommonDataTableObject
         @imageField field
       when 'select'
         @selectField field
+      when 'datetime'
+        @formGroupDateTimeField field
 
   selectField: (field) ->
     @formGroupSelectField field
@@ -231,6 +233,14 @@ class @CommonDataTableObject
     </div>
     """
 
+  formGroupDateTimeField: (field) ->
+    """
+    <div class="form-group">
+      <label>#{field.label}</label>
+      #{delete field.label  && @datetimeField field}
+    </div>
+    """
+
   formGroupTextArea: (field) ->
     """
     <div class="form-group">
@@ -251,6 +261,10 @@ class @CommonDataTableObject
     field.type  = 'file'
     @inputField field
 
+  datetimeField: (field) ->
+    field.type = 'datetime'
+    @inputField field
+
   textarea: (attributes) ->
     textarea = "<textarea"
     for key, value of attributes
@@ -268,8 +282,9 @@ class @CommonDataTableObject
   errorField: (field, errors, form) ->
     formGroup = form.find("[name=#{field}]").parent '.form-group'
     formGroup.find('div.help-block').remove()
+    label     = formGroup.find('label').text()
     helpBlock = $('<div class="help-block"></div>')
-    helpBlock.append "<p>#{error}</p>" for error in errors
+    helpBlock.append "<p>#{error.replace /^(\w*\s*)*/, label}</p>" for error in errors
     formGroup.addClass('has-error').append helpBlock
 
   ###
@@ -310,12 +325,11 @@ class @CommonDataTableObject
       e.preventDefault()
 
       $(@).ajaxSubmit
-        async    : false
         dataType : 'json'
         context  : context
         success  : (result) ->
           modal.modal 'hide'
-          if result.state == 'OK'
+          if result.state == 'OK' && result.data
             if @method == 'PUT'
               @redrawSelectedRow result.data
             else
@@ -324,6 +338,9 @@ class @CommonDataTableObject
         error    : (jqXHR) ->
           if jqXHR.status == 422
             @formInModalHasErrors jqXHR.responseJSON, modal
+          else
+            modal.modal 'hide'
+            new TenderAlert('danger').alert '出现错误, 请重试。'
 
   formInModalHasErrors: (errors, modal) ->
     form = $(modal).find 'form'

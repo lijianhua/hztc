@@ -3,8 +3,8 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>价格（元）</th>
-        <th>原价（元）</th>
+        <th>执行价（元）</th>
+        <th>刊例价（元）</th>
         <th>积分</th>
         <th>起始日期</th>
         <th>截止日期</th>
@@ -15,13 +15,27 @@
     <tbody>
       @foreach($ad->adPrices as $price)
         <tr>
-          <td>{{ money_format('%i', $price->price) }}</td>
-          <td>{{ money_format('%i', $price->original_price) }}</td>
+          <td>
+            {{ money_format('%i', $price->price) }}
+            @if ($price->unit)
+              /{{ $price->unit }}
+            @endif
+          </td>
+          <td>
+            {{ money_format('%i', $price->original_price) }}
+            @if ($price->unit)
+              /{{ $price->unit }}
+            @endif
+          </td>
           <td>{{ $price->score }}</td>
           <td>{{ $price->from }}</td>
           <td>{{ $price->to }}</td>
           <td>{{ $price->send_count }}</td>
           <td>{{ $price->sale_count }}</td>
+        </tr>
+        <tr>
+          <th>备注：</th>
+          <td colspan="6">{{ $price->note }}</td>
         </tr>
       @endforeach
     </tbody>

@@ -5,5 +5,5 @@
 @elseif ($type == 2)
   <span class="label label-danger">免费广告</span>
 @else
-  <span class="label bg-purple">创意广告</span>
+  <span class="label bg-purple">新奇特广告</span>
 @endif

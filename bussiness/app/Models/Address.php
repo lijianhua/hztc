@@ -8,6 +8,6 @@ class Address extends Model
 {
   public function adSpaces()
   {
-    return $this->hasMany('App\Models\AdSpace');
+    return $this->hasMany('App\Models\AdSpace')->withTrashed();
   }
 }

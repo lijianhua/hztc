@@ -30,8 +30,8 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::post('slides', 'SlideController@store');
 
   // 轮播图中的项
-  Route::post('slides/{slide_id}/slide-items', 'SlideItemController@store');
   Route::delete('slides/{slide_id}/slide-items/{id}', 'SlideItemController@destroy');
+  Route::post('slide-items', 'SlideItemController@store');
   Route::put('slides/{slide_id}/slide-items/{id}', 'SlideItemController@update');
 
   // 广告分类管理
@@ -55,6 +55,9 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
 
   // 管理员管理
   Route::get('admins', 'AdminController@index');
+  Route::get('admins/server', 'AdminController@server');
+  Route::put('admins/{id}/appointed', 'AdminController@appointed');
+  Route::put('admins/{id}/unappointed', 'AdminController@unappointed');
 
   // 广告管理
   Route::get('ads', 'AdSpaceController@index');
@@ -114,6 +117,16 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::get('enterprises/pending-verify', 'EnterpriseController@pending');
   Route::get('enterprises/server-pending-verify', 'EnterpriseController@pendingServer');
   Route::put('enterprises/{id}/aggree', 'EnterpriseController@aggree');
+
+  // 秒杀活动
+  Route::get('promotions/create', 'PromotionController@create');
+  Route::post('promotions', 'PromotionController@store');
+  Route::get('promotions', 'PromotionController@index');
+  Route::get('promotions/server-proccessing', 'PromotionController@proccessingServer');
+  Route::get('promotions/server', 'PromotionController@server');
+  Route::get('promotions/proccessing', 'PromotionController@proccessing');
+  Route::delete('promotions/{id}', 'PromotionController@destroy');
+  Route::put('promotions/{id}', 'PromotionController@update');
 });
 
 // 用户登录

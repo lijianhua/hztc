@@ -17,7 +17,7 @@
           </a>
         @endif
         @if ($refund->isUnderway())
-          <a href="{{ url("orders/{$refund->id}/finish") }}" class="pull-right text-muted" title="标记退款完成" data-toggle="tooltip" data-method="PUT">
+          <a href="{{ url("refunds/{$refund->id}/finish") }}" class="pull-right text-muted" title="标记退款完成" data-toggle="tooltip" data-method="PUT">
             <span class="fa-stack fa-lg">
               <i class="fa fa-square-o fa-stack-2x"></i>
               <i class="fa fa-paw fa-stack-1x"></i>

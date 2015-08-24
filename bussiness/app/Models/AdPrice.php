@@ -6,12 +6,13 @@ class AdPrice extends Model {
 
   protected $fillable = [
     'original_price', 'price', 'score',
-    'from', 'to', 'send_count', 'sale_count'
+    'from', 'to', 'send_count', 'sale_count',
+    'note', 'unit'
   ];
 
   public function adSpace()
   {
-    return $this->belongsTo('App\Models\AdSpace');
+    return $this->belongsTo('App\Models\AdSpace')->withTrashed();
   }
 
   public function toArrayWithDateRange()

@@ -20,12 +20,12 @@ class EnterpriseReponsitory
         if ($material) {
           $url         = $this->imageUrl($material, 'thumb');
           $originalUrl = $this->imageUrl($material);
-          return HTML::decode($originalUrl, HTML::image($url), [
+          return HTML::decode(HTML::link($originalUrl, HTML::image($url), [
             'title'          => '点击查看大图',
             'data-toggle'    => 'tooltip',
             'data-placement' => 'right',
             'target'         => '_blank'
-          ]);
+          ]));
         }
         return '未上传';
       })
@@ -34,12 +34,12 @@ class EnterpriseReponsitory
         if ($material) {
           $url         = $this->imageUrl($material, 'thumb');
           $originalUrl = $this->imageUrl($material);
-          return HTML::decode($originalUrl, HTML::image($url), [
+          return HTML::decode(HTML::link($originalUrl, HTML::image($url), [
             'title'          => '点击查看大图',
             'data-toggle'    => 'tooltip',
             'data-placement' => 'right',
             'target'         => '_blank'
-          ]);
+          ]));
         }
         return '未上传';
       })
@@ -48,12 +48,12 @@ class EnterpriseReponsitory
         if ($material) {
           $url         = $this->imageUrl($material, 'thumb');
           $originalUrl = $this->imageUrl($material);
-          return HTML::decode($originalUrl, HTML::image($url), [
+          return HTML::decode(HTML::link($originalUrl, HTML::image($url), [
             'title'          => '点击查看大图',
             'data-toggle'    => 'tooltip',
             'data-placement' => 'right',
             'target'         => '_blank'
-          ]);
+          ]));
         }
         return '未上传';
       })
@@ -64,8 +64,7 @@ class EnterpriseReponsitory
   {
     $avatar = $material->avatar;
     $path   = $avatar->url($tag);
-    $host   = env('SITE_IMAGE_HOST');
 
-    return $host . $path;
+    return $path;
   }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use HTML;
 use Datatables;
 use Illuminate\Http\Request;
-use Auth;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -52,8 +51,7 @@ class AdSpaceController extends Controller
 
   public function server()
   {
-    $ads = AdSpace::with(['user', 'user.enterprise', 'address'])
-      ->where('ad_spaces.user_id', '=', Auth::user()->id);
+    $ads = AdSpace::with(['user', 'user.enterprise', 'address']);
     return $this->store->datatables($ads);
   }
 
@@ -82,9 +80,17 @@ class AdSpaceController extends Controller
    */
   public function store(PostAdSpaceRequest $request)
   {
-    $this->store->store($request->all());
+    $ad = $this->store->store($request->all());
 
-    return redirect()->action('AdSpaceController@index')->with('status', '广告位添加成功！');
+    if ($request->ajax()) {
+      return response()->json([
+        'state' => 'OK',
+        'href'  => action('AdSpaceController@show', ['id' => $ad->id])
+      ]);
+    }
+
+    return redirect()->action('AdSpaceController@show', ['id' => $ad->id])
+                     ->with('status', '广告位添加成功！');
   }
 
   /**
@@ -138,6 +144,13 @@ class AdSpaceController extends Controller
   {
     $ad = AdSpace::findOrFail($id);
     $this->store->update($ad, $request->all());
+
+    if ($request->ajax()) {
+      return response()->json([
+        'state' => 'OK',
+        'href'  => action('AdSpaceController@show', ['id' => $ad->id])
+      ]);
+    }
 
     return redirect()->action('AdSpaceController@show', ['id' => $ad->id])->with('status', '广告位更新成功。');
   }

@@ -14,7 +14,7 @@
         <th style="width: 50%">联系方式</th>
         <td>
         @if ($user->enterprise)
-          {{ $user->userInformations()->whereKey('telphone')->select('value')->first() }}
+          {{ $user->userInformations()->whereKey('telphone')->pluck('value') }}
         @endif
         </td>
       </tr>

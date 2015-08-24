@@ -6,7 +6,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Auth;
 
 abstract class Controller extends BaseController
 {
@@ -18,10 +17,11 @@ abstract class Controller extends BaseController
 
     // 待审核产品
     $__counts['waitingForAuditedAd'] = \App\Models\AdSpace::waitingForAudited()->count();
-    $__counts['pendingProccessOrders'] = \App\Models\Order::pendingProccess()->byUser(Auth::user()->id)->count();
-    $__counts['newestOrders'] = \App\Models\Order::newest()->byUser(Auth::user()->id)->count();
+    $__counts['pendingProccessOrders'] = \App\Models\Order::pendingProccess()->count();
+    $__counts['newestOrders'] = \App\Models\Order::newest()->count();
     $__counts['pendingProcessRefunds'] = \App\Models\Refund::pendingProccess()->count();
     $__counts['underwayRefunds'] = \App\Models\Refund::underway()->count();
+    $__counts['proccessingPromotion'] = \App\Models\Promotion::proccessing()->count();
 
     view()->share('__counts', $__counts);
   }
