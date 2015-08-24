@@ -18,7 +18,7 @@ class AuthenticateAdmin
   {
     $user = $request->user();
 
-    if (!($user->admin && $user->id == 1)) {
+    if (!($user->admin)) {
       Auth::logout();
 
       if ($request->ajax()) {
