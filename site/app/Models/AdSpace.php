@@ -132,7 +132,7 @@ class AdSpace extends Model implements StaplerableInterface {
     {
       $query = ['query' => ['filtered' => ['filter' => ['bool'=> ['must' => $query]]]]];
     }
-    $response = AdSpace::searchByQuery($query, ['limit' => $per_page,'offset' => ($per_page*($page-1)),'sort'=>[$sort=>['order'=>'desc']]]);
+    $response = AdSpace::searchByQuery($query, ['limit' => $per_page,'offset' => ($per_page*($page-1)+1),'sort'=>[$sort=>['order'=>'desc']]]);
     $results = $response->getResults();
     $total = ceil($response->getTotal()/$per_page);
     foreach($results as $result)
