@@ -46,7 +46,7 @@
                                 </div>
                             </li>
                             <li class="filter-nav-item">
-                                <span class="filter-nav-title">受众偏好</span><br/>
+                                <span class="filter-nav-title">受众标的</span><br/>
                                 <div class="btn-group">
                                     <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         <b id='society'>全部</b> <span class="filter-nav-caret caret"></span>
@@ -54,10 +54,10 @@
                                     </button>
                                     <ul class="filter-nav-menu dropdown-menu" role="menu">
                                         <li><a href="#">全部</a> </li>
-                                        <li><a href="#">时尚</a> </li>
-                                        <li><a href="#">地产</a> </li>
-                                        <li><a href="#">IT</a> </li>
-                                        <li><a href="#">金融</a> </li>
+                                        <li><a href="#">大众</a> </li>
+                                        <li><a href="#">白领</a> </li>
+                                        <li><a href="#">投资客</a> </li>
+                                        <li><a href="#">购房人</a> </li>
                                     </ul>
                                 </div>
                             </li>
