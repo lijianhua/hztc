@@ -19,7 +19,7 @@ style='position:absolute;font-size:12px;margin-top:200px;margin-left:500px;color
             <div class="advertisers-personal">
                 <div class="personal-title">
                     <span class="personal-prompt">广告主信息<span
-class="personal-prompt-color">{{$user->is_verify == 1 ? '(已认证)':'(未认证)'}}</span></span>
+class="personal-prompt-color">{{$user->is_verify == 1 ?  '(已认证)':($user->is_verify == 0?'(未认证)':'(拒绝认证，请从新填写认证信息)')}}</span></span>
                     <span class="personal-prompt-text">{{$user->is_verify == 1? '':'*请补充信息完成认证'}}</span>
                 </div>
                 <?= Form::open(['url' => action('UserController@store_user_auth'), 'method' => 'POST', 'files' => true ]) ?>
@@ -66,7 +66,7 @@ value='{{$enterprise? $enterprise->name:''}}'></span>
             <div class="advertisers-company display" id='#ppp'>
                 <div class="personal-title">
                     <span class="personal-prompt">公司信息认证
-                      <span class="personal-prompt-color">{{$enterprise && $enterprise->is_verify==1? '(已认证)':'(未认证)'}}</span>
+                      <span class="personal-prompt-color">{{$enterprise && $enterprise->is_verify==1? '(已认证)':($enterprise->is_verify == 0?'(未认证)':'(拒绝认证，请从新填写认证信息)')}}</span>
                     </span>
                     <span class="personal-prompt-text">
                       {{$enterprise && $enterprise->is_verify==1?'':'* 请补充信息完成认证'}}

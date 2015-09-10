@@ -36,7 +36,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
   protected $casts = [
     'admin'     => 'boolean',
     'confirmed' => 'boolean',
-    'is_verify' => 'boolean'
   ];
 
   public function __construct(array $attributes = array()) {

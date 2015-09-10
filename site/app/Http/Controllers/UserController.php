@@ -339,7 +339,7 @@ class UserController extends Controller {
         {
           DB::transaction(function() use ($attributes,$user,$enterprise_id)
           {
-            User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise_id]);
+            User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise_id, 'is_verify' => 0]);
             UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'idcard')->update(['value' => $attributes['idcard']]);
             UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'truthname')->update(['value' => $attributes['truthname']]);
             UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'telphone')->update(['value' => $attributes['telphone']]);
@@ -400,6 +400,7 @@ class UserController extends Controller {
       $requests = $request->all();
       DB::transaction(function() use ($requests,$user)
       {
+        $enterprise = Enterprise::where('id', '=', $user->enterprise_id)->update(['is_verify' => 0]);
         $key_a = ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','license')->first();   
         $key_b = ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','tax')->first();   
         $key_c = ReviewMaterial::where('enterprise_id', '=', $user->enterprise_id)->where('name','=','organizing')->first();   

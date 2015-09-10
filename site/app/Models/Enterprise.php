@@ -17,7 +17,6 @@ class Enterprise extends Model implements StaplerableInterface {
     'telphone', 'phone', 'avatar'];
 
   protected $casts = [
-    'is_verify'  => 'boolean',
     'is_audited' => 'boolean'
   ];
 
