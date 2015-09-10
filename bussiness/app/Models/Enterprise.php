@@ -17,7 +17,6 @@ class Enterprise extends Model implements StaplerableInterface {
     'telphone', 'phone', 'avatar'];
 
   protected $casts = [
-    'is_verify'  => 'boolean',
     'is_audited' => 'boolean'
   ];
 
@@ -44,6 +43,6 @@ class Enterprise extends Model implements StaplerableInterface {
 
   public function scopePending($query)
   {
-    return $query->whereIsVerify(false);
+    return $query->whereIsVerify(0);
   }
 }

@@ -35,8 +35,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
   protected $casts = [
     'admin'     => 'boolean',
-    'confirmed' => 'boolean',
-    'is_verify' => 'boolean'
+    'confirmed' => 'boolean'
   ];
 
   public function __construct(array $attributes = array()) {
@@ -72,7 +71,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
   public function scopePending($query)
   {
-    return $query->whereIsVerify(false);
+    return $query->whereIsVerify(0);
   }
 
   public function scopeAdmin($query)

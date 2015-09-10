@@ -35,10 +35,20 @@ class EnterpriseController extends Controller
   public function aggree(Request $request, $id)
   {
     $enterprise = Enterprise::findOrFail($id);
-    $enterprise->is_verify  = true;
+    $enterprise->is_verify  = 1;
     $enterprise->is_audited = true;
     $enterprise->save();
 
     return $this->okResponse('已同意企业认证。');
+  }
+
+  public function refuse(Request $request, $id)
+  {
+    $enterprise = Enterprise::findOrFail($id);
+    $enterprise->is_verify  = 2;
+    $enterprise->is_audited = false;
+    $enterprise->save();
+
+    return $this->okResponse('已拒绝企业认证。');
   }
 }

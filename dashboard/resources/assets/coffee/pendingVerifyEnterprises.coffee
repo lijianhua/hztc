@@ -18,6 +18,22 @@ class @PendingVerifyEnterprise extends CommonDataTableObject
 
     @actionUrl = null
 
+  refuse: ->
+    @method    = 'PUT'
+    @actionUrl = "/enterprises/#{@selectedRowData().id}/refuse"
+    @ajax (response) ->
+      if response.state == 'OK'
+        @api().row(@selectedRow()).remove().draw false
+        type = 'success'
+      else
+        type = 'danger'
+
+      new TenderAlert(type).alert response.message
+    , ->
+      new TenderAlert('danger').alert '操作失败，请重试。'
+
+    @actionUrl = null
+
 $ = jQuery
 
 $ ->
@@ -56,6 +72,17 @@ $ ->
           pending = new PendingVerifyEnterprise 'pending-verify-enterprises-table'
           new TenderConfirmAlert('warning').alert '您确认同意企业认证申请吗？', ->
             pending.aggree() if pending.isSelectedOne()
+      ,
+        sButtonClass: "btn btn-flat btn-default disabled"
+        sExtends: "text"
+        sButtonText: "<i class='fa fa-remove fa-lg'></i>"
+        sToolTip: "拒绝申请"
+        fnInit: CommonDataTableObject.initButtonToolTip
+        fnSelect: toggleButtonStateOnSelect
+        fnClick: ->
+          pending = new PendingVerifyEnterprise 'pending-verify-enterprises-table'
+          new TenderConfirmAlert('warning').alert '您确认拒绝企业认证申请吗？', ->
+            pending.refuse() if pending.isSelectedOne()
       ]
 
 

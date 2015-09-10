@@ -113,10 +113,12 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::get('users/pending-verify', 'UserController@pending');
   Route::get('users/server-pending-verify', 'UserController@pendingServer');
   Route::put('users/{id}/aggree', 'UserController@aggree');
+  Route::put('users/{id}/refuse', 'UserController@refuse');
 
   Route::get('enterprises/pending-verify', 'EnterpriseController@pending');
   Route::get('enterprises/server-pending-verify', 'EnterpriseController@pendingServer');
   Route::put('enterprises/{id}/aggree', 'EnterpriseController@aggree');
+  Route::put('enterprises/{id}/refuse', 'EnterpriseController@refuse');
 
   // 秒杀活动
   Route::get('promotions/create', 'PromotionController@create');
