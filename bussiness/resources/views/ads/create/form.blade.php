@@ -7,11 +7,13 @@
 
 <div class="form-group">
   <label>封面图片</label>
+  <p><small class="text-danger">秒杀广告(585 x 285), 其他(440 x 200)</small></p>
   <input type="file" name="avatar" value="{{ old('avatar') }}">
 </div>
 
 <div class="form-group images">
   <label>展示图片</label>
+  <p><small class="text-danger">图片大小(520 x 390)</small></p>
   <input type="file" name="images[]" multiple="true">
 </div>
 

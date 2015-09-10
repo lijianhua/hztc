@@ -51,7 +51,7 @@ $ ->
               type   : 'hidden'
             ,
               name   : 'picture'
-              label  : '图片'
+              label  : '图片(990 x 440)'
               type   : 'image'
               class  : 'form-control'
             ,
@@ -94,7 +94,7 @@ $ ->
               type   : 'hidden'
             ,
               name   : 'picture'
-              label  : '图片'
+              label  : '图片(990 x 440)'
               type   : 'image'
               class  : 'form-control'
             ,
