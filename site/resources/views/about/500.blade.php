@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>ADbugo</title>
+    <title>魔媒</title>
 </head>
 <body>
 <a href="http://www.momeiw.com" style="width:701px;height:202px;display:block; ">

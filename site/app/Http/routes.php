@@ -82,3 +82,12 @@ Route::post('/Search','SearchController@search_index_filter');
 //免费广告位
 Route::get('/free-ads','AdSpaceController@free');
 Route::get('/getcaptcha','GetCaptchaController@get_captcha');
+
+// 需要验证是当前用户
+  // 用户账户管理
+Route::get('accounts/{id}', 'AccountController@show');
+Route::get('accounts/{id}/edit', 'AccountController@edit');
+Route::put('accounts/{id}/reset-password', 'AccountController@postResetPassword');
+Route::put('accounts/{id}/edit', 'AccountController@update');
+Route::put('accounts/{id}/enterprise', 'AccountController@updateEnterprise');
+
