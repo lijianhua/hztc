@@ -27,7 +27,7 @@ class UserController extends Controller
 
   public function pendingServer()
   {
-    $users = User::with('userInformations')->pending();
+    $users = User::with('userInformations');
 
     return $this->service->datatables($users);
   }
@@ -44,9 +44,10 @@ class UserController extends Controller
   public function refuse(Request $request, $id)
   {
     $user = User::findOrFail($id);
-    $user->is_verify = 2;
-    $user->save();
-
+    if ($user->id != 1) {
+      $user->is_verify = 2;
+      $user->save();
+    }
     return $this->okResponse('已拒绝用户认证。');
   }
 }

@@ -38,7 +38,13 @@ class UserReponsitory
   {
     return Datatables::of($query)
       ->editColumn('is_verify', function ($user) {
-        return " <span class=\"label label-warning\">等待认证</span>";
+        if ($user->is_verify == 0) {
+          return " <span class=\"label label-warning\">等待认证</span>";
+        } else if ($user->is_verify == 1) {
+          return " <span class=\"label label-success\">申请通过</span>";
+        } else {
+          return " <span class=\"label label-danger\">申请驳回</span>";
+        }
       })
       ->addColumn('truthname', function ($user) {
         $info = $user->userInformations()->whereKey('truthname')->first();

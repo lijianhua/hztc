@@ -56,9 +56,21 @@ $ ->
      { data: 'truthname',  orderable: false, searchable: false },
      { data: 'telphone',   orderable: false, searchable: false  },
      { data: 'idcard',     orderable: false, searchable: false  },
-     { data: 'is_verify',  orderable: false, searchable: false },
+     { data: 'is_verify',  orderable: false, name: 'is_verify' },
     ]
     ajax: '/users/server-pending-verify'
+    initComplete: ->
+      column = @api().columns(4)
+      select = """
+               <select>
+                 <option value="">所有用户</option>
+                 <option value="0">等待认证</option>
+                 <option value="1">申请通过</option>
+                 <option value="2">申请驳回</option>
+               </select>
+               """
+      $(select).appendTo($(column.header()).empty()).on 'change', ->
+        column.search($(@).val()).draw()
     tableTools:
       sRowSelect: 'os'
       aButtons: [
@@ -84,4 +96,3 @@ $ ->
           new TenderConfirmAlert('warning').alert '您确认拒绝用户认证申请吗？', ->
             pending.refuse() if pending.isSelectedOne()
       ]
-
