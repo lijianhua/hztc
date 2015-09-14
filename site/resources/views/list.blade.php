@@ -85,6 +85,7 @@
             <div class="page">
               @if(count($adspaces) != 0)
                 @if($current_page != 1)
+                    <span><a href="/{{$index}}/{{$sort}}?page=1" class="page-item-previous" data-name="page" data-value="1">首页</a> </span>
                     <span><a href="/{{$index}}/{{$sort}}?page={{$current_page-1}}" class="page-item-previous" data-name="page" data-value="{{$current_page-1}}">上一页</a> </span>
                 @endif
                 <span><a href="/{{$index}}/{{$sort}}?page={{$current_page}}" class="page-item active" data-name="page" data-value="{{$current_page}}">{{$current_page}}</a> </span>
@@ -98,6 +99,9 @@
                     @endif
                 @if($current_page != $total)
                     <span><a href="/{{$index}}/{{$sort}}?page={{$current_page+1}}" class="page-item-previous" data-name="page" data-value="{{$current_page+1}}">下一页</a> </span>
+                @endif
+                @if ($current_page != $total)
+                    <span><a href="/{{$index}}/{{$sort}}?page={{$total}}" class="page-item-previous" data-name="page" data-value="{{$total}}">尾页</a> </span>
                 @endif
               @endif
                 <!-- <span class="page&#45;return"> -->
