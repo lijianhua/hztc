@@ -2,6 +2,8 @@
   <dl class="dl-horizontal">
     <dt>名称</dt>
     <dd>{{ $enterprise->name }}</dd>
+    <dt>企业邮箱</dt>
+    <dd>{{ $enterprise->email }}</dd>
     <dt>LOGO</dt>
     <dd>
     @if ($enterprise->avatar_file_name)
@@ -18,8 +20,12 @@
     <dd>{{ $enterprise->phone }}</dd>
     <dt>微信</dt>
     <dd>{{ $enterprise->weixin }}</dd>
+    <dt>微博</dt>
+    <dd>{{ $enterprise->weibo }}</dd>
     <dt>QQ</dt>
     <dd>{{ $enterprise->qq }}</dd>
+    <dt>商铺详情</dt>
+    <dd>{!! Purifier::clean($enterprise->detail) !!}</dd>
   </dl>
 @else
   <div class="callout callout-warning">
