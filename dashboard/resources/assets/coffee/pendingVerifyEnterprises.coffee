@@ -56,9 +56,21 @@ $ ->
      { data: 'organizing',  orderable: false, searchable: false },
      { data: 'tax',         orderable: false, searchable: false },
      { data: 'license',     orderable: false, searchable: false },
-     { data: 'is_verify',   orderable: false, searchable: false },
+     { data: 'is_verify',   orderable: false, name: 'is_verify' },
     ]
     ajax: '/enterprises/server-pending-verify'
+    initComplete: ->
+      column = @api().columns(4)
+      select = """
+               <select>
+                 <option value="">所有企业</option>
+                 <option value="0">等待认证</option>
+                 <option value="1">申请通过</option>
+                 <option value="2">申请驳回</option>
+               </select>
+               """
+      $(select).appendTo($(column.header()).empty()).on 'change', ->
+        column.search($(@).val()).draw()
     tableTools:
       sRowSelect: 'os'
       aButtons: [

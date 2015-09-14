@@ -45,4 +45,9 @@ class Enterprise extends Model implements StaplerableInterface {
   {
     return $query->whereIsVerify(0);
   }
+
+  public function scopeRecent($query)
+  {
+    return $query->orderBy('created_at', 'desc');
+  }
 }

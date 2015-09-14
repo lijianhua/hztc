@@ -27,7 +27,7 @@ class EnterpriseController extends Controller
 
   public function pendingServer()
   {
-    $enterprises = Enterprise::pending();
+    $enterprises = Enterprise::recent();
 
     return $this->service->datatables($enterprises);
   }
@@ -45,8 +45,10 @@ class EnterpriseController extends Controller
   public function refuse(Request $request, $id)
   {
     $enterprise = Enterprise::findOrFail($id);
-    $enterprise->is_verify  = 2;
-    $enterprise->is_audited = false;
+    if ($enterprise->id != 1) {
+      $enterprise->is_verify  = 2;
+      $enterprise->is_audited = false;
+    }
     $enterprise->save();
 
     return $this->okResponse('已拒绝企业认证。');

@@ -13,7 +13,13 @@ class EnterpriseReponsitory
   {
     return Datatables::of($query)
       ->editColumn('is_verify', function ($enterprise) {
-        return " <span class=\"label label-warning\">等待认证</span>";
+        if ($enterprise->is_verify == 0) {
+          return " <span class=\"label label-warning\">等待认证</span>";
+        } else if ($enterprise->is_verify == 1) {
+          return " <span class=\"label label-success\">申请通过</span>";
+        } else {
+          return " <span class=\"label label-danger\">申请驳回</span>";
+        }
       })
       ->addColumn('tax', function ($enterprise) {
         $material = $enterprise->reviewMaterials()->whereName('tax')->first();
