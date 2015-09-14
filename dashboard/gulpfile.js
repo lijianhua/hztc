@@ -60,7 +60,7 @@ elixir(function(mix) {
            'admin-lte/plugins/datatables/jquery.dataTables.js',
            'admin-lte/plugins/datatables/dataTables.bootstrap.js',
            'admin-lte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js',
-           'admin-lte/plugins/ckeditor/ckeditor.js',
+           '../../public/editor/ckeditor.js',
            'bootstrap-fileinput/js/fileinput.min.js',
            'bootstrap-fileinput/js/fileinput_locale_zh.js',
            'admin-lte/plugins/daterangepicker/moment.min.js',

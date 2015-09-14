@@ -40,8 +40,6 @@ elixir(function(mix) {
        .copy('vendor/bower_components/admin-lte/plugins/iCheck/square/blue@2x.png', 'public/css')
        .copy('vendor/bower_components/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css', 'public/css')
        .copy('vendor/bower_components/admin-lte/plugins/datatables/extensions/TableTools/swf/', 'public/swf/')
-       // CKEditor
-       .copy('vendor/bower_components/admin-lte/plugins/ckeditor/', 'public/editor/')
        // Bootstrap fileinput
        .copy('vendor/bower_components/bootstrap-fileinput/js/fileinput_locale_zh.js', 'public')
        .copy('vendor/bower_components/bootstrap-fileinput/css/fileinput.min.css', 'public/css/')
@@ -62,7 +60,7 @@ elixir(function(mix) {
            'admin-lte/plugins/datatables/jquery.dataTables.js',
            'admin-lte/plugins/datatables/dataTables.bootstrap.js',
            'admin-lte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js',
-           'admin-lte/plugins/ckeditor/ckeditor.js',
+           '../../public/editor/ckeditor.js',
            'bootstrap-fileinput/js/fileinput.min.js',
            'bootstrap-fileinput/js/fileinput_locale_zh.js',
            'admin-lte/plugins/daterangepicker/moment.min.js',
