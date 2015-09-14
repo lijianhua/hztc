@@ -5,6 +5,7 @@
       <th>邮箱</th>
       <th>公司</th>
       <th>身份</th>
+      <th>注册日期</th>
     </tr>
   </thead>
   <tbody></tbody>

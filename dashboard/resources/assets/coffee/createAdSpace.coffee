@@ -171,9 +171,9 @@ $ ->
     initCKEditor: ->
       CKEDITOR.basePath = '/editor/'
       CKEDITOR.replace 'ckeditor', {
-        filebrowserImageUploadUrl: '/ckeditor/upload',
-        contentsCss: '/editor/contents.css',
-        height: 500
+        filebrowserImageUploadUrl : '/ckeditor/upload',
+        contentsCss               : '/editor/contents.css',
+        height                    : 500
       }
 
     addClickEventOnAddPriceButton: ->

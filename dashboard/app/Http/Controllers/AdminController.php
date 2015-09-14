@@ -27,7 +27,7 @@ class AdminController extends Controller
   {
     $query = User::leftJoinEnterprise()
       ->with('enterprise')
-      ->select(DB::raw('users.name as user_name, enterprises.name as enterprise_name, users.id, users.email, users.admin'));
+      ->select(DB::raw('users.name as user_name, enterprises.name as enterprise_name, users.id, users.email, users.admin, users.created_at as created_at'));
 
     return Datatables::of($query)
       ->addColumn('status', function ($user) {
