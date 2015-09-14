@@ -66,7 +66,7 @@ value='{{$enterprise? $enterprise->name:''}}'></span>
             <div class="advertisers-company display" id='#ppp'>
                 <div class="personal-title">
                     <span class="personal-prompt">公司信息认证
-                      <span class="personal-prompt-color">{{$enterprise && $enterprise->is_verify==1? '(已认证)':($enterprise->is_verify == 0?'(未认证)':'(拒绝认证，请从新填写认证信息)')}}</span>
+                      <span class="personal-prompt-color">{{$enterprise && $enterprise->is_verify==1? '(已认证)':($enterprise && $enterprise->is_verify == 0?'(未认证)':'(拒绝认证，请从新填写认证信息)')}}</span>
                     </span>
                     <span class="personal-prompt-text">
                       {{$enterprise && $enterprise->is_verify==1?'':'* 请补充信息完成认证'}}
