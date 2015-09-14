@@ -6,11 +6,13 @@
 
 <div class="form-group">
   <label>封面图片</label>
+  <p><small class="text-danger">秒杀广告(585像素 x 285像素), 其他(440像素 x 200像素)</small></p>
   {!! Form::file('avatar', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group images">
   <label>展示图片</label>
+  <p><small class="text-danger">图片大小(520像素 x 390像素)</small></p>
   {!! Form::file('images[]', null, ['class' => 'form-control']) !!}
   @foreach($ad->images as $image)
     {!! Form::hidden('__images[]', $image->id) !!}
