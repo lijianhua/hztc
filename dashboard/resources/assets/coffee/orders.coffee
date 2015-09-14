@@ -16,7 +16,7 @@ $ ->
      { data: 'order_detail', name: 'order_seq', orderable: false },
      { data: 'amount',  searchable: false, orderable: false },
      { data: 'user.name', searchable: false, orderable: false },
-     { data: 'state', searchable: false, orderable: false },
+     { data: 'state', name: 'state', searchable: false },
     ]
     order: [[0, 'desc']]
     ajax: '/orders/server-proccessing'
