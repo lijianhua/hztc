@@ -25,7 +25,8 @@ class UpdateEnterpriseRequest extends Request
   {
     return [
       'avatar' => 'image',
-      'qq'     => 'integer'
+      'qq'     => 'integer',
+      'email'  => 'email'
     ];
   }
 }
