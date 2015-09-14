@@ -9,7 +9,7 @@
 </head>
 <body>
 <div>
-    <a href="http://www.bugtop.cn" style="width:701px;height:202px;display:block; ">
+    <a href="http://www.momeiw.com" style="width:701px;height:202px;display:block; ">
         <img src="/images/404.jpg" style="width:701px;height:202px;display:block;margin:auto;position: absolute;left: 0;right: 0;bottom: 0;top: 0px">
     </a>
 </div>
