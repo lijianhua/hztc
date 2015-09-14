@@ -1,8 +1,5 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-1">
-    @include ('shared.status')
-    @include ('shared.errors')
-
+  <div class="col-md-10 col-md-offset-1" id="editEnterpriseAccount">
     {!! Form::open(['url' => url("accounts/{$user->id}/enterprise"), 'method' => 'PUT', 'files' => true]) !!}
       <input type="hidden" name="id" value="{{ $enterprise->id }}">
 
@@ -14,6 +11,11 @@
       <div class="form-group">
         <label>行业</label>
         <input class="form-control" type="text" value="{{ $enterprise->trade }}" disabled>
+      </div>
+
+      <div class="form-group">
+        <label>企业邮箱</label>
+        <input class="form-control" type="email" name="email" value="{{ $enterprise->email }}">
       </div>
 
       <div class="form-group">
@@ -37,8 +39,20 @@
       </div>
 
       <div class="form-group">
+        <label>微博</label>
+        <input type="text" class="form-control" name="weibo" value="{{ $enterprise->weibo }}">
+      </div>
+
+      <div class="form-group">
         <label>QQ</label>
         <input type="text" class="form-control" name="qq" value="{{ $enterprise->qq }}">
+      </div>
+
+      <div class="form-group">
+        <label>商铺详情</label>
+        <textarea id="ckeditor" name="detail" cols="30" rows="20" class="form-control">
+        {{ $enterprise->detail }}
+        </textarea>
       </div>
 
       <div class="form-group">

@@ -95,10 +95,13 @@ class AccountController extends Controller
   {
     $enterprise = User::find($id)->enterprise;
 
+    $enterprise->email    = $request->get('email');
     $enterprise->telphone = $request->get('telphone');
     $enterprise->phone    = $request->get('phone');
     $enterprise->weixin   = $request->get('weixin');
+    $enterprise->weibo    = $request->get('weibo');
     $enterprise->qq       = $request->get('qq');
+    $enterprise->detail   = $request->get('detail');
     if ($request->hasFile('avatar')) {
       $enterprise->avatar = $request->file('avatar');
     }

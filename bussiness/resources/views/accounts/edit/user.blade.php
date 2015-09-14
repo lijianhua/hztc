@@ -1,8 +1,5 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-1">
-    @include ('shared.status')
-    @include ('shared.errors')
-
     {!! Form::open(['url' => url("accounts/{$user->id}/edit"), 'method' => 'PUT', 'files' => true]) !!}
       <input type="hidden" name="id" value="{{ $user->id }}">
 
