@@ -24,9 +24,6 @@ $ ->
       table  = @
       ele    = """
                 <div id="ordersTable_state_filter" class="ordersTable_state_filter">
-                  <label>
-                  订单状态:
-                  </label>
                   <select>
                     <option value="">全部订单</option>
                     <option value="0">未付款</option>
