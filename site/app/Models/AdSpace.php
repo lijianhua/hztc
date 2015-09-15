@@ -187,7 +187,7 @@ class AdSpace extends Model implements StaplerableInterface {
    *
    *
    */
-  public static function app_media($company_name, $array_categories=['APP', '新媒体(微信、微博、其他)'])
+  public static function app_media($company_name, $array_categories=['新媒体(微信、微博、其他)'])
   {
     //同一公司的广告位
     $company_id = Enterprise::where('name', '=', $company_name)->first()->id; 

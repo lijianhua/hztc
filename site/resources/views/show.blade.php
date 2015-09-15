@@ -140,6 +140,19 @@
                         <div class="introduction-me-title">本公司其他资源</div>
                         <div class="introduction-me-block">
                               <div class="introduction-me-line clearfix">
+                                    @if ($app_medias['app_medias'])
+                                        @foreach($app_medias['app_medias'] as $idea)
+                                              <div class="introduction-me-item">
+                                                <a href="/ads/{{$idea->id}}">
+                                                    <div class="introduction-me-item-img">
+                                                      <img src="{{$idea->avatar->url()}}" alt="{{$idea->title}}" title="{{$idea->title}}">
+                                                    </div>
+                                                    <div class="introduction-me-item-name">
+                                                    </div>
+                                                </a>
+                                              </div>
+                                        @endforeach
+                                    @endif
                                     @if ($app_medias['company_adspaces'])
                                         @foreach($app_medias['company_adspaces'] as $idea)
                                               <div class="introduction-me-item">
