@@ -39,7 +39,7 @@ class AuthController extends Controller {
     $this->auth = $auth;
     $this->registrar = $registrar;
 
-    $this->middleware('guest', ['except' => 'getLogout']);
+    $this->middleware('guest', ['except' => ['getLogout', 'verify']]);
   }
     
 	public function postLogin(Request $request)
@@ -124,4 +124,15 @@ class AuthController extends Controller {
     Auth::login($user);
     return Redirect::to('/');
 	}
+
+  public function verify()
+  {
+    $status = 'error';
+
+    if (Auth::check() && Auth::user()->is_verify == 1) {
+      $status = 'ok';
+    }
+
+    return response()->json(['status' => $status]);
+  }
 }

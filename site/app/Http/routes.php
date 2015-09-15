@@ -11,6 +11,7 @@
 |
  */
 Route::get('/', 'HomeController@index');
+Route::get('admin-verify', 'Auth\AuthController@verify');
 Route::get('/ads/{id}', 'AdSpaceController@show');
 Route::get('/search', 'SearchController@index');
 Route::get('/cart', 'CartController@index');
@@ -90,4 +91,3 @@ Route::get('accounts/{id}/edit', 'AccountController@edit');
 Route::put('accounts/{id}/reset-password', 'AccountController@postResetPassword');
 Route::put('accounts/{id}/edit', 'AccountController@update');
 Route::put('accounts/{id}/enterprise', 'AccountController@updateEnterprise');
-
