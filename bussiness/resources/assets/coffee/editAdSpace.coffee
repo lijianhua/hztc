@@ -386,7 +386,12 @@ $ ->
       CKEDITOR.loadTemplates CKEDITOR.config.templates_files, ->
         templates = CKEDITOR.getTemplates('default').templates
         for t in templates
-          CKEDITOR.instances.ckeditor.insertHtml t.html if new RegExp(t.title, 'g').test label
+          if new RegExp(t.title, 'g').test label
+            CKEDITOR.instances.ckeditor.once 'afterInsertHtml', ->
+              select.focus()
+            , select
+
+            CKEDITOR.instances.ckeditor.insertHtml t.html
 
     clearHiddenCategories: (select) ->
       @$(select).find("input[type=hidden][name='category_ids[]']").remove()

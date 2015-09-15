@@ -332,16 +332,21 @@ $ ->
         context.clearHiddenCategories(@)
         context.selectAllCategories(@) if '' in context.$(@).val()
         context.insertTemplate(context.$(@))
-        context.$(@).focus()
 
     insertTemplate: (select) ->
       selected = select.find ':selected'
       return if selected.length > 1
       label    = @$(selected).text()
+
       CKEDITOR.loadTemplates CKEDITOR.config.templates_files, ->
         templates = CKEDITOR.getTemplates('default').templates
         for t in templates
-          CKEDITOR.instances.ckeditor.insertHtml t.html if new RegExp(t.title, 'g').test label
+          if new RegExp(t.title, 'g').test label
+            CKEDITOR.instances.ckeditor.once 'afterInsertHtml', ->
+              select.focus()
+            , select
+
+            CKEDITOR.instances.ckeditor.insertHtml t.html
 
     bindClickEventOnClearButton: ->
       @form.find('.clear-select').click context: @, (e) ->
