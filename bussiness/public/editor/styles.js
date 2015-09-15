@@ -31,10 +31,10 @@ CKEDITOR.stylesSet.add( 'default', [
 	{ name: 'Address',			element: 'address' },
 	*/
 
-	{ name: 'Italic Title',		element: 'h2', styles: { 'font-style': 'italic' } },
-	{ name: 'Subtitle',			element: 'h3', styles: { 'color': '#aaa', 'font-style': 'italic' } },
+	{ name: '斜体标题',		element: 'h2', styles: { 'font-style': 'italic' } },
+	{ name: '副标题',			element: 'h3', styles: { 'color': '#aaa', 'font-style': 'italic' } },
 	{
-		name: 'Special Container',
+		name: '特殊字符',
 		element: 'div',
 		styles: {
 			padding: '5px 10px',
@@ -57,25 +57,25 @@ CKEDITOR.stylesSet.add( 'default', [
 	{ name: 'Superscript',		element: 'sup' },
 	*/
 
-	{ name: 'Marker',			element: 'span', attributes: { 'class': 'marker' } },
+	{ name: '标记',			element: 'span', attributes: { 'class': 'marker' } },
 
-	{ name: 'Big',				element: 'big' },
-	{ name: 'Small',			element: 'small' },
-	{ name: 'Typewriter',		element: 'tt' },
+	{ name: '大',				element: 'big' },
+	{ name: '小',			element: 'small' },
+	{ name: '打字机',		element: 'tt' },
 
-	{ name: 'Computer Code',	element: 'code' },
-	{ name: 'Keyboard Phrase',	element: 'kbd' },
-	{ name: 'Sample Text',		element: 'samp' },
-	{ name: 'Variable',			element: 'var' },
+	{ name: '代码',	element: 'code' },
+	{ name: '短语',	element: 'kbd' },
+	{ name: '简单文本',		element: 'samp' },
+	{ name: '变量',			element: 'var' },
 
-	{ name: 'Deleted Text',		element: 'del' },
-	{ name: 'Inserted Text',	element: 'ins' },
+	{ name: '删除线',		element: 'del' },
+	{ name: '下划线',	element: 'ins' },
 
-	{ name: 'Cited Work',		element: 'cite' },
-	{ name: 'Inline Quotation',	element: 'q' },
+	{ name: '举证',		element: 'cite' },
+	{ name: '行内引用',	element: 'q' },
 
-	{ name: 'Language: RTL',	element: 'span', attributes: { 'dir': 'rtl' } },
-	{ name: 'Language: LTR',	element: 'span', attributes: { 'dir': 'ltr' } },
+	{ name: '文字:从右到左',	element: 'span', attributes: { 'dir': 'rtl' } },
+	{ name: '文字:从左到右',	element: 'span', attributes: { 'dir': 'ltr' } },
 
 	/* Object Styles */
 
@@ -85,6 +85,14 @@ CKEDITOR.stylesSet.add( 'default', [
 		attributes: { 'class': 'left' }
 	},
 
+  {
+    name: '表格',
+    element: 'table',
+    attributes: {
+      class: 'table'
+    }
+  },
+
 	{
 		name: 'Styled image (right)',
 		element: 'img',
@@ -92,20 +100,21 @@ CKEDITOR.stylesSet.add( 'default', [
 	},
 
 	{
-		name: 'Compact table',
+		name: '紧凑表格',
 		element: 'table',
 		attributes: {
 			cellpadding: '5',
 			cellspacing: '0',
 			border: '1',
-			bordercolor: '#ccc'
+			bordercolor: '#ccc',
+      class: 'table table-condensed'
 		},
 		styles: {
 			'border-collapse': 'collapse'
 		}
 	},
 
-	{ name: 'Borderless Table',		element: 'table',	styles: { 'border-style': 'hidden', 'background-color': '#E6E6FA' } },
+	{ name: '无边框表格',		element: 'table',	styles: { 'border-style': 'hidden', 'background-color': '#E6E6FA' } },
 	{ name: 'Square Bulleted List',	element: 'ul',		styles: { 'list-style-type': 'square' } }
 ] );
 
