@@ -106,7 +106,8 @@ CKEDITOR.stylesSet.add( 'default', [
 			cellpadding: '5',
 			cellspacing: '0',
 			border: '1',
-			bordercolor: '#ccc'
+			bordercolor: '#ccc',
+      class: 'table table-condensed'
 		},
 		styles: {
 			'border-collapse': 'collapse'
