@@ -138,6 +138,7 @@ class SearchController extends Controller {
               break;
         }
      }
+     $query = $this->get_search_array(['0' => 1], 'audited', $query);
      return $query;
   }
   public function get_price_array($para, $query=[])
