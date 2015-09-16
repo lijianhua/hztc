@@ -47,10 +47,6 @@
     cursor: pointer;
     vertical-align: middle;
 }
-/* .filter-operate b{ */
-/*     font-weight: normal; */
-/*     padding-left: 6px; */
-/* } */
 .filter-operate b{
     font-weight: normal;
     padding-left: 6px;
@@ -58,7 +54,7 @@
     position: relative;
 }
 .filter-operate-hot{
-    background: url("../images/hot.jpg") no-repeat 0 0;
+    background: url("../images/list/hot.jpg") no-repeat 0 0;
     height: 14px;
     width: 14px;
     position: absolute;
@@ -71,10 +67,9 @@
     border: 1px solid #eeeeee;
     padding:12px 0px 36px 0px;
 }
-
 .filter-operate-block dl{
-  max-height: 300px;
-  overflow-y: auto;
+    max-height: 300px;
+    overflow-y: auto;
 }
 .filter-operate-block dt,
 .filter-operate-block dd{
@@ -248,11 +243,6 @@
     font-size: 18px;
     color: #64a7e5;
     margin: 5px 5px;
-    width: 400px;
-    word-break:keep-all;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
 }
 .list-info  .list-info-item-block{
     width: 440px;
@@ -267,11 +257,6 @@
     padding: 10px 10px 17px 10px;
     margin: 0 4px;
     border-bottom: 1px dashed #959595;
-    width: 430px;
-    word-break:keep-all;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
 }
 .list-info  .list-info-item-description a.link{
     color: #7bccff;
@@ -297,4 +282,10 @@
     text-align: right;
     position: absolute;
     right: 0;
+}
+
+.filter-mark-change select{
+    padding: 5px;
+    width: 150px;
+    margin: 10px;
 }
