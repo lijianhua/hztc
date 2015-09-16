@@ -23,9 +23,11 @@
             <div class="filter-operate-block">
                 <dl>
                     <dt>投放市场<span class="filter-mark"></span></dt>
-                    @foreach ($cities as $index => $city)
-                      <dd rel="0" class="filter-operate" data-name='cities' data-index="{{$index}}" data-value={{$city}}><b>{{$city}}</b><span class="filter-add"></span></dd>
-                    @endforeach
+                    <dd class="filter-mark-change">
+                        <select id="s_province" name="s_province"></select></br>
+                        <select id="s_city" name="s_city" ></select></br>
+                        <select id="s_county" name="s_county"></select></br>
+                    </dd>
                 </dl>
                 @foreach($adcategories as $index => $adcategory)
                     <dl>
