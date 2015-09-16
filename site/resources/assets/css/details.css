@@ -16,14 +16,6 @@
     vertical-align: middle;
     margin: 0 5px;
 }
-.details-title-text-break{
-    display: inline-block;
-    width: 100px;
-    word-break:keep-all;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
 .details-title-bt{
     position: absolute;
     right: 0;
@@ -154,11 +146,6 @@
     margin-top: 30px;
     font-size: 24px;
     margin-left: 19px;
-    width: 570px;
-    word-break:keep-all;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
 }
 .details .details-info-price{
     background-color: #f8f8f8;
@@ -266,7 +253,7 @@
     width: 40px;
 }
 .details-stage-block{
-    width: 370px;
+    width: 300px;
 }
 .details-stage .details-stage-item{
     color: #7bccff;
@@ -362,10 +349,15 @@
     margin-left: 45px;
     width: 849px;
 }
+.details .introduction-newadd-title,
 .details .introduction-list-title{
     font-size: 18px;
     border-bottom: 2px solid #ff4c4c;
 }
+.details .introduction-newadd-title span.active{
+    color: #ff4c4c;
+}
+.details .introduction-newadd-title span,
 .details .introduction-list-title span{
     margin-left: 34px;
     line-height: 1.8;
@@ -564,10 +556,6 @@
 .page .page-item.active{
     background-color: #ff4c4c;
     color: #ffffff;
-    padding: 5px 15px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
 }
 .page .page-item-previous,
 .page .page-item-next{
@@ -596,9 +584,42 @@
     background-color: #ffffff;
 }
 
-
-
-
+.details .introduction-newadd{
+    margin-top: 60px;
+    padding-top: 30px;
+}
+.details .introduction-newadd .introduction-title{
+    margin-top: 30px;
+}
+.introduction-newadd_info{
+    margin-top: 10px;
+}
+.introduction-newadd_info-left span{
+    height: 188px;
+    width: 188px;
+    display: block;
+    border: 1px solid #dcdcdc;
+    padding: 3px;
+}
+.introduction-newadd_info-left img{
+    width: 180px;
+    height: 180px;
+}
+.introduction-newadd_info-right{
+    margin-left: 30px;
+}
+.introduction-newadd_info-right td{
+    padding: 7px 15px 7px 0px;
+}
+.introduction-newadd-more-text{
+    padding: 20px 0;
+}
+.details .introduction-newadd-more-text img {
+    max-width: 849px;
+}
+.introduction-newadd-more-text-img{
+    margin: 10px 3px;
+}
 
 
 

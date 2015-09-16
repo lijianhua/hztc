@@ -110,28 +110,50 @@
                   @include('adcomment')
                 @endif
                 </div>
-                <div class="introduction-list">
-                    <div class="introduction-seller">
-                            <div class="introduction-list-title"><span class="active">商家介绍</span></div>
+                <div class="introduction-newadd">
+                    <div class="introduction-newadd-title"><span class="active">商家介绍</span></div>
+                    <div class="introduction-title"><span class="active">基本信息</span></div>
+                    <div class="introduction-newadd_info clearfix">
+                        <div class="introduction-newadd_info-left fl">
+                            <span><img src="{{$company->avatar->url()}}"></span>
                         </div>
-                    <table>
-                        <tr>
-                            <td class="introduction-list-strong">公司名称</td>
-                            <td class="introduction-list-info">{{$company->name}}</td>
-                        </tr>
-                        <tr>
-                            <td class="introduction-list-strong">联系方式</td>
-                            <td class="introduction-list-info">{{$company->telphone}}</td>
-                        </tr>
-                        <tr>
-                            <td class="introduction-list-strong">qq</td>
-                            <td class="introduction-list-info">{{$company->qq}}</td>
-                        </tr>
-                        <tr>
-                            <td class="introduction-list-strong">微信</td>
-                            <td class="introduction-list-info">{{$company->weixin}}</td>
-                        </tr>
-                    </table>
+                        <div class="introduction-newadd_info-right fl">
+                            <table>
+                                <tr>
+                                    <td>公司名称</td>
+                                    <td>{{$company->name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>联系电话</td>
+                                    <td>{{$company->telphone}}</td>
+                                </tr>
+                                <tr>
+                                    <td>微信</td>
+                                    <td>{{$company->weixin}}</td>
+                                </tr>
+                                <tr>
+                                    <td>微博</td>
+                                    <td>{{$company->weibo}}</td>
+                                </tr>
+                                <tr>
+                                    <td>邮箱</td>
+                                    <td>{{$company->email}}</td>
+                                </tr>
+                                <tr>
+                                    <td>QQ</td>
+                                    <td>{{$company->qq}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="introduction-title"><span class="active">更多介绍</span></div>
+                    <div class="introduction-newadd-more">
+                        <div class="introduction-newadd-more-text">
+                            <div>
+                               {{$company->detail}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="introduction-me">
                     <div class="introduction-me-show">
