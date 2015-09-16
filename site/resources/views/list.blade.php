@@ -115,15 +115,3 @@
     </div>
 </div>
 @endsection
-<script type="text/javascript">_init_area();</script>
-<script type="text/javascript">
-    var Gid  = document.getElementById ;
-    var showArea = function(){
-        Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
-                Gid('s_city').value + " - 县/区" +
-                Gid('s_county').value + "</h3>"
-    }
-    Gid('s_county').setAttribute('onchange','showArea()');
-
-
-</script>
