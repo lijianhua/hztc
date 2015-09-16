@@ -150,7 +150,7 @@
                     <div class="introduction-newadd-more">
                         <div class="introduction-newadd-more-text">
                             <div>
-                               {{$company->detail}}
+                              {!!Purifier::clean($company->detail)!!}
                             </div>
                         </div>
                     </div>
