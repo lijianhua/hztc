@@ -146,6 +146,11 @@
     margin-top: 30px;
     font-size: 24px;
     margin-left: 19px;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:400px;
 }
 .details .details-info-price{
     background-color: #f8f8f8;
