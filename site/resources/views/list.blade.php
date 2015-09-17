@@ -27,8 +27,10 @@
                         <select id="s_province" name="s_province"></select></br>
                         <select id="s_city" name="s_city" ></select></br>
                         <select id="s_county" name="s_county"></select></br>
-                    </dd>
-                </dl>
+                        <button type='button' style="margin-left:110px;background-color:#7bccff;border:0;color:#fff;height:30px;width:50px">提交</button> 
+
+                      </dd>
+                  </dl>
                 @foreach($adcategories as $index => $adcategory)
                     <dl>
                         <dt>{{$adcategory->name}}<span class="filter-mark"></span></dt>
