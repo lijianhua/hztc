@@ -8,6 +8,7 @@
             </div>
         </span></a>
     </div>
+  <div class="float-top" style="color: #fff"></div>
     <div id="ft">
         <div class="footer">
             <div class="layout">

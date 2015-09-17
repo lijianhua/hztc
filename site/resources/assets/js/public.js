@@ -58,11 +58,19 @@ $(".nav-search").click(function () {
         }
     });
 
-    //返回顶部
-    $(".float-top").click(function () {
-        $("body,html").animate({"scrollTop":0},500);
-    });
 
+      //返回顶部
+      var win_height = $(window).height();
+      $(document).scroll(function(){
+      if($(window).scrollTop() > win_height){
+        $(".right-float").fadeIn(700);
+      }else{
+        $(".right-float").hide();
+      }
+      })
+      $(".float-top").click(function () {
+        $("body,html").animate({"scrollTop":0},500);
+      });})}
 
 })
 

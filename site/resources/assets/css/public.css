@@ -833,11 +833,12 @@ header{
 
 .right-float{
     position: fixed;
-    right: 0px;
+    right: 20px;
     bottom: 181px;
     z-index: 1000;
     width: 36px;
     cursor: pointer;
+    display: none;
 }
 .right-float .float-top{
     width: 36px;
