@@ -362,7 +362,7 @@ class UserController extends Controller {
         {
           DB::transaction(function() use ($attributes,$user)
           {
-            $enterprise = Enterprise::create(['name' => $attributes['enterprise']]); 
+            $enterprise = Enterprise::create(['name' => $attributes['enterprise'], 'email' => '', 'detail' => '', 'weibo' => '']);
             User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise->id]);
             UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'idcard')->update(['value' => $attributes['idcard']]);
             UserInformation::where('user_id', '=', $user->id)->where('key', '=', 'truthname')->update(['value' => $attributes['truthname']]);
@@ -373,7 +373,7 @@ class UserController extends Controller {
         {
           DB::transaction(function() use ($attributes, $user)
           {
-            $enterprise = Enterprise::create(['name' => $attributes['enterprise']]); 
+            $enterprise = Enterprise::create(['name' => $attributes['enterprise'], 'email' => '', 'detail' => '', 'weibo' => '']);
             User::where('id', '=',$attributes['id'])->update(['enterprise_id' => $enterprise->id]);
             UserInformation::create(['user_id' => $user->id, 'key' => 'idcard', 'value' => $attributes['idcard'], 'authority' => 0]);
             UserInformation::create(['user_id' => $user->id, 'key' => 'truthname', 'value' => $attributes['truthname'], 'authority' => 0]);

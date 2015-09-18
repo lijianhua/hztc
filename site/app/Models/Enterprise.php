@@ -14,7 +14,7 @@ class Enterprise extends Model implements StaplerableInterface {
    * @var array
    */
   protected $fillable = ['name', 'trade', 'weixin', 'qq',
-    'telphone', 'phone', 'avatar'];
+    'telphone', 'phone', 'avatar', 'email', 'weibo', 'detail'];
 
   protected $casts = [
     'is_audited' => 'boolean'
