@@ -85,7 +85,8 @@ class AdSpaceController extends Controller {
 
     //商品评论
     $comments = CustomerReview::where('ad_space_id', '=', $id)->orderBy('created_at', 'desc')->paginate(15);
-    $company = Enterprise::where('id', '=', AdSpace::where('id', '=', $id)->first()->user_id)->first();
+    $user_id = AdSpace::where('id', '=', $id)->first()->user_id;
+    $company = Enterprise::where('id', '=', User::where('id', '=', $user_id)->first()->enterprise_id)->first();
 
     //是否收藏
     if (Auth::check())
