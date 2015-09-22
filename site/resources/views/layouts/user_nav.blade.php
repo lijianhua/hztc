@@ -26,5 +26,10 @@
         <a href="/users/refund" class="{{'退货清单'==Session::get('user_navigator')?'active':''}}">退货清单</a> 
       </span>
     </dd>
+    <dd class="personal-left-item">
+      <span>
+        <a href="/accounts/{{ Auth::user()->id}}" class="{{'修改密码'==Session::get('user_navigator')?'active':''}}">修改密码</a> 
+      </span>
+    </dd>
 </dl>
 </div>
