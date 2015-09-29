@@ -255,7 +255,8 @@ class AdSpaceController extends Controller {
     }
     if(array_key_exists('puid',$query_array))
     {
-      $query_array['puid'] = Enterprise::whereId($query_array['puid'][0])->first()->name; 
+      $user_id = AdSpace::where('id', '=',$query_array['puid'][0])->first()->user_id;
+      $query_array['puid'] = Enterprise::whereId($user_id)->first()->name; 
     }
     return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'current_category', 'sort', 'current_page', 'total','query_array','str'));
   }
