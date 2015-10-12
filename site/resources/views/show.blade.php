@@ -70,6 +70,7 @@
                     <span>&nbsp;&nbsp;&nbsp;件</span>
                     <span class="details-amount-total">
                         <span>合计：<span class="details-amount-total-text"><i class="fa fa-jpy"></i><span></span> </span></span>
+                          {{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}
                     </span>
                 </div>
                 <div class="details-stage clearfix">
