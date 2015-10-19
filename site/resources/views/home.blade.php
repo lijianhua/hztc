@@ -1,79 +1,79 @@
 @extends('app')
 
 @section('content')
-<div id="">
-    <!-- banner-->
-    <div id="banner" class="clearfix">
-        <div class="layout ">
-            <div class="left-nav">
-                <div class="advert">
-                    <img src="images/index/advert.png">
-                </div>
-                <div class="filter-nav">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/Search') }}" id='login-form'>
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <ul>
-                            <li class="filter-nav-item">
-                                <span class="filter-nav-title">投放市场</span><br/>
-                                <div class="btn-group">
-                                    <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        <b id='city'>全部</b> <span class="filter-nav-caret caret"></span>
+<article>
+    <div class="content_home">
+        <div class="content clearfix">
+            <div class="left_nav">
+                <div class="left_nav_title"><span>全媒体&nbsp;&nbsp;大数据</span></div>
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/Search') }}" id='login-form'>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <ul class="left_nav_change">
+                    <li class="left_nav_every">
+                        <div class="left_nav_change_topic"><i></i>投放市场</div>
+                        <div class="left_nav_change_select">
+                            <div class="btn-group">
+                            <button class="left_nav_change_item btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <b id='city'>全部</b>
                                         <input name='city' type='hidden' value='全部'/>
-                                    </button>
-                                    <ul class="filter-nav-menu dropdown-menu" role="menu">
-                                        <li><a href="#">全部</a> </li>
-                                        <li><a href="#">北京市</a> </li>
-                                        <li><a href="#">上海市</a> </li>
-                                        <li><a href="#">广州市</a> </li>
-                                        <li><a href="#">深圳市</a> </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="filter-nav-item">
-                                <span class="filter-nav-title">传播媒介</span><br/>
-                                <div class="btn-group">
-                                    <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        <b id='type'>全部</b> <span class="filter-nav-caret caret"></span>
+                            </button>
+                                <ul class="filter-nav-menu left_nav_change_option dropdown-menu" role="menu">
+                                  <li><a href="#">全部</a> </li>
+                                  <li><a href="#">北京市</a> </li>
+                                  <li><a href="#">上海市</a> </li>
+                                  <li><a href="#">广州市</a> </li>
+                                  <li><a href="#">深圳市</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="left_nav_every">
+                        <div class="left_nav_change_topic"><i></i>传播媒介</div>
+                        <div class="left_nav_change_select">
+                            <div class="btn-group">
+                                <button class="left_nav_change_item btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <b id='type'>全部</b>
                                         <input name='type' type='hidden' value='全部'>
-                                    </button>
-                                    <ul class="filter-nav-menu dropdown-menu" role="menu">
-                                        <li><a href="#">全部</a> </li>
-                                        <li><a href="#">热门活动</a> </li>
-                                        <li><a href="#">新媒体</a> </li>
-                                        <li><a href="#">报纸</a> </li>
-                                        <li><a href="#">杂志</a> </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="filter-nav-item">
-                                <span class="filter-nav-title">受众标的</span><br/>
-                                <div class="btn-group">
-                                    <button class="filter-nav-button btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        <b id='society'>全部</b> <span class="filter-nav-caret caret"></span>
+</button>
+                                <ul class="filter-nav-menu left_nav_change_option dropdown-menu" role="menu">
+                                    <li><a href="#">全部</a> </li>
+                                    <li><a href="#">热门活动</a> </li>
+                                    <li><a href="#">新媒体</a> </li>
+                                    <li><a href="#">报纸</a> </li>
+                                    <li><a href="#">杂志</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="left_nav_every">
+                        <div class="left_nav_change_topic"><i></i>受众标的</div>
+                        <div class="left_nav_change_select">
+                            <div class="btn-group">
+                                <button class="left_nav_change_item btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <b id='society'>全部</b>
                                         <input name='type2' type='hidden' value='全部'/>
-                                    </button>
-                                    <ul class="filter-nav-menu dropdown-menu" role="menu">
+</button>
+                                <ul class="filter-nav-menu left_nav_change_option dropdown-menu" role="menu">
                                         <li><a href="#">全部</a> </li>
                                         <li><a href="#">大众</a> </li>
                                         <li><a href="#">白领</a> </li>
                                         <li><a href="#">投资客</a> </li>
                                         <li><a href="#">购房人</a> </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="filter-nav-item">
-                                <span class="filter-nav-title">预算价位</span><br/>
-                                <div class="filter-nav-input">
-                                    <span><input type="text" name='start_price' value=''></span> 
-                                    <b>至</b> <span><input type="text" name='end_price' value=''></span>
-                                </div>
-                            </li>
-                            <li class="filter-nav-item"><button class="filter-nav-retrieval" type='submit'>检索</button></li>
-                        </ul>
-                  </form>
-                </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="left_nav_every" style="border: none">
+                        <div class="left_nav_change_topic"><i></i>预算价位</div>
+                        <div class="left_nav_change_input">
+                            <input type="text" name ='start_price' value=''><span>至</span><input type="text" name='end_price' value=''>
+                        </div>
+                    </li>
+                    <li class="left_nav_every_bt"><button></button></li>
+                </ul>
+            </form>
             </div>
-            <div class="banner-img">
+            <div class="banner_right">
                 <div class="banner">
                     <div class="carousel slide">
                         <div class="carousel-inner nav-banner">
@@ -94,8 +94,11 @@
                 </div>
             </div>
         </div>
+
     </div>
-    <div class="layout">
+</article>
+<div class="content">
+    <div class="plate_bg">
         <div class="plate">
             <ul id="da-thumbs" class="plate-block da-thumbs">
                 <li class="mr15">
@@ -140,6 +143,17 @@
             </ul>
         </div>
     </div>
-    <!-- banner-->
 </div>
+
+<div class="right-float">
+    <div class="float-top" style="color: #fff"></div>
+</div>
+
+<script type="text/javascript" src="js/jquery.hoverdir.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('#da-thumbs > li').each( function() { $(this).hoverdir();});
+    });
+</script>
+
 @endsection

@@ -1,33 +1,33 @@
 <header>
-  <div class="layout">
-      <div class="header-top clearfix">
-          <div class="logo fl"><a href="/"><img src="/images/logo.png"></a> </div>
-          <ul class="header-top-info fr">
-              <li class="header-top-have fl"><a href="/list/all-ads" target="_blank"><span>我要发广告</span></a> </li>
-              <li class="header-top-have fl"><a href="http://bussiness.momeiw.com:8888" target="_blank" id="_to_dash_button"><span>我有广告位</span></a> </li>
-              <li class="header-top-user fr">
+    <div class="header">
+        <div class="content clearfix">
+            <div class="logo">
+              <a href="/"><img src="/images/logo.png"></a>
+            </div>
+            <div class="advertisement">
+                <span class="advertisement-bt1"><a href="/list/all-ads" target="_blank"><button></button></a></span>
+                <span class="advertisement-bt2"><a href="http://bussiness.momeiw.com:8888" target="_blank" ><button></button></a></span>
+            </div>
+            <div class="m_h_link">
+                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2300084649&site=qq&menu=yes">
+                <span class="m_h_online"><i></i>
+              在线咨询</a> </span>
+                <span class="m_h_top ml5">
+                    <i></i>
                     @if(Auth::check())
                             <a href="/users/order">
-                              <img src="/images/user_out.png">
-                            </a>
                             <span class="header-top-user-name">
-                              欢迎 <a href="/users/order">{{Auth::user()->name}}</a> 登录
+                              {{Auth::user()->name}}
                             </span>
+                            </a>
                             <span class="header-top-user-out"><a href="/auth/logout">退出</a> </span>
                     @else
-                        <a href="/auth/login"><img src="/images/user.jpg"></a>
-                        <span><a href="/auth/login">登录</a></span>|
-                        <span><a href="/auth/register">注册</a> </span>
+                      <span class="m_h_sign"><a href="/auth/login">登录</a> </span>|
+                      <span class="m_h_login"><a href="/auth/register">注册</a> </span>
                     @endif
-              </li>
-              <li class="fr header-top-callme">
-                <a target="_blank"
-                href="http://wpa.qq.com/msgrd?v=3&uin=2300084649&site=qq&menu=yes"><img
-                border="0" src="http://wpa.qq.com/pa?p=2:2300084649:52" alt="点击这里给我发消息"
-                title="点击这里给我发消息"/>在线咨询</a>
-              </li>
-          </ul>
-      </div>
-  </div>
+                </span>
+            </div>
+        </div>
     @include ('layouts.navigation')
+    </div>
 </header>

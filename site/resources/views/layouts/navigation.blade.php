@@ -1,49 +1,46 @@
-<nav>
-    <div class="nav">
-        <div class="layout">
-            <div class="nav-phone fl">
-                <i class="nav-phone-icon"></i>
-                <span class="nav-phone-number">400-831-9003</span>
-            </div>
-            <div class="fl nav-info">
-                <ul>
-                    @foreach ( $navigators as $nav)
-                        <li class="nav-info-item fl {{ $nav->name == Session::get('current_navigator')?'active':''}}">
-                          <a href="{{ url($nav->url) }}">{{{$nav->name}}}</a></span>
-                        </li>
-                    @endforeach
-             i   </ul>
-            </div>
-            <div class="nav-search fr">
+<div class="m_nav">
+  <div class="content m_nav_position clearfix">
+      <div class="m_nav_call"><i class="fa fa-phone"></i>400-831-9003</div>
+      <div class="btn-group m_nav_search">
+          <div class="m_nav_search_bt"><i class="fa fa-search"></i></div>
+          <div class="m_nav_search_info_bg">
+          <div class="m_nav_search_info">
               <form class="form-horizontal" role="form" method="POST" action="{{ url('/Search') }}" id='login-form'>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="button-classify fl">
-                    <div class="nav-search-hide fl">
-                       <button type="button" class="btn dropdown-toggle nav-classify" data-toggle="dropdown" aria-expanded="false"><b>全&nbsp;&nbsp;部</b><input type='hidden' name='type' value='全部'/> </button> <ul class="nav-search-menu dropdown-menu" role="menu">
-                          <li>
-                              <span><a href="#">自媒体</a> </span>
-                          </li>
-                          <li>
-                              <span><a href="#">网络广告</a> </span>
-                          </li>
-                          <li>
-                              <span><a href="#">APP</a> </span>
-                          </li>
-                          <li>
-                              <span><a href="#">纸媒广告</a> </span>
-                          </li>
-                          <li>
-                              <span><a href="#">广告平台</a> </span>
-                          </li>
-                        </ul>
-                        <input type="text" class="search-input" placeholder="搜索广告位" name='q'>
-                    </div>
-                    <div class="nav-search-bt fl">
-                        <button type='button'><b class='fa fa-search'></b></button>
-                    </div>
-                </div>
-            </form>
-            </div>
+                <span class="btn-group m_nav_search_operate">
+                  <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>全部</b><input type='hidden' name='type' value='全部'/> <span class="caret"></span>
+                  </button>
+              <ul class="dropdown-menu">
+                  <li>
+                      <a href="#">自媒体</a>
+                  </li>
+                  <li>
+                      <a href="#">网络广告</a>
+                  </li>
+                  <li>
+                      <a href="#">APP</a>
+                  </li>
+                  <li>
+                      <a href="#">纸媒广告</a>
+                  </li>
+                  <li>
+                      <a href="#">广告平台</a>
+                  </li>
+              </ul>
+              </span>
+              <span class="m_nav_search_operate"><input type="text"
+placeholder="搜索广告" name='q'></span>
+              <span class="m_nav_search_operate"><button class="m_nav_search_operate_bt"><i class="fa fa-search"></i></button></span>
+              </form>
+          </div>
         </div>
-    </div>
-</nav>
+      </div>
+      <ul class="m_nav_item">
+          @foreach ( $navigators as $nav)
+              <li class="nav-info-item fl {{ $nav->name == Session::get('current_navigator')?'active':''}}">
+                <a href="{{ url($nav->url) }}">{{{$nav->name}}}</a></span>
+              </li>
+          @endforeach
+      </ul>
+  </div>
+</div>
