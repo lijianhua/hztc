@@ -1,4 +1,19 @@
 $(document).ready(function(){
+    var flash = true;
+
+    $('[data-toggle="tooltip"]').tooltip();
+$(".nav-search").click(function () {
+        $(this).css({'overflow':'inherit'});
+        $(".nav-search").animate({"width":255},500, function () {
+            $(this).find('.nav-search-bt button').prop('type','submit');
+            $(window).keydown(function (event) {
+            if(event.keyCode == 13)
+            {
+                $(this).find('.nav-search-bt button').click()
+            }
+    });
+        });
+});
     $('.m_nav_search_bt').click(function(){
         $('.m_nav_search_info_bg').show();
         $('.m_nav_search_bt').css('visibility','hidden');
