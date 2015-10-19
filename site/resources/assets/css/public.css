@@ -300,6 +300,9 @@ a.gray:hover {
 .mr10 {
     margin-right: 10px;
 }
+.mr14 {
+    margin-right: 14px;
+}
 .mr15 {
     margin-right: 15px;
 }
@@ -539,7 +542,7 @@ body{
 }
 
 .content{
-    width: 1000px;
+    width: 1200px;
     margin: 0 auto;
 }
 .header .logo{
