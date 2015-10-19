@@ -15,8 +15,8 @@
                             <div class="btn-group">
                             <button class="left_nav_change_item btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         <b id='city'>全部</b>
-                                        <input name='city' type='hidden' value='全部'/>
                             </button>
+                                        <input name='city' type='hidden' value='全部'/>
                                 <ul class="filter-nav-menu left_nav_change_option dropdown-menu" role="menu">
                                   <li><a href="#">全部</a> </li>
                                   <li><a href="#">北京市</a> </li>
@@ -33,8 +33,8 @@
                             <div class="btn-group">
                                 <button class="left_nav_change_item btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         <b id='type'>全部</b>
-                                        <input name='type' type='hidden' value='全部'>
 </button>
+                                        <input name='type' type='hidden' value='全部'>
                                 <ul class="filter-nav-menu left_nav_change_option dropdown-menu" role="menu">
                                     <li><a href="#">全部</a> </li>
                                     <li><a href="#">热门活动</a> </li>
@@ -51,8 +51,8 @@
                             <div class="btn-group">
                                 <button class="left_nav_change_item btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         <b id='society'>全部</b>
-                                        <input name='type2' type='hidden' value='全部'/>
 </button>
+                                        <input name='type2' type='hidden' value='全部'/>
                                 <ul class="filter-nav-menu left_nav_change_option dropdown-menu" role="menu">
                                         <li><a href="#">全部</a> </li>
                                         <li><a href="#">大众</a> </li>

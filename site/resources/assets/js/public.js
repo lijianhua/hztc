@@ -30,7 +30,8 @@ $(".nav-search").click(function () {
     //×ó²à
     $(".left_nav_change_option li").click(function(){
         var text = $(this).text();
-        $(this).parents(".btn-group").find("button").text(text)
+        $(this).parents(".btn-group").find("button").text(text);
+        $(this).parents(".btn-group").find("input").val(text)
     });
 
     //ÂÖ²¥Í¼
@@ -61,6 +62,7 @@ $(".nav-search").click(function () {
 
     $(".m_nav_search_info .dropdown-menu li a").click(function(){
         $(this).parents(".m_nav_search_info").find("button b").text($(this).text())
+        $(this).parents(".m_nav_search_info").find(".htext").val($(this).text())
     })
 
 });

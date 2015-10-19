@@ -8,7 +8,9 @@
               <form class="form-horizontal" role="form" method="POST" action="{{ url('/Search') }}" id='login-form'>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <span class="btn-group m_nav_search_operate">
-                  <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>全部</b><input type='hidden' name='type' value='全部'/> <span class="caret"></span>
+                  <button class="btn btn-sm dropdown-toggle" type="button"
+data-toggle="dropdown" aria-haspopup="true"
+aria-expanded="false"><b>全部</b><input class='htext' type='hidden' name='type' value='全部'/> <span class="caret"></span>
                   </button>
               <ul class="dropdown-menu">
                   <li>
