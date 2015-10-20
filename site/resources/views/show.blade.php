@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="layout">
+<div class="layout content">
     <div class="details">
         <div class="details-title">
             <span class="details-title-text"><span>首页</span>

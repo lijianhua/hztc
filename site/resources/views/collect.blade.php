@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="layout">
+<div class="layout content">
     <div class="personal clearfix">
       @include ('layouts.user_nav')
         <div class="collection">
