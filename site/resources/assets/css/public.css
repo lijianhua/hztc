@@ -550,7 +550,7 @@ body{
     margin-top: 38px;
 }
 .header .advertisement{
-    margin: 50px 0px 0px 80px;
+    margin: 50px 0px 0px 180px;
     float: left;
 }
 .header .advertisement-bt1 button{
@@ -617,7 +617,7 @@ body{
  }
 .m_nav_item{
     float: left;
-
+    margin-left: 200px;
 }
 .m_nav_item a{
     display: inline-block;
