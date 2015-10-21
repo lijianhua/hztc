@@ -105,12 +105,7 @@ $(document).ready(function () {
             $('.sign-checkbox').parents('td').find('.checkbox-sign-warning').css('display','inline-block');
             return false
         }
-        login_code();
     });
-
- $(".login-code").blur(function(){
-    login_code();
- })
 
     $("#clause-view").click(function () {
         $(".clause-bg").show();
