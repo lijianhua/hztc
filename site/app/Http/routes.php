@@ -91,3 +91,8 @@ Route::get('accounts/{id}/edit', 'AccountController@edit');
 Route::put('accounts/{id}/reset-password', 'AccountController@postResetPassword');
 Route::put('accounts/{id}/edit', 'AccountController@update');
 Route::put('accounts/{id}/enterprise', 'AccountController@updateEnterprise');
+
+//对比
+Route::post('/addContrast','AdSpaceController@addContrast');
+Route::post('/delContrast','AdSpaceController@delContrast');
+Route::get('/getContrast','AdSpaceController@getContrast');

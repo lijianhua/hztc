@@ -183,6 +183,51 @@ class AdSpace extends Model implements StaplerableInterface {
 
     return $ideas;
   }
+
+
+
+  /**
+   * 同类新奇特广告
+   *
+   *
+   */
+  public static function creativeType($array_categories=[])
+  {
+    $ideas = AdSpace::leftjoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
+           ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
+           ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
+           ->where('ad_spaces.audited', '=', '1')
+           ->where('ad_spaces.type', '=', '3')
+           ->select("*",'ad_spaces.id') 
+           ->orderBy('ad_prices.price', 'desc') 
+           ->orderBy('order_items.quantity', 'desc')
+           ->groupBy('ad_spaces.id')
+           ->get();
+
+    $array_adspace = [];
+    foreach($ideas as $idea)
+    {
+      $categories = $idea->categories()->whereIn('name',$array_categories)->get();
+      if(count($categories))
+      {
+        array_push($array_adspace,$idea->id); 
+      }
+    }
+    $ideas = AdSpace::leftjoin('ad_prices', 'ad_spaces.id', '=', 'ad_prices.ad_space_id')
+           ->leftjoin('order_items', 'ad_spaces.id', '=', 'order_items.ad_space_id')
+           ->leftjoin('ad_space_users', 'ad_spaces.id', '=', 'ad_space_users.ad_space_id')
+           ->where('ad_spaces.audited', '=', '1')
+           ->where('ad_spaces.type', '=', '3')
+           ->whereIn('ad_spaces.id',$array_adspace)
+           ->select("*",'ad_spaces.id') 
+           ->orderBy('ad_prices.price', 'desc') 
+           ->orderBy('order_items.quantity', 'desc')
+           ->groupBy('ad_spaces.id')
+           ->take(4)
+           ->get();
+
+    return $ideas;
+  }
   /**
    * APP或者自媒体
    *

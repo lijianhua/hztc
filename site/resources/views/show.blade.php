@@ -1,202 +1,348 @@
 @extends('app')
 
 @section('content')
-<div class="layout content">
-    <div class="details">
-        <div class="details-title">
-            <span class="details-title-text"><span>首页</span>
-            <i class="fa fa-angle-right"></i><span class="details-title-text-break" title="{{ $adspace->title}}">{{ $adspace->title}}</span></span>
-            <span class="details-title-bt">
-              <span class="details-title-link"><a href="/list/all-ads?{{$type}}">同类更多资源</a> </span>
-              <span class="details-title-link"><a href="/list/all-ads?puid={{ $adspace->user_id}}">本公司其他资源</a> </span>
-            </span>
-        </div>
-        <div class="details-top clearfix">
-            <div class="details-picture fl">
-                <div class="details-picture-img">
-                    @foreach ($adspace->images as $index=>$image)
-                      <span class="{{ $index==0?'':'display'}}"><img src="{{ $image->avatar->url() }}"></span>
-                    @endforeach
-                </div>
-                <div class="details-picture-tab clearfix">
-                    <div class="details-picture-tab-left fl"></div>
-                    <div class="details-picture-tab-block fl">
-                        <div class="details-picture-tab-line">
-                            @foreach ($adspace->images as $index=>$image)
-                              <span class="details-picture-tab-item {{$index==0?'active':''}}">
-                                <img src="{{ $image->avatar->url('thumb') }}">
-                              </span>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="details-picture-tab-right fr"></div>
+<article>
+
+    <div class="content">
+        <div class="c_details_side">
+            <div class="c_details_side_hover">
+                <div class="c_details_side_buy_item"></div>
+                <div class="c_details_side_add_item"></div>
+                <div class="c_details_side_contrast_item"></div>
+            </div>
+            <div class="c_details_side_line">
+                <div class="c_details_side_block">
+                    <div class="c_details_side_buy"><a href="#"></a></div>
+                    <div class="c_details_side_add"><a href="#"></a></div>
+                    <div class="c_details_side_contrast"><a href="/getContrast"></a></div>
                 </div>
             </div>
-            <div class="details-info">
-                <div class="details-info-title" title='{{{ $adspace->title }}}'><span>{{{ $adspace->title }}}</span></div>
-                <div class="details-info-price clearfix">
-                    <div class="details-info-price-left fl">
-                        <div class="details-info-price-number">
-                            <span>刊例价：</span>
-                            <span class="">
-                              <i class="fa fa-jpy"></i>&nbsp;<span>{{$adspace->adPrices->min('original_price')}}/{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}</span></span>
-                            <div style='display:inline-block'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                            <span>执行价：</span>
-                            <span class="details-info-price-info details-info-price-color">
-                              <i class="fa fa-jpy"></i>&nbsp;
-                              <span>{{$adspace->adPrices->min('price')}}</span>/
-                              {{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}
+
+        </div>
+        <div class="details">
+            <div class="d_global_title">首页  > {{$adspace->title}} {{$iscontrast}}</div>
+            <div class="d_product">
+                <div class="clearfix">
+                    <div class="d_product_img fl">
+                        <div class="d_product_img_block">
+                            <div class="d_product_img_line">
+                                <div class="d_product_img_line_info">
+                                @foreach ($adspace->images as $index=>$image)
+                                    <img src="{{ $image->avatar->url() }}">
+                                @endforeach
+                                </div>
+                            </div>
+                            <div class="d_product_small">
+                                <div class="d_product_small_top"></div>
+                                <div class="d_product_small_down"></div>
+                                <div class="d_product_small_operate">
+                                    <div class="d_product_small-img">
+                                    @foreach ($adspace->images as $index=>$image)
+                                        <span class="d_product_small_item {{$index==0?'active':''}}"><img src="{{ $image->avatar->url('thumb') }}"></span>
+                                    @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d_product_info fl">
+                        <div class="d_product_info_top clearfix">
+                            <span class="d_product_info_title fl">{{ $adspace->title }}</span>
+                        <span class="d_product_info_attention fr">
+                            <strong>关注度:</strong>
+                            <span>
+                                <i class="active fa fa-star"></i>
+                                <i class="active fa fa-star"></i>
+                                <i class="active fa fa-star"></i>
+                                <i class="active fa fa-star"></i>
+                                <i class="fa fa-star"></i>
                             </span>
-                            <p>{{$adspace->AdPrices->max('note')?$adspace->AdPrices->max('note'):''}}</p>
+                        </span>
                         </div>
-                        <div class="details-info-price-service">
-                           公司：<span style="color: #878787">{{$company->name}}</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                           联系方式：<span style="color: #878787">{{$company->telphone}}</span>
-                        </div>
-                    </div>
-                    <div class="details-info-evaluation fr">
-                        <span class="details-info-evaluation-top">累计评价</span><br/>
-                        <span class="details-info-evaluation-down">{{$adspace->customerReviews->count('id') }}</span>
+                        <ul class="d_product_attribute">
+                            <li>
+                                <strong>刊例价：</strong>
+                                <span class="">{{$adspace->adPrices->min('original_price')}}
+                                /{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}，
+                                  执行价{{$adspace->adPrices->min('price')}}{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}</span>
+                            </li>
+                        </ul>
+                        <ul class="d_product_attribute">
+                            <li>
+                                <strong>数量：</strong>
+                            <span class="details-amount clearfix">
+                                <span class="details-amount-plus"></span>
+                                <span class="details-amount-input"><input type="text" readonly value="1"></span>
+                                <span class="details-amount-minus"></span>
+                            </span>
+                                <strong>月</strong>
+
+                            </li>
+                            <li>
+                                <strong>版位：</strong>
+                            <span class="d_product_position">
+                                <span class="d_product_position_item">1</span>
+                                <span class="d_product_position_item">2</span>
+                                <span class="d_product_position_item">3</span>
+                            </span>
+                            </li>
+                            <li>
+                                <strong>日期：</strong>
+                            <span class="d_product_time">
+                                <span class="d_product_time_item">2015.6——2015.7</span>
+                                <span class="d_product_time_item">2015.6——2015.7</span>
+                                <span class="d_product_time_item">2015.6——2015.7</span>
+                            </span>
+                            </li>
+                            <li>
+                                <strong>收藏：</strong>
+                                <span class="d_product_star
+{{$collect?'':'no'}}" onclick='addCollect({{$adspace->id}})'><i class="fa fa-star"></i></span>
+                            </li>
+                            <input type='hidden' id='ad_space_id_to' value='{{ $adspace->id}}'>
+                            <input type='hidden' value='{{Auth::check()?Auth::user()->id:0}}' id='user_id'>
+                            <li class="d_product_bt">
+                                <a href="#" class="d_product_bt_buy"></a>
+                                <a href="#" class="d_product_bt_look"></a>
+                                @if ($iscontrast)
+                                  <a href="javascript:void(0)" class="d_product_bt_contrast add" onclick="delContrast({{ $adspace->id }})" ></a>
+                                @else
+                                  <a href="javascript:void(0)" class="d_product_bt_contrast" onclick="addContrast({{ $adspace->id }})" ></a>
+                                @endif
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                  <input type='hidden' value='{{Auth::check()?Auth::user()->id:0}}' id='user_id'>
-                <div class="details-info-amount">
-                    <span>数量：</span>
-                    <span class="details-amount clearfix">
-                        <span class="details-amount-plus"></span>
-                        <span class="details-amount-input"><input id="details-amount-count" type="text" readonly value="1"></span>
-                        <span class="details-amount-minus"></span>
+                <div class="d_teach clearfix">
+                    <span class="d_teach_left fl">
+                        初次来访：
+                        <span><a href="#">如何使用？</a></span>
+                        <span><a href="#">如何支付？</a></span>
                     </span>
-                    <span>&nbsp;&nbsp;&nbsp;件</span>
-                    <span class="details-amount-total">
-                        <span>合计：<span class="details-amount-total-text"><i class="fa fa-jpy"></i><span></span> </span></span>
-                          {{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}
+                    <span class="d_teach_right fr">
+                        <span><img src="/images/details/d1.png"></span>
+                        <span><img src="/images/details/d2.png"></span>
+                        <span><img src="/images/details/d3.png"></span>
+                        <span><img src="/images/details/d4.png"></span>
                     </span>
-                </div>
-                <div class="details-stage clearfix">
-                    <table class="fl">
-                        <tr>
-                            <td class="details-stage-title">阶段：</td>
-                            <td class="details-stage-block">
-                              @foreach($adspace->adPrices as $index=>$price) 
-                                <span class="details-stage-item {{$index==0?'active':''}}" 
-                                data-price='{{ $price->price}}' data-priceid='{{ $price->id}}' 
-                                data-sale-count='{{ $price->sale_count}}'>
-                                   {{$price->from}}--{{$price->to}}
-                                </span>
-                              @endforeach
-                            </td>
-                        </tr>
-                    </table>
-                    <div class="details-concerned-collection fr">
-                    <a href='#' onclick='return addCollect({{ $adspace->id }})'>
-                      <span class="details-info-collection">收藏<i class="fa {{$collect?'fa-star':'fa-star-o'}}"></i></span>
-                    </a>
-                    </div>
-                </div>
-                <div class="details-business">
-                    <input type='hidden' id='ad_space_id_to' value='{{ $adspace->id}}'>
-                    <span class="details-buy-now"><button id="details_id_now">立即购买</button></span>
-                    <span class="details-cart"><button id="details_id_cart">加入购物车</button></span>
                 </div>
             </div>
-        </div>
-        <div class="details-specifics clearfix">
-          @include ('creative')
-            <div class="introduction fl">
-                <div class="introduction-list-title"><span class="active">广告详情</span><span>客户评论</span></div>
-                <div class="introduction-advert">{!! Purifier::clean($adspace->detail) !!}</div>
-                <div class="introduction-consumer display">
-                @if ($adspace->customerReviews->count('id') > 0)
-                  @include('adcomment')
-                @endif
-                </div>
-                <div class="introduction-newadd">
-                    <div class="introduction-newadd-title"><span class="active">商家介绍</span></div>
-                    <div class="introduction-title"><span class="active">基本信息</span></div>
-                    <div class="introduction-newadd_info clearfix">
-                        <div class="introduction-newadd_info-left fl">
-                            <span><img src="{{$company->avatar->url()}}"></span>
+            <div class="d_information clearfix">
+                <div class="d_information_left">
+                    <div class="d_information_buy">
+                        <div class="d_information_buy_title">
+                            <i></i>购买此广告位的人还购买了
                         </div>
-                        <div class="introduction-newadd_info-right fl">
-                            <table>
-                                <tr>
-                                    <td>公司名称</td>
-                                    <td>{{$company->name}}</td>
+                        <div class="d_information_buy_block">
+                            <div class="d_information_buy_info">
+                            @foreach ($rebuy as $buy)
+                                <span class="d_information_buy_item"><a href="/ads/{{ $buy[0]}}" target="__blank">{{ $buy[1]}}</a> </span>
+                            @endforeach
+                            </div>
+                            <div class="d_information_buy_bottom"></div>
+                        </div>
+                    </div>
+                    <div class="d_information_recommend">
+                        <div class="d_information_buy_title">
+                            <i></i>本公司推荐
+                        </div>
+                        <div class="d_information_recommend_block">
+                        @if ($app_medias['app_medias'])
+                            @foreach($app_medias['app_medias'] as $idea)
+                            <div class="d_information_recommend_info">
+                                <span><img src="{{$idea->avatar->url()}}" alt="{{$idea->title}}" title="{{$idea->title}}"></span>
+                                <div class="d_information_recommend_link">
+                                  <a href="/ads/{{$idea->id}}">
+                                    <i class="fa fa-angle-right"></i>
+                                      {{ $idea->title }}
+                                  </a>
+                                </div>
+                            </div>
+                            @endforeach
+                        @endif
+                        </div>
+                    </div>
+                    <div class="d_information_recommend">
+                        <div class="d_information_recommend_title">
+                            <i></i>更多同类新奇特推荐
+                        </div>
+                        <div class="d_information_recommend_info clearfix">
+                        @if ($ideas)
+                          @foreach($ideas as $idea)
+                            <span class="d_information_recommend_link_small">
+                              <img src="{{$idea->avatar->url()}}">
+                              <a href="/ads/{{$idea->id}}">
+                              <i class="fa fa-angle-right"></i>{{ $idea->title }}</a> </span>
+                          @endforeach
+                        @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="d_information_right">
+                    <div class="d_details">
+                        <div class="d_details_content">
+                            <div class="d_details_title">
+                                <span class="d_details_title_item active">主要详情</span>
+                                <span class="d_details_title_item">广告评论</span>
+                                <span class="
+bdsharebuttonbox"><span>分享到：</span>
+                                  <span style="margin-right:20px;"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>微信</span>
+                                  <span><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到微信"></a>微博</span>
+                              </span>
+                            </div>
+                            <div class="d_comment display">
+                              @foreach ($comments as $comment)
+                                <table class="d_comment_item">
+                                    <tr>
+                                        <td class="d_comment_left">
+                                            <div class="d_comment_left_name">{{ $comment->user->name}}</div>
+                                        </td>
+                                        <td class="d_comment_main">
+                                            <div>
+                                                 {{ $comment->body }}
+                                            </div>
+                                            <div class="d_comment_time">{{ $comment->created_at }}</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                              @endforeach
+                            </div>
+                            <div class="d_details_content_info">
+                                {!! Purifier::clean($adspace->detail) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d_app">
+                        <div class="d_app_title"><i></i>自媒体阵营</div>
+                        <div class="d_app_bg">
+                            <div class="d_app_content">
+                                <div class="d_app_content_block clearfix">
+                                    <div class="d_app_content_block_title"><span>本公司新媒体阵营</span></div>
+                                    <span class="d_app_content_item">
+                                        <img src="/images/details/wx.png">
+                                        <p><a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[3]=微信"><i class="fa fa-angle-right"></i>官方微信</a> </p>
+                                    </span>
+                                    <span class="d_app_content_item">
+                                        <img src="/images/details/wb.png">
+                                        <p><a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[4]=微博"><i class="fa fa-angle-right"></i>官方微博</a> </p>
+                                    </span>
+                                    <span class="d_app_content_item">
+                                        <img src="/images/details/wy.png">
+                                        <p><a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[5]=新媒体"><i class="fa fa-angle-right"></i>其他新媒体</a> </p>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="d_app_content">
+                                <div class="d_app_content_block clearfix">
+                                    <div class="d_app_content_block_title"><span>本公司大V</span></div>
+                                <span class="d_app_content_item">
+                                    <img src="/images/details/1.png">
+                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
+                                </span>
+                                <span class="d_app_content_item">
+                                    <img src="/images/details/1.png">
+                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
+                                </span>
+                                <span class="d_app_content_item">
+                                    <img src="/images/details/1.png">
+                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
+                                </span>
+                                <span class="d_app_content_item">
+                                    <img src="/images/details/1.png">
+                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
+                                </span>
+                                <span class="d_app_content_item">
+                                    <img src="/images/details/1.png">
+                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
+                                </span>
+                                <span class="d_app_content_item">
+                                    <img src="/images/details/1.png">
+                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d_details d_details_bottom">
+                        <div class="d_details_content">
+                            <div class="d_details_title">
+                                <span class="d_details_title_item active">公司简介</span>
+                            </div>
+                            <table class="d_details_content_info">
+                                <tr class="d_details_content_info_item">
+                                    <td class="d_details_left_td" rowspan="4">
+                                        <div class="d_details_left_img">
+                                            <img src="{{$company->avatar->url()}}">
+                                        </div>
+                                    </td>
+                                    <td><strong>名称</strong>{{ $company->name }}</td>
                                 </tr>
-                                <tr>
-                                    <td>联系电话</td>
-                                    <td>{{$company->telphone}}</td>
+                                <tr class="d_details_content_info_item">
+                                    <td><strong>联系电话</strong>{{ $company->telphone}}</td>
                                 </tr>
-                                <tr>
-                                    <td>微信</td>
-                                    <td>{{$company->weixin}}</td>
+                                <tr class="d_details_content_info_item">
+                                    <td><strong>微信</strong> {{ $company->weixin}}</td>
                                 </tr>
-                                <tr>
-                                    <td>微博</td>
-                                    <td>{{$company->weibo}}</td>
+                                <tr class="d_details_content_info_item">
+                                    <td><strong>QQ</strong> {{ $company->qq }}</td>
                                 </tr>
-                                <tr>
-                                    <td>邮箱</td>
-                                    <td>{{$company->email}}</td>
-                                </tr>
-                                <tr>
-                                    <td>QQ</td>
-                                    <td>{{$company->qq}}</td>
+                                <tr class="">
+                                    <td colspan="2">
+                                    </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
-                    <div class="introduction-title"><span class="active">更多介绍</span></div>
-                    <div class="introduction-newadd-more">
-                        <div class="introduction-newadd-more-text">
-                            <div>
-                              {!!Purifier::clean($company->detail)!!}
+                    <div class="d_app">
+                        <div class="d_app_title"><i></i>分类广告中心</div>
+                        <div class="d_app_bg">
+                            <div class="d_app_content_block_bg clearfix">
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/3.png">
+                                </span>
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/4.png">
+                                </span>
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/5.png">
+                                </span>
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/6.png">
+                                </span>
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/7.png">
+                                </span>
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/8.png">
+                                </span>
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/9.png">
+                                </span>
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/10.png">
+                                </span>
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/11.png">
+                                </span>
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/12.png">
+                                </span>
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/13.png">
+                                </span>
+                                <span class="d_app_content_item_bg">
+                                    <img src="/images/details/14.png">
+                                </span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="introduction-me">
-                    <div class="introduction-me-show">
-                        <div class="introduction-me-left"></div>
-                        <div class="introduction-me-right"></div>
-                        <div class="introduction-me-title">本公司其他资源</div>
-                        <div class="introduction-me-block">
-                              <div class="introduction-me-line clearfix">
-                                    @if ($app_medias['app_medias'])
-                                        @foreach($app_medias['app_medias'] as $idea)
-                                              <div class="introduction-me-item">
-                                                <a href="/ads/{{$idea->id}}">
-                                                    <div class="introduction-me-item-img">
-                                                      <img src="{{$idea->avatar->url()}}" alt="{{$idea->title}}" title="{{$idea->title}}">
-                                                    </div>
-                                                    <div class="introduction-me-item-name">
-                                                    </div>
-                                                </a>
-                                              </div>
-                                        @endforeach
-                                    @endif
-                                    @if ($app_medias['company_adspaces'])
-                                        @foreach($app_medias['company_adspaces'] as $idea)
-                                              <div class="introduction-me-item">
-                                                <a href="/ads/{{$idea->id}}">
-                                                    <div class="introduction-me-item-img">
-                                                      <img src="{{$idea->avatar->url()}}" alt="{{$idea->title}}" title="{{$idea->title}}">
-                                                    </div>
-                                                    <div class="introduction-me-item-name">
-                                                    </div>
-                                                </a>
-                                              </div>
-                                        @endforeach
-                                    @endif
-                              </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</article>
 <script>
   function addCollect(id)
   {
@@ -215,4 +361,6 @@
     });  
   }
 </script>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":["weixin","renren","tqq","bdxc","kaixin001","tqf","tieba","douban","bdhome","sqq","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","fbook","twi","linkedin","h163","evernotecn","copy","print"],"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new
+Date()/36e5)];</script>
 @endsection

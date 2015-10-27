@@ -16,6 +16,10 @@ use App\Models\Promotion;
 use App\Models\CustomerReview;
 use App\Models\Enterprise;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\OrderItem;
+use Cookie;
+use Response;
 
 class AdSpaceController extends Controller {
 
@@ -43,7 +47,7 @@ class AdSpaceController extends Controller {
     {
       if(trim($index) == trim($list_name))
       {
-        return $this->get_list_view($value['name'], $value['type'], $sort, $index, Arr::get($request->all(), 'page', 1),$request->all());
+        return $this->get_list_view($value['name'], $value['type'], $sort, $index, Arr::get($request->all(), 'page', 1),$request->all(), 1);
       }
     }
   }
@@ -65,13 +69,46 @@ class AdSpaceController extends Controller {
     return view('free')->with(compact('navigators', 'adspaces', 'ideas'));
   }
 
+
+  /**
+   *
+   * 购买此广告的人还购买了
+   */
+  public function rebuy($gid)
+  {
+    $oritem = OrderItem::where('ad_space_id', '=', $gid)
+      ->orderBy('created_at', 'desc')->take(5)->get();
+    if ($oritem)
+    {
+      $uarry = array();
+      foreach ($oritem as $or)
+      {
+        array_push($uarry, $or->order->user_id);
+      }
+      $uarry = array_unique($uarry);
+      $rebuy =  array();
+      foreach ($uarry as $ua)
+      {
+        $adsp = Order::with(['orderItems'])
+          ->where('orders.user_id', '=', $ua)
+          ->orderBy('created_at', 'desc')
+          ->firstOrFail();
+        $ad = AdSpace::find($adsp->orderItems->first()->ad_space_id);
+        array_push($rebuy,[$ad->id, $ad->title]);
+      }
+      return $rebuy;
+    }else {
+      return array();
+    }
+  }
+
+
   /**
    * 广告位详情
    *
    */
   public function show($id)
   {
-    
     $nav = '首页';
     $navigators = $this->navigators;
     Session::put('current_navigator', $nav);
@@ -108,16 +145,149 @@ class AdSpaceController extends Controller {
     }
     $type = rtrim($str_type,'&');
     //创意类广告
-    $ideas = AdSpace::creative();
+    //更多同类新奇特
+    $ideas = AdSpace::creativeType($list);
     
 
-    //APP自媒体广告
+    //本公司推荐
     $company_name = Enterprise::find(User::find($adspace->user_id)->enterprise_id)->name;
     $app_medias = AdSpace::app_media($company_name);
-    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas', 'company', 'app_medias'));
+
+    //购买此广告位的人还购买了
+    $rebuy = $this->rebuy($id);
+
+    //对比
+    $contrast = Cookie::get('contrast');
+    $iscontrast = $contrast?in_array($id, $contrast):0;
+    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas', 'company', 'app_medias', 'rebuy','iscontrast'));
   }
  
 
+  /**
+   *加入对比
+   *
+   */
+  public function addContrast(){
+    $id = Input::get('id');
+    if (Cookie::has('contrast')){
+      $contrast = Cookie::get('contrast');
+      if (!in_array($id, $contrast))
+      {
+        array_push($contrast, $id);
+        Cookie::queue('contrast', $contrast, 10);
+      }
+      else
+      {
+        return response()->json(['state' => '0']);
+      }
+    }
+    else {
+      $contrast = array($id);
+      Cookie::queue('contrast', $contrast, 10);
+    }
+    return response()->json(['state' => '1']);
+  }
+
+  /**
+   * 查看对比
+   *
+   */
+  public function getContrast(){
+    $nav = '首页';
+    Session::put('current_navigator', $nav);
+    $navigators = Navigator::all()->sortBy('sort');
+    $adspaces = array();
+    if (Cookie::has('contrast'))
+    {
+      $contrast = Cookie::get('contrast');
+      foreach ($contrast as $gid)
+      {
+        $adspace   = AdSpace::with(['adPrices', 'images', 'customerReviews'])
+          ->where('ad_spaces.audited', '=', 1)
+          ->where('id', '=', $gid)
+          ->firstOrFail();
+        $adspace = $this->filter_merge($adspace);
+        $adspaces = array_merge($adspaces, $adspace);
+      }
+    }
+    return view('contrast')->with(compact('navigators', 'adspaces'));
+
+  }
+
+  /**
+   * 整理字段
+   *
+   */
+  public function filter_merge($adspace)
+  {
+    $user_id = AdSpace::where('id', '=', $adspace->id)->first()->user_id;
+    $company = Enterprise::where('id', '=', User::where('id', '=', $user_id)->first()->enterprise_id)->first();
+    return array([
+        'id'  => $adspace->id,
+        'name' => $adspace->title,
+        'image' => $adspace->avatar->url(),
+        'kprice' => $adspace->adPrices->min('original_price'),
+        'dw' => $adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期',
+        'zprice' => $adspace->adPrices->min('price'),
+        'area' => $adspace->address->province.' '.$adspace->address->city.' '.$adspace->address->area,
+        'mj' => $this->typeEcho($adspace, 1),
+        'mtsx' => $this->typeEcho($adspace, 11),
+        'szsr' => $this->typeEcho($adspace, 22),
+        'age' => $this->typeEcho($adspace, 26),
+        'sex' => $this->typeEcho($adspace, 31),
+        'szr' => $this->typeEcho($adspace, 34),
+        'description' => $adspace->description,
+        'gname' => $company->name,
+        'gimage' => $company->avatar->url(),
+        'gtelphone' => $company->telphone,
+        'gemail' => $company->email,
+      ]);
+  }
+
+  // 组织类型字段
+  public function typeEcho($adspace, $tid)
+  {
+    $category = '';
+    foreach ($adspace->categories as $categories)
+    {
+      if ($categories->parent_id == $tid)
+      {
+        $category .= $categories->name.',';
+      }
+    }
+    return rtrim($category, ",");
+  }
+
+
+  /**
+   * 关注度
+   *
+   *
+   */
+  public function active($id)
+  {
+    $adspace = AdSpace::find($id);
+    $adspace->like += 1;
+    $adspace->save();
+  }
+
+  /**
+   * 删除对比
+   *
+   */
+  public function delContrast(){
+    $id = Input::get('id');
+    if (Cookie::has('contrast'))
+    {
+      $contrast = Cookie::get('contrast');
+      unset($contrast[array_search($id, $contrast)]);
+      Cookie::queue('contrast', $contrast, 10);
+      return Response::json(array('status'=>'ok' ));
+    }
+    else {
+      return Response::json(array('status'=>'fail' ));
+    }
+  }
 
   /**
    * 广告类型
@@ -178,7 +348,7 @@ class AdSpaceController extends Controller {
     return $iscollect;
 
   }
-  private function get_list_view($nav, $type_nu, $sort, $current_category,$page,$query_array)
+  private function get_list_view($nav, $type_nu, $sort, $current_category,$page,$query_array, $check=1)
   {
     Session::put('current_navigator', $nav);
     $navigators = $this->navigators;
@@ -258,7 +428,14 @@ class AdSpaceController extends Controller {
       $user_id = User::find($query_array['puid'][0])->enterprise_id;
       $query_array['puid'] = Enterprise::whereId($user_id)->first()->name; 
     }
-    return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'current_category', 'sort', 'current_page', 'total','query_array','str'));
+    if ($check == 1)
+    {
+      return view('list')->with(compact('navigators', 'adspaces', 'ideas', 'cities', 'adcategories', 'current_category', 'sort', 'current_page', 'total','query_array','str'));
+    }
+    else
+    {
+      return $adspaces;
+    }
   }
   public function get_clean_query_array($str, $list)
   {
