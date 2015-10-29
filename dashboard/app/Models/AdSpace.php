@@ -16,7 +16,7 @@ class AdSpace extends Model implements StaplerableInterface {
    */
   protected $fillable = [
     'title', 'avatar', 'description', 'street_address',
-    'detail', 'type', 'sort'
+    'detail', 'type', 'sort', 'influence'
   ];
 
   /**

@@ -152,6 +152,7 @@ class AdSpaceReponsitory
     $adSpace->title          = Arr::get($input, 'title');
     $adSpace->description    = Arr::get($input, 'description', '暂无描述');
     $adSpace->address_id     = Arr::get($input, 'address_id');
+    $adSpace->influence      = Arr::get($input, 'influence');
     $adSpace->street_address = Arr::get($input, 'street_address');
     $adSpace->detail         = Arr::get($input, 'detail');
     $adSpace->type           = Arr::get($input, 'type');

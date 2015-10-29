@@ -38,6 +38,11 @@
 </div>
 
 <div class="form-group">
+  <label>影响力</label>
+  {!! Form::text('influence', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
   <label>简介</label>
   {!! Form::text('description', null, ['class' => 'form-control']) !!}
 </div>

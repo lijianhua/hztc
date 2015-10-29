@@ -36,6 +36,11 @@
 </div>
 
 <div class="form-group">
+  <label>影响力</label>
+  <input type="text" name="influence" class="form-control" value="{{ old('influence') }}">
+</div>
+
+<div class="form-group">
   <label>简介</label>
   <input type="text" name="description" class="form-control" value="{{ old('description') }}">
 </div>

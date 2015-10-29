@@ -21,6 +21,10 @@
         </td>
       </tr>
       <tr>
+        <th style="width: 50%">影响力</th>
+        <td>{{ $ad->influence }}</td>
+      </tr>
+      <tr>
         <th style="width: 50%">所属</th>
         <td>{{ $ad->user->name }}</td>
       </tr>
