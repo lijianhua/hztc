@@ -24,6 +24,25 @@
       </div>
 
       <div class="form-group">
+        <label>广告分类中心</label>
+        <div class="ad-centers row">
+        @foreach(App\Models\AdCenter::all() as $adCenter)
+          <div class="checkbox col-md-4 col-sm-6 col-xs-12">
+            <label>
+              <input type="checkbox"
+                     name="ad_center_ids[]"
+                     {{ $enterprise->hasAdCenter($adCenter->id) ? "checked" : "" }}
+                     value="{{ $adCenter->id }}">
+              {{ $adCenter->name }}
+              <br>
+              {!! HTML::image($adCenter->avatar->url()) !!}
+            </label>
+          </div>
+        @endforeach
+        </div>
+      </div>
+
+      <div class="form-group">
         <label>移动电话</label>
         <input class="form-control" type="text" name="telphone" value="{{ $enterprise->telphone }}">
       </div>

@@ -43,7 +43,7 @@ class Enterprise extends Model implements StaplerableInterface {
 
   public function adCenters()
   {
-    return $this->belongsToMany('App\Models\AdCenters', 'ad_center_enterprise');
+    return $this->belongsToMany('App\Models\AdCenter', 'ad_center_enterprise');
   }
 
   public function scopePending($query)
@@ -54,5 +54,10 @@ class Enterprise extends Model implements StaplerableInterface {
   public function scopeRecent($query)
   {
     return $query->orderBy('created_at', 'desc');
+  }
+
+  public function hasAdCenter($center_id)
+  {
+    return $this->adCenters()->whereId($center_id)->count() > 0;
   }
 }

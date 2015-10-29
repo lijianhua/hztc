@@ -18,36 +18,6 @@ class AccountController extends Controller
   use ResetsPasswords;
 
   /**
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
-  public function index()
-  {
-    //
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return Response
-   */
-  public function create()
-  {
-    //
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @return Response
-   */
-  public function store()
-  {
-    //
-  }
-
-  /**
    * Display the specified resource.
    *
    * @param  int  $id
@@ -102,6 +72,8 @@ class AccountController extends Controller
     $enterprise->weibo    = $request->get('weibo');
     $enterprise->qq       = $request->get('qq');
     $enterprise->detail   = $request->get('detail');
+    $enterprise->adCenters()->detach();
+    $enterprise->adCenters()->attach($request->get('ad_center_ids'));
     if ($request->hasFile('avatar')) {
       $enterprise->avatar = $request->file('avatar');
     }

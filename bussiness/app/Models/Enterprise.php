@@ -41,8 +41,23 @@ class Enterprise extends Model implements StaplerableInterface {
     return $this->hasMany('App\Models\ReviewMaterial');
   }
 
+  public function adCenters()
+  {
+    return $this->belongsToMany('App\Models\AdCenter', 'ad_center_enterprise');
+  }
+
   public function scopePending($query)
   {
     return $query->whereIsVerify(0);
+  }
+
+  public function scopeRecent($query)
+  {
+    return $query->orderBy('created_at', 'desc');
+  }
+
+  public function hasAdCenter($center_id)
+  {
+    return $this->adCenters()->whereId($center_id)->count() > 0;
   }
 }

@@ -12,6 +12,18 @@
       未上传
     @endif
     </dd>
+    <dt>广告分类中心</dt>
+    <dd>
+      <div class="row">
+        @foreach($enterprise->adCenters as $adCenter)
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            {{ $adCenter->name }}
+            <br>
+            {!! HTML::image($adCenter->avatar->url()) !!}
+          </div>
+        @endforeach
+      </div>
+    </dd>
     <dt>行业</dt>
     <dd>{{ $enterprise->trade }}</dd>
     <dt>移动电话</dt>
