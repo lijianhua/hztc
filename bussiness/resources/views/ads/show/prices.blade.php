@@ -5,6 +5,7 @@
       <tr>
         <th>执行价（元）</th>
         <th>刊例价（元）</th>
+        <th>版位</th>
         <th>积分</th>
         <th>起始日期</th>
         <th>截止日期</th>
@@ -27,6 +28,7 @@
               /{{ $price->unit }}
             @endif
           </td>
+          <td>{{ $price->position }}</td>
           <td>{{ $price->score }}</td>
           <td>{{ $price->from }}</td>
           <td>{{ $price->to }}</td>
@@ -35,7 +37,7 @@
         </tr>
         <tr>
           <th>备注：</th>
-          <td colspan="6">{{ $price->note }}</td>
+          <td colspan="7">{{ $price->note }}</td>
         </tr>
       @endforeach
     </tbody>
