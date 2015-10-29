@@ -42,6 +42,9 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::put('ad-categories/{id}', 'AdCategoryController@update');
   Route::post('ad-categories', 'AdCategoryController@store');
 
+  // 分类中心管理
+  Route::resource('ad-centers', 'AdCenterController');
+
   // 需要验证是当前用户
   Route::group(['middleware' => 'verifyCurrentUser'], function () {
     // 用户账户管理

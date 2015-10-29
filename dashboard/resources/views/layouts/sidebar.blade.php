@@ -12,6 +12,12 @@
           <span>广告分类</span>
         </a>
       </li>
+      <li>
+        <a href="{{ url('ad-centers') }}">
+          <i class="fa fa-tags"></i>
+          <span>分类中心</span>
+        </a>
+      </li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-shirtsinbulk"></i>
