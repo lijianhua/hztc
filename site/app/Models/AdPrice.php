@@ -9,7 +9,8 @@ class AdPrice extends Model {
 
   protected $fillable = [
     'original_price', 'price', 'score',
-    'from', 'to', 'send_count', 'sale_count'
+    'from', 'to', 'send_count', 'sale_count',
+    'position'
   ];
 
   public static $__es_enable = [];

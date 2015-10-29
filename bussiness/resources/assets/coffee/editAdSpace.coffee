@@ -312,6 +312,12 @@ $ ->
                 </div>
               </div>
               <div class="form-group">
+                <label>版位</label>
+                <input class="form-control" type="text"
+                      name="ad_prices[#{seed}][position]"
+                      value="">
+              </div>
+              <div class="form-group">
                 <label>备注</label>
                 <input class="form-control" type="text"
                         name="ad_prices[#{seed}][note]"

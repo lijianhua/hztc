@@ -7,7 +7,7 @@ class AdPrice extends Model {
   protected $fillable = [
     'original_price', 'price', 'score',
     'from', 'to', 'send_count', 'sale_count',
-    'note', 'unit'
+    'note', 'unit', 'position'
   ];
 
   public function adSpace()

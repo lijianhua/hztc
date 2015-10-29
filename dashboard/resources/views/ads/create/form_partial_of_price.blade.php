@@ -29,6 +29,12 @@
         </div>
       </div>
       <div class="form-group">
+        <label>版位</label>
+        <input class="form-control" type="text"
+               name="ad_prices[{{ isset($index) ? $index : 0 }}][position]"
+               value="{{ isset($price) ?  $price['position'] : '' }}">
+      </div>
+      <div class="form-group">
         <label>备注</label>
         <input class="form-control" type="text"
                 name="ad_prices[{{ isset($index) ? $index : 0 }}][note]"
