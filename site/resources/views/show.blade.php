@@ -20,7 +20,7 @@
 
         </div>
         <div class="details">
-            <div class="d_global_title">首页  > {{$adspace->title}} {{$iscontrast}}</div>
+            <div class="d_global_title">首页  > {{$adspace->title}}</div>
             <div class="d_product">
                 <div class="clearfix">
                     <div class="d_product_img fl">
@@ -52,11 +52,9 @@
                         <span class="d_product_info_attention fr">
                             <strong>关注度:</strong>
                             <span>
-                                <i class="active fa fa-star"></i>
-                                <i class="active fa fa-star"></i>
-                                <i class="active fa fa-star"></i>
-                                <i class="active fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                            @for ($i=1; $i<=5; $i++)
+                                <i class="{{ $i <= $active?'active': ''}} fa fa-star"></i>
+                            @endfor
                             </span>
                         </span>
                         </div>
@@ -229,37 +227,19 @@ bdsharebuttonbox"><span>分享到：</span>
                                     </span>
                                     <span class="d_app_content_item">
                                         <img src="/images/details/wy.png">
-                                        <p><a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[5]=新媒体"><i class="fa fa-angle-right"></i>其他新媒体</a> </p>
+                                        <p><a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[6]=其他新媒体、APP"><i class="fa fa-angle-right"></i>其他新媒体</a> </p>
                                     </span>
                                 </div>
                             </div>
                             <div class="d_app_content">
                                 <div class="d_app_content_block clearfix">
                                     <div class="d_app_content_block_title"><span>本公司大V</span></div>
-                                <span class="d_app_content_item">
-                                    <img src="/images/details/1.png">
-                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
-                                </span>
-                                <span class="d_app_content_item">
-                                    <img src="/images/details/1.png">
-                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
-                                </span>
-                                <span class="d_app_content_item">
-                                    <img src="/images/details/1.png">
-                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
-                                </span>
-                                <span class="d_app_content_item">
-                                    <img src="/images/details/1.png">
-                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
-                                </span>
-                                <span class="d_app_content_item">
-                                    <img src="/images/details/1.png">
-                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
-                                </span>
-                                <span class="d_app_content_item">
-                                    <img src="/images/details/1.png">
-                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
-                                </span>
+                                @foreach ($adspacev as $v)
+                                  <span class="d_app_content_item">
+                                      <img src="{{ $v->avatar->url() }}">
+                                      <p><a href="/ads/{{ $v->id }}"><i class="fa fa-angle-right"></i>{{ $v->title }}</a> </p>
+                                  </span>
+                                @endforeach
                                 </div>
                             </div>
                         </div>
@@ -299,42 +279,13 @@ bdsharebuttonbox"><span>分享到：</span>
                         <div class="d_app_title"><i></i>分类广告中心</div>
                         <div class="d_app_bg">
                             <div class="d_app_content_block_bg clearfix">
+                              @foreach ($centers as $center)
                                 <span class="d_app_content_item_bg">
-                                    <img src="/images/details/3.png">
+                                <a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[{{ $carray[$center->name] }}]={{$center->name}}">
+                                    <img src="{{ $center->avatar->url()}}">
+                                </a>
                                 </span>
-                                <span class="d_app_content_item_bg">
-                                    <img src="/images/details/4.png">
-                                </span>
-                                <span class="d_app_content_item_bg">
-                                    <img src="/images/details/5.png">
-                                </span>
-                                <span class="d_app_content_item_bg">
-                                    <img src="/images/details/6.png">
-                                </span>
-                                <span class="d_app_content_item_bg">
-                                    <img src="/images/details/7.png">
-                                </span>
-                                <span class="d_app_content_item_bg">
-                                    <img src="/images/details/8.png">
-                                </span>
-                                <span class="d_app_content_item_bg">
-                                    <img src="/images/details/9.png">
-                                </span>
-                                <span class="d_app_content_item_bg">
-                                    <img src="/images/details/10.png">
-                                </span>
-                                <span class="d_app_content_item_bg">
-                                    <img src="/images/details/11.png">
-                                </span>
-                                <span class="d_app_content_item_bg">
-                                    <img src="/images/details/12.png">
-                                </span>
-                                <span class="d_app_content_item_bg">
-                                    <img src="/images/details/13.png">
-                                </span>
-                                <span class="d_app_content_item_bg">
-                                    <img src="/images/details/14.png">
-                                </span>
+                              @endforeach
                             </div>
                         </div>
                     </div>

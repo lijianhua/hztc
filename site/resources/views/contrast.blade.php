@@ -55,7 +55,7 @@
                             <div class="line"></div>
                             <div class="c_contrast_value_table">
                                 <div class="c_contrast_delete" onclick='moveContrast({{ $adspace['id'] }})'></div>
-                                <a href="#">
+                                <a href="/ads/ {{ $adspace['id']}}">
                                     <img src="{{ $adspace['image'] }}">
                                     <p>> {{ $adspace['name'] }}</p>
                                 </a>
@@ -91,10 +91,12 @@
                         <td class="item">{{ $adspace['description']}}</td>
                     </tr>
                     <tr>
-                        <td class="item">刊例价：100万/月，执行价：30万/月</td>
+                        <td class="item">
+                            {{ $adspace['active']}} 颗星
+                        </td>
                     </tr>
                     <tr>
-                        <td class="item">100万人/月</td>
+                        <td class="item">{{ $adspace['influence'] }}</td>
                     </tr>
                     <tr>
                         <td class="c_contrast_height" style="border-bottom: 0">

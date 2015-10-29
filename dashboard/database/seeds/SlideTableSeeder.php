@@ -19,7 +19,5 @@ class SlideTableSeeder extends Seeder
       'belongs_page' => '首页'
     ]);
 
-    $slideItem = factory('App\Models\SlideItem')->make();
-    $slide->slideItems()->save($slideItem);
   }
 }

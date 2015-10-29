@@ -18,6 +18,7 @@ use App\Models\Enterprise;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\AdCenter;
 use Cookie;
 use Response;
 
@@ -125,6 +126,21 @@ class AdSpaceController extends Controller {
     $user_id = AdSpace::where('id', '=', $id)->first()->user_id;
     $company = Enterprise::where('id', '=', User::where('id', '=', $user_id)->first()->enterprise_id)->first();
 
+    //分类广告中心
+    $centers = $company->adCenters;
+    $carray = array(
+      '报纸' => '8',
+      '户外' => '51',
+      '微信' => '3',
+      '微博' => '4',
+      '网络' => '9',
+      'App'  => '6',
+      '电视' => '10',
+      '广播' => '50',
+      '室内' => '61',
+      '其他' => '62',
+    );
+
     //是否收藏
     if (Auth::check())
     {
@@ -147,19 +163,26 @@ class AdSpaceController extends Controller {
     //创意类广告
     //更多同类新奇特
     $ideas = AdSpace::creativeType($list);
-    
-
-    //本公司推荐
+    //本公司推荐 
     $company_name = Enterprise::find(User::find($adspace->user_id)->enterprise_id)->name;
     $app_medias = AdSpace::app_media($company_name);
 
     //购买此广告位的人还购买了
     $rebuy = $this->rebuy($id);
 
+    //关注度
+    $active = $this->active($id);
+
     //对比
     $contrast = Cookie::get('contrast');
     $iscontrast = $contrast?in_array($id, $contrast):0;
-    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas', 'company', 'app_medias', 'rebuy','iscontrast'));
+
+    //大V
+    $query_array = array('puid'=>$user_id, 'categories_0' => array('5' => '名人大V'));
+    $adspacev = array();
+//    $adspacev = $this->get_list_view('全部广告资源', '', 'id', 'all-ads', 1, $query_array, 0);
+
+    return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas', 'company', 'app_medias', 'rebuy','iscontrast', 'adspacev', 'centers', 'carray', 'active'));
   }
  
 
@@ -241,6 +264,8 @@ class AdSpaceController extends Controller {
         'gimage' => $company->avatar->url(),
         'gtelphone' => $company->telphone,
         'gemail' => $company->email,
+        'active' => $this->active($adspace->id),
+        'influence' => $adspace['influence'],
       ]);
   }
 
@@ -267,8 +292,27 @@ class AdSpaceController extends Controller {
   public function active($id)
   {
     $adspace = AdSpace::find($id);
-    $adspace->like += 1;
+    $adspace->attraction_rate+= 1;
     $adspace->save();
+    $active = $adspace->attraction_rate;
+    if ($active <= 50)
+    {
+      $active = 1;
+    }
+    else if ($active > 50 && $active <= 100){
+      $active = 2;
+    }
+    else if ($active > 100 && $active <= 200){
+      $active = 3;
+    }
+    else if ( $active > 200 && $active <= 300){
+      $active = 4;
+    }
+    else if ($active > 300){
+      $active = 5;
+    }
+    return $active;
+
   }
 
   /**
