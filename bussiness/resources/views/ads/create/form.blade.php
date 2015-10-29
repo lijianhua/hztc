@@ -41,6 +41,12 @@
 </div>
 
 <div class="form-group">
+  <label>关注度</label>
+  <p><small class="text-danger">可以为空，关注度只能填1-5之间的值</small></p>
+  <input type="text" name="attraction_rate" class="form-control" value="{{ old('attraction_rate') }}">
+</div>
+
+<div class="form-group">
   <label>简介</label>
   <input type="text" name="description" class="form-control" value="{{ old('description') }}">
 </div>

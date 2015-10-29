@@ -43,6 +43,12 @@
 </div>
 
 <div class="form-group">
+  <label>关注度</label>
+  <p><small class="text-danger">可以为空，关注度只能填1-5之间的值</small></p>
+  {!! Form::text('attraction_rate', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
   <label>简介</label>
   {!! Form::text('description', null, ['class' => 'form-control']) !!}
 </div>
