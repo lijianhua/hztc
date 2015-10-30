@@ -101,7 +101,6 @@
                     <tr>
                         <td class="c_contrast_height" style="border-bottom: 0">
                             <div class="clearfix">
-                                <div class="c_contrast_info fl"></div>
                                 <div class="c_contrast_text fl">
                                     <ul>
                                         <li>名称 {{ $adspace['gname']}}</li>
