@@ -1,3 +1,56 @@
+$(document).ready(function () {
+var position_length = $("#position_length").val();
+for(var i = 0;i<position_length;i++){
+    $(".d_product_position").append('<span class="d_product_position_item">'+(i+1)+'</span>');
+    $(".d_product_position_item").eq(0).addClass("active");
+}
+$(".details-script .details-stage-item[data-position='1']").each(function (index) {
+    var this_data_start = $(".details-script .details-stage-item[data-position='1']").eq(index).attr("data-start");
+    var this_data_end = $(".details-script .details-stage-item[data-position='1']").eq(index).attr("data-end");
+    var this_data_price = $(".details-script .details-stage-item[data-position='1']").eq(index).attr("data-price");
+    var this_data_zprice = $(".details-script .details-stage-item[data-position='1']").eq(index).attr("data-zprice");
+    var this_data_priceid = $(".details-script .details-stage-item[data-position='1']").eq(index).attr("data-priceid");
+    var this_data_count= $(".details-script .details-stage-item[data-position='1']").eq(index).attr("data-sale-count");
+    $(".d_product_time").append('<span class="d_product_time_item" data-priceid="'+this_data_priceid+'" data-price="'+this_data_price+'" data-zprice="'+this_data_zprice+'" data-sale-count="'+this_data_count+'">'+this_data_start+'--'+this_data_end+'</span>');
+    $(".d_product_time_item").eq(0).addClass("active");
+    $(".d_product_time_item").eq(0).siblings().removeClass("active"); 
+});
+//            $(".details-script .details-stage-item[data-position='1']").eq(0).attr("data-price");
+$(".data-price").text($(".details-script .details-stage-item[data-position='1']").eq(0).attr("data-price"));
+$(".data-zprice").text($(".details-script .details-stage-item[data-position='1']").eq(0).attr("data-zprice"));
+
+$(".d_product_position_item").click(function () {
+
+    $(".d_product_time_item").remove();
+    var this_index = $(this).index();
+    $(this).addClass("active");
+    $(this).siblings().removeClass("active");
+    $(".details-script .details-stage-item[data-position="+this_index+"]").each(function (index) {
+        var this_data_start = $(".details-script .details-stage-item[data-position="+this_index+"]").eq(index).attr("data-start");
+        var this_data_end = $(".details-script .details-stage-item[data-position="+this_index+"]").eq(index).attr("data-end");
+        var this_data_price = $(".details-script .details-stage-item[data-position="+this_index+"]").eq(index).attr("data-price");
+        var this_data_zprice = $(".details-script .details-stage-item[data-position="+this_index+"]").eq(index).attr("data-zprice");
+        var this_data_priceid = $(".details-script .details-stage-item[data-position="+this_index+"]").eq(index).attr("data-priceid");
+        var this_data_count= $(".details-script .details-stage-item[data-position="+this_index+"]").eq(index).attr("data-sale-count");
+        $(".d_product_time").append('<span class="d_product_time_item" data-priceid="'+this_data_priceid+'" data-price="'+this_data_price+'" data-zprice="'+this_data_zprice+'" data-sale-count="'+this_data_count+'">'+this_data_start+'--'+this_data_end+'</span>');
+        $(".d_product_time_item").eq(0).addClass("active");
+    })
+    $(".data-price").text($(".details-script .details-stage-item[data-position="+this_index+"]").eq(0).attr("data-price"));
+    $(".data-zprice").text($(".details-script .details-stage-item[data-position="+this_index+"]").eq(0).attr("data-zprice"));
+    $(".d_product_time_item").click(function () {
+        $(".data-price").text($(this).attr("data-price"));
+        $(".data-zprice").text($(this).attr("data-zprice"));
+        $(this).addClass("active");
+        $(this).siblings().removeClass("active");
+    })
+});
+$(".d_product_time_item").click(function () {
+    $(".data-price").text($(this).attr("data-price"));
+    $(".data-zprice").text($(this).attr("data-zprice"));
+    $(this).addClass("active");
+    $(this).siblings().removeClass("active");
+})
+});
 $(document).ready(function(){
     $(".details-amount-plus").click(function () {
         var value = parseInt($(this).parents('.details-amount').find('.details-amount-input input').val());
@@ -104,7 +157,28 @@ $(document).ready(function(){
     //收藏
     $(".d_product_star").click(function(){
       $(this).removeClass('no')
-    })
+    });
+
+    $(".d_product_bt_buy,.d_product_bt_look").click(function(event){
+        var user_id = $("#user_id").val();
+        var data_sale_count = $('.d_product_time_item.active').attr('data-sale-count');
+        var price_id  = $('.d_product_time_item.active').attr('data-priceid');
+        var product_id = $("#ad_space_id_to").val();
+        var count = $("#details-amount-count2").val();
+        if(user_id > 0 && data_sale_count >0){
+          $.ajax({
+              type:'post',
+              url:'/cart/addcart',
+              data:{'price_id':price_id,'product_id':product_id,'count':count},
+              headers  :{'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')}, 
+              success:function(data){
+                  window.location.href="/cart";
+              }
+          });
+       }else{
+        window.location.href="/auth/login";
+       }
+    });
 
 });
 //加入对比

@@ -27,14 +27,7 @@
       <tr>
         <th style="width: 50%">关注度</th>
         <td>
-        @if ($ad->attraction_rate && $ad->attraction_rate > 0)
-          @for($i = 0; $i < $ad->attraction_rate; $i++)
-            <i class="fa fa-heart text-danger"></i>
-          @endfor
-          @for($i = 5 - $ad->attraction_rate; $i > 0; $i--)
-            <i class="fa fa-heart-o text-danger"></i>
-          @endfor
-        @endif
+         {{ $ad->attraction_rate}}
         </td>
       </tr>
       <tr>

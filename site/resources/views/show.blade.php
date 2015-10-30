@@ -61,9 +61,9 @@
                         <ul class="d_product_attribute">
                             <li>
                                 <strong>刊例价：</strong>
-                                <span class="">{{$adspace->adPrices->min('original_price')}}
+                                <span class=""><span class="data-price">{{$adspace->adPrices->min('original_price')}}</span>
                                 /{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}，
-                                  执行价{{$adspace->adPrices->min('price')}}{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}</span>
+                                  执行价<span class="data-zprice">{{$adspace->adPrices->min('price')}}</span>/{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}</span>
                             </li>
                         </ul>
                         <ul class="d_product_attribute">
@@ -71,26 +71,30 @@
                                 <strong>数量：</strong>
                             <span class="details-amount clearfix">
                                 <span class="details-amount-plus"></span>
-                                <span class="details-amount-input"><input type="text" readonly value="1"></span>
+                                <span class="details-amount-input"><input type="text" readonly value="1" id='details-amount-count2'></span>
                                 <span class="details-amount-minus"></span>
                             </span>
-                                <strong>月</strong>
+                                <strong>{{$adspace->AdPrices->max('unit')?$adspace->AdPrices->max('unit'):'期'}}</strong>
 
                             </li>
+                                <div class="details-script">
+                              @foreach($adspace->adPrices as $index=>$price) 
+                                <span class="details-stage-item active"
+data-price='{{ $price->original_price}}' data-priceid='{{ $price->id}}'
+data-sale-count='{{ $price->sale_count}}' data-position='{{ $price->position}}'
+data-start='{{ $price->from}}' data-end='{{ $price->to }}' data-zprice='{{ $price->price}}'>
+                                </span>
+                              @endforeach
+                              </div>
                             <li>
                                 <strong>版位：</strong>
                             <span class="d_product_position">
-                                <span class="d_product_position_item">1</span>
-                                <span class="d_product_position_item">2</span>
-                                <span class="d_product_position_item">3</span>
+                              <input type="hidden" id="position_length" value="{{ $position }}">
                             </span>
                             </li>
                             <li>
                                 <strong>日期：</strong>
                             <span class="d_product_time">
-                                <span class="d_product_time_item">2015.6——2015.7</span>
-                                <span class="d_product_time_item">2015.6——2015.7</span>
-                                <span class="d_product_time_item">2015.6——2015.7</span>
                             </span>
                             </li>
                             <li>
@@ -101,8 +105,8 @@
                             <input type='hidden' id='ad_space_id_to' value='{{ $adspace->id}}'>
                             <input type='hidden' value='{{Auth::check()?Auth::user()->id:0}}' id='user_id'>
                             <li class="d_product_bt">
-                                <a href="#" class="d_product_bt_buy"></a>
-                                <a href="#" class="d_product_bt_look"></a>
+                                <a href="javascript:void(0)" class="d_product_bt_buy"></a>
+                                <a href="javascript:void(0)" class="d_product_bt_look"></a>
                                 @if ($iscontrast)
                                   <a href="javascript:void(0)" class="d_product_bt_contrast add" onclick="delContrast({{ $adspace->id }})" ></a>
                                 @else

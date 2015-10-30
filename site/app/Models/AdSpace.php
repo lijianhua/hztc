@@ -233,7 +233,7 @@ class AdSpace extends Model implements StaplerableInterface {
    *
    *
    */
-  public static function app_media($company_name, $array_categories=['新媒体(微信、微博、其他)'])
+  public static function app_media($company_name, $array_categories=[])
   {
     //同一公司的广告位
     $company_id = Enterprise::where('name', '=', $company_name)->first()->id; 
@@ -274,10 +274,10 @@ class AdSpace extends Model implements StaplerableInterface {
            ->where('ad_spaces.audited', '=', '1')
            ->whereIn('ad_spaces.id',$array_adspace)
            ->select("*",'ad_spaces.id') 
-           ->orderBy('ad_prices.price', 'desc') 
+           ->orderBy('ad_spaces.attraction_rate', 'desc') 
            ->orderBy('order_items.quantity', 'desc')
            ->groupBy('ad_spaces.id')
-           ->take(3)
+           ->take(5)
            ->get();
     return array('company_adspaces'=>$adspaces_top10, 'app_medias'=>$app_medias);
   }
