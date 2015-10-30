@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="layout">
+<div class="layout content">
     <div class="content clearfix">
         <div class="spike-content">
             <span class="spike-title-text"><span>首页</span><i class="fa fa-angle-right"></i><span>免费广告</span><i class="fa fa-angle-right"></i><span>所有免费</span></span>

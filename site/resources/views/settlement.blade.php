@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="layout">
+<div class="layout content">
     <div class="settlement">
         <div class="contract">
             <div class="contract-info">

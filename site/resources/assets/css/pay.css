@@ -26,7 +26,7 @@
 .bank-code-item{
     display: inline-block;
     margin-bottom: 20px;
-    width: 160px;
+    
 }
 .bank-code-item input{
     /*float: left;*/

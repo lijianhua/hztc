@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="layout">
+<div class="layout content">
     <div class="shop">
         <div class="shop-mark"><span>首页</span>><span>购物车</span></div>
         <div class="shop-title"><i class="shop-title-img"></i>我的购物车</div>

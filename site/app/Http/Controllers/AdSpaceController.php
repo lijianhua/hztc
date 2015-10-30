@@ -179,7 +179,8 @@ class AdSpaceController extends Controller {
 
     //大V
     $query_array = array('puid'=>$user_id, 'categories_0' => array('5' => '名人大V'));
-    $adspacev = $this->get_list_view('全部广告资源', '', 'id', 'all-ads', 1, $query_array, 0);
+    //$adspacev = $this->get_list_view('全部广告资源', '', 'id', 'all-ads', 1, $query_array, 0);
+    $adspacev = array();
     $position = $this->position($adspace);
 
     return view('show')->with(compact('navigators', 'adspace', 'collect', 'comments', 'type', 'ideas', 'company', 'app_medias', 'rebuy','iscontrast', 'adspacev', 'centers', 'carray', 'active', 'position'));

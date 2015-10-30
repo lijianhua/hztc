@@ -117,7 +117,7 @@ class CartController extends Controller {
       $order = $this->addOrder($shop);
       $orderItem = $this->addOrderItem($shop, $order);
       $order->price_id = $shop->ad_space_snapshot_id;
-      $shop->delete();
+      //$shop->delete();
       return $order;
     });
     if ($order->state == 1)
@@ -213,14 +213,18 @@ class CartController extends Controller {
    *
    */
   public function goPay(Request $request) {
-     $alipay = app('alipay.web');
-     $alipay->setOutTradeNo($request->get('pay_seq'));
-     $alipay->setTotalFee(money_format('%.2n', $request->get('pay_amount')));
-     $alipay->setSubject('魔媒订单');
-     $alipay->setBody('goods_description');
-
-    // 跳转到支付页面。
-     return redirect()->to($alipay->getPayLink());
+    if ($request->get('ptype') == 1)
+    {
+      $alipay = app('alipay.web');
+      $alipay->setOutTradeNo($request->get('pay_seq'));
+      $alipay->setTotalFee(money_format('%.2n', $request->get('pay_amount')));
+      $alipay->setSubject('魔媒订单');
+      $alipay->setBody('goods_description');
+      // 跳转到支付页面。
+      return redirect()->to($alipay->getPayLink());
+    } else {
+      return redirect('/users/order')->with('status', '支付成功'); 
+    }
   }
 
 

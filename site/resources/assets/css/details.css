@@ -544,6 +544,9 @@
     background-color: #ffffff;
     padding: 50px 40px 0px 40px;
 }
+.d_details_content_info img{
+  max-width:750px
+}
 .d_details_content_info_item{
     margin-bottom: 20px;
 }
@@ -609,6 +612,8 @@
     border-radius: 12px;
     margin-bottom: 2px;
     /*border: 2px solid #e7e7e7;*/
+    width:100px;
+    height:100px;
 }
 .d_app_content_item i{
     font-size: 16px;
@@ -648,6 +653,9 @@
 }
 .d_details_bottom table td{
     text-align: left;
+}
+.d_details_left_left strong{
+  margin-right:20px
 }
 .d_details_content_info_position2{
     border: 3px dashed #e7e7e7;

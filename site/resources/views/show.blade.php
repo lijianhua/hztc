@@ -28,7 +28,8 @@
                             <div class="d_product_img_line">
                                 <div class="d_product_img_line_info">
                                 @foreach ($adspace->images as $index=>$image)
-                                    <img src="{{ $image->avatar->url() }}">
+                                    <a href="#"><img src="{{
+$image->avatar->url() }}"></a>
                                 @endforeach
                                 </div>
                             </div>
@@ -123,7 +124,7 @@ data-start='{{ $price->from}}' data-end='{{ $price->to }}' data-zprice='{{ $pric
                         <span><a href="#">如何支付？</a></span>
                     </span>
                     <span class="d_teach_right fr">
-                        <span><img src="/images/details/d1.png"></span>
+                        <span><img src="/images/details/d1.png" title='快速'></span>
                         <span><img src="/images/details/d2.png"></span>
                         <span><img src="/images/details/d3.png"></span>
                         <span><img src="/images/details/d4.png"></span>
@@ -244,6 +245,14 @@ bdsharebuttonbox"><span>分享到：</span>
                                       <p><a href="/ads/{{ $v->id }}"><i class="fa fa-angle-right"></i>{{ $v->title }}</a> </p>
                                   </span>
                                 @endforeach
+                                <span class="d_app_content_item">
+                                    <img src="/images/details/1.png">
+                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
+                                </span>
+                                <span class="d_app_content_item">
+                                    <img src="/images/details/1.png">
+                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
+                                </span>
                                 </div>
                             </div>
                         </div>
@@ -261,16 +270,16 @@ bdsharebuttonbox"><span>分享到：</span>
                                             <img src="{{$company->avatar->url()}}">
                                         </div>
                                     </td>
-                                    <td><strong>名称</strong>{{ $company->name }}</td>
+                                    <td class="d_details_left_left"><strong>名称</strong>{{ $company->name }}</td>
                                 </tr>
                                 <tr class="d_details_content_info_item">
-                                    <td><strong>联系电话</strong>{{ $company->telphone}}</td>
+                                    <td class="d_details_left_left"><strong>联系电话</strong>{{ $company->telphone}}</td>
                                 </tr>
                                 <tr class="d_details_content_info_item">
-                                    <td><strong>微信</strong> {{ $company->weixin}}</td>
+                                    <td class="d_details_left_left"><strong>微信</strong> {{ $company->weixin}}</td>
                                 </tr>
                                 <tr class="d_details_content_info_item">
-                                    <td><strong>QQ</strong> {{ $company->qq }}</td>
+                                    <td class="d_details_left_left"><strong>QQ</strong> {{ $company->qq }}</td>
                                 </tr>
                                 <tr class="">
                                     <td colspan="2">
