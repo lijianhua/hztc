@@ -154,13 +154,13 @@ data-start='{{ $price->from}}' data-end='{{ $price->to }}' data-zprice='{{ $pric
                         @if ($app_medias['app_medias'])
                             @foreach($app_medias['app_medias'] as $idea)
                             <div class="d_information_recommend_info">
+                                  <a href="/ads/{{$idea->id}}">
                                 <span><img src="{{$idea->avatar->url()}}" alt="{{$idea->title}}" title="{{$idea->title}}"></span>
                                 <div class="d_information_recommend_link">
-                                  <a href="/ads/{{$idea->id}}">
                                     <i class="fa fa-angle-right"></i>
                                       {{ $idea->title }}
-                                  </a>
                                 </div>
+                                  </a>
                             </div>
                             @endforeach
                         @endif
@@ -174,8 +174,8 @@ data-start='{{ $price->from}}' data-end='{{ $price->to }}' data-zprice='{{ $pric
                         @if ($ideas)
                           @foreach($ideas as $idea)
                             <span class="d_information_recommend_link_small">
-                              <img src="{{$idea->avatar->url()}}">
                               <a href="/ads/{{$idea->id}}">
+                              <img src="{{$idea->avatar->url()}}">
                               <i class="fa fa-angle-right"></i>{{ $idea->title }}</a> </span>
                           @endforeach
                         @endif
@@ -223,16 +223,13 @@ bdsharebuttonbox"><span>分享到：</span>
                                 <div class="d_app_content_block clearfix">
                                     <div class="d_app_content_block_title"><span>本公司新媒体阵营</span></div>
                                     <span class="d_app_content_item">
-                                        <img src="/images/details/wx.png">
-                                        <p><a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[3]=微信"><i class="fa fa-angle-right"></i>官方微信</a> </p>
+                                        <p><a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[3]=微信"><img src="/images/details/wx.png"><i class="fa fa-angle-right"></i>官方微信</a> </p>
                                     </span>
                                     <span class="d_app_content_item">
-                                        <img src="/images/details/wb.png">
-                                        <p><a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[4]=微博"><i class="fa fa-angle-right"></i>官方微博</a> </p>
+                                        <p><a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[4]=微博"><img src="/images/details/wb.png"><i class="fa fa-angle-right"></i>官方微博</a> </p>
                                     </span>
                                     <span class="d_app_content_item">
-                                        <img src="/images/details/wy.png">
-                                        <p><a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[6]=其他新媒体、APP"><i class="fa fa-angle-right"></i>其他新媒体</a> </p>
+                                        <p><a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[6]=其他新媒体、APP"><img src="/images/details/wy.png"><i class="fa fa-angle-right"></i>其他新媒体</a> </p>
                                     </span>
                                 </div>
                             </div>
@@ -241,18 +238,9 @@ bdsharebuttonbox"><span>分享到：</span>
                                     <div class="d_app_content_block_title"><span>本公司大V</span></div>
                                 @foreach ($adspacev as $v)
                                   <span class="d_app_content_item">
-                                      <img src="{{ $v->avatar->url() }}">
-                                      <p><a href="/ads/{{ $v->id }}"><i class="fa fa-angle-right"></i>{{ $v->title }}</a> </p>
+                                      <p><a href="/ads/{{ $v->id }}"><img src="{{ $v->avatar->url() }}"><i class="fa fa-angle-right"></i>{{ $v->title }}</a> </p>
                                   </span>
                                 @endforeach
-                                <span class="d_app_content_item">
-                                    <img src="/images/details/1.png">
-                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
-                                </span>
-                                <span class="d_app_content_item">
-                                    <img src="/images/details/1.png">
-                                    <p><a href="#"><i class="fa fa-angle-right"></i>ihouse公众号</a> </p>
-                                </span>
                                 </div>
                             </div>
                         </div>
