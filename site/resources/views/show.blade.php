@@ -294,7 +294,7 @@ bdsharebuttonbox"><span>分享到：</span>
                             <div class="d_app_content_block_bg clearfix">
                               @foreach ($centers as $center)
                                 <span class="d_app_content_item_bg">
-                                <a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[{{ $carray[$center->name] }}]={{$center->name}}">
+                                <a href="/list/all-ads?puid={{ $adspace->user_id}}&categories_0[{{ \Illuminate\Support\Arr::get($carray, $center->name)}}]={{$center->name}}">
                                     <img src="{{ $center->avatar->url()}}">
                                 </a>
                                 </span>
