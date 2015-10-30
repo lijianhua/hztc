@@ -43,6 +43,9 @@ placeholder="搜索广告" name='q'></span>
                 <a href="{{ url($nav->url) }}">{{{$nav->name}}}</a></span>
               </li>
           @endforeach
+              <li class="nav-info-item fl {{ '新媒体广告资源' == Session::get('current_navigator')?'active':''}}">
+                <a href="/list/all-ads?categories_0[3]=微信&categories_0[4]=微博&categories_0[6]=其他新媒体、APP">新媒体广告资源</a></span>
+              </li>
       </ul>
   </div>
 </div>

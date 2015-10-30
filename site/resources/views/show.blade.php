@@ -124,10 +124,10 @@ data-start='{{ $price->from}}' data-end='{{ $price->to }}' data-zprice='{{ $pric
                         <span><a href="#">如何支付？</a></span>
                     </span>
                     <span class="d_teach_right fr">
-                        <span><img src="/images/details/d1.png" title='快速'></span>
-                        <span><img src="/images/details/d2.png"></span>
-                        <span><img src="/images/details/d3.png"></span>
-                        <span><img src="/images/details/d4.png"></span>
+                        <span><img src="/images/details/d1.png" title='一站购买 快速投放 '></span>
+                        <span><img src="/images/details/d2.png" title='全网低价 省时省钱'></span>
+                        <span><img src="/images/details/d3.png" title='专注广告 专业服务'></span>
+                        <span><img src="/images/details/d4.png" title='全程监管 资金安全'></span>
                     </span>
                 </div>
             </div>
