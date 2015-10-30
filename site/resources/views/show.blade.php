@@ -12,8 +12,8 @@
             </div>
             <div class="c_details_side_line">
                 <div class="c_details_side_block">
-                    <div class="c_details_side_buy"><a href="#"></a></div>
-                    <div class="c_details_side_add"><a href="#"></a></div>
+                    <div class="c_details_side_buy"><a href="javascript:void(0)" class="d_product_bt_buy"></a></div>
+                    <div class="c_details_side_add"><a href="javascript:void(0)" class="d_product_bt_look"></a></div>
                     <div class="c_details_side_contrast"><a href="/getContrast"></a></div>
                 </div>
             </div>
@@ -120,8 +120,8 @@ data-start='{{ $price->from}}' data-end='{{ $price->to }}' data-zprice='{{ $pric
                 <div class="d_teach clearfix">
                     <span class="d_teach_left fl">
                         初次来访：
-                        <span><a href="#">如何使用？</a></span>
-                        <span><a href="#">如何支付？</a></span>
+                        <span><a href="/help.pdf" target='__blank'>如何使用？</a></span>
+                        <span><a href="/help.pdf" target='__blank'>如何支付？</a></span>
                     </span>
                     <span class="d_teach_right fr">
                         <span><img src="/images/details/d1.png" title='一站购买 快速投放 '></span>
