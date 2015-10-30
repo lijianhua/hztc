@@ -2,6 +2,16 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="clearfix header-tools">
+        <a href="#change_state_modal"
+           class="pull-right text-muted"
+           title="更改订单状态"
+           data-target="#change_state_modal"
+           data-toggle="modal">
+          <span class="fa-stack fa-lg" title="更改订单状态" data-toggle="tooltip">
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-ellipsis-h fa-stack-1x"></i>
+          </span>
+        </a>
         @if ($order->isPending())
           <a href="{{ url("orders/proccessing/{$order->id}") }}" class="pull-right text-muted" title="标记为已投放" data-toggle="tooltip" data-method="PUT">
             <span class="fa-stack fa-lg">
@@ -37,3 +47,4 @@
     </div>
   </div>
 </section>
+@include ('orders.show.modal')

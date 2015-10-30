@@ -130,4 +130,24 @@ class OrderController extends Controller
       return redirect()->action('OrderController@show', ['id' => $order->id]);
     }
   }
+
+  public function changeStatus($id, Request $request)
+  {
+    $status = $request->get('state');
+    $attributs = [ 'state' => $status ];
+    $order = Order::find($id);
+    if ($status == 0 || $status == 5) {
+      $attributs['paid_at'] = null;
+    } else {
+      if ($order->paid_at == null) {
+        $attributs['paid_at'] = Carbon::now();
+      }
+    }
+    try {
+      Order::whereId($id)->update($attributs);
+      return redirect()->action('OrderController@show', ['id' => $id])->with('status', '更改成功');
+    } catch (Exception $e) {
+      return redirect()->action('OrderController@show', ['id' => $id])->with('errors', ['更改失败，请重试']);
+    }
+  }
 }

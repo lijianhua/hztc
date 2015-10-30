@@ -1,7 +1,7 @@
 @if ($order->state == 0)
   <span class="label bg-navy">未付款</span>
 @elseif ($order->state == 1)
-  <span class="label label-navy">已付款</span>
+  <span class="label bg-navy">已付款</span>
 @elseif ($order->state == 2)
   <span class="label label-danger">待投放</span>
 @elseif ($order->state == 3)

@@ -99,6 +99,7 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::get('orders/newest', 'OrderController@newest');
   Route::get('orders/server-newest', 'OrderController@newestServer');
   Route::get('orders/{id}', 'OrderController@show');
+  Route::put('orders/{id}/status', ['as' => 'orders.status.patch', 'uses' => 'OrderController@changeStatus']);
 
   // 客户退单
   Route::get('refunds', 'RefundController@index');
