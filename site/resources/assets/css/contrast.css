@@ -85,6 +85,18 @@ table.c_contrast_value{
     height: 100%;
     position: relative;
 }
+.c_contrast_value_table img{
+  width:280px;
+  height:100px;
+}
+.c_contrast_value_table p{
+  width:280px;
+  display:block;
+  word-break:keep-all;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
 .c_contrast_value_buy{
     background: url("../images/details/bt2.png") no-repeat 0 0;
     width: 120px;
