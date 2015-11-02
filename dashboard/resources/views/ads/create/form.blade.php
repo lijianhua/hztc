@@ -7,13 +7,13 @@
 
 <div class="form-group">
   <label>封面图片</label>
-  <p><small class="text-danger">秒杀广告(585像素 x 285像素), 其他(440像素 x 200像素)</small></p>
+  <p><small class="text-danger">秒杀广告(585像素 x 285像素), 其他(440像素 x 200像素), 上传图片建议小于1M </small></p>
   <input type="file" name="avatar" value="{{ old('avatar') }}">
 </div>
 
 <div class="form-group images">
   <label>展示图片</label>
-  <p><small class="text-danger">图片大小(520像素 x 390像素)</small></p>
+  <p><small class="text-danger">图片大小(520像素 x 390像素), 上传图片建议小于1M </small></p>
   <input type="file" name="images[]" multiple="true">
 </div>
 
@@ -36,13 +36,13 @@
 </div>
 
 <div class="form-group">
-  <label>影响力</label>
+  <label>影响人数</label>
   <input type="text" name="influence" class="form-control" value="{{ old('influence') }}">
 </div>
 
 <div class="form-group">
   <label>关注度</label>
-  <p><small class="text-danger"></small></p>
+  <p><small class="text-danger">0-50为1星, 50-100为2星, 100-200为3星, 200-300为4星, 300以上为5星</small></p>
   <input type="text" name="attraction_rate" class="form-control" value="{{ old('attraction_rate') }}">
 </div>
 

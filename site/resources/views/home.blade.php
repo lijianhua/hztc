@@ -38,15 +38,24 @@
                                 <ul class="filter-nav-menu left_nav_change_option dropdown-menu" role="menu">
                                     <li><a href="#">全部</a> </li>
                                     <li><a href="#">热门活动</a> </li>
-                                    <li><a href="#">新媒体</a> </li>
+                                    <li><a href="#">微信</a> </li>
+                                    <li><a href="#">微博</a> </li>
+                                    <li><a href="#">名人大V</a> </li>
+                                    <li><a href="#">其他新媒体、APP</a> </li>
                                     <li><a href="#">报纸</a> </li>
                                     <li><a href="#">杂志</a> </li>
+                                    <li><a href="#">网络</a> </li>
+                                    <li><a href="#">电视</a> </li>
+                                    <li><a href="#">广播</a> </li>
+                                    <li><a href="#">户外</a> </li>
+                                    <li><a href="#">室内</a> </li>
+                                    <li><a href="#">其他</a> </li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                     <li class="left_nav_every">
-                        <div class="left_nav_change_topic"><i></i>受众标的</div>
+                        <div class="left_nav_change_topic"><i></i>目标受众</div>
                         <div class="left_nav_change_select">
                             <div class="btn-group">
                                 <button class="left_nav_change_item btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -59,6 +68,14 @@
                                         <li><a href="#">白领</a> </li>
                                         <li><a href="#">投资客</a> </li>
                                         <li><a href="#">购房人</a> </li>
+                                        <li><a href="#">屌丝</a> </li>
+                                        <li><a href="#">创业者</a> </li>
+                                        <li><a href="#">御宅族</a> </li>
+                                        <li><a href="#">美食吃货</a> </li>
+                                        <li><a href="#">数码控</a> </li>
+                                        <li><a href="#">体育迷</a> </li>
+                                        <li><a href="#">游戏咖</a> </li>
+                                        <li><a href="#">时尚达人</a> </li>
                                 </ul>
                             </div>
                         </div>
@@ -77,6 +94,7 @@
                 <div class="banner">
                     <div class="carousel slide">
                         <div class="carousel-inner nav-banner">
+                          <div class="page active item"><a href="#"><img src="/images/home/1.jpg"></a></div>
                           @foreach ($slides->slideItems as $index => $slide)
                             <div class="page item {{ $index==0?'active':''}}">
                               <a href="{{$slide->url?$slide->url:'#'}}"><img src="{{ $slide->avatar->url()}}"></a>

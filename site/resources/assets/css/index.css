@@ -134,6 +134,7 @@
     position: absolute;
     height: 441px;
     width: 100%;
+    margin-top: 0px;
 }
 .banner_right  .nav-banner .page img{
     width: 894px;

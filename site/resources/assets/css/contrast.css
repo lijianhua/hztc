@@ -37,6 +37,7 @@
 }
 .c_contrast table.c_contrast_value td{
     width: 399px;
+    min-height:50px;
 }
 .c_contrast table.c_contrast_value td.item{
     display:block;/*内联对象需加*/

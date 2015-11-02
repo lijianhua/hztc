@@ -78,7 +78,7 @@ class AdSpaceController extends Controller {
   public function rebuy($gid)
   {
     $oritem = OrderItem::where('ad_space_id', '=', $gid)
-      ->orderBy('created_at', 'desc')->take(5)->get();
+      ->orderBy('created_at', 'desc')->take(10)->get();
     if ($oritem)
     {
       $uarry = array();
