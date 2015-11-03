@@ -30,6 +30,7 @@
       </div>
       <div class="form-group">
         <label>版位</label>
+        <small class="text-danger">(请填入自然数)</small>
         <input class="form-control" type="text"
                name="ad_prices[{{ isset($index) ? $index : 0 }}][position]"
                value="{{ isset($price) ?  $price['position'] : '' }}">
