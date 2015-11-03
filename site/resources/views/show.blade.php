@@ -271,6 +271,7 @@ bdsharebuttonbox"><span>分享到：</span>
                                 </tr>
                                 <tr class="">
                                     <td colspan="2">
+                                      {!!Purifier::clean($company->detail)!!}
                                     </td>
                                 </tr>
                             </table>
