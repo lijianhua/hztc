@@ -69,7 +69,8 @@
     }
 
     //标注点数组
-    var markerArr = [{title:"安家传媒",content:"公司：安家传媒<br/><br/>电话：010-7777777<br/><br/>地址：海淀区学院路一号学院国际大厦1705",point:"116.359624|39.983044",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr =
+      [{title:"魔媒",content:"公司：北京八八门网络科技有限公司<br/><br/>电话：010-82338988<br/><br/>地址：海淀区学院路一号学院国际大厦1701",point:"116.359624|39.983044",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
     ];
     //创建marker
     function addMarker(){
