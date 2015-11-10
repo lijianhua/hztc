@@ -21,7 +21,7 @@
         </td>
       </tr>
       <tr>
-        <th style="width: 50%">影响力</th>
+        <th style="width: 50%">影响人数</th>
         <td>{{ $ad->influence }}</td>
       </tr>
       <tr>
