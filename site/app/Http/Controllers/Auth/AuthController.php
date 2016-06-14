@@ -41,22 +41,17 @@ class AuthController extends Controller {
 
     $this->middleware('guest', ['except' => ['getLogout', 'verify']]);
   }
-    
-	public function postLogin(Request $request)
-	{
-		$this->validate($request, [
-      'email' => 'required|email', 
+    public function postLogin(Request $request) { $this->validate($request, [
+      'phone' => 'required', 
       'password' => 'required', 
       'captcha' => 'required|captcha'],
       [
-      'email.required'=> '邮箱不能为空', 
-      'email.email' => '邮箱格式错误',
       'password.required' => '密码不能为空', 
       'captcha.captcha' => '验证码错误',
       'captcha.required' => '验证码不能为空'
       ]);
 
-		$credentials = $request->only('email', 'password');
+		$credentials = $request->only('phone', 'password');
 
 		if ($this->auth->attempt($credentials, $request->has('remember')))
 		{
@@ -64,7 +59,7 @@ class AuthController extends Controller {
 		}
 
 		return redirect($this->loginPath())
-					->withInput($request->only('email', 'remember'))
+					->withInput($request->only('phone', 'remember'))
 					->withErrors([
 					//	'email' => $this->getFailedLoginMessage(),
           '密码错误',
@@ -86,7 +81,7 @@ class AuthController extends Controller {
 			'name' => 'required|max:255|min:6|alpha_dash',
 			'email' => 'required|email|max:255|unique:users',
       'captcha' => 'required',
-      'phone_code' => 'required|phonecode',
+      //'phone_code' => 'required|phonecode',
       'phone' => 'required|tel',
 			'password' => 'required|confirmed|min:6'],
       [ 'email.required'=> '邮箱不能为空', 
@@ -111,7 +106,8 @@ class AuthController extends Controller {
 			'name' => $name,
 			'email' => $email,
       'password' => $pwd,
-      'active_token' => $active_token
+      'active_token' => $active_token,
+      'phone' => $request->get('phone'),
 		]);
 	  UserInformation::create([
 			'user_id' => $user->id,

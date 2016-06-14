@@ -23,7 +23,7 @@
 						        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <ul class="login-right-info">
                         <li> <strong>账户名：</strong><br/>
-								            <input type="phone" name="phone" id='username' class='login-enter' placeholder='电子邮箱' value="{{ old('phone') }}">
+								            <input type="email" name="email" id='username' class='login-enter' placeholder='电子邮箱' value="{{ old('email') }}">
                             <span class="login-yes"></span>
                         </li>
                         <li>

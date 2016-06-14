@@ -33,7 +33,7 @@
         </div>
         <div class="pay-submit">
             <form method='post' action='/gopay'>
-              <input type='text' id="bank_index" name='ptype' value='1'>
+              <input type='hidden' id="bank_index" name='ptype' value='1'>
               <input type="hidden" name="_token" value="{{csrf_token()}}">
               <input type='hidden' name='pay_id' value='{{$order->id}}'>
               <input type='hidden' name='pay_price_id' value='{{$order->price_id}}'>

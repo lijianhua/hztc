@@ -32,7 +32,7 @@ class UserController extends Controller {
 	}
   public function showemail($email)
   {
-      $user = User::where('email','=',$email)->first();
+      $user = User::where('phone','=',$email)->first();
       if($user)
       {
         return 1;

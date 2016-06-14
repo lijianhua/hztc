@@ -71,19 +71,19 @@ $(document).ready(function () {
             $('#email').parents('td').find('.sign-warning').css('display','inline-block');
             return false
         }
-        if (reg_phone.test(phone) && phone.length == 11) {
-            $('#phone').parents('td').find('.sign-warning').css('display','none');
-        }else{
-            $('#phone').parents('td').find('.sign-warning').css('display','inline-block');
-            return false;
-        }
+        //if (reg_phone.test(phone) && phone.length == 11) {
+        //    $('#phone').parents('td').find('.sign-warning').css('display','none');
+        //}else{
+        //    $('#phone').parents('td').find('.sign-warning').css('display','inline-block');
+        //    return false;
+        //}
 
-        if (phone_code == tel_phone_code && phone == tel_number) {
-            $('#phone_code').parents('td').find('.sign-warning').css('display','none');
-        }else{
-            $('#phone_code').parents('td').find('.sign-warning').css('display','inline-block');
-            return false;
-        }
+        //if (phone_code == tel_phone_code && phone == tel_number) {
+        //    $('#phone_code').parents('td').find('.sign-warning').css('display','none');
+        //}else{
+        //    $('#phone_code').parents('td').find('.sign-warning').css('display','inline-block');
+        //    return false;
+        //}
 
         if (password.length >= 6){
             $('#password').parents('td').find('.sign-warning').css('display','none');

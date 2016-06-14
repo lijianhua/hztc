@@ -117,7 +117,7 @@ class CartController extends Controller {
       $order = $this->addOrder($shop);
       $orderItem = $this->addOrderItem($shop, $order);
       $order->price_id = $shop->ad_space_snapshot_id;
-      //$shop->delete();
+      $shop->delete();
       return $order;
     });
     if ($order->state == 1)

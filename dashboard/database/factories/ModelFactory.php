@@ -76,7 +76,7 @@ $factory->defineAs(App\Models\User::class, 'admin', function ($faker) use ($fact
 $factory->defineAs(App\Models\User::class, 'root', function ($faker) use ($factory) {
   return [
     'name'      => 'root',
-    'email'     => 'zgs@ypjh.wang',
+    'email'     => 'i@ljh.name',
     'password'  => bcrypt('public'),
     'confirmed' => true,
     'is_verify' => true,
