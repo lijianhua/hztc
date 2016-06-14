@@ -82,10 +82,11 @@ class AuthController extends Controller {
 			'email' => 'required|email|max:255|unique:users',
       'captcha' => 'required',
       //'phone_code' => 'required|phonecode',
-      'phone' => 'required|tel',
+      'phone' => 'required|tel|unique:users',
 			'password' => 'required|confirmed|min:6'],
       [ 'email.required'=> '邮箱不能为空', 
         'email.unique'=> '邮箱已经存在', 
+        'phone.unique'=> '手机号已经存在', 
         'name.required'=> '用户名不能为空', 
         'name.min'=> '用户名不能少于六位', 
         'name.max'=> '用户名超出范围', 
@@ -101,6 +102,8 @@ class AuthController extends Controller {
     $name = $request->get('name');
     $email = $request->get('email');
     $pwd = bcrypt($request->get('password'));
+    $user_id = 1;
+    $user_code = 'dsfddf';
     $active_token = hash_hmac('sha256', str_random(40),'activing');
 	  $user =  User::create([
 			'name' => $name,
@@ -108,6 +111,10 @@ class AuthController extends Controller {
       'password' => $pwd,
       'active_token' => $active_token,
       'phone' => $request->get('phone'),
+      'user_id' => $user_id,
+      'user_code' => $user_code,
+      'user_type' => '普通用户',
+      'progress' => 'fdsfd',
 		]);
 	  UserInformation::create([
 			'user_id' => $user->id,

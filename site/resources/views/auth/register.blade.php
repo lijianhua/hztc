@@ -20,7 +20,6 @@
                   <td>
                       <input type="text" class="sign-enter" name="name" value="{{ old('name') }}" id='username'>
                       <span class="sign-warning">用户名不能小于6位</span><br/>
-                      <span class="sign-prompt">请使用常用帐号，用于登录，6位以上，不能含有特殊字符。</span>
                   </td>
               </tr>
               <tr>
@@ -28,7 +27,6 @@
                   <td>
                       <input type="email" id='email' class="sign-enter" name="email" value="{{ old('email') }}">
                       <span class="sign-warning">请填写正确的邮箱</span><br/>
-                      <span class="sign-prompt">请使用常用邮箱作为注册帐号，用于登录、找回密码等重要操作。</span>
                   </td>
               </tr>
               <tr>
@@ -62,7 +60,7 @@
               <tr>
                   <td class="sign-block-left"><strong>手机号：</strong></td>
                   <td>
-                      <input type="text" class="sign-enter" id="phone" name='phone' value="{{old('name') }}" ><input class="tel_bt" type='button'
+                      <input type="text" class="sign-enter" id="phone" name='phone' value="{{old('phone') }}" ><input class="tel_bt" type='button'
 value="获取验证码">
                       <span class="sign-warning" style="margin-left: 110px">请填写正确的手机格式</span><br/>
                       <span class="sign-prompt">请使用常用手机号码注册。</span>
@@ -71,7 +69,7 @@ value="获取验证码">
               <tr>
                   <td class="sign-block-left"><strong>短信验证码：</strong></td>
                   <td>
-                      <input type="text" class="sign-enter" id="phone_code" value="{{old('name') }}"  name='phone_code' style="width: 100px">
+                      <input type="text" class="sign-enter" id="phone_code" value="{{old('phone_code') }}"  name='phone_code' style="width: 100px">
                       <span class="sign-warning">请输入正确短信验证码</span><br/>
                       <span class="sign-prompt" id="value-sign" >请输入验证码。</span>
                       <input type="hidden" id="sign-info-phone" value="{{isset($phone)?  $phone:''}}">
@@ -79,10 +77,22 @@ value="获取验证码">
                   </td>
               </tr>
               <tr>
+                  <td class="sign-block-left"><strong>推荐人码：</strong></td>
+                  <td>
+                      <input type="text" class="sign-enter" id="user_code" value="{{old('user_code') }}"  name='user_code' style="width: 100px">
+                  </td>
+              </tr>
+              <tr>
+                  <td class="sign-block-left"><strong>渠道：</strong></td>
+                  <td>
+                      <input type="text" class="sign-enter" id="channel_code" value="{{old('channel_code') }}"  name='channel_code' style="width: 100px">
+                  </td>
+              </tr>
+              <tr>
                   <td class="sign-block-left"></td>
                   <td>
                       <input type="checkbox" class="sign-checkbox">
-                      <span class="sign-checkbox-text">已阅读并同意<a href="#" id='clause-view'>《魔媒网用户协议》</a> </span><br/>
+                      <span class="sign-checkbox-text">已阅读并同意<a href="#" id='clause-view'>《创业服务器用户协议》</a> </span><br/>
                   </td>
               </tr>
               <tr>
@@ -99,13 +109,13 @@ value="获取验证码">
     <div class="clause">
         <div class="clause-title">
             <div class="clause-close">
-                <span>魔媒注册条款协议</span>
+                <span>创业服务器注册条款协议</span>
                 <i class="fa fa-times"></i>
             </div>
         </div>
         <div class="clause-content">
 
-            魔媒用户注册协议
+            创业服务器用户注册协议
 
             本协议是您与魔媒网站（简称"本站"，网址：www.jd.com）所有者（以下简称为"魔媒"）之间就魔媒网站服务等相关事宜所订立的契约，请您仔细阅读本注册协议，您点击"同意并继续"按钮后，本协议即构成对双方有约束力的法律文件。
             第1条 本站服务条款的确认和接纳
