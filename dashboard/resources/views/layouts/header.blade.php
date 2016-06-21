@@ -2,7 +2,7 @@
   <!-- Logo -->
   <a class="logo" href="/">
     <span class="logo-mini">AD</span>
-    <span class="logo-lg"><b>魔媒网</b>LTE</span>
+    <span class="logo-lg"><b>创业服务器</b>LTE</span>
   </a>
 
   <nav class="navbar navbar-static-top" role="navigation">
@@ -26,7 +26,6 @@
               <img src="{{ $userRepons->userImageUrl(Auth::user()) }}" class="img-circle" alt="{{ Auth::user()->name }}"/>
               <p>
                 {{ Auth::user()->name }}
-                <small>{{ Auth::user()->enterprise->name }}</small>
                 <small>自{{ date('Y年, m月', strtotime(Auth::user()->created_at)) }}加入</small>
               </p>
             </li>

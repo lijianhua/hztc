@@ -25,9 +25,6 @@
                 <a href="#user" data-toggle="tab" aria-expanded="true">个人资料</a>
               </li>
               <li>
-                <a href="#enterprise" data-toggle="tab" aria-expanded="true">公司资料</a>
-              </li>
-              <li>
                 <a href="#security" data-toggle="tab" aria-expanded="true">账户安全</a>
               </li>
             </ul>

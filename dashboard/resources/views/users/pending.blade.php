@@ -1,13 +1,13 @@
 @extends ('app')
 
 @section ('title')
-用户审核
+用户管理
 @stop
 
 @section ('breadcrumb')
   <ol class="breadcrumb">
     <li><a href="{{{ url('/') }}}"><i class="fa fa-dashboard"></i>首页</a></li>
-    <li><a href="{{{ url('users/pending-verify') }}}"><i class="fa fa-street-view"></i>用户审核</a></li>
+    <li><a href="{{{ url('users/pending-verify') }}}"><i class="fa fa-street-view"></i>用户管理</a></li>
   </ol>
 @stop
 

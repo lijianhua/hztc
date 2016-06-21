@@ -54,7 +54,7 @@ $ ->
     columns: [
      { data: 'user_name',  name: 'users.name' },
      { data: 'email', name: 'email' },
-     { data: 'enterprise_name', name: 'enterprises.name' },
+     { data: 'phone', name: 'users.phone' },
      { data: 'status', orderable: false, searchable: false },
      { data: 'created_at',  name: 'created_at', searchable: false }
     ]

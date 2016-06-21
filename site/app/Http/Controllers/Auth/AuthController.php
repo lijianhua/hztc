@@ -2,6 +2,7 @@
 use Auth;
 use Redirect;
 use App\Models\User;
+use App\Models\RandCode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
@@ -11,6 +12,7 @@ use App\Http\Middleware\BeforeLoginMiddleware;
 use App\Models\ValiCodeRepository;
 use Session;
 use App\Models\UserInformation;
+use DB;
 class AuthController extends Controller {
   protected $redirectTo = '/';
 
@@ -102,8 +104,9 @@ class AuthController extends Controller {
     $name = $request->get('name');
     $email = $request->get('email');
     $pwd = bcrypt($request->get('password'));
-    $user_id = 1;
-    $user_code = 'dsfddf';
+    $user_id = User::where('user_code', '=', $request->get('reference'))
+      ->first()->id;
+    $user_code = RandCode::first();
     $active_token = hash_hmac('sha256', str_random(40),'activing');
 	  $user =  User::create([
 			'name' => $name,
@@ -112,9 +115,9 @@ class AuthController extends Controller {
       'active_token' => $active_token,
       'phone' => $request->get('phone'),
       'user_id' => $user_id,
-      'user_code' => $user_code,
+      'user_code' => $user_code->nonce,
       'user_type' => '普通用户',
-      'progress' => 'fdsfd',
+      'progress' => '',
 		]);
 	  UserInformation::create([
 			'user_id' => $user->id,
@@ -122,6 +125,7 @@ class AuthController extends Controller {
       'value' => $request->get('phone'),
       'authority' => 0 
 		]);
+    $user_code->delete();
 //    return Redirect::to('auth/email/'.$user->id);
     Auth::login($user);
     return Redirect::to('/');

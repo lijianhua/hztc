@@ -2,10 +2,10 @@
   <thead>
     <tr>
       <th>用户名</th>
-      <th>真实姓名</th>
-      <th>联系方式</th>
-      <th>身份证号</th>
-      <th>审核状态</th>
+      <th>手机号</th>
+      <th>用户类型</th>
+      <th>项目进度</th>
+      <th>用户码</th>
     </tr>
   </thead>
   <tbody>

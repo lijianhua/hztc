@@ -6,7 +6,7 @@
       @include ('shared.status')
       <div class="callout callout-success">
         <h4><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;登录成功</h4>
-        <p>欢迎您使用魔媒网LET。</p>
+        <p>欢迎您使用LET。</p>
       </div>
     </div>
   </div>

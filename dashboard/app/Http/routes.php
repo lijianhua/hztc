@@ -81,6 +81,13 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::get('ad-spaces/create', 'AdSpaceController@create');
   Route::post('ad-spaces/create', 'AdSpaceController@store');
 
+  //用户管理
+  Route::get('users/create', 'UserController@create');
+  Route::post('users/create', 'UserController@store');
+  Route::delete('users/{id}', 'UserController@destroy');
+  Route::get('users/{id}/edit', 'UserController@edit');
+  Route::put('users/{id}', 'UserController@update');
+
   // 图片上传
   Route::any('avatars/upload', 'ImageController@store');
   Route::any('avatars/delete/{id}', 'ImageController@destroy');

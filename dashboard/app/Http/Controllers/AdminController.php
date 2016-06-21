@@ -20,15 +20,13 @@ class AdminController extends Controller
    */
   public function index()
   {
+
     return view('admins.index');
   }
 
   public function server()
   {
-    $query = User::leftJoinEnterprise()
-      ->with('enterprise')
-      ->select(DB::raw('users.name as user_name, enterprises.name as enterprise_name, users.id, users.email, users.admin, users.created_at as created_at'));
-
+    $query = User::select(DB::raw('users.name as user_name, users.id, users.email, users.admin, users.created_at as created_at, users.phone'));
     return Datatables::of($query)
       ->addColumn('status', function ($user) {
         if ($user->admin) {

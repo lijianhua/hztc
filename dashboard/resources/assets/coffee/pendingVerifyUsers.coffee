@@ -34,6 +34,18 @@ class @PendingVerifyUser extends CommonDataTableObject
 
     @actionUrl = null
 
+  deleteSelectedRow: ->
+    @actionUrl = "/users/#{@selectedRowData().id}"
+    super
+
+
+  selectedRowParentId: ->
+    parent = @selectedRowData().parent
+    if parent
+      return parent.id
+    else
+      return undefined
+
 $ = jQuery
 
 $ ->
@@ -52,47 +64,43 @@ $ ->
     processing: true
     serverSide: true
     columns: [
-     { data: 'name',  orderable: false, name: 'users.name' },
-     { data: 'truthname',  orderable: false, searchable: false },
-     { data: 'telphone',   orderable: false, searchable: false  },
-     { data: 'idcard',     orderable: false, searchable: false  },
-     { data: 'is_verify',  orderable: false, name: 'is_verify' },
+     { data: 'name',  orderable: false, name: 'users.name'},
+     { data: 'phone',   name: 'users.phone'},
+     { data: 'user_type',   orderable: false, searchable: false  },
+     { data: 'progress',     orderable: false, searchable: false  },
+     { data: 'user_code',     orderable: false, searchable: false  },
     ]
     ajax: '/users/server-pending-verify'
-    initComplete: ->
-      column = @api().columns(4)
-      select = """
-               <select>
-                 <option value="">所有用户</option>
-                 <option value="0">等待认证</option>
-                 <option value="1">申请通过</option>
-                 <option value="2">申请驳回</option>
-               </select>
-               """
-      $(select).appendTo($(column.header()).empty()).on 'change', ->
-        column.search($(@).val()).draw()
     tableTools:
       sRowSelect: 'os'
       aButtons: [
-        sButtonClass: "btn btn-flat btn-default disabled"
+        sButtonClass: "btn btn-flat btn-default"
         sExtends: "text"
-        sButtonText: "<i class='fa fa-check fa-lg'></i>"
-        sToolTip: "同意申请"
+        sButtonText: "<i class='fa fa-plus'></i>"
+        sToolTip: "新建"
         fnInit: CommonDataTableObject.initButtonToolTip
-        fnSelect: toggleButtonStateOnSelect
         fnClick: ->
-          pending = new PendingVerifyUser 'pending-verify-users-table'
-          new TenderConfirmAlert('warning').alert '您确认同意用户认证申请吗？', ->
-            pending.aggree() if pending.isSelectedOne()
+          window.location = '/users/create'
       ,
         sButtonClass: "btn btn-flat btn-default disabled"
         sExtends: "text"
-        sButtonText: "<i class='fa fa-remove fa-lg'></i>"
-        sToolTip: "拒绝申请"
+        sButtonText: "<i class='fa fa-edit'></i>"
+        sToolTip: "编辑"
         fnInit: CommonDataTableObject.initButtonToolTip
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
-          pending = new PendingVerifyUser 'pending-verify-users-table'
-          new TenderConfirmAlert('warning').alert '您确认拒绝用户认证申请吗？', ->
-            pending.refuse() if pending.isSelectedOne()
+          ad = new PendingVerifyUser 'pending-verify-users-table'
+          window.location = "/users/#{ad.selectedRowData().id}/edit"
+      ,
+        sButtonClass: "btn btn-flat btn-default disabled"
+        sExtends: "text"
+        sButtonText: "<i class='fa fa-trash-o'></i>"
+        sToolTip: "删除"
+        fnInit: CommonDataTableObject.initButtonToolTip
+        fnSelect: toggleButtonStateOnSelect
+        fnClick: ->
+          ad = new PendingVerifyUser 'pending-verify-users-table'
+          new TenderConfirmAlert('danger').alert '危险！这个操作将无法逆转。确认删除吗?', ->
+            ad.deleteSelectedRow() if ad.isSelectedOne()
+          , '危险'
       ]

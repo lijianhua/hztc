@@ -18,6 +18,34 @@ class @PendingVerifyUser extends CommonDataTableObject
 
     @actionUrl = null
 
+  refuse: ->
+    @method    = 'PUT'
+    @actionUrl = "/users/#{@selectedRowData().id}/refuse"
+    @ajax (response) ->
+      if response.state == 'OK'
+        @api().row(@selectedRow()).remove().draw false
+        type = 'success'
+      else
+        type = 'danger'
+
+      new TenderAlert(type).alert response.message
+    , ->
+      new TenderAlert('danger').alert '操作失败，请重试。'
+
+    @actionUrl = null
+
+  deleteSelectedRow: ->
+    @actionUrl = "/users/#{@selectedRowData().id}"
+    super
+
+
+  selectedRowParentId: ->
+    parent = @selectedRowData().parent
+    if parent
+      return parent.id
+    else
+      return undefined
+
 $ = jQuery
 
 $ ->
@@ -36,11 +64,11 @@ $ ->
     processing: true
     serverSide: true
     columns: [
-     { data: 'name',  orderable: false, name: 'users.name' },
-     { data: 'truthname',  orderable: false, searchable: false },
-     { data: 'telphone',   orderable: false, searchable: false  },
-     { data: 'idcard',     orderable: false, searchable: false  },
-     { data: 'is_verify',  orderable: false, searchable: false },
+     { data: 'name',  orderable: false, name: 'users.name'},
+     { data: 'phone',   name: 'users.phone'},
+     { data: 'user_type',   orderable: false, searchable: false  },
+     { data: 'progress',     orderable: false, searchable: false  },
+     { data: 'user_code',     orderable: false, searchable: false  },
     ]
     ajax: '/users/server-pending-verify'
     tableTools:
@@ -48,13 +76,11 @@ $ ->
       aButtons: [
         sButtonClass: "btn btn-flat btn-default disabled"
         sExtends: "text"
-        sButtonText: "<i class='fa fa-check fa-lg'></i>"
-        sToolTip: "同意申请"
+        sButtonText: "<i class='fa fa-edit'></i>"
+        sToolTip: "编辑"
         fnInit: CommonDataTableObject.initButtonToolTip
         fnSelect: toggleButtonStateOnSelect
         fnClick: ->
-          pending = new PendingVerifyUser 'pending-verify-users-table'
-          new TenderConfirmAlert('warning').alert '您确认同意用户认证申请吗？', ->
-            pending.aggree() if pending.isSelectedOne()
+          ad = new PendingVerifyUser 'pending-verify-users-table'
+          window.location = "/users/#{ad.selectedRowData().id}/edit"
       ]
-

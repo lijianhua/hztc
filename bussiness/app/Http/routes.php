@@ -59,6 +59,10 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function () {
   Route::put('admins/{id}/appointed', 'AdminController@appointed');
   Route::put('admins/{id}/unappointed', 'AdminController@unappointed');
 
+  //用户管理
+  Route::get('users/{id}/edit', 'UserController@edit');
+  Route::put('users/{id}', 'UserController@update');
+
   // 广告管理
   Route::get('ads', 'AdSpaceController@index');
   Route::get('ads/server-proccessing', 'AdSpaceController@server');

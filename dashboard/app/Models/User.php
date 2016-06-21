@@ -24,7 +24,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
    *
    * @var array
    */
-  protected $fillable = ['name', 'email', 'password', 'avatar'];
+  protected $fillable = ['name', 'email', 'password', 'avatar', 'phone', 'user_id', 'user_code', 'user_type', 'progress', 'city' ];
 
   /**
    * The attributes excluded from the model's JSON form.
@@ -35,7 +35,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
   protected $casts = [
     'admin'     => 'boolean',
-    'confirmed' => 'boolean'
+    'confirmed' => 'boolean',
   ];
 
   public function __construct(array $attributes = array()) {
@@ -68,19 +68,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
   {
     return $this->hasMany('App\Models\Order')->withTrashed();
   }
-
-  public function scopePending($query)
-  {
-    return $query->whereIsVerify(0);
-  }
-
-  public function scopeAdmin($query)
-  {
-    return $query->whereAdmin(true);
-  }
-
-  public function scopeLeftJoinEnterprise($query)
-  {
-    return $query->leftJoin('enterprises', 'enterprises.id', '=', 'users.enterprise_id');
-  }
 }
+

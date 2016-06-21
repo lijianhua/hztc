@@ -79,7 +79,7 @@ value="获取验证码">
               <tr>
                   <td class="sign-block-left"><strong>推荐人码：</strong></td>
                   <td>
-                      <input type="text" class="sign-enter" id="user_code" value="{{old('user_code') }}"  name='user_code' style="width: 100px">
+                      <input type="text" class="sign-enter" id="reference" value="{{old('reference') }}"  name='reference' style="width: 100px">
                   </td>
               </tr>
               <tr>
