@@ -9,6 +9,7 @@ use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Reponsitories\UserReponsitory;
+use DB;
 
 class UserController extends Controller
 {
@@ -51,9 +52,19 @@ class UserController extends Controller
    */
   public function edit($id)
   {
-    $user = User::findOrFail($id);
+    $user = User::with('userInformations')->findOrFail($id);
+    $user->daterange = implode("-",array(str_replace('-', '/',$user->userInformations->first()->start_time), 
+    str_replace('-', '/', $user->userInformations->first()->end_time))); 
 
     return view('users.edit', compact('user'));
+  }
+
+  public function parseVip()
+  {
+    $user = User::find(Auth::user()->id)->userInformations->first();
+    $user->vipnum -= 1;
+    $user->save();
+
   }
 
   /**
@@ -64,16 +75,37 @@ class UserController extends Controller
    */
   public function update(Request $request, $id)
   {
-    $user = User::find($id);
-    $user->name = $request->get('name');
-    $user->phone = $request->get('phone');
-    $user->email = $request->get('email');
-    $user->user_type = $request->get('type');
-    if ($request->has('password'))
+    DB::transaction(function() use ($id, $request)
     {
-      $user->password  = bcrypt($request->get('password'));
-    }
-    $user->save();
+      $user = User::find($id);
+      $user->name = $request->get('name');
+      $user->phone = $request->get('phone');
+      $user->email = $request->get('email');
+      if ($user->user_type != $request->get('type'))
+      {
+        $user->user_type = $request->get('type');
+        $this->parseVip();
+      }
+      $user->save();
+
+      $userInfo = $user->userInformations->first();
+      if ($user->admin)
+      {
+        $parseDate = $this->parseDate($request);
+        $userInfo->start_time = $parseDate['start_time'];
+        $userInfo->end_time = $parseDate['end_time'];
+        $userInfo->vipnum = $request->get('vipnum');
+        $userInfo->city = $request->get('city');
+      } else {
+        $userInfo->burnish = $request->get('burnish');
+        $userInfo->clinic = $request->get('clinic');
+        $userInfo->rshow = $request->get('rshow');
+      }
+
+      $userInfo->save();
+    });
+
+
     return redirect()->action('UserController@pending')->with('status', '用户更新成功。');
   }
 

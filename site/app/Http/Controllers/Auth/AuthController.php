@@ -125,7 +125,8 @@ class AuthController extends Controller {
 		]);
 	  UserInformation::create([
 			'user_id' => $user->id,
-			'validity' => date("Y/m/d"),
+			'start_time' => date("Y/m/d"),
+			'end_time' => date("Y/m/d"),
       'vipnum' => 0, 
       'city' => '',
       'burnish' => 0,
