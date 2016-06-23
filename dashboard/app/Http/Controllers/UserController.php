@@ -189,13 +189,29 @@ class UserController extends Controller
    */
   public function update(Request $request, $id)
   {
+    $this->validate($request, [ 
+      'name' => 'required|min:2',
+      'email' => 'required|email|max:255',
+      'phone' => 'required',
+      ],
+      [
+        'name.required' => '用户名不能为空', 
+        'name.min' => '用户名最少两位',
+        'email.required'=> '邮箱不能为空',
+        'phone.required' => '手机号不能为空',
+        'name.alpha_dash'=> '用户名含有特殊字符',
+      ]);
     DB::transaction(function() use ($id, $request)
     {
       $user = User::find($id);
       $user->name = $request->get('name');
       $user->phone = $request->get('phone');
       $user->email = $request->get('email');
-      $user->user_type = $request->get('type');
+      if ($request->has('type'))
+      {
+        $user->user_type = $request->get('type');
+        $user->admin = false;
+      }
       if ($request->has('password'))
       {
         $user->password  = bcrypt($request->get('password'));

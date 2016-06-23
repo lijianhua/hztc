@@ -51,7 +51,7 @@ class AdminController extends Controller
       return $this->failResponse('您不能操作自身');
     }
 
-    User::whereId($id)->update(['admin' => true]);
+    User::whereId($id)->update(['admin' => true, 'user_type' => '管理员']);
 
     return $this->okResponse('任命成功');
   }
@@ -66,7 +66,7 @@ class AdminController extends Controller
       return $this->failResponse('您不能操作自身');
     }
 
-    User::whereId($id)->update(['admin' => false]);
+    User::whereId($id)->update(['admin' => false, 'user_type' => '普通用户']);
 
     return $this->okResponse('撤销任命成功');
   }
