@@ -5,11 +5,11 @@
     <div class="layout">
         <div class="login-info">
             <div class="login-left fl">
-                <img src="../images/login/login-left.png">
+logo-left
             </div>
             <div class="login-right fl">
                 <div class="login-title">
-                    <img src="../images/login/logo.png">
+logo
                 </div>
                       <div class='login-error' style='position:absolute;font-size:12px;margin-top:22px;margin-left:90px;color:red'>
                         @if (count($errors) > 0)

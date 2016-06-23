@@ -133,7 +133,6 @@
 -->
       <li class="header">站点与资源</li>
       <li><a href="{{{ url('navigators') }}}"><i class="fa fa-navicon"></i> <span>全局导航</span></a></li>
-      <li><a href="{{{ url('slides') }}}"><i class="fa fa-file-image-o"></i> <span>轮播图</span></a></li>
       <li class="header">用户中心</li>
       <li>
         <a href="{{ url('users/pending-verify') }}">
