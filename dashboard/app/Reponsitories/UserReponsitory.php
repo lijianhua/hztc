@@ -46,27 +46,6 @@ class UserReponsitory
           return " <span class=\"label label-danger\">申请驳回</span>";
         }
       })
-      ->addColumn('truthname', function ($user) {
-        $info = $user->userInformations()->whereKey('truthname')->first();
-        if ($info) {
-          return $info->value;
-        }
-        return '';
-      })
-      ->addColumn('idcard', function ($user) {
-        $info = $user->userInformations()->whereKey('idcard')->first();
-        if ($info) {
-          return $info->value;
-        }
-        return '';
-      })
-      ->addColumn('telphone', function ($user) {
-        $info = $user->userInformations()->whereKey('telphone')->first();
-        if ($info) {
-          return $info->value;
-        }
-        return '';
-      })
       ->make(true);
   }
 }

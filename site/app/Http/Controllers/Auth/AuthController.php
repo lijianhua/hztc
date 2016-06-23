@@ -104,8 +104,12 @@ class AuthController extends Controller {
     $name = $request->get('name');
     $email = $request->get('email');
     $pwd = bcrypt($request->get('password'));
-    $user_id = User::where('user_code', '=', $request->get('reference'))
-      ->first()->id;
+    $user_id = 0;
+    if ($request->has('reference'))
+    {
+      $user_id = User::where('user_code', '=', $request->get('reference'))
+        ->first()->id;
+    }
     $user_code = RandCode::first();
     $active_token = hash_hmac('sha256', str_random(40),'activing');
 	  $user =  User::create([
@@ -121,8 +125,12 @@ class AuthController extends Controller {
 		]);
 	  UserInformation::create([
 			'user_id' => $user->id,
-			'key' => 'telphone',
-      'value' => $request->get('phone'),
+			'validity' => date("Y/m/d"),
+      'vipnum' => 0, 
+      'city' => '',
+      'burnish' => 0,
+      'clinic' => 0,
+      'rshow' => 0,
       'authority' => 0 
 		]);
     $user_code->delete();

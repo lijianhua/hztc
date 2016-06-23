@@ -64,7 +64,7 @@ elixir(function(mix) {
            'bootstrap-fileinput/js/fileinput.min.js',
            'bootstrap-fileinput/js/fileinput_locale_zh.js',
            'admin-lte/plugins/daterangepicker/moment.min.js',
-           'admin-lte/plugins/daterangepicker/daterangepicker.js'
+           'admin-lte/plugins/daterangepicker/daterangepicker.js',
        ], 'public/js/vendor.js', elixir.config['bowerDir'])
        // 合并自定义 js
        .scriptsIn('public/js', 'public/js/all.js')
