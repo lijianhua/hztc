@@ -33,7 +33,6 @@
                 @include ('accounts.edit.user')
               </div>
               <div class="tab-pane" id="enterprise">
-                @include ('accounts.edit.enterprise')
               </div>
               <div class="tab-pane" id="security">
                 @include ('accounts.edit.security')

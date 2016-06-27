@@ -39,8 +39,7 @@ class AccountController extends Controller
   public function edit($id)
   {
     $user = User::find($id);
-    $enterprise = $user->enterprise;
-    return view('accounts.edit', compact('user', 'enterprise'));
+    return view('accounts.edit', compact('user'));
   }
 
   /**
