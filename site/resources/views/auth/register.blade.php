@@ -83,12 +83,6 @@ value="获取验证码">
                   </td>
               </tr>
               <tr>
-                  <td class="sign-block-left"><strong>渠道：</strong></td>
-                  <td>
-                      <input type="text" class="sign-enter" id="channel_code" value="{{old('channel_code') }}"  name='channel_code' style="width: 100px">
-                  </td>
-              </tr>
-              <tr>
                   <td class="sign-block-left"></td>
                   <td>
                       <input type="checkbox" class="sign-checkbox">
